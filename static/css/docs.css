@@ -7,7 +7,7 @@ div#codeLanguagePreference {
 
 div#codeLanguagePreference.follow {
   background-color: white;
-  background-image: close.gif;
+  /*background-image: close.gif;*/
   position: fixed;
   top:5px;
   border: 1px solid #787878;
