@@ -7,6 +7,7 @@ selenium_render = web.template.render('templates/', cache=False)
 python_render = web.template.render('templates/', cache=False, base='python_base')
 
 web.config.debug = True
+web.config['lang_list'] = ['.cn', '.en', '']
 
 config = web.storage(
     email='chenxiaowu@dangdang.com',
