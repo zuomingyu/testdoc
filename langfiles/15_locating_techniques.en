@@ -1,0 +1,25 @@
+#:page_title
+"selenium webdriver"
+
+#:previous_link
+"14_installing_python_driver_client"
+
+#:previous_title
+"Python Client Driver Configuration"
+
+#:next_link
+"16_migrating_from_rc_to_webdriver"
+
+#:next_title
+"Migrating From Selenium RC to Selenium WebDriver"
+
+#:side
+:Introduction
+Introduction
+:titile2
+content2
+
+#:body
+:key2
+内容行两边不需要使用字符串括起来
+#34343   #注释行与空行将忽略

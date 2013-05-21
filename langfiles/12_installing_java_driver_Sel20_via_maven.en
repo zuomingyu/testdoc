@@ -1,0 +1,25 @@
+#:page_title
+"selenium webdriver"
+
+#:previous_link
+"11_installing_dotnet_driver_client"
+
+#:previous_title
+".NET client driver configuration"
+
+#:next_link
+"13_installing_java_driver_client"
+
+#:next_title
+"Selenium 1.0 Java Client Driver Configuration"
+
+#:side
+:Introduction
+Introduction
+:titile2
+content2
+
+#:body
+:key2
+内容行两边不需要使用字符串括起来
+#34343   #注释行与空行将忽略

@@ -1,0 +1,25 @@
+#:page_title
+"selenium webdriver"
+
+#:previous_link
+"12_installing_java_driver_Sel20_via_maven"
+
+#:previous_title
+"Importing Sel2.0 Project into Eclipse using Maven"
+
+#:next_link
+"14_installing_python_driver_client"
+
+#:next_title
+"Python Client Driver Configuration"
+
+#:side
+:Introduction
+Introduction
+:titile2
+content2
+
+#:body
+:key2
+内容行两边不需要使用字符串括起来
+#34343   #注释行与空行将忽略

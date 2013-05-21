@@ -1,0 +1,25 @@
+#:page_title
+"selenium webdriver"
+
+#:previous_link
+"06_test_design_considerations"
+
+#:previous_title
+"Test Design Considerations"
+
+#:next_link
+"08_user_extensions"
+
+#:next_title
+"User-Extensions"
+
+#:side
+:Introduction
+Introduction
+:titile2
+content2
+
+#:body
+:key2
+内容行两边不需要使用字符串括起来
+#34343   #注释行与空行将忽略

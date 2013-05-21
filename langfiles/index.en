@@ -1,17 +1,17 @@
 #:page_title
-"woo"
+"index"
 
 #:previous_link
-"plpl"
+""
 
 #:previous_title
-"tttt"
+""
 
 #:next_link
-"llll"
+"00_note"
 
 #:next_title
-"nnnn"
+"Note to the Reader–Docs Being Revised for Selenium 2.0!"
 
 #:side
 :Introduction
@@ -20,9 +20,7 @@ Introduction
 content2
 
 #:body
-:Introduction
-介绍
 :key2
-"Hello Python!"
-#34343
+内容行两边不需要使用字符串括起来
+#34343   #注释行与空行将忽略
   

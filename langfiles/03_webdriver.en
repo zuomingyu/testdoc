@@ -1,0 +1,25 @@
+#:page_title
+"selenium webdriver"
+
+#:previous_link
+"02_selenium_ide"
+
+#:previous_title
+"Selenium-IDE"
+
+#:next_link
+"04_webdriver_advanced"
+
+#:next_title
+"WebDriver: Advanced Usage"
+
+#:side
+:Introduction
+Introduction
+:titile2
+content2
+
+#:body
+:key2
+内容行两边不需要使用字符串括起来
+#34343   #注释行与空行将忽略

@@ -1,0 +1,25 @@
+#:page_title
+"selenium webdriver"
+
+#:previous_link
+"09_cheat_sheet"
+
+#:previous_title
+"Selenium WebDriver Cheat Sheet"
+
+#:next_link
+"11_installing_dotnet_driver_client"
+
+#:next_title
+".NET client driver configuration"
+
+#:side
+:Introduction
+Introduction
+:titile2
+content2
+
+#:body
+:key2
+内容行两边不需要使用字符串括起来
+#34343   #注释行与空行将忽略
