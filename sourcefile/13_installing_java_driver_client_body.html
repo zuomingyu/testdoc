@@ -1,0 +1,112 @@
+<div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="selenium-1-0-java-client-driver-configuration">
+<h1>Selenium 1.0 Java Client Driver Configuration<a class="headerlink" href="#selenium-1-0-java-client-driver-configuration" title="Permalink to this headline">¶</a></h1>
+<p>In General configuration of Selenium-RC with any java IDE would have following
+steps:</p>
+<ul class="simple">
+<li>Download Selenium-RC from the SeleniumHQ <a class="reference external" href="http://seleniumhq.org/download/">downloads page</a></li>
+<li>Start any java IDE</li>
+<li>Create new project</li>
+<li>Add “selenium-java-&lt;version-number&gt;.jar” to your project classpath</li>
+<li>Record your test from Selenium-IDE and translate it to java code (Selenium
+IDE has automatic translation feature to generate tests in variety of languages)</li>
+<li>Run selenium server from console</li>
+<li>Run your test in the IDE</li>
+</ul>
+<p>These points have been delineated below with reference to Eclipse and IntelliJ:</p>
+<div class="section" id="configuring-selenium-rc-with-eclipse">
+<span id="configuring-selenium-rc-eclipse-reference"></span><h2>Configuring Selenium-RC With Eclipse<a class="headerlink" href="#configuring-selenium-rc-with-eclipse" title="Permalink to this headline">¶</a></h2>
+<p><strong>Eclipse</strong> is a multi-language software development platform comprising an IDE
+and a plug-in system to extend it. It is written primarily in Java and is used
+to develop applications in this language and, by means of the various plug-ins,
+in other languages as well as C/C++, Cobol, Python, Perl, PHP and more.</p>
+<p>Following lines describes configuration of Selenium-RC with Eclipse -
+Version: 3.3.0. (Europa Release). It should not be too different for higher
+versions of Eclipse</p>
+<ul class="simple">
+<li>Launch Eclipse.</li>
+<li>Select File &gt; New &gt; Other.</li>
+</ul>
+<img alt="_images/chapt5_img03_Launch_Eclipse.png" class="align-center" src="_images/chapt5_img03_Launch_Eclipse.png">
+<ul class="simple">
+<li>Java &gt; Java Project &gt; Next</li>
+</ul>
+<img alt="_images/chapt5_img04_Create_Java_Project.png" class="align-center" src="_images/chapt5_img04_Create_Java_Project.png">
+<ul class="simple">
+<li>Provide Name to your project, Select JDK in ‘Use a project Specific JRE’ option (JDK 1.5
+selected in this example) &gt; click Next</li>
+</ul>
+<img alt="_images/chapt5_img05_Create_Java_Project.png" class="align-center" src="_images/chapt5_img05_Create_Java_Project.png">
+<ul class="simple">
+<li>Keep ‘JAVA Settings’ intact in next window. Project specific libraries can be
+added here. (This described in detail in later part of document.)</li>
+</ul>
+<img alt="_images/chapt5_img06_Create_Java_Project.png" class="align-center" src="_images/chapt5_img06_Create_Java_Project.png">
+<ul class="simple">
+<li>Click Finish &gt; Click on Yes in Open Associated Perspective pop up window.</li>
+</ul>
+<img alt="_images/chapt5_img07_Create_Java_Project.png" class="align-center" src="_images/chapt5_img07_Create_Java_Project.png">
+<p>This would create Project Google in Package Explorer/Navigator pane.</p>
+<img alt="_images/chapt5_img08_Package_Explorer.png" class="align-center" src="_images/chapt5_img08_Package_Explorer.png">
+<ul class="simple">
+<li>Right click on src folder and click on New &gt; Folder</li>
+</ul>
+<img alt="_images/chapt5_img09_Create_Com_Package.png" class="align-center" src="_images/chapt5_img09_Create_Com_Package.png">
+<p>Name this folder as com and click on Finish button.</p>
+<ul class="simple">
+<li>This should get com package insider src folder.</li>
+</ul>
+<img alt="_images/chapt5_img10_Create_Com_Package.png" class="align-center" src="_images/chapt5_img10_Create_Com_Package.png">
+<ul class="simple">
+<li>Following the same steps create <em>core</em> folder inside <em>com</em></li>
+</ul>
+<img alt="_images/chapt5_img11_Create_Core_Package.png" class="align-center" src="_images/chapt5_img11_Create_Core_Package.png">
+<p>SelTestCase class can be kept inside <em>core</em> package.</p>
+<p>Create one more package inside <em>src</em> folder named <em>testscripts</em>. This is a
+place holder for test scripts.</p>
+<p><em>Please notice this is about the organization of project and it entirely
+depends on individual’s choice /  organization’s standards. Test scripts
+package can further be segregated depending upon the project requirements.</em></p>
+<img alt="_images/chapt5_img12_Create_Test_Script_Package.png" class="align-center" src="_images/chapt5_img12_Create_Test_Script_Package.png">
+<ul class="simple">
+<li>Create a folder called lib inside project Google. Right click on Project name
+&gt; New &gt; Folder. This is a place holder for jar files to project (i.e. Selenium
+client driver, selenium server etc)</li>
+</ul>
+<img alt="_images/chapt5_img13_Create_Library_Package.png" class="align-center" src="_images/chapt5_img13_Create_Library_Package.png">
+<p>This would create lib folder in Project directory.</p>
+<img alt="_images/chapt5_img14_Create_Library_Package.png" class="align-center" src="_images/chapt5_img14_Create_Library_Package.png">
+<ul class="simple">
+<li>Right click on <em>lib</em> folder &gt; Build Path &gt; Configure build Path</li>
+</ul>
+<img alt="_images/chapt5_img15_Configure_Build_Path.png" class="align-center" src="_images/chapt5_img15_Configure_Build_Path.png">
+<ul class="simple">
+<li>Under Library tab click on Add External Jars to navigate to directory where
+jar files are saved. Select the jar files which are to be added and click on
+Open button.</li>
+</ul>
+<img alt="_images/chapt5_img16_Configure_Build_Path.png" class="align-center" src="_images/chapt5_img16_Configure_Build_Path.png">
+<p>After having added jar files click on OK button.</p>
+<img alt="_images/chapt5_img17_Configure_Build_Path.png" class="align-center" src="_images/chapt5_img17_Configure_Build_Path.png">
+<p>Added libraries would appear in Package Explorer as following:</p>
+<img alt="_images/chapt5_img18_Configure_Build_Path.png" class="align-center" src="_images/chapt5_img18_Configure_Build_Path.png">
+</div>
+<div class="section" id="configuring-selenium-rc-with-intellij">
+<span id="configuring-selenium-rc-intellij-reference"></span><h2>Configuring Selenium-RC With Intellij<a class="headerlink" href="#configuring-selenium-rc-with-intellij" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Watch <a class="reference external" href="http://www.youtube.com/watch?v=Eft3qGFoqwE">this excellent tutorial</a> by Simon Stewart on
+starting a Selenium project with IntelliJ</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>

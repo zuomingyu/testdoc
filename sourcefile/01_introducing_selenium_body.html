@@ -1,11 +1,12 @@
 <div class="document">
-<div class="documentwrapper">
-<div class="bodywrapper">
-<div class="body">
-<div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#introduction" title="Permalink to this headline">¶</a></h1>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="test-automation-for-web-applications">
-<span id="chapter01-reference"></span><h2>Test Automation for Web Applications<a class="headerlink" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#test-automation-for-web-applications" title="Permalink to this headline">¶</a></h2>
+<span id="chapter01-reference"></span><h2>Test Automation for Web Applications<a class="headerlink" href="#test-automation-for-web-applications" title="Permalink to this headline">¶</a></h2>
 <p>Many, perhaps most, software applications today are written as web-based
 applications to be run in an Internet browser. The  effectiveness of testing
 these applications varies widely among companies and organizations. In an era
@@ -19,15 +20,15 @@ that responsiveness.</p>
 repeatability of the tests and the speed at which the tests can be executed.
 There are a number of commercial and open source tools available for assisting
 with the development of test automation. Selenium is possibly the most
-widely-used open source solution. This users guide will assist both new and
+widely-used open source solution. This user’s guide will assist both new and
 experienced Selenium users in learning effective techniques in building test
 automation for web applications.</p>
-<p>This users guide introduces Selenium, teaches its features, and
+<p>This user’s guide introduces Selenium, teaches its features, and
 presents commonly used best practices accumulated from the Selenium
 community. Many examples are provided. Also, technical information on the
 internal structure of Selenium and recommended uses of Selenium are provided.</p>
 <p>Test automation has specific advantages for
-improving the long-term efficiency of a software teams testing processes.
+improving the long-term efficiency of a software team’s testing processes.
 Test automation supports:</p>
 <ul class="simple">
 <li>Frequent regression testing</li>
@@ -40,20 +41,20 @@ Test automation supports:</p>
 </ul>
 </div>
 <div class="section" id="to-automate-or-not-to-automate">
-<h2>To Automate or Not to Automate?<a class="headerlink" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#to-automate-or-not-to-automate" title="Permalink to this headline">¶</a></h2>
+<h2>To Automate or Not to Automate?<a class="headerlink" href="#to-automate-or-not-to-automate" title="Permalink to this headline">¶</a></h2>
 <p>Is automation always advantageous? When should one decide to automate
 test cases?</p>
 <p>It is <strong>not</strong> always advantageous to automate test cases. There are
 times when manual testing may be more appropriate. For instance, if the
-applications user interface will change considerably in the near future,
+application’s user interface will change considerably in the near future,
 then any automation might need to be rewritten anyway. Also, sometimes there simply
 is not enough time to build test automation. For the short term, manual testing
 may be more effective. If an application has a very tight deadline, there is
-currently no test automation available, and its imperative that the testing
+currently no test automation available, and it’s imperative that the testing
 get done within that time frame, then manual testing is the best solution.</p>
 </div>
 <div class="section" id="introducing-selenium">
-<h2>Introducing Selenium<a class="headerlink" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#introducing-selenium" title="Permalink to this headline">¶</a></h2>
+<h2>Introducing Selenium<a class="headerlink" href="#introducing-selenium" title="Permalink to this headline">¶</a></h2>
 <p>Selenium is a set of different software tools each with a different approach
 to supporting test automation. Most Selenium QA Engineers focus on the one
 or two tools that most meet the needs of their project, however learning all
@@ -63,11 +64,11 @@ The entire suite of tools results in a rich set of
 testing functions specifically geared to the needs of testing of web
 applications of all types. These operations are highly flexible, allowing many options for
 locating UI elements and comparing expected test results against actual
-application behavior. One of Seleniums key features is the support for executing ones tests on
+application behavior. One of Selenium’s key features is the support for executing one’s tests on
 multiple browser platforms.</p>
 </div>
 <div class="section" id="brief-history-of-the-selenium-project">
-<span id="selenium-history"></span><h2>Brief History of The Selenium Project<a class="headerlink" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#brief-history-of-the-selenium-project" title="Permalink to this headline">¶</a></h2>
+<span id="selenium-history"></span><h2>Brief History of The Selenium Project<a class="headerlink" href="#brief-history-of-the-selenium-project" title="Permalink to this headline">¶</a></h2>
 <p>Selenium first came to life in 2004 when Jason Huggins was testing an internal
 application at ThoughtWorks. Being a smart guy, he realized there were better
 uses of his time than manually stepping through the same tests with every
@@ -77,7 +78,7 @@ browsers. That library eventually became Selenium Core, which underlies all the
 functionality of Selenium Remote Control (RC) and Selenium IDE. Selenium RC was
 ground-breaking because no other product allowed you to control a browser from
 a language of your choice.</p>
-<p>While Selenium was a tremendous tool, it wasnt without its drawbacks.
+<p>While Selenium was a tremendous tool, it wasn’t without its drawbacks.
 Because of its Javascript based automation engine and the security limitations
 browsers apply to Javascript, different things became impossible to do.  To
 make things worse, webapps became more and more powerful over time, using all
@@ -86,11 +87,11 @@ more and more painful.</p>
 <p>In 2006 a plucky engineer at Google named Simon Stewart started work on
 a project he called WebDriver. Google had long been a heavy user of Selenium,
 but testers had to work around the limitations of the product. Simon wanted
-a testing tool that spoke directly to the browser using the native method for
+a testing tool that spoke directly to the browser using the ‘native’ method for
 the browser and operating system, thus avoiding the restrictions of a sandboxed
 Javascript environment. The WebDriver project began with the aim to solve the
-Selenium pain-points.</p>
-<p>Jump to 2008. The Beijing Olympics mark Chinas arrival as a global power,
+Selenium’ pain-points.</p>
+<p>Jump to 2008. The Beijing Olympics mark China’s arrival as a global power,
 massive mortgage default in the United States triggers the worst international
 recession since the Great Depression, The Dark Knight is viewed by every human
 (twice), still reeling from the untimely loss of Heath Ledger. But the most
@@ -102,34 +103,34 @@ automation under one roof.  Perhaps the best explanation for why WebDriver and
 Selenium are merging was detailed by Simon Stewart, the creator of WebDriver,
 in a joint email to the WebDriver and Selenium community on August 6, 2009.</p>
 <blockquote>
-<div>Why are the projects merging?  Partly because webdriver addresses some
+<div>“Why are the projects merging?  Partly because webdriver addresses some
 shortcomings in selenium (by being able to bypass the JS sandbox, for
-example. And weve got a gorgeous API), partly because selenium addresses
+example. And we’ve got a gorgeous API), partly because selenium addresses
 some shortcomings in webdriver (such as supporting a broader range of
 browsers) and partly because the main selenium contributors and I felt that
-it was the best way to offer users the best possible framework.</div></blockquote>
+it was the best way to offer users the best possible framework.”</div></blockquote>
 </div>
 <div class="section" id="selenium-s-tool-suite">
-<h2>Seleniums Tool Suite<a class="headerlink" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#selenium-s-tool-suite" title="Permalink to this headline">¶</a></h2>
+<h2>Selenium’s Tool Suite<a class="headerlink" href="#selenium-s-tool-suite" title="Permalink to this headline">¶</a></h2>
 <p>Selenium is composed of multiple software tools. Each has a specific role.</p>
 <div class="section" id="selenium-2-aka-selenium-webdriver">
-<h3>Selenium 2 (aka. Selenium Webdriver)<a class="headerlink" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#selenium-2-aka-selenium-webdriver" title="Permalink to this headline">¶</a></h3>
+<h3>Selenium 2 (aka. Selenium Webdriver)<a class="headerlink" href="#selenium-2-aka-selenium-webdriver" title="Permalink to this headline">¶</a></h3>
 <p>Selenium 2 is the future direction of the project and the newest addition
 to the Selenium toolkit.  This brand new automation tool provides all sorts of
 awesome features, including a more cohesive and object oriented API as well as
 an answer to the limitations of the old implementation.</p>
-<p>As you can read in <a class="reference internal" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#brief-history-of-the-selenium-project">Brief History of The Selenium Project</a>, both the Selenium
+<p>As you can read in <a class="reference internal" href="#brief-history-of-the-selenium-project">Brief History of The Selenium Project</a>, both the Selenium
 and WebDriver developers agreed that both tools have advantages and that
 merging the two projects would make a much more robust automation tool.</p>
 <p>Selenium 2.0 is the product of that effort.  It supports the WebDriver API and
 underlying technology, along with the Selenium 1 technology underneath the
 WebDriver API for maximum flexibility in porting your tests.
-In addition, Selenium 2 still runs Selenium 1s Selenium RC interface for
+In addition, Selenium 2 still runs Selenium 1’s Selenium RC interface for
 backwards compatibility.</p>
 </div>
 <div class="section" id="selenium-1-aka-selenium-rc-or-remote-control">
-<h3>Selenium 1 (aka. Selenium RC or Remote Control)<a class="headerlink" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#selenium-1-aka-selenium-rc-or-remote-control" title="Permalink to this headline">¶</a></h3>
-<p>As you can read in <a class="reference internal" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#brief-history-of-the-selenium-project">Brief History of The Selenium Project</a>, Selenium RC was
+<h3>Selenium 1 (aka. Selenium RC or Remote Control)<a class="headerlink" href="#selenium-1-aka-selenium-rc-or-remote-control" title="Permalink to this headline">¶</a></h3>
+<p>As you can read in <a class="reference internal" href="#brief-history-of-the-selenium-project">Brief History of The Selenium Project</a>, Selenium RC was
 the main Selenium project for a long time, before the WebDriver/Selenium merge
 brought up Selenium 2, the newest and more powerful tool.</p>
 <p>Selenium 1 is still actively supported (mostly in maintenance mode) and
@@ -138,7 +139,7 @@ including support for several languages (Java, Javascript, Ruby, PHP, Python,
 Perl and C#) and support for almost every browser out there.</p>
 </div>
 <div class="section" id="selenium-ide">
-<h3>Selenium IDE<a class="headerlink" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#selenium-ide" title="Permalink to this headline">¶</a></h3>
+<h3>Selenium IDE<a class="headerlink" href="#selenium-ide" title="Permalink to this headline">¶</a></h3>
 <p>Selenium IDE (Integrated Development Environment) is a prototyping tool for
 building test scripts. It is a Firefox plugin and provides an easy-to-use
 interface for developing automated tests. Selenium IDE has a recording feature,
@@ -147,10 +148,10 @@ a reusable script in one of many programming languages that can be later
 executed.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Even though Selenium IDE has a Save feature that allows users to
+<p class="last">Even though Selenium IDE has a “Save” feature that allows users to
 keep the tests in a table-based format for later import and execution, it
 <em>is not designed to run your test passes nor is it designed to build all the
-automated tests you will need</em>. Specifically, Selenium IDE doesnt provide
+automated tests you will need</em>. Specifically, Selenium IDE doesn’t provide
 iteration or conditional statements for test scripts.  At the time of writing
 there is no plan to add such thing.  The reasons are partly technical and
 partly based on the Selenium developers encouraging best practices in test
@@ -161,7 +162,7 @@ recommend for serious, robust test automation either Selenium 2 or Selenium
 </div>
 </div>
 <div class="section" id="selenium-grid">
-<h3>Selenium-Grid<a class="headerlink" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#selenium-grid" title="Permalink to this headline">¶</a></h3>
+<h3>Selenium-Grid<a class="headerlink" href="#selenium-grid" title="Permalink to this headline">¶</a></h3>
 <p>Selenium-Grid allows the Selenium RC solution to scale for large test suites
 and for test suites that must be run in multiple environments. Selenium Grid
 allows you to run your tests in parallel, that is, different tests can be run
@@ -176,12 +177,12 @@ to run your suite by making use of parallel processing.</p>
 </div>
 </div>
 <div class="section" id="choosing-your-selenium-tool">
-<h2>Choosing Your Selenium Tool<a class="headerlink" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#choosing-your-selenium-tool" title="Permalink to this headline">¶</a></h2>
+<h2>Choosing Your Selenium Tool<a class="headerlink" href="#choosing-your-selenium-tool" title="Permalink to this headline">¶</a></h2>
 <p>Many people get started with Selenium IDE. If you are not already experienced
 with a programming or scripting language you can use Selenium IDE to get
 familiar with Selenium commands.  Using the IDE you can create simple tests
 quickly, sometimes within seconds.</p>
-<p>We dont, however, recommend you do all your test automation using Selenium
+<p>We don’t, however, recommend you do all your test automation using Selenium
 IDE.  To effectively use Selenium you will need to build and run your tests
 using either Selenium 2 or Selenium 1 in conjunction with one of the supported
 programming languages.  Which one you choose depends on you.</p>
@@ -196,11 +197,11 @@ with Selenium 2 since this is the portion of Selenium that will continue to be
 supported in the future.</p>
 </div>
 <div class="section" id="supported-browsers-and-platforms">
-<h2>Supported Browsers and Platforms<a class="headerlink" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#supported-browsers-and-platforms" title="Permalink to this headline">¶</a></h2>
+<h2>Supported Browsers and Platforms<a class="headerlink" href="#supported-browsers-and-platforms" title="Permalink to this headline">¶</a></h2>
 <p>In Selenium 2.0, the supported browsers vary depending on whether you are using Selenium-WebDriver
 or Selenium-RC.</p>
 <div class="section" id="selenium-webdriver">
-<h3>Selenium-WebDriver<a class="headerlink" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#selenium-webdriver" title="Permalink to this headline">¶</a></h3>
+<h3>Selenium-WebDriver<a class="headerlink" href="#selenium-webdriver" title="Permalink to this headline">¶</a></h3>
 <p>Selenium-WebDriver supports the following browsers along with the operating systems these browsers
 are compatible with.</p>
 <ul class="simple">
@@ -209,7 +210,7 @@ are compatible with.</p>
 <li>Firefox 3.0, 3.5, 3.6, 4.0, 5.0, 6, 7</li>
 <li>Opera 11.5+</li>
 <li>HtmlUnit 2.9</li>
-<li>Android  2.3+ for phones and tablets (devices &amp; emulators)</li>
+<li>Android – 2.3+ for phones and tablets (devices &amp; emulators)</li>
 <li>iOS 3+ for phones (devices &amp; emulators) and 3.2+ for tablets (devices &amp; emulators)</li>
 </ul>
 <p><em>Note:  At the time of writing there is an emulator bug with Android 2.3 that prevents the driver
@@ -217,7 +218,7 @@ from working properly on device emulators.  However, it works fine on tablet emu
 devices.</em></p>
 </div>
 <div class="section" id="selenium-1-0-and-selenium-rc">
-<h3>Selenium 1.0 and Selenium-RC.<a class="headerlink" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#selenium-1-0-and-selenium-rc" title="Permalink to this headline">¶</a></h3>
+<h3>Selenium 1.0 and Selenium-RC.<a class="headerlink" href="#selenium-1-0-and-selenium-rc" title="Permalink to this headline">¶</a></h3>
 <p>This is the old, support platform for Selenium 1.0.  It should still apply to the Selenium 2.0
 release of Selenium-RC.</p>
 <table border="1" class="docutils">
@@ -313,38 +314,38 @@ certain features.</p>
 </div>
 </div>
 <div class="section" id="flexibility-and-extensibility">
-<h2>Flexibility and Extensibility<a class="headerlink" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#flexibility-and-extensibility" title="Permalink to this headline">¶</a></h2>
-<p>Youll find that Selenium is highly flexible.  There are many ways you
-can add functionality to both Selenium test scripts and Seleniums framework
-to customize your test automation. This is perhaps Seleniums
+<h2>Flexibility and Extensibility<a class="headerlink" href="#flexibility-and-extensibility" title="Permalink to this headline">¶</a></h2>
+<p>You’ll find that Selenium is highly flexible.  There are many ways you
+can add functionality to both Selenium test scripts and Selenium’s framework
+to customize your test automation. This is perhaps Selenium’s
 greatest strength when compared with other automation tools. These customizations
 are described in various places throughout this document.  In addition, since Selenium is Open Source, the sourcecode can always be
 downloaded and modified.</p>
 </div>
 <div class="section" id="what-s-in-this-book">
-<h2>Whats in this Book?<a class="headerlink" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#what-s-in-this-book" title="Permalink to this headline">¶</a></h2>
-<p>This users guide targets both new users and those who
+<h2>What’s in this Book?<a class="headerlink" href="#what-s-in-this-book" title="Permalink to this headline">¶</a></h2>
+<p>This user’s guide targets both new users and those who
 have already used Selenium but are seeking additional knowledge. We introduce
 Selenium to new users and we do not assume prior Selenium experience.  We do
 assume, however, that the user has at least a basic understanding of test
 automation.  For the more experienced user, this guide can act as a reference.
 For the more experienced, we recommend browsing the chapter and subheadings.
-Weve provided information on the Selenium architecture, examples of common usage,
+We’ve provided information on the Selenium architecture, examples of common usage,
 and a chapter on test design techniques.</p>
 <p>The remaining chapters of the reference present:</p>
 <dl class="docutils">
-<dt><a class="reference internal" href="http://www.seleniumhq.org/docs/02_selenium_ide.jsp#chapter02-reference"><em>Selenium IDE</em></a></dt>
+<dt><a class="reference internal" href="02_selenium_ide.jsp#chapter02-reference"><em>Selenium IDE</em></a></dt>
 <dd>Introduces Selenium IDE and describes how to use it to build test scripts. using the
 Selenium Integrated Development Environment.  If you are not experienced in programming,
-but still hoping to learn test automation this is where you should start and youll find
+but still hoping to learn test automation this is where you should start and you’ll find
 you can create quite a few automated tests with Selenium IDE.  Also, if you are experienced
 in programming, this chapter may still interest you in that you can use Selenium IDE
 to do rapid prototyping of your tests.  This section also demonstrates how your test
-script can be exported to a programming language for adding more advanced capabilities
+script can be “exported” to a programming language for adding more advanced capabilities
 not supported by Selenium IDE.</dd>
-<dt><a class="reference internal" href="http://www.seleniumhq.org/docs/03_webdriver.jsp#chapter03-reference"><em>Selenium 2</em></a></dt>
+<dt><a class="reference internal" href="03_webdriver.jsp#chapter03-reference"><em>Selenium 2</em></a></dt>
 <dd>Explains how to develop an automated test program using Selenium 2.</dd>
-<dt><a class="reference internal" href="http://www.seleniumhq.org/docs/05_selenium_rc.jsp#chapter05-reference"><em>Selenium 1</em></a></dt>
+<dt><a class="reference internal" href="05_selenium_rc.jsp#chapter05-reference"><em>Selenium 1</em></a></dt>
 <dd>Explains how to develop an automated test program using the Selenium RC API.
 Many examples are presented in both programming languages and scripting
 languages. Also, the installation and setup of Selenium RC is covered here.
@@ -354,22 +355,22 @@ diagram is provided to help illustrate these points.
 Solutions to common problems frequently difficult for new Sel-R users are
 described here, for instance, handling Security Certificates,
 https requests, pop-ups, and the opening of new windows.</dd>
-<dt><a class="reference internal" href="http://www.seleniumhq.org/docs/06_test_design_considerations.jsp#chapter06-reference"><em>Test Design Considerations</em></a></dt>
+<dt><a class="reference internal" href="06_test_design_considerations.jsp#chapter06-reference"><em>Test Design Considerations</em></a></dt>
 <dd>This chapter presents programming techniques for use with Selenium-WebDriver and
 Selenium RC. We also demonstrate techniques commonly asked about
 in the user forum such as how to design setup and teardown functions, how to
 implement data-driven tests (tests where one can vary the data between test passes)
 and other methods of programming common test automation tasks.</dd>
-<dt><a class="reference internal" href="http://www.seleniumhq.org/docs/07_selenium_grid.jsp#chapter07-reference"><em>Selenium-Grid</em></a></dt>
+<dt><a class="reference internal" href="07_selenium_grid.jsp#chapter07-reference"><em>Selenium-Grid</em></a></dt>
 <dd><em>This chapter is not yet developed.</em></dd>
-<dt><a class="reference internal" href="http://www.seleniumhq.org/docs/08_user_extensions.jsp#chapter08-reference"><em>User extensions</em></a></dt>
+<dt><a class="reference internal" href="08_user_extensions.jsp#chapter08-reference"><em>User extensions</em></a></dt>
 <dd>Describes ways that Selenium can be modified, extended and customized.</dd>
 </dl>
 </div>
 <div class="section" id="the-documentation-team-authors-past-and-present">
-<h2>The Documentation TeamAuthors Past and Present<a class="headerlink" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#the-documentation-team-authors-past-and-present" title="Permalink to this headline">¶</a></h2>
+<h2>The Documentation Team–Authors Past and Present<a class="headerlink" href="#the-documentation-team-authors-past-and-present" title="Permalink to this headline">¶</a></h2>
 <p>In alphabetical order, the following people have made significant contributions
-to the authoring of this users guide, its publishing infrastructure,
+to the authoring of this user’s guide, its publishing infrastructure,
 or both.  We are very grateful to all of them.</p>
 <ul class="simple">
 <li>Dave Hunt</li>
@@ -383,10 +384,10 @@ or both.  We are very grateful to all of them.</p>
 <li><a class="reference external" href="http://seleniumtests.com/">Tarun Kumar</a></li>
 </ul>
 <div class="section" id="acknowledgements">
-<h3>Acknowledgements<a class="headerlink" href="http://www.seleniumhq.org/docs/01_introducing_selenium.jsp#acknowledgements" title="Permalink to this headline">¶</a></h3>
+<h3>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h3>
 <p>A special thanks goes to Patrick Lightbody.  As an administrator of the
 SeleniumHQ website, major contributor to Selenium RC, his support was invaluable when
-writing the first release of the users guide.  Patrick helped us understand our audience.
+writing the first release of the user’s guide.  Patrick helped us understand our audience.
 He also set us up with
 everything we needed on the seleniumhq.org website for publishing the documents.
 Also a thanks goes to Andras Hatvani for his advice on publishing
@@ -399,8 +400,10 @@ great tool to pass on to you.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="clearer"></div>
-</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>

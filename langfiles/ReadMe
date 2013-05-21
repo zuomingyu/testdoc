@@ -1,18 +1,18 @@
-index.en    
-00_note.en
-01_introducing_selenium.en
-02_selenium_ide.en
-03_webdriver.en
-04_webdriver_advanced.en
-05_selenium_rc.en
-06_test_design_considerations.en
-07_selenium_grid.en
-08_user_extensions.en
-09_cheat_sheet.en
-10_installing_android_driver.en
-11_installing_dotnet_driver_client.en
-12_installing_java_driver_Sel20_via_maven.en
-13_installing_java_driver_client.en
-14_installing_python_driver_client.en
-15_locating_techniques.en
-16_migrating_from_rc_to_webdriver.en
+index_side.html :http://www.seleniumhq.org/docs/  
+00_note_side.html :http://www.seleniumhq.org/docs/00_Note_to-the-reader.jsp
+01_introducing_selenium_side.html :http://www.seleniumhq.org/docs/01_introducing_selenium.jsp
+02_selenium_ide_side.html :http://www.seleniumhq.org/docs/02_selenium_ide.jsp
+03_webdriver_side.html :http://www.seleniumhq.org/docs/03_webdriver.jsp
+04_webdriver_advanced_side.html :http://www.seleniumhq.org/docs/04_webdriver_advanced.jsp
+05_selenium_rc_side.html :http://www.seleniumhq.org/docs/05_selenium_rc.jsp
+06_test_design_considerations_side.html :http://www.seleniumhq.org/docs/06_test_design_considerations.jsp
+07_selenium_grid_side.html :http://www.seleniumhq.org/docs/07_selenium_grid.jsp
+08_user_extensions_side.html :http://www.seleniumhq.org/docs/08_user_extensions.jsp
+09_cheat_sheet_side.html :http://www.seleniumhq.org/docs/appendix_cheat_sheet.jsp
+10_installing_android_driver_side.html :http://www.seleniumhq.org/docs/appendix_installing_android_driver.jsp
+11_installing_dotnet_driver_client_side.html :http://www.seleniumhq.org/docs/appendix_installing_dotnet_driver_client.jsp
+12_installing_java_driver_Sel20_via_maven_side.html :http://www.seleniumhq.org/docs/appendix_installing_java_driver_Sel20_via_maven.jsp
+13_installing_java_driver_client_side.html :http://www.seleniumhq.org/docs/appendix_installing_java_driver_client.jsp
+14_installing_python_driver_client_side.html :http://www.seleniumhq.org/docs/appendix_installing_python_driver_client.jsp
+15_locating_techniques_side.html :http://www.seleniumhq.org/docs/appendix_locating_techniques.jsp
+16_migrating_from_rc_to_webdriver_side.html :http://www.seleniumhq.org/docs/appendix_migrating_from_rc_to_webdriver.jsp
