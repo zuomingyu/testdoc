@@ -4,28 +4,16 @@ import os
 import web
 
 def analysis_module_file(post_str):
-    init_dict = { 
-                'page_title' : 'Selenium 中文文档', 
-                
-                'previous_link' : '#', 
-                'previous_title' : 'Selenium 背景介绍',
-                
-                'next_link' : '#',
-                'next_title' : 'Selenium IDE使用',   
-                
-                'side' : '文章目录占位符',
-                
-                'content' : '<h3>文本内容占位符</h3>',                        
-                }
+    init_dict = {}
     file_path = ''
     for f_type in web.config['lang_list']:
         file_path = os.path.join(web.config['work_dir'], 'langfiles', '%s%s' % (post_str,f_type))
-        if os.path.exists(file_path):
-            break  
-    t_dict = analysis_lang_data(file_path)
-    lat_dict = create_format_data(t_dict, post_str)
-    if lat_dict:
-        return lat_dict
+        if os.path.exists(file_path):            
+            t_dict = analysis_lang_data(file_path)
+            lat_dict = create_format_data(t_dict, post_str)
+            if lat_dict:
+                return lat_dict
+            break
     return init_dict
     
 def analysis_lang_data(file_path):
