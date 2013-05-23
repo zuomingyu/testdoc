@@ -24,7 +24,7 @@ method can take up to two parameters, which will be passed the second and
 third column values in the test.
 Example: Add a “typeRepeated” action to Selenium, which types the text twice
 into a text box.</p>
-<input type="image" class="toggler toggler-javascript" value="javascript" src="/images/icons/javascript.png" style="padding: 3px;"><div class="highlight-javascript" style="display: none;"><div class="highlight"><pre><span class="nx">Selenium</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">doTypeRepeated</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">locator</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+<input type="image" class="toggler toggler-javascript" value="javascript" src="/static/javascript.png" style="padding: 3px;"><div class="highlight-javascript" style="display: none;"><div class="highlight"><pre><span class="nx">Selenium</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">doTypeRepeated</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">locator</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// All locator-strategies are automatically handled by "findElement"</span>
     <span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="p">().</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">locator</span><span class="p">);</span>
 
@@ -48,7 +48,7 @@ auto-generate “verify” and “waitFor” commands.
 Example: Add a valueRepeated assertion, that makes sure that the element
 value consists of the supplied text repeated. The 2 commands that would be
 available in tests would be assertValueRepeated and verifyValueRepeated.</p>
-<input type="image" class="toggler toggler-javascript" value="javascript" src="/images/icons/javascript.png" style="padding: 3px;"><div class="highlight-javascript" style="display: none;"><div class="highlight"><pre><span class="nx">Selenium</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">assertValueRepeated</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">locator</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+<input type="image" class="toggler toggler-javascript" value="javascript" src="/static/javascript.png" style="padding: 3px;"><div class="highlight-javascript" style="display: none;"><div class="highlight"><pre><span class="nx">Selenium</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">assertValueRepeated</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">locator</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// All locator-strategies are automatically handled by "findElement"</span>
     <span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="p">().</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">locator</span><span class="p">);</span>
 
@@ -72,7 +72,7 @@ Example, if you add a <tt class="docutils literal"><span class="pre">getTextLeng
 automatically be available: <tt class="docutils literal"><span class="pre">storeTextLength</span></tt>, <tt class="docutils literal"><span class="pre">assertTextLength</span></tt>,
 <tt class="docutils literal"><span class="pre">assertNotTextLength</span></tt>, <tt class="docutils literal"><span class="pre">verifyTextLength</span></tt>, <tt class="docutils literal"><span class="pre">verifyNotTextLength</span></tt>,
 <tt class="docutils literal"><span class="pre">waitForTextLength</span></tt>, and <tt class="docutils literal"><span class="pre">waitForNotTextLength</span></tt> commands.</p>
-<input type="image" class="toggler toggler-javascript" value="javascript" src="/images/icons/javascript.png" style="padding: 3px;"><div class="highlight-javascript" style="display: none;"><div class="highlight"><pre><span class="nx">Selenium</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getTextLength</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">locator</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+<input type="image" class="toggler toggler-javascript" value="javascript" src="/static/javascript.png" style="padding: 3px;"><div class="highlight-javascript" style="display: none;"><div class="highlight"><pre><span class="nx">Selenium</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getTextLength</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">locator</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">getText</span><span class="p">(</span><span class="nx">locator</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
 <span class="p">};</span>
 </pre></div>
@@ -91,7 +91,7 @@ locator string (minus the prefix), and the second being the document in which
 to search.
 Example: Add a “valuerepeated=” locator, that finds the first element a value
 attribute equal to the the supplied value repeated.</p>
-<input type="image" class="toggler toggler-javascript" value="javascript" src="/images/icons/javascript.png" style="padding: 3px;"><div class="highlight-javascript" style="display: none;"><div class="highlight"><pre><span class="c1">// The "inDocument" is a the document you are searching.</span>
+<input type="image" class="toggler toggler-javascript" value="javascript" src="/static/javascript.png" style="padding: 3px;"><div class="highlight-javascript" style="display: none;"><div class="highlight"><pre><span class="c1">// The "inDocument" is a the document you are searching.</span>
 <span class="nx">PageBot</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">locateElementByValueRepeated</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">inDocument</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Create the text to search for</span>
     <span class="kd">var</span> <span class="nx">expectedValue</span> <span class="o">=</span> <span class="nx">text</span> <span class="o">+</span> <span class="nx">text</span><span class="p">;</span>
@@ -183,7 +183,7 @@ your <tt class="docutils literal"><span class="pre">user-extensions.js</span></t
 <div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server.jar -userExtensions user-extensions.js
 </pre></div>
 </div>
-<input type="image" class="toggler toggler-csharp" value="csharp" src="/images/icons/csharp.png" style="padding: 3px;"><div class="highlight-csharp" style="display: none;"><div class="highlight"><pre><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<input type="image" class="toggler toggler-csharp" value="csharp" src="/static/csharp.png" style="padding: 3px;"><div class="highlight-csharp" style="display: none;"><div class="highlight"><pre><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Text.RegularExpressions</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Threading</span><span class="p">;</span>

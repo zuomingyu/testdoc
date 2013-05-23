@@ -7,7 +7,7 @@
 <h1>Selenium 1 (Selenium RC)<a class="headerlink" href="#selenium-1-selenium-rc" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <span id="chapter05-reference"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>As you can read in <a class="reference internal" href="01_introducing_selenium.jsp#selenium-history"><em>Brief History of The Selenium Project</em></a>,
+<p>As you can read in <a class="reference internal" href="01_introducing_selenium#selenium-history"><em>Brief History of The Selenium Project</em></a>,
 Selenium RC was the main Selenium project for a long time, before the
 WebDriver/Selenium merge brought up Selenium 2, the newest and more powerful
 tool.</p>
@@ -28,7 +28,7 @@ your test scripts.</p>
 <li>Client libraries which provide the interface between each programming language and the Selenium RC Server.</li>
 </ul>
 <p>Here is a simplified architecture diagram....</p>
-<img alt="_images/chapt5_img01_Architecture_Diagram_Simple.png" class="align-center" src="_images/chapt5_img01_Architecture_Diagram_Simple.png">
+<img alt="/static/chapt5_img01_Architecture_Diagram_Simple.png" class="align-center" src="/static/chapt5_img01_Architecture_Diagram_Simple.png">
 <p>The diagram shows the client libraries communicate with the
 Server passing each Selenium command for execution. Then the server passes the
 Selenium command to the browser using Selenium-Core JavaScript commands.  The
@@ -127,9 +127,9 @@ explained later in this section.</li>
 <li>Execute your test from the Java IDE or from the command-line.</li>
 </ul>
 <p>For details on Java test project configuration, see the Appendix sections
-<a class="reference internal" href="appendix_installing_java_driver_client.jsp#configuring-selenium-rc-eclipse-reference"><em>Configuring Selenium RC With Eclipse</em></a>
+<a class="reference internal" href="13_installing_java_driver_client#configuring-selenium-rc-eclipse-reference"><em>Configuring Selenium RC With Eclipse</em></a>
 and
-<a class="reference internal" href="appendix_installing_java_driver_client.jsp#configuring-selenium-rc-intellij-reference"><em>Configuring Selenium RC With Intellij</em></a>.</p>
+<a class="reference internal" href="13_installing_java_driver_client#configuring-selenium-rc-intellij-reference"><em>Configuring Selenium RC With Intellij</em></a>.</p>
 </div>
 <div class="section" id="using-the-python-client-driver">
 <h3>Using the Python Client Driver<a class="headerlink" href="#using-the-python-client-driver" title="Permalink to this headline">¶</a></h3>
@@ -141,7 +141,7 @@ a script from Selenium-IDE to a python file.</li>
 <li>Execute your test from a console or your Python IDE</li>
 </ul>
 <p>For details on Python client driver configuration, see the appendix
-<a class="reference internal" href="appendix_installing_python_driver_client.jsp#configuring-selenium-rc-python-reference"><em>Python Client Driver Configuration</em></a>.</p>
+<a class="reference internal" href="14_installing_python_driver_client#configuring-selenium-rc-python-reference"><em>Python Client Driver Configuration</em></a>.</p>
 </div>
 <div class="section" id="using-the-net-client-driver">
 <h3>Using the .NET Client Driver<a class="headerlink" href="#using-the-net-client-driver" title="Permalink to this headline">¶</a></h3>
@@ -166,7 +166,7 @@ for running your test.  These concepts are explained later in this chapter.</li>
 <li>Run your test either from the IDE, from the NUnit GUI or from the command line</li>
 </ul>
 <p>For specific details on .NET client driver configuration with Visual Studio, see the appendix
-<a class="reference internal" href="appendix_installing_dotnet_driver_client.jsp#configuring-selenium-rc-net-reference"><em>.NET client driver configuration</em></a>.</p>
+<a class="reference internal" href="11_installing_dotnet_driver_client#configuring-selenium-rc-net-reference"><em>.NET client driver configuration</em></a>.</p>
 </div>
 <div class="section" id="using-the-ruby-client-driver">
 <h3>Using the Ruby Client Driver<a class="headerlink" href="#using-the-ruby-client-driver" title="Permalink to this headline">¶</a></h3>
@@ -226,7 +226,7 @@ programming languages.  If you have at least basic knowledge of an object-
 oriented programming language, you will understand how Selenium
 runs Selenese commands by reading one of these
 examples.  To see an example in a specific language, select one of these buttons.</p>
-<input type="image" class="toggler toggler-csharp" value="csharp" src="/images/icons/csharp.png" style="padding: 3px;"><div class="highlight-csharp" style="display: none;"><div class="highlight"><pre><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<input type="image" class="toggler toggler-csharp" value="csharp" src="/static/csharp.png" style="padding: 3px;"><div class="highlight-csharp" style="display: none;"><div class="highlight"><pre><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Text.RegularExpressions</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Threading</span><span class="p">;</span>
@@ -276,7 +276,7 @@ examples.  To see an example in a specific language, select one of these buttons
 <span class="p">}</span>
 </pre></div>
 </div>
-<input type="image" class="toggler toggler-java" value="java" src="/images/icons/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre>    <span class="cm">/** Add JUnit framework to your classpath if not already there</span>
+<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre>    <span class="cm">/** Add JUnit framework to your classpath if not already there</span>
 <span class="cm">     *  for this example to work</span>
 <span class="cm">    */</span>
 <span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">tests</span><span class="o">;</span>
@@ -298,7 +298,7 @@ examples.  To see an example in a specific language, select one of these buttons
 <span class="o">}</span>
 </pre></div>
 </div>
-<input type="image" class="toggler toggler-perl" value="perl" src="/images/icons/perl.png" style="padding: 3px;"><div class="highlight-perl" style="display: none;"><div class="highlight"><pre><span class="k">use</span> <span class="n">strict</span><span class="p">;</span>
+<input type="image" class="toggler toggler-perl" value="perl" src="/static/perl.png" style="padding: 3px;"><div class="highlight-perl" style="display: none;"><div class="highlight"><pre><span class="k">use</span> <span class="n">strict</span><span class="p">;</span>
 <span class="k">use</span> <span class="n">warnings</span><span class="p">;</span>
 <span class="k">use</span> <span class="nn">Time::</span><span class="n">HiRes</span> <span class="sx">qw(sleep)</span><span class="p">;</span>
 <span class="k">use</span> <span class="nn">Test::WWW::</span><span class="n">Selenium</span><span class="p">;</span>
@@ -320,7 +320,7 @@ examples.  To see an example in a specific language, select one of these buttons
 <span class="nv">$sel</span><span class="o">-&gt;</span><span class="n">is_element_present_ok</span><span class="p">(</span><span class="s">"resultStats"</span><span class="p">);</span>
 </pre></div>
 </div>
-<input type="image" class="toggler toggler-php" value="php" src="/images/icons/php.png" style="padding: 3px;"><div class="highlight-php" style="display: none;"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<input type="image" class="toggler toggler-php" value="php" src="/static/php.png" style="padding: 3px;"><div class="highlight-php" style="display: none;"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">require_once</span> <span class="s1">'PHPUnit/Extensions/SeleniumTestCase.php'</span><span class="p">;</span>
 
@@ -344,7 +344,7 @@ examples.  To see an example in a specific language, select one of these buttons
 <span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
 </div>
-<input type="image" class="toggler toggler-python" value="python" src="/images/icons/python.png" style="padding: 3px;"><div class="highlight-python" style="display: none;"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">selenium</span>
+<input type="image" class="toggler toggler-python" value="python" src="/static/python.png" style="padding: 3px;"><div class="highlight-python" style="display: none;"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">selenium</span>
 <span class="kn">import</span> <span class="nn">unittest</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">re</span>
 
 <span class="k">class</span> <span class="nc">NewTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
@@ -367,7 +367,7 @@ examples.  To see an example in a specific language, select one of these buttons
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">([],</span> <span class="bp">self</span><span class="o">.</span><span class="n">verificationErrors</span><span class="p">)</span>
 </pre></div>
 </div>
-<input type="image" class="toggler toggler-ruby" value="ruby" src="/images/icons/ruby.png" style="padding: 3px;"><div class="highlight-ruby" style="display: none;"><div class="highlight"><pre><span class="nb">require</span> <span class="s2">"selenium"</span>
+<input type="image" class="toggler toggler-ruby" value="ruby" src="/static/ruby.png" style="padding: 3px;"><div class="highlight-ruby" style="display: none;"><div class="highlight"><pre><span class="nb">require</span> <span class="s2">"selenium"</span>
 <span class="nb">require</span> <span class="s2">"test/unit"</span>
 
 <span class="k">class</span> <span class="nc">NewTest</span> <span class="o">&lt;</span> <span class="ss">Test</span><span class="p">:</span><span class="ss">:Unit</span><span class="o">::</span><span class="no">TestCase</span>
@@ -437,7 +437,7 @@ parameters in the statement:</p>
 </div>
 <p>The Selenium-IDE generated code will look like this.  This example
 has comments added manually for additional clarity.</p>
-<input type="image" class="toggler toggler-java" value="java" src="/images/icons/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">tests</span><span class="o">;</span>
+<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">tests</span><span class="o">;</span>
 <span class="c1">// We specify the package of our tests</span>
 
 <span class="kn">import</span> <span class="nn">com.thoughtworks.selenium.*</span><span class="o">;</span>
@@ -485,7 +485,7 @@ parameters in the statement:</p>
 </pre></div>
 </div>
 <p>The generated code will look similar to this.</p>
-<input type="image" class="toggler toggler-csharp" value="csharp" src="/images/icons/csharp.png" style="padding: 3px;"><div class="highlight-csharp" style="display: none;"><div class="highlight"><pre><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<input type="image" class="toggler toggler-csharp" value="csharp" src="/static/csharp.png" style="padding: 3px;"><div class="highlight-csharp" style="display: none;"><div class="highlight"><pre><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Text.RegularExpressions</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Threading</span><span class="p">;</span>
@@ -576,7 +576,7 @@ TheNewTest(), and TeardownTest() in turn.</p>
 <p>Pyunit is the test framework to use for Python. To learn Pyunit refer
 to its <cite>official documentation</cite> &lt;<a class="reference external" href="http://docs.python.org/library/unittest.html">http://docs.python.org/library/unittest.html</a>&gt;_.</p>
 <p>The basic test structure is:</p>
-<input type="image" class="toggler toggler-python" value="python" src="/images/icons/python.png" style="padding: 3px;"><div class="highlight-python" style="display: none;"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">selenium</span>
+<input type="image" class="toggler toggler-python" value="python" src="/static/python.png" style="padding: 3px;"><div class="highlight-python" style="display: none;"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">selenium</span>
 <span class="c"># This is the driver's import.  You'll use this class for instantiating a</span>
 <span class="c"># browser and making it do what you need.</span>
 
@@ -640,7 +640,7 @@ informative than “Untitled,” and change the test method’s name to
 something other than “test_untitled.”</p>
 <p>Here is a simple example created by modifying the Ruby code generated
 by Selenium IDE, as described above.</p>
-<input type="image" class="toggler toggler-ruby" value="ruby" src="/images/icons/ruby.png" style="padding: 3px;"><div class="highlight-ruby" style="display: none;"><div class="highlight"><pre><span class="c1"># load the Selenium-Client gem</span>
+<input type="image" class="toggler toggler-ruby" value="ruby" src="/static/ruby.png" style="padding: 3px;"><div class="highlight-ruby" style="display: none;"><div class="highlight"><pre><span class="c1"># load the Selenium-Client gem</span>
 <span class="nb">require</span> <span class="s2">"selenium/client"</span>
 
 <span class="c1"># Load Test::Unit, Ruby 1.8's default test framework.</span>
@@ -736,29 +736,29 @@ will be self-explanatory. Here, however, we explain the most critical and
 possibly less obvious aspects.</p>
 <div class="section" id="starting-the-browser">
 <h3>Starting the Browser<a class="headerlink" href="#starting-the-browser" title="Permalink to this headline">¶</a></h3>
-<input type="image" class="toggler toggler-csharp" value="csharp" src="/images/icons/csharp.png" style="padding: 3px;"><div class="highlight-csharp" style="display: none;"><div class="highlight"><pre><span class="n">selenium</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DefaultSelenium</span><span class="p">(</span><span class="s">"localhost"</span><span class="p">,</span> <span class="m">4444</span><span class="p">,</span> <span class="s">"*firefox"</span><span class="p">,</span> <span class="s">"http://www.google.com/"</span><span class="p">);</span>
+<input type="image" class="toggler toggler-csharp" value="csharp" src="/static/csharp.png" style="padding: 3px;"><div class="highlight-csharp" style="display: none;"><div class="highlight"><pre><span class="n">selenium</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DefaultSelenium</span><span class="p">(</span><span class="s">"localhost"</span><span class="p">,</span> <span class="m">4444</span><span class="p">,</span> <span class="s">"*firefox"</span><span class="p">,</span> <span class="s">"http://www.google.com/"</span><span class="p">);</span>
 <span class="n">selenium</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>
 </pre></div>
 </div>
-<input type="image" class="toggler toggler-java" value="java" src="/images/icons/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="n">setUp</span><span class="o">(</span><span class="s">"http://www.google.com/"</span><span class="o">,</span> <span class="s">"*firefox"</span><span class="o">);</span>
+<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="n">setUp</span><span class="o">(</span><span class="s">"http://www.google.com/"</span><span class="o">,</span> <span class="s">"*firefox"</span><span class="o">);</span>
 </pre></div>
 </div>
-<input type="image" class="toggler toggler-perl" value="perl" src="/images/icons/perl.png" style="padding: 3px;"><div class="highlight-perl" style="display: none;"><div class="highlight"><pre><span class="k">my</span> <span class="nv">$sel</span> <span class="o">=</span> <span class="nn">Test::WWW::</span><span class="n">Selenium</span><span class="o">-&gt;</span><span class="k">new</span><span class="p">(</span> <span class="n">host</span> <span class="o">=&gt;</span> <span class="s">"localhost"</span><span class="p">,</span>
+<input type="image" class="toggler toggler-perl" value="perl" src="/static/perl.png" style="padding: 3px;"><div class="highlight-perl" style="display: none;"><div class="highlight"><pre><span class="k">my</span> <span class="nv">$sel</span> <span class="o">=</span> <span class="nn">Test::WWW::</span><span class="n">Selenium</span><span class="o">-&gt;</span><span class="k">new</span><span class="p">(</span> <span class="n">host</span> <span class="o">=&gt;</span> <span class="s">"localhost"</span><span class="p">,</span>
                                     <span class="n">port</span> <span class="o">=&gt;</span> <span class="mi">4444</span><span class="p">,</span>
                                     <span class="n">browser</span> <span class="o">=&gt;</span> <span class="s">"*firefox"</span><span class="p">,</span>
                                     <span class="n">browser_url</span> <span class="o">=&gt;</span> <span class="s">"http://www.google.com/"</span> <span class="p">);</span>
 </pre></div>
 </div>
-<input type="image" class="toggler toggler-php" value="php" src="/images/icons/php.png" style="padding: 3px;"><div class="highlight-php" style="display: none;"><div class="highlight"><pre><span class="x">$this-&gt;setBrowser("*firefox");</span>
+<input type="image" class="toggler toggler-php" value="php" src="/static/php.png" style="padding: 3px;"><div class="highlight-php" style="display: none;"><div class="highlight"><pre><span class="x">$this-&gt;setBrowser("*firefox");</span>
 <span class="x">$this-&gt;setBrowserUrl("http://www.google.com/");</span>
 </pre></div>
 </div>
-<input type="image" class="toggler toggler-python" value="python" src="/images/icons/python.png" style="padding: 3px;"><div class="highlight-python" style="display: none;"><div class="highlight"><pre><span class="bp">self</span><span class="o">.</span><span class="n">selenium</span> <span class="o">=</span> <span class="n">selenium</span><span class="p">(</span><span class="s">"localhost"</span><span class="p">,</span> <span class="mi">4444</span><span class="p">,</span> <span class="s">"*firefox"</span><span class="p">,</span>
+<input type="image" class="toggler toggler-python" value="python" src="/static/python.png" style="padding: 3px;"><div class="highlight-python" style="display: none;"><div class="highlight"><pre><span class="bp">self</span><span class="o">.</span><span class="n">selenium</span> <span class="o">=</span> <span class="n">selenium</span><span class="p">(</span><span class="s">"localhost"</span><span class="p">,</span> <span class="mi">4444</span><span class="p">,</span> <span class="s">"*firefox"</span><span class="p">,</span>
                          <span class="s">"http://www.google.com/"</span><span class="p">)</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">selenium</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
-<input type="image" class="toggler toggler-ruby" value="ruby" src="/images/icons/ruby.png" style="padding: 3px;"><div class="highlight-ruby" style="display: none;"><div class="highlight"><pre><span class="vi">@selenium</span> <span class="o">=</span> <span class="ss">Selenium</span><span class="p">:</span><span class="ss">:ClientDriver</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"localhost"</span><span class="p">,</span> <span class="mi">4444</span><span class="p">,</span> <span class="s2">"*firefox"</span><span class="p">,</span> <span class="s2">"http://www.google.com/"</span><span class="p">,</span> <span class="mi">10000</span><span class="p">);</span>
+<input type="image" class="toggler toggler-ruby" value="ruby" src="/static/ruby.png" style="padding: 3px;"><div class="highlight-ruby" style="display: none;"><div class="highlight"><pre><span class="vi">@selenium</span> <span class="o">=</span> <span class="ss">Selenium</span><span class="p">:</span><span class="ss">:ClientDriver</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"localhost"</span><span class="p">,</span> <span class="mi">4444</span><span class="p">,</span> <span class="s2">"*firefox"</span><span class="p">,</span> <span class="s2">"http://www.google.com/"</span><span class="p">,</span> <span class="mi">10000</span><span class="p">);</span>
 <span class="vi">@selenium</span><span class="o">.</span><span class="n">start</span>
 </pre></div>
 </div>
@@ -860,7 +860,7 @@ See <a class="reference external" href="http://reportng.uncommons.org/">ReportNG
 <ul>
 <li><p class="first">Also, for a very nice summary report try using TestNG-xslt.
 A TestNG-xslt Report looks like this.</p>
-<img alt="_images/chapt5_TestNGxsltReport.png" src="_images/chapt5_TestNGxsltReport.png">
+<img alt="/static/chapt5_TestNGxsltReport.png" src="/static/chapt5_TestNGxsltReport.png">
 <p>See <a class="reference external" href="http://code.google.com/p/testng-xslt/">TestNG-xslt</a> for more.</p>
 </li>
 </ul>
@@ -998,12 +998,12 @@ over the search results for a more flexible and maintainable solution.</p>
 A common problem encountered while running Selenium tests occurs when an
 expected element is not available on page.  For example, when running the
 following line:</p>
-<input type="image" class="toggler toggler-java" value="java" src="/images/icons/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="n">selenium</span><span class="o">.</span><span class="na">type</span><span class="o">(</span><span class="s">"q"</span><span class="o">,</span> <span class="s">"selenium "</span> <span class="o">+</span><span class="n">s</span><span class="o">);</span>
+<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="n">selenium</span><span class="o">.</span><span class="na">type</span><span class="o">(</span><span class="s">"q"</span><span class="o">,</span> <span class="s">"selenium "</span> <span class="o">+</span><span class="n">s</span><span class="o">);</span>
 </pre></div>
 </div>
 <p>If element ‘q’ is not on the page then an exception is
 thrown:</p>
-<input type="image" class="toggler toggler-java" value="java" src="/images/icons/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="n">com</span><span class="o">.</span><span class="na">thoughtworks</span><span class="o">.</span><span class="na">selenium</span><span class="o">.</span><span class="na">SeleniumException</span><span class="o">:</span> <span class="nl">ERROR:</span> <span class="n">Element</span> <span class="n">q</span> <span class="n">not</span> <span class="n">found</span>
+<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="n">com</span><span class="o">.</span><span class="na">thoughtworks</span><span class="o">.</span><span class="na">selenium</span><span class="o">.</span><span class="na">SeleniumException</span><span class="o">:</span> <span class="nl">ERROR:</span> <span class="n">Element</span> <span class="n">q</span> <span class="n">not</span> <span class="n">found</span>
 </pre></div>
 </div>
 <p>This can cause your test to abort.  For some tests that’s what you want.  But
@@ -1011,7 +1011,7 @@ often that is not desirable as your test script has many other subsequent tests
 to perform.</p>
 <p>A better approach is to first validate whether the element is really present
 and then take alternatives when it it is not.  Let’s look at this using Java.</p>
-<input type="image" class="toggler toggler-java" value="java" src="/images/icons/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="c1">// If element is available on page then perform type operation.</span>
+<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="c1">// If element is available on page then perform type operation.</span>
 <span class="k">if</span><span class="o">(</span><span class="n">selenium</span><span class="o">.</span><span class="na">isElementPresent</span><span class="o">(</span><span class="s">"q"</span><span class="o">))</span> <span class="o">{</span>
     <span class="n">selenium</span><span class="o">.</span><span class="na">type</span><span class="o">(</span><span class="s">"q"</span><span class="o">,</span> <span class="s">"Selenium rc"</span><span class="o">);</span>
 <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
@@ -1030,7 +1030,7 @@ selenium RC.</p>
 <p>Consider an application having check boxes with no static identifiers.
 In this case one could evaluate JavaScript from selenium RC to get ids of all
 check boxes and then exercise them.</p>
-<input type="image" class="toggler toggler-java" value="java" src="/images/icons/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span><span class="o">[]</span> <span class="nf">getAllCheckboxIds</span> <span class="o">()</span> <span class="o">{</span>
+<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span><span class="o">[]</span> <span class="nf">getAllCheckboxIds</span> <span class="o">()</span> <span class="o">{</span>
              <span class="n">String</span> <span class="n">script</span> <span class="o">=</span> <span class="s">"var inputId  = new Array();"</span><span class="o">;</span><span class="c1">// Create array in java script.</span>
              <span class="n">script</span> <span class="o">+=</span> <span class="s">"var cnt = 0;"</span><span class="o">;</span> <span class="c1">// Counter for check box ids.</span>
              <span class="n">script</span> <span class="o">+=</span> <span class="s">"var inputFields  = new Array();"</span><span class="o">;</span> <span class="c1">// Create array in java script.</span>
@@ -1050,7 +1050,7 @@ check boxes and then exercise them.</p>
 </pre></div>
 </div>
 <p>To count number of images on a page:</p>
-<input type="image" class="toggler toggler-java" value="java" src="/images/icons/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="n">selenium</span><span class="o">.</span><span class="na">getEval</span><span class="o">(</span><span class="s">"window.document.images.length;"</span><span class="o">);</span>
+<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="n">selenium</span><span class="o">.</span><span class="na">getEval</span><span class="o">(</span><span class="s">"window.document.images.length;"</span><span class="o">);</span>
 </pre></div>
 </div>
 <p>Remember to use window object in case of DOM expressions as by default selenium
@@ -1086,12 +1086,12 @@ using the following command.</p>
 <p>If you are using Selenium 1.0 you can probably skip this section, since multiwindow mode is
 the default behavior.  However, prior to version 1.0, Selenium by default ran the
 application under test in a sub frame as shown here.</p>
-<img alt="_images/chapt5_img26_single_window_mode.png" class="align-center" src="_images/chapt5_img26_single_window_mode.png">
+<img alt="/static/chapt5_img26_single_window_mode.png" class="align-center" src="/static/chapt5_img26_single_window_mode.png">
 <p>Some applications didn’t run correctly in a sub frame, and needed to be
 loaded into the top frame of the window. The multi-window mode option allowed
 the AUT to run in a separate window rather than in the default
 frame where it could then have the top frame it required.</p>
-<img alt="_images/chapt5_img27_multi_window_mode.png" class="align-center" src="_images/chapt5_img27_multi_window_mode.png">
+<img alt="/static/chapt5_img27_multi_window_mode.png" class="align-center" src="/static/chapt5_img27_multi_window_mode.png">
 <p>For older versions of Selenium you must specify multiwindow mode explicitly
 with the following option:</p>
 <div class="highlight-bash"><div class="highlight"><pre>-multiwindow
@@ -1272,7 +1272,7 @@ server and the response will pass through it and not from the real server.</td><
 </tbody>
 </table>
 <p>Here is an architectural diagram.</p>
-<img alt="_images/chapt5_img02_Architecture_Diagram_1.png" class="align-center" src="_images/chapt5_img02_Architecture_Diagram_1.png">
+<img alt="/static/chapt5_img02_Architecture_Diagram_1.png" class="align-center" src="/static/chapt5_img02_Architecture_Diagram_1.png">
 <p>As a test suite starts in your favorite language, the following happens:</p>
 <ol class="arabic simple">
 <li>The client/driver establishes a connection with the selenium-RC server.</li>
@@ -1303,7 +1303,7 @@ Selenium). By using these browser modes, Selenium Core is able to directly open
 the AUT and read/interact with its content without having to pass the whole AUT
 through the Selenium RC server.</p>
 <p>Here is the architectural diagram.</p>
-<img alt="_images/chapt5_img02_Architecture_Diagram_2.png" class="align-center" src="_images/chapt5_img02_Architecture_Diagram_2.png">
+<img alt="/static/chapt5_img02_Architecture_Diagram_2.png" class="align-center" src="/static/chapt5_img02_Architecture_Diagram_2.png">
 <p>As a test suite starts in your favorite language, the following happens:</p>
 <ol class="arabic simple">
 <li>The client/driver establishes a connection with the selenium-RC server.</li>

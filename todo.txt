@@ -1,0 +1,9 @@
+link:
+text href
+
+image:
+lang icon
+not found image
+
+text:
+lang file
