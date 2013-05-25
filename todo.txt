@@ -7,3 +7,5 @@ not found image
 
 text:
 lang file
+
+@@
