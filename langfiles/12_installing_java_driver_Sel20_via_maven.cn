@@ -1,0 +1,104 @@
+#:page_title
+"selenium webdriver"
+
+#:previous_link
+"11_installing_dotnet_driver_client"
+
+#:previous_title
+".NET client driver configuration"
+
+#:next_link
+"13_installing_java_driver_client"
+
+#:next_title
+"Selenium 1.0 Java Client Driver Configuration"
+
+#:side
+:list
+<li><a class="reference internal" href="#">Importing Sel2.0 Project into Eclipse using Maven</a></li>
+<li><a class="reference internal" href="#importing-sel2-0-project-into-intellij-using-maven">Importing Sel2.0 Project into IntelliJ Using Maven</a></li>
+
+#:body
+:body
+<h1>Importing Sel2.0 Project into Eclipse using Maven<a class="headerlink" href="#importing-sel2-0-project-into-eclipse-using-maven" title="Permalink to this headline">¶</a></h1>
+<p id="importing-maven-into-eclipse-reference">Once you have created your pom.xml file in your project, you can have
+maven autogenerate the project files necessary for eclipse with a simple
+command:</p>
+<div class="highlight-bash"><div class="highlight"><pre>mvn eclipse:eclipse
+</pre></div>
+</div>
+<p>Then open eclipse. Choose your workspace or create a new one. Once the Eclipse
+IDE loads, do the following:</p>
+<blockquote>
+<div># File -&gt; Import...
+# General -&gt; Existing Projects into Workspace
+# Click next
+# Next to “Select root Directory:” click “Browse” button
+# locate the project folder containing your pom.xml and click ok.
+# Your project should appear in the “Projects” box already
+# click finish</div></blockquote>
+<p>If you haven’t already, install the <a class="reference external" href="http://m2eclipse.sonatype.org/installing-m2eclipse.html">m2eclipse plugin</a> then
+right click on your project and select Maven -&gt; Enable Dependency Management.</p>
+</div>
+<div class="section" id="importing-sel2-0-project-into-intellij-using-maven">
+<h1>Importing Sel2.0 Project into IntelliJ Using Maven<a class="headerlink" href="#importing-sel2-0-project-into-intellij-using-maven" title="Permalink to this headline">¶</a></h1>
+<p id="importing-maven-into-intellij-reference"><em>We are currently working on this appendix.  The information provided
+here is accurate, although it may not be finished.</em></p>
+<p>In this appendix we provide the steps, including screen captures, showing
+how to create a Selenium 2.0 java client-driver project in IntelliJ IDEA.
+These steps assume you have already used maven with a pom.xml file to set up the
+project.  This process is described in the Selenium 2.0 chapter.  You must
+have followed that process before you can perform these steps.  This appendix
+then shows you how to import the maven-created Selenium 2.0 java
+project into IntelliJ.</p>
+<p>First, open IntelliJ and from the entry page, click Create New Project.</p>
+<img alt="/static/Appendix_Sel20_Java_Img01_EntryPage.png" class="align-center" src="/static/Appendix_Sel20_Java_Img01_EntryPage.png">
+<p>From the New Project dialog select Import Project from External Model.</p>
+<img alt="/static/Appendix_Sel20_Java_Img02_ImportProject.png" class="align-center" src="/static/Appendix_Sel20_Java_Img02_ImportProject.png">
+<p>From the list of project types, select maven.</p>
+<img alt="/static/Appendix_Sel20_Java_Img03_SelectMaven.png" class="align-center" src="/static/Appendix_Sel20_Java_Img03_SelectMaven.png">
+<p>Now you will see a dialog allowing you to set project options including the
+project’s root directory.</p>
+<img alt="/static/Appendix_Sel20_Java_Img04_RootDirAndProjOptions.png" class="align-center" src="/static/Appendix_Sel20_Java_Img04_RootDirAndProjOptions.png">
+<p>Click the ‘...’ button to set the root folder.</p>
+<img alt="/static/Appendix_Sel20_Java_Img04a_SetRootFolder.png" class="align-center" src="/static/Appendix_Sel20_Java_Img04a_SetRootFolder.png">
+<p>Now the settings dialog will show the directory you just selected.</p>
+<img alt="/static/Appendix_Sel20_Java_Img05_RootFolderSet.png" class="align-center" src="/static/Appendix_Sel20_Java_Img05_RootFolderSet.png">
+<p>This next dialog shows the name of your maven project as specified in the pom.xml file.
+Select your maven project and continue.</p>
+<img alt="/static/Appendix_Sel20_Java_Img06_SelectTheMavenProject.png" class="align-center" src="/static/Appendix_Sel20_Java_Img06_SelectTheMavenProject.png">
+<p>Enter a name for your project.</p>
+<img alt="/static/Appendix_Sel20_Java_Img07_ProjectName.png" class="align-center" src="/static/Appendix_Sel20_Java_Img07_ProjectName.png">
+<p>Once your project has been imported it should look like this in IntelliJ.</p>
+<img alt="/static/Appendix_Sel20_Java_Img08_ProjectImported.png" class="align-center" src="/static/Appendix_Sel20_Java_Img08_ProjectImported.png">
+<p>The maven project download many dependencies (libraries) when you originally ran
+‘mvn install’.  Now in IntelliJ you can see all these libraries.  These next two
+screen captures shows the libraries you should now have in your project.</p>
+<img alt="/static/Appendix_Sel20_Java_Img09_Libraries1.png" class="align-center" src="/static/Appendix_Sel20_Java_Img09_Libraries1.png">
+<img alt="/static/Appendix_Sel20_Java_Img10_Libraries2.png" class="align-center" src="/static/Appendix_Sel20_Java_Img10_Libraries2.png">
+<p>Before you can start writing Selenium code, you still need to create a module and at least
+one Java class (a .java file).  First select the Project’s root in IntelliJ and right click.</p>
+<img alt="/static/Appendix_Sel20_Java_Img11_CreateModuleSelectProject.png" class="align-center" src="/static/Appendix_Sel20_Java_Img11_CreateModuleSelectProject.png">
+<p>And select Create Module.</p>
+<img alt="/static/Appendix_Sel20_Java_Img12_SelectCreateModule.png" class="align-center" src="/static/Appendix_Sel20_Java_Img12_SelectCreateModule.png">
+<p>In the dialog select the radio button Create Module From Scratch.</p>
+<img alt="/static/Appendix_Sel20_Java_Img13_CreateModuleFromScratch.png" class="align-center" src="/static/Appendix_Sel20_Java_Img13_CreateModuleFromScratch.png">
+<p>Select Java Module and enter a name for the new module.</p>
+<img alt="/static/Appendix_Sel20_Java_Img14_JavaModuleAndModuleName.png" class="align-center" src="/static/Appendix_Sel20_Java_Img14_JavaModuleAndModuleName.png">
+<p>And next, you must create a folder for the source code.  By convention this is almost
+always named ‘src’.</p>
+<img alt="/static/Appendix_Sel20_Java_Img15_CreateSrcFolder.png" class="align-center" src="/static/Appendix_Sel20_Java_Img15_CreateSrcFolder.png">
+<p>Now we’re on the last dialog.  Typically you don’t need to select any ‘technollogies’ here.
+Unless you know for a fact you will be using Groovy or some other technology.</p>
+<img alt="/static/Appendix_Sel20_Java_Img16_SelectTechnologiesNoGroovy.png" class="align-center" src="/static/Appendix_Sel20_Java_Img16_SelectTechnologiesNoGroovy.png">
+<p>Now that the module is created, your project should show the following structure.</p>
+<img alt="/static/Appendix_Sel20_Java_Img17_ModuleCreated.png" class="align-center" src="/static/Appendix_Sel20_Java_Img17_ModuleCreated.png">
+<p>Finally, you need to create a .java file with a corresponding java class.</p>
+<img alt="/static/Appendix_Sel20_Java_Img18_SelectCreateJavaClass.png" class="align-center" src="/static/Appendix_Sel20_Java_Img18_SelectCreateJavaClass.png">
+<p>Enter the class name.</p>
+<img alt="/static/Appendix_Sel20_Java_Img19_EnterJavaClassName.png" class="align-center" src="/static/Appendix_Sel20_Java_Img19_EnterJavaClassName.png">
+<p>The .java file should now be created.  It should look like this in your project.</p>
+<img alt="/static/Appendix_Sel20_Java_Img20_JavaClassCreated.png" class="align-center" src="/static/Appendix_Sel20_Java_Img20_JavaClassCreated.png">
+<p>If your project now looks like the one displayed above, you’re done, congrats!
+And hope you enjoy coding your first Selenium automation!</p>
+</div>

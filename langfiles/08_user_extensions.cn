@@ -1,0 +1,262 @@
+#:page_title
+"selenium webdriver"
+
+#:previous_link
+"07_selenium_grid"
+
+#:previous_title
+"Selenium-Grid"
+
+#:next_link
+"09_cheat_sheet"
+
+#:next_title
+"Selenium WebDriver Cheat Sheet"
+
+#:side
+:list
+<li><a class="reference internal" href="#">User-Extensions</a><ul class="treeview">
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#actions">Actions</a></li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#accessors-assertions">Accessors/Assertions</a><ul class="treeview" style="display: none;">
+<li class="last"><a class="reference internal" href="#prototype-generates-additional-commands">Prototype generates additional commands</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#locator-strategies">Locator Strategies</a></li>
+<li><a class="reference internal" href="#using-user-extensions-with-selenium-ide">Using User-Extensions With Selenium-IDE</a></li>
+<li class="expandable lastExpandable"><div class="hitarea expandable-hitarea lastExpandable-hitarea"></div><a class="reference internal" href="#using-user-extensions-with-selenium-rc">Using User-Extensions With Selenium RC</a><ul class="treeview" style="display: none;">
+<li class="last"><a class="reference internal" href="#example">Example</a></li>
+
+#:body
+:body
+<h1>User-Extensions<a class="headerlink" href="#user-extensions" title="Permalink to this headline">¶</a></h1>
+<p><em>NOTE:  This section is close to completion, but it has not been reviewed and
+edited.</em></p>
+<div class="section" id="introduction">
+<span id="chapter08-reference"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Extending Selenium by adding your own actions, assertions and locator-strategies
+can be quite simple. Add JavaScript methods to the Selenium object prototype and
+the PageBot object prototype. On startup, Selenium will automatically look through
+methods on these prototypes, using name patterns to recognize which ones are actions,
+assertions and locators. The following examples give an indication of how Selenium
+can be extended with JavaScript.</p>
+</div>
+<div class="section" id="actions">
+<h2>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h2>
+<p>All methods on the Selenium prototype beginning with “do” are added as actions.
+For each action foo there is also an action fooAndWait registered. An action
+method can take up to two parameters, which will be passed the second and
+third column values in the test.
+Example: Add a “typeRepeated” action to Selenium, which types the text twice
+into a text box.</p>
+<input type="image" class="toggler toggler-javascript" value="javascript" src="/static/javascript.png" style="padding: 3px;"><div class="highlight-javascript" style="display: none;"><div class="highlight"><pre><span class="nx">Selenium</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">doTypeRepeated</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">locator</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// All locator-strategies are automatically handled by "findElement"</span>
+    <span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="p">().</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">locator</span><span class="p">);</span>
+
+    <span class="c1">// Create the text to type</span>
+    <span class="kd">var</span> <span class="nx">valueToType</span> <span class="o">=</span> <span class="nx">text</span> <span class="o">+</span> <span class="nx">text</span><span class="p">;</span>
+
+    <span class="c1">// Replace the element text with the new text</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="p">().</span><span class="nx">replaceText</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">valueToType</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="accessors-assertions">
+<h2>Accessors/Assertions<a class="headerlink" href="#accessors-assertions" title="Permalink to this headline">¶</a></h2>
+<p>All <em>get</em>Foo and <em>is</em>Foo methods on the Selenium prototype are added as accessors
+(storeFoo). For each accessor there is an assertFoo, verifyFoo and waitForFoo
+registered. An assert method can take up to 2 parameters, which will be
+passed the second and third column values in the test. You can also define
+your own assertions literally as simple “assert” methods, which will also
+auto-generate “verify” and “waitFor” commands.
+Example: Add a valueRepeated assertion, that makes sure that the element
+value consists of the supplied text repeated. The 2 commands that would be
+available in tests would be assertValueRepeated and verifyValueRepeated.</p>
+<input type="image" class="toggler toggler-javascript" value="javascript" src="/static/javascript.png" style="padding: 3px;"><div class="highlight-javascript" style="display: none;"><div class="highlight"><pre><span class="nx">Selenium</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">assertValueRepeated</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">locator</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// All locator-strategies are automatically handled by "findElement"</span>
+    <span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="p">().</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">locator</span><span class="p">);</span>
+
+    <span class="c1">// Create the text to verify</span>
+    <span class="kd">var</span> <span class="nx">expectedValue</span> <span class="o">=</span> <span class="nx">text</span> <span class="o">+</span> <span class="nx">text</span><span class="p">;</span>
+
+    <span class="c1">// Get the actual element value</span>
+    <span class="kd">var</span> <span class="nx">actualValue</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+
+    <span class="c1">// Make sure the actual value matches the expected</span>
+    <span class="nx">Assert</span><span class="p">.</span><span class="nx">matches</span><span class="p">(</span><span class="nx">expectedValue</span><span class="p">,</span> <span class="nx">actualValue</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="section" id="prototype-generates-additional-commands">
+<h3>Prototype generates additional commands<a class="headerlink" href="#prototype-generates-additional-commands" title="Permalink to this headline">¶</a></h3>
+<p>All <em>get</em>Foo and <em>is</em>Foo methods on the Selenium prototype automatically result
+in the availability of storeFoo, assertFoo, assertNotFoo, verifyFoo,
+verifyNotFoo, waitForFoo, and waitForNotFoo commands.
+Example, if you add a <tt class="docutils literal"><span class="pre">getTextLength()</span></tt> method, the following commands will
+automatically be available: <tt class="docutils literal"><span class="pre">storeTextLength</span></tt>, <tt class="docutils literal"><span class="pre">assertTextLength</span></tt>,
+<tt class="docutils literal"><span class="pre">assertNotTextLength</span></tt>, <tt class="docutils literal"><span class="pre">verifyTextLength</span></tt>, <tt class="docutils literal"><span class="pre">verifyNotTextLength</span></tt>,
+<tt class="docutils literal"><span class="pre">waitForTextLength</span></tt>, and <tt class="docutils literal"><span class="pre">waitForNotTextLength</span></tt> commands.</p>
+<input type="image" class="toggler toggler-javascript" value="javascript" src="/static/javascript.png" style="padding: 3px;"><div class="highlight-javascript" style="display: none;"><div class="highlight"><pre><span class="nx">Selenium</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getTextLength</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">locator</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">getText</span><span class="p">(</span><span class="nx">locator</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Also note that the <tt class="docutils literal"><span class="pre">assertValueRepeated</span></tt> method described above could have
+been implemented using <tt class="docutils literal"><span class="pre">isValueRepeated</span></tt>, with the added benefit of also
+automatically getting assertNotValueRepeated, storeValueRepeated,
+waitForValueRepeated and waitForNotValueRepeated.</p>
+</div>
+</div>
+<div class="section" id="locator-strategies">
+<h2>Locator Strategies<a class="headerlink" href="#locator-strategies" title="Permalink to this headline">¶</a></h2>
+<p>All locateElementByFoo methods on the PageBot prototype are added as
+locator-strategies. A locator strategy takes 2 parameters, the first being the
+locator string (minus the prefix), and the second being the document in which
+to search.
+Example: Add a “valuerepeated=” locator, that finds the first element a value
+attribute equal to the the supplied value repeated.</p>
+<input type="image" class="toggler toggler-javascript" value="javascript" src="/static/javascript.png" style="padding: 3px;"><div class="highlight-javascript" style="display: none;"><div class="highlight"><pre><span class="c1">// The "inDocument" is a the document you are searching.</span>
+<span class="nx">PageBot</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">locateElementByValueRepeated</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">inDocument</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Create the text to search for</span>
+    <span class="kd">var</span> <span class="nx">expectedValue</span> <span class="o">=</span> <span class="nx">text</span> <span class="o">+</span> <span class="nx">text</span><span class="p">;</span>
+
+    <span class="c1">// Loop through all elements, looking for ones that have</span>
+    <span class="c1">// a value === our expected value</span>
+    <span class="kd">var</span> <span class="nx">allElements</span> <span class="o">=</span> <span class="nx">inDocument</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"*"</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">allElements</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">testElement</span> <span class="o">=</span> <span class="nx">allElements</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">testElement</span><span class="p">.</span><span class="nx">value</span> <span class="o">&amp;&amp;</span> <span class="nx">testElement</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="nx">expectedValue</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">testElement</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-user-extensions-with-selenium-ide">
+<h2>Using User-Extensions With Selenium-IDE<a class="headerlink" href="#using-user-extensions-with-selenium-ide" title="Permalink to this headline">¶</a></h2>
+<p>User-extensions are very easy to use with the selenium IDE.</p>
+<ol class="arabic simple">
+<li>Create your user extension and save it as user-extensions.js. While this
+name isn’t technically necessary, it’s good practice to keep things
+consistent.</li>
+<li>Open Firefox and open Selenium-IDE.</li>
+<li>Click on Tools, Options</li>
+<li>In Selenium Core Extensions click on Browse and find the user-extensions.
+js file. Click on OK.</li>
+<li>Your user-extension will not yet be loaded, you must close and restart
+Selenium-IDE.</li>
+<li>In your empty test, create a new command, your user-extension should now
+be an options in the Commands dropdown.</li>
+</ol>
+</div>
+<div class="section" id="using-user-extensions-with-selenium-rc">
+<h2>Using User-Extensions With Selenium RC<a class="headerlink" href="#using-user-extensions-with-selenium-rc" title="Permalink to this headline">¶</a></h2>
+<p>If you Google “Selenium RC user-extension” ten times you will find ten
+different approaches to using this feature. Below, is the official Selenium
+suggested approach.</p>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p><strong>C#</strong></p>
+<ol class="arabic simple">
+<li>Place your user extension in the same directory as your Selenium Server.</li>
+<li>If you are using client code generated by the Selenium-IDE you will need
+to make a couple of small edits. First, you will need to create an
+<tt class="docutils literal"><span class="pre">HttpCommandProcessor</span></tt> object with class scope (outside the SetupTest
+method, just below  <tt class="docutils literal"><span class="pre">private</span> <span class="pre">StringBuilder</span> <span class="pre">verificationErrors;</span></tt>)</li>
+</ol>
+<div class="highlight-c#"><div class="highlight"><pre><span class="n">HttpCommandProcessor</span> <span class="n">proc</span><span class="p">;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Next, instantiate that <tt class="docutils literal"><span class="pre">HttpCommandProcessor</span></tt> object as you would the <tt class="docutils literal"><span class="pre">DefaultSelenium</span></tt> object. This can be done in the test setup.</li>
+</ol>
+<div class="highlight-c#"><div class="highlight"><pre><span class="n">proc</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpCommandProcessor</span><span class="p">(</span><span class="s">"localhost"</span><span class="p">,</span> <span class="m">4444</span><span class="p">,</span> <span class="s">"*iexplore"</span><span class="p">,</span> <span class="s">"http://google.ca/"</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Instantiate the DefaultSelenium object using the <tt class="docutils literal"><span class="pre">HttpCommandProcessor</span></tt> object you created.</li>
+</ol>
+<div class="highlight-c#"><div class="highlight"><pre><span class="n">selenium</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DefaultSelenium</span><span class="p">(</span><span class="n">proc</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Within your test code, execute your user-extension by calling it with the
+<tt class="docutils literal"><span class="pre">DoCommand()</span></tt> method of <tt class="docutils literal"><span class="pre">HttpCommandProcessor</span></tt>. This method takes two
+arguments: a string to identify the user-extension method you want to use
+and string array to pass arguments. Notice that the first letter of your
+function is lower case, regardless of the capitalization in your
+user-extension. Selenium automatically does this to keep common JavaScript
+naming conventions. Because JavaScript is case sensitive, your test will
+fail if you begin this command with a capital. inputParams is the array of
+arguments you want to pass to the JavaScript user-extension. In this case
+there is only one string in the array because there is only one parameter
+for our user extension, but a longer array will map each index to the
+corresponding user-extension parameter. Remember that user extensions
+designed for Selenium-IDE will only take two arguments.</li>
+</ol>
+<div class="highlight-c#"><div class="highlight"><pre><span class="kt">string</span><span class="p">[]</span> <span class="n">inputParams</span> <span class="p">=</span> <span class="p">{</span><span class="s">"Hello World"</span><span class="p">};</span>
+<span class="n">proc</span><span class="p">.</span><span class="n">DoCommand</span><span class="p">(</span><span class="s">"alertWrapper"</span><span class="p">,</span> <span class="n">inputParams</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li>Start the test server using the <tt class="docutils literal"><span class="pre">-userExtensions</span></tt> argument and pass in
+your <tt class="docutils literal"><span class="pre">user-extensions.js</span></tt> file.</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server.jar -userExtensions user-extensions.js
+</pre></div>
+</div>
+<input type="image" class="toggler toggler-csharp" value="csharp" src="/static/csharp.png" style="padding: 3px;"><div class="highlight-csharp" style="display: none;"><div class="highlight"><pre><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Text.RegularExpressions</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">NUnit.Framework</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Selenium</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">SeleniumTests</span>
+<span class="p">{</span>
+<span class="na">        [TestFixture]</span>
+        <span class="k">public</span> <span class="k">class</span> <span class="nc">NewTest</span>
+        <span class="p">{</span>
+
+                <span class="k">private</span> <span class="n">ISelenium</span> <span class="n">selenium</span><span class="p">;</span>
+                <span class="k">private</span> <span class="n">StringBuilder</span> <span class="n">verificationErrors</span><span class="p">;</span>
+                <span class="k">private</span> <span class="n">HttpCommandProcessor</span> <span class="n">proc</span><span class="p">;</span>
+
+<span class="na">                [SetUp]</span>
+                <span class="k">public</span> <span class="k">void</span> <span class="nf">SetupTest</span><span class="p">()</span>
+                <span class="p">{</span>
+                        <span class="n">proc</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpCommandProcessor</span><span class="p">(</span><span class="s">"localhost"</span><span class="p">,</span> <span class="m">4444</span><span class="p">,</span> <span class="s">"*iexplore"</span><span class="p">,</span> <span class="s">"http://google.ca/"</span><span class="p">);</span>
+                        <span class="n">selenium</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DefaultSelenium</span><span class="p">(</span><span class="n">proc</span><span class="p">);</span>
+                        <span class="c1">//selenium = new DefaultSelenium("localhost", 4444, "*iexplore", "http://google.ca/");</span>
+                        <span class="n">selenium</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>
+                        <span class="n">verificationErrors</span> <span class="p">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span>
+
+                <span class="p">}</span>
+
+<span class="na">                [TearDown]</span>
+                <span class="k">public</span> <span class="k">void</span> <span class="nf">TeardownTest</span><span class="p">()</span>
+                <span class="p">{</span>
+                        <span class="k">try</span>
+                        <span class="p">{</span>
+                                <span class="n">selenium</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
+                        <span class="p">}</span>
+                        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span><span class="p">)</span>
+                        <span class="p">{</span>
+                                <span class="c1">// Ignore errors if unable to close the browser</span>
+                        <span class="p">}</span>
+                        <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="s">""</span><span class="p">,</span> <span class="n">verificationErrors</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+                <span class="p">}</span>
+
+<span class="na">                [Test]</span>
+                <span class="k">public</span> <span class="k">void</span> <span class="nf">TheNewTest</span><span class="p">()</span>
+                <span class="p">{</span>
+                        <span class="n">selenium</span><span class="p">.</span><span class="n">Open</span><span class="p">(</span><span class="s">"/"</span><span class="p">);</span>
+                        <span class="kt">string</span><span class="p">[]</span> <span class="n">inputParams</span> <span class="p">=</span> <span class="p">{</span><span class="s">"Hello World"</span><span class="p">,};</span>
+                        <span class="n">proc</span><span class="p">.</span><span class="n">DoCommand</span><span class="p">(</span><span class="s">"alertWrapper"</span><span class="p">,</span> <span class="n">inputParams</span><span class="p">);</span>
+                <span class="p">}</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
