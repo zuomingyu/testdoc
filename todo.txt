@@ -1,11 +1,7 @@
 image:
-lang icon
 not found image
 
-text:
-lang file
 
 
-勘误
-加入我们 github
+
 
