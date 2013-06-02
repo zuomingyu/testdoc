@@ -239,7 +239,7 @@ selenium command.</p>
 </pre></div>
 </div>
 <p>Or, in Selenium 1.0</p>
-<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="s">"adminHomeForm"</span><span class="o">);</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="s">"adminHomeForm"</span><span class="o">);</span>
 </pre></div>
 </div>
 <p>Your application, however, may generate HTML
@@ -257,7 +257,7 @@ In this case, using a standard locator would look something like the following.<
 </pre></div>
 </div>
 <p>Or, again in Selenium-RC</p>
-<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="s">"addForm:_ID74:_ID75:0:_ID79:0:checkBox"</span><span class="o">);</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="s">"addForm:_ID74:_ID75:0:_ID79:0:checkBox"</span><span class="o">);</span>
 </pre></div>
 </div>
 <p>Given the dynamically generated Identifier, this approach would not work.
@@ -281,7 +281,7 @@ try a more detailed XPath statement.</p>
 <p>If however, you do need to use the ID to locate the element, a different solution
 is needed.  You can capture this ID from the website before you use it in a Selenium
 command. It can be done like this.</p>
-<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="n">String</span><span class="o">[]</span> <span class="n">checkboxids</span>  <span class="o">=</span> <span class="n">selenium</span><span class="o">.</span><span class="na">getAllFields</span><span class="o">();</span> <span class="c1">// Collect all input IDs on page.</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">String</span><span class="o">[]</span> <span class="n">checkboxids</span>  <span class="o">=</span> <span class="n">selenium</span><span class="o">.</span><span class="na">getAllFields</span><span class="o">();</span> <span class="c1">// Collect all input IDs on page.</span>
 
 <span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="nl">checkboxid:</span><span class="n">checkboxids</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">if</span><span class="o">(</span><span class="n">checkboxid</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"addForm"</span><span class="o">))</span> <span class="o">{</span>
@@ -309,7 +309,7 @@ wait for a predefined period and then again recheck it.  This is then executed w
 <p>Let’s consider a page which brings a link (link=ajaxLink) on click
 of a button on page (without refreshing the page)  This could be handled
 by Selenium using a <em>for</em> loop.</p>
-<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="c1">// Loop initialization.</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="c1">// Loop initialization.</span>
 <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">second</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;;</span> <span class="n">second</span><span class="o">++)</span> <span class="o">{</span>
 
      <span class="c1">// If loop is reached 60 seconds then break the loop.</span>
@@ -335,13 +335,13 @@ that would otherwise be duplicated throughout your tests.  One way to prevent th
 is to wrap frequently used selenium calls with functions or class methods of your
 own design.  For example, many tests will frequently click on a page element
 and wait for page to load multiple times within a test.</p>
-<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">elementLocator</span><span class="o">);</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">elementLocator</span><span class="o">);</span>
 <span class="n">selenium</span><span class="o">.</span><span class="na">waitForPageToLoad</span><span class="o">(</span><span class="n">waitPeriod</span><span class="o">);</span>
 </pre></div>
 </div>
 <p>Instead of duplicating this code you    could write a wrapper method that performs
 both functions.</p>
-<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="cm">/**</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="cm">/**</span>
 <span class="cm"> * Clicks and Waits for page to load.</span>
 <span class="cm"> *</span>
 <span class="cm"> * param elementLocator</span>
@@ -359,7 +359,7 @@ both functions.</p>
 an element on page before carrying out some operation. This is sometimes called
 a ‘safe operation’.  For instance, the following method could be used to implement
 a safe operation that depends on an expected element being present.</p>
-<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="cm">/**</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="cm">/**</span>
 <span class="cm"> * Selenum-RC -- Clicks on element only if it is available on page.</span>
 <span class="cm"> *</span>
 <span class="cm"> * param elementLocator</span>
@@ -376,7 +376,7 @@ a safe operation that depends on an expected element being present.</p>
 </pre></div>
 </div>
 <p>This example uses the Selenium 1 API but Selenium 2 also supports this.</p>
-<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="cm">/**</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="cm">/**</span>
 <span class="cm"> * Selenium-WebDriver -- Clicks on element only if it is available on page.</span>
 <span class="cm"> *</span>
 <span class="cm"> * param elementLocator</span>
@@ -424,7 +424,7 @@ throughout the script.  This makes script maintenance more efficient.</li>
 readability of test scripts.</li>
 </ul>
 <p>Consider the following, difficult to understand, example (in java).</p>
-<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">testNew</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">testNew</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
              <span class="n">selenium</span><span class="o">.</span><span class="na">open</span><span class="o">(</span><span class="s">"http://www.test.com"</span><span class="o">);</span>
              <span class="n">selenium</span><span class="o">.</span><span class="na">type</span><span class="o">(</span><span class="s">"loginForm:tbUsername"</span><span class="o">,</span> <span class="s">"xxxxxxxx"</span><span class="o">);</span>
              <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="s">"loginForm:btnLogin"</span><span class="o">);</span>
@@ -441,7 +441,7 @@ readability of test scripts.</li>
 with the AUT’s page source. Even regular users of the application
 might have difficulty understanding what thus script does. A better
 script could be:</p>
-<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">testNew</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">testNew</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
              <span class="n">selenium</span><span class="o">.</span><span class="na">open</span><span class="o">(</span><span class="s">"http://www.test.com"</span><span class="o">);</span>
              <span class="n">selenium</span><span class="o">.</span><span class="na">type</span><span class="o">(</span><span class="n">admin</span><span class="o">.</span><span class="na">username</span><span class="o">,</span> <span class="s">"xxxxxxxx"</span><span class="o">);</span>
              <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">admin</span><span class="o">.</span><span class="na">loginbutton</span><span class="o">);</span>
@@ -456,7 +456,7 @@ script could be:</p>
 </div>
 <p>Now, using some comments and whitespace along with the UI Map identifiers makes
 a very readable script.</p>
-<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">testNew</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">testNew</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
 
              <span class="c1">// Open app url.</span>
              <span class="n">selenium</span><span class="o">.</span><span class="na">open</span><span class="o">(</span><span class="s">"http://www.test.com"</span><span class="o">);</span>
@@ -521,7 +521,7 @@ numerous blogs as this ‘test design pattern’ is becoming widely used.
 Many have written on this design pattern and can provide useful tips beyond the scope
 of this user guide.  To get you started, though, we’ll illustrate page objects with a simple example.</p>
 <p>First, consider an example, typical of test automation, that does not use a page object.</p>
-<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="cm">/***</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="cm">/***</span>
 <span class="cm"> * Tests login feature</span>
 <span class="cm"> */</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Login</span> <span class="o">{</span>
@@ -543,7 +543,7 @@ of this user guide.  To get you started, though, we’ll illustrate page objects
 <li>The id-locators would be spread in multiple tests, all tests that had to use this login page.</li>
 </ol>
 <p>Applying the page object techniques this example could be rewritten like this in the following example of a page object for a Sign-in page.</p>
-<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="cm">/**</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="cm">/**</span>
 <span class="cm"> * Page Object encapsulates the Sign-in page.</span>
 <span class="cm"> */</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">SignInPage</span> <span class="o">{</span>
@@ -577,7 +577,7 @@ of this user guide.  To get you started, though, we’ll illustrate page objects
 </pre></div>
 </div>
 <p>and page object for a Home page could look like this.</p>
-<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="cm">/**</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="cm">/**</span>
 <span class="cm"> * Page Object encapsulates the Home Page</span>
 <span class="cm"> */</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="o">{</span>
@@ -604,7 +604,7 @@ of this user guide.  To get you started, though, we’ll illustrate page objects
 </pre></div>
 </div>
 <p>So now, the login test would use these two page objects as follows.</p>
-<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="cm">/***</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="cm">/***</span>
 <span class="cm"> * Tests login feature</span>
 <span class="cm"> */</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestLogin</span> <span class="o">{</span>
@@ -628,7 +628,7 @@ Page objects themselves should never be make verifications or assertions. This i
 <h2>Data Driven Testing<a class="headerlink" href="#data-driven-testing" title="Permalink to this headline">¶</a></h2>
 <p>Data Driven Testing refers to using the same test (or tests) multiple times with varying data.  These data sets are often from external files i.e. .csv file, text file, or perhaps loaded from a database. Data driven testing is a commonly used test automation technique used to validate an application against many varying input.  When the test is designed for varying data, the input data can expand, essentially creating additional tests, without requiring changes to the test code.</p>
 <p><strong>In Python:</strong></p>
-<input type="image" class="toggler toggler-python" value="python" src="/static/python.png" style="padding: 3px;"><div class="highlight-python" style="display: none;"><div class="highlight"><pre><span class="c"># Collection of String values</span>
+<div class="highlight-python" style="display: none;"><div class="highlight"><pre><span class="c"># Collection of String values</span>
 <span class="n">source</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"input_file.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span>
 <span class="n">values</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 <span class="n">source</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -650,7 +650,7 @@ language.  For more examples, refer to the <a class="reference external" href="h
 <p>Another common type of testing is to compare data in the UI against the data actually stored in the AUT’s database.  Since you can also do database queries from a programming language, assuming you have database support functions, you can use them to retrieve data and then use the data to verify what’s displayed by the AUT is correct.</p>
 <p>Consider the example of a registered email address to be retrieved from a database and then later compared against the UI. An example of establishing a DB connection and retrieving data from the DB could look like this.</p>
 <p><strong>In Java:</strong></p>
-<input type="image" class="toggler toggler-java" value="java" src="/static/highlight-java.png" style="padding: 3px;"><div class="highlight-java"><div class="highlight"><pre><span class="c1">// Load Microsoft SQL Server JDBC driver.</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="c1">// Load Microsoft SQL Server JDBC driver.</span>
 <span class="n">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"com.microsoft.sqlserver.jdbc.SQLServerDriver"</span><span class="o">);</span>
 
 <span class="c1">// Prepare connection url.</span>
