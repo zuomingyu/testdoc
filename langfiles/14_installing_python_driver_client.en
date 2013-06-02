@@ -14,12 +14,80 @@
 "Locating Techniques"
 
 #:side
-:Introduction
-Introduction
-:titile2
-content2
+:list
 
 #:body
-:key2
-内容行两边不需要使用字符串括起来
-#34343   #注释行与空行将忽略
+:body
+<h1>Python Client Driver Configuration<a class="headerlink" href="#python-client-driver-configuration" title="Permalink to this headline">¶</a></h1>
+<ul class="simple" id="configuring-selenium-rc-python-reference">
+<li>Download Selenium-RC from the SeleniumHQ <a class="reference external" href="http://seleniumhq.org/download/">downloads page</a></li>
+<li>Extract the file <em>selenium.py</em></li>
+<li>Either write your Selenium test in Python or export
+a script from Selenium-IDE to a python file.</li>
+<li>Add to your test’s path the file <em>selenium.py</em></li>
+<li>Run Selenium server from the console</li>
+<li>Execute your test from a console or your Python IDE</li>
+</ul>
+<p>The following steps describe the basic installation procedure. After following
+this, the user can start using the desired IDE, (even write tests in a text
+processor and run them from command line!) without any extra work (at least
+on the Selenium side).</p>
+<ul>
+<li><p class="first">Installing Python</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This will cover python installation on Windows and Mac only, as
+in most linux distributions python is already pre-installed by default.</p>
+</div>
+<ul class="simple">
+<li>Windows<ol class="arabic">
+<li>Download Active python’s installer from ActiveState’s official site:
+<a class="reference external" href="http://activestate.com/Products/activepython/index.mhtml">http://activestate.com/Products/activepython/index.mhtml</a></li>
+<li>Run the installer downloaded (ActivePython-x.x.x.x-win32-x86.msi)</li>
+</ol>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<blockquote>
+<div><img alt="/static/chapt5_img19_Python_Install.png" class="align-center" src="/static/chapt5_img19_Python_Install.png">
+</div></blockquote>
+<blockquote>
+<div><img alt="/static/chapt5_img22_Python_Install.png" class="align-center" src="/static/chapt5_img22_Python_Install.png">
+</div></blockquote>
+<blockquote>
+<div><ul>
+<li><p class="first">Mac</p>
+<p>The latest Mac OS X version (Leopard at this time) comes with Python
+pre-installed. To install an extra Python, get a universal binary at
+<a class="reference external" href="http://www.pythonmac.org/">http://www.pythonmac.org/</a> (packages for Python 2.5.x). You will get a
+.dmg file that you can mount. It contains a .pkg file that you can launch.</p>
+<img alt="/static/chapt5_img19_Python_Mac_Install.png" class="align-center" src="/static/chapt5_img19_Python_Mac_Install.png">
+</li>
+</ul>
+</div></blockquote>
+<ul>
+<li><p class="first">Installing the Selenium driver client for python</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">Download the last version of Selenium Remote Control from the
+<a class="reference external" href="http://seleniumhq.org/download/">downloads page</a></p>
+</li>
+<li><p class="first">Extract the content of the downloaded zip file</p>
+</li>
+<li><p class="first">Copy the module with the Selenium’s driver for Python (selenium.py)
+in the folder <em>C:/Python25/Lib</em> (this will allow you to import it
+directly in any script you write).</p>
+<p>You will find the module in the extracted folder, it’s located inside
+<em>selenium-python-driver-client</em>.</p>
+</li>
+</ol>
+<img alt="/static/chapt5_img25_Python_Driver_Install.png" class="align-center" src="/static/chapt5_img25_Python_Driver_Install.png">
+</div></blockquote>
+</li>
+</ul>
+<p>Congratulations, you’re done! Now any python script that you create can import
+selenium and start interacting with the browsers.</p>
+</div>

@@ -60,14 +60,20 @@ def replace_single(content_dict, key_word):
 def format_content(content_dict, key_word):
     content = content_dict.get(key_word, [])
     t_dict = {}
+    key = ""
+    vals = []
     if not content:
         return t_dict
-    for i in range(0, len(content), 2):   
-        try:     
-            if content[i][0] == ':':
-                t_dict[content[i].strip()[1:]] = content[i+1]
-        except:
-            pass
+    for l in content:       
+        if l[0] == ':':
+            if vals and key:
+                t_dict[key] = " ".join(vals)
+                vals = []
+            key = l.strip()[1:]
+        else:
+            vals.append(l)                
+    if key:
+        t_dict[key] = " ".join(vals)    
     return t_dict       
         
 def replace_keyword(key_dict, file_name, flag):

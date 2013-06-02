@@ -14,12 +14,10 @@
 ".NET client driver configuration"
 
 #:side
-:Introduction
-Introduction
-:titile2
-content2
+:list
+
 
 #:body
-:key2
-内容行两边不需要使用字符串括起来
-#34343   #注释行与空行将忽略
+:body
+<h1>How to Install the Android Driver<a class="headerlink" href="#how-to-install-the-android-driver" title="Permalink to this headline">¶</a></h1>
+<p id="installing-android-driver-reference">This is a placeholder.</p>
