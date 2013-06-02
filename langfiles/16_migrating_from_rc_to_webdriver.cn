@@ -1,5 +1,5 @@
 #:page_title
-"selenium webdriver"
+"从Selenium RC向Selenium WebDriver迁移"
 
 #:previous_link
 "15_locating_techniques"

@@ -1,5 +1,5 @@
 #:page_title
-"selenium webdriver"
+"配置Selenium 1.0 Java客户端"
 
 #:previous_link
 "12_installing_java_driver_Sel20_via_maven"
