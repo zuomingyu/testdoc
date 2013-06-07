@@ -1,5 +1,5 @@
 #:page_title
-"读者说明"
+"文档修订说明"
 
 #:previous_link
 "index"
@@ -20,39 +20,29 @@ Introduction
 
 #:body
 :Note_to_Reader
-Note to the Reader–<em>Docs Being Revised for Selenium 2.0
+读者说明–<em>开始修订Selenium 2.0文档
 :hello_title
-Hello, and welcome!  The Documentation Team would like to
-welcome you, and to thank you for being interested in Selenium.
+您好，欢迎！文档团队欢迎你，并要感谢你对Selenium的兴趣。
 :hello_body
-<em>We are currently updating this document for the Selenium 2.0 release.</em>  This means
-we are currently writing and editing new material, and revising old material.
-While reading, you may experience typos or other minor errors.  If so, please be patient with us.
-Rather than withholding information until it’s finally complete, we are frequently checking-in
-new writing and revisions as we go.  Still, we do check our facts first
-and are confident the info we’ve submitted is accurate and useful.  Still, if you find an error, particularly
-in one of our code examples, please let us know.
-You can create a new issue (<a class="reference external" href="http://code.google.com/p/selenium/issues/entry">http://code.google.com/p/selenium/issues/entry</a>)
-with “Docs Error” in the subject line.</p>
-<p>We have worked very, very hard on this document.  And, as just mentioned, we are once again working hard,
-on the new revision.  Why?  We absolutely believe
-this is the best tool for web-application testing.  We feel its extensibility
-and flexibility, along with its tight integration with the browser, is
-unmatched by available proprietary tools.  We are very excited to promote
-Selenium and, hopefully, to expand its user community.  In short, we really
-want to “get the word out” about Selenium.</p>
-<p>We believe you will be similarly excited once you understand how Selenium
-approaches test automation.  It’s quite different from other automation tools.
-Whether you are brand-new to Selenium, or have been using it for awhile,
-we believe this documentation will truly help to spread the knowledge around.
-We have aimed our writing so that those completely new to test automation
-can use this document as a stepping stone.  However, at the same time we have included
-a number of advanced, test design topics that should be interesting to the
-experienced software engineer.  In both cases we have written the “Sel-Docs” to help test engineers
-of all abilities to quickly become productive writing your own Selenium tests.
-Experienced users and “newbies” alike will benefit from our Selenium User’s Guide.
+<em>我们当前正在为selenium2.0版本进行文档的更新。</em>  这意味着我们正在编写和编辑新资料和修订旧的资料。
+在阅读时，你可能遇到输入错误或其他的较小的错误。  如果是这样，请耐心地帮助我们。而不是隐藏信息直到最终完成, 我们将会频繁地检
+查和修订新的资料。 尽管如此，我们首先检查我们的素材和我们对我们提交的信息的精确性和可用性有足够的自信。然
+而，如果你发现任何错误，特别是我们的代码示例错误，请务必让我们知道。
+你可以创建一个带有"Docs Error"主题的新问题 (<a class="reference external" href="http://code.google.com/p/selenium/issues/entry">http://code.google.com/p/selenium/issues/entry</a>)
+。</p>
+<p>我们已经在这文档上工作的非常努力。 并且正如刚刚说到的， 我们将在新的版本同样的努力。 因为我们绝对相
+信Selenium是Web应用程序最佳的测试工具。 我们觉得它的可扩展性和灵活性， 以及与浏览器的高度集成， 通过提供可得
+到的专门工具， 是无与伦比的. 我们非常兴奋地推荐Selenium, 并且希望去拓展它的用户社区. 简而言之,我们真的想要
+充分地展示Selenium.</p>
+<p>我们相信你会同样地兴奋, 一旦你理解Selenium如何达成测试自动化. 它与其他的自动化工具是相当的不同. 无论是否你
+是一个新手, 或者已经使用过一段时间, 我们相信本文档对传播相关的知识真的有帮助. 我们的目标是让测试自动化的新
+手可以使用本文档作为进身之阶. 然而, 同时我们也介绍了大量的有经验的软件工程师感兴趣的高级, 测试设计的主题. 我
+们编写的"Sel-Docs", 对各种能力的测试工程师, 快速地成为高效编写自己的Selenium测试的工程师都是有帮助的. 有经
+验的用户和初学者同样地可以从我们的Selenium用户指南中获益.
+
 :thanks
-Thanks very much for reading.
+非常感谢您的阅读
+
 :team
-– the Selenium Documentation Team
+– Selenium文档团队
 

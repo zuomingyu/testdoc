@@ -15,7 +15,7 @@
 
 #:side
 :1
-Introduction
+介绍
 :2
 Test Automation for Web Applications
 :3
@@ -53,54 +53,37 @@ Acknowledgements
 
 #:body
 :Introduction
-Introduction
+介绍
 :title
-Test Automation for Web Applications
+Web应用测试自动化
 :body1
-<p>Many, perhaps most, software applications today are written as web-based
-applications to be run in an Internet browser. The  effectiveness of testing
-these applications varies widely among companies and organizations. In an era
-of highly interactive and responsive software processes where many organizations
-are using some form of Agile methodology, test automation is frequently
-becoming a requirement for software projects.  Test automation is often the
-answer. Test automation means using a software tool to run repeatable tests
-against the application to be tested.  For regression testing this provides
-that responsiveness.</p>
-<p>There are many advantages to test automation. Most are related to the
-repeatability of the tests and the speed at which the tests can be executed.
-There are a number of commercial and open source tools available for assisting
-with the development of test automation. Selenium is possibly the most
-widely-used open source solution. This user’s guide will assist both new and
-experienced Selenium users in learning effective techniques in building test
-automation for web applications.</p>
-<p>This user’s guide introduces Selenium, teaches its features, and
-presents commonly used best practices accumulated from the Selenium
-community. Many examples are provided. Also, technical information on the
-internal structure of Selenium and recommended uses of Selenium are provided.</p>
-<p>Test automation has specific advantages for
-improving the long-term efficiency of a software team’s testing processes.
-Test automation supports:</p>
+<p>今天的软件应用中许多或许是大多数, 是一个运行在浏览器中的Web应用程序。 这些应用程序的测试效果在不同的
+公司和组织间差别很大. 在一个高度交互和响应的软件时代, 许多组织在开发过程中都会使用某种形式的敏捷方法, 测试
+自动化正在成为软件项目的必要条件. 测试自动化是问题的答案. 测试自动化意味着使用一个软件工具, 对被测试的应用
+程序运行可重复的测试. 为回归测试提供响应能力。</p>
+<p>测试自动化有许多优点. 大多数与测试的可重复性, 测试的执行效率有关。
+在许多对测试自动化的开发有帮助的商业和开源工具中。 Selenium可能是最广泛使用的解决方案了。本文档将帮助新手和有经验的用户, 
+有效的学习为Web应用程序构建自动化测试的技术,</p>
+<p>本用户指南介绍Selenium, 讲授它的功能, 以及由Selenium社区积累的一些常用最佳实践。并且提供了许多示例。 同样，
+提供有关Selenium内部结构的技术信息，以及Selenium的推荐使用方法。</p>
+<p>自动化测试能有效改善那些具有较长测试流程的软件开发团队的效率。
+自动化测试支持:</p>
 <ul class="simple">
-<li>Frequent regression testing</li>
-<li>Rapid feedback to developers</li>
-<li>Virtually unlimited iterations of test case execution</li>
-<li>Support for Agile and extreme development methodologies</li>
-<li>Disciplined documentation of test cases</li>
-<li>Customized defect reporting</li>
-<li>Finding defects missed by manual testing</li>
+<li>频繁地回归测试</li>
+<li>向开发及时反馈</li>
+<li>几乎没有限制测试案例的迭代执行</li>
+<li>支持敏捷和极限开发方法</li>
+<li>测试案例的文档化</li>
+<li>自定义缺陷报告</li>
+<li>查找手工测试遗漏的缺陷</li>
 </ul>
 :body2
-<h2>To Automate or Not to Automate?<a class="headerlink" href="#to-automate-or-not-to-automate" title="Permalink to this headline">¶</a></h2>
-<p>Is automation always advantageous? When should one decide to automate
-test cases?</p>
-<p>It is <strong>not</strong> always advantageous to automate test cases. There are
-times when manual testing may be more appropriate. For instance, if the
-application’s user interface will change considerably in the near future,
-then any automation might need to be rewritten anyway. Also, sometimes there simply
-is not enough time to build test automation. For the short term, manual testing
-may be more effective. If an application has a very tight deadline, there is
-currently no test automation available, and it’s imperative that the testing
-get done within that time frame, then manual testing is the best solution.</p>
+<h2>是否进行自动化？<a class="headerlink" href="#to-automate-or-not-to-automate" title="Permalink to this headline">¶</a></h2>
+<p>自动化总是有益的么？何时决定测试案例被自动化？</p>
+<p>自动化测试并不总是有益的。 有时手工测试可能是更适当地。例如，如果应用程序的用户界面将在不久的将来作出较大
+的改变，则任何自动化脚本可能需要重新开发。同样，有时仅仅是没有足够的时间来构造自动化测试。从短期来看，手工测试可能是更有效的。
+如果一个应用程序有非常紧的时间期限，没有现成的、可得到的自动化测试，而且测试必须在
+给定的时间范围内完成，显然手工测试是最佳的解决方案。</p>
 </div>
 <div class="section" id="introducing-selenium">
 <h2>Introducing Selenium<a class="headerlink" href="#introducing-selenium" title="Permalink to this headline">¶</a></h2>

@@ -818,11 +818,11 @@ th
 
 /* General Structure */
     body, td, th, input { /* redundant rules for bad browsers  */
-            font-family: verdana, sans-serif;
+            font-family: Arial,Verdana,Sans-serif;
             font-size: x-small;
             voice-family: "\"}\"";
             voice-family: inherit;
-            font-size: small;
+            font-size: 100%;
     }
 
 	h1, h2, h3, h4, h5, h6 {
