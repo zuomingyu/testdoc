@@ -1,5 +1,5 @@
 #:page_title
-"selenium webdriver"
+"Selenium WebDriver Cheat Sheet"
 
 #:previous_link
 "08_user_extensions"
@@ -14,12 +14,43 @@
 "How to Install the Android Driver"
 
 #:side
-:Introduction
-Introduction
-:titile2
-content2
+:list
+<li><a class="reference internal" href="#">Selenium WebDriver Cheat Sheet</a><ul class="treeview">
+<li class="last"><a class="reference internal" href="#role-based-interfaces-in-selenium-webdriver">Role Based Interfaces in Selenium WebDriver</a></li>
 
 #:body
-:key2
-内容行两边不需要使用字符串括起来
-#34343   #注释行与空行将忽略
+:body
+<h1>Selenium WebDriver Cheat Sheet<a class="headerlink" href="#selenium-webdriver-cheat-sheet" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="role-based-interfaces-in-selenium-webdriver">
+<span id="cheat-sheet-reference"></span><h2>Role Based Interfaces in Selenium WebDriver<a class="headerlink" href="#role-based-interfaces-in-selenium-webdriver" title="Permalink to this headline">¶</a></h2>
+<p>One of the differences between Selenium RC and Selenium WebDriver is that the WebDriver APIs make extensive use of “role-based interfaces” to allow users to determine whether a particular driver supports a feature. This can make it hard to know what features are available without first knowing which interface to try and use. The key interfaces are listed below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%">
+<col width="39%">
+<col width="54%">
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Interface</th>
+<th class="head">Role</th>
+<th class="head">Documentation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>HasCapabilities</td>
+<td>Provides access to the capabilities supported by this driver.</td>
+<td><a class="reference external" href="http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/HasCapabilities.html">Java HasCapabilities.java</a></td>
+</tr>
+<tr class="row-odd"><td>JavascriptExecutor</td>
+<td>Allows the execution of arbitrary JS commands.</td>
+<td><a class="reference external" href="http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/JavascriptExecutor.html">Java JavascriptExecutor.java</a></td>
+</tr>
+<tr class="row-even"><td>Rotatable</td>
+<td>Indicates whether the driver supports rotating the display (mostly just mobile drivers).</td>
+<td><a class="reference external" href="http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/Rotatable.html">Java Rotatable.java</a></td>
+</tr>
+<tr class="row-odd"><td>TakesScreenshot</td>
+<td>Provides a mechanism for taking screenshots.</td>
+<td><a class="reference external" href="http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/TakesScreenshot.html">Java TakesScreenshot.java</a></td>
+</tr>
+</tbody>

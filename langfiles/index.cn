@@ -1,5 +1,5 @@
 #:page_title
-"index"
+"目录索引"
 
 #:previous_link
 ""
@@ -11,7 +11,7 @@
 "00_note"
 
 #:next_title
-"读者申明-文档已开始更新为selenium2.0！"
+"读者通知-文档已开始向selenium2.0更新!"
 
 #:side
 :none
@@ -23,7 +23,7 @@ Selenium 文档
 :Contents
 目录:
 :note_to_reader
-读者申明-<em>文档已开始更新为selenium2.0
+读者通知-<em>文档已开始向selenium2.0更新!
 :Introduction
 介绍
 :test_auto_4_web
@@ -212,7 +212,7 @@ node配置
 时序参数
 :Command_Line_Help
 获得命令行帮助
-:Common Errors
+:Common_Errors
 常见错误
 
 :User_Extensions
@@ -233,7 +233,7 @@ node配置
 :WebDriver_Cheat_Sheet
 Selenium WebDriver Cheat Sheet
 :Role_Based_Interfaces
-Selenium WebDriver中基于role的接口
+Selenium WebDriver中基于角色的接口
 :Install_Android_Driver
 如何安装Android Driver
 :.NET_client_driver

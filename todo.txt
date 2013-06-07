@@ -1,7 +1,14 @@
+<<<<<<< HEAD
+
+=======
+image:
+not found image
+>>>>>>> edb17c294907f58ce9de8e5549c09eddfc7088bc
 
 
-text:
-lang file
 
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> edb17c294907f58ce9de8e5549c09eddfc7088bc

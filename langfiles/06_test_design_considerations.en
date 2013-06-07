@@ -1,5 +1,5 @@
 #:page_title
-"selenium webdriver"
+"Test Design Considerations"
 
 #:previous_link
 "05_selenium_rc"
@@ -14,12 +14,672 @@
 "Selenium-Grid"
 
 #:side
-:Introduction
-Introduction
-:titile2
-content2
+:list
+<li><a class="reference internal" href="#">Test Design Considerations</a><ul class="treeview">
+<li><a class="reference internal" href="#introducing-test-design">Introducing Test Design</a></li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#types-of-tests">Types of Tests</a><ul class="treeview" style="display: none;">
+<li><a class="reference internal" href="#testing-static-content">Testing Static Content</a></li>
+<li><a class="reference internal" href="#testing-links">Testing Links</a></li>
+<li><a class="reference internal" href="#function-tests">Function Tests</a></li>
+<li><a class="reference internal" href="#testing-dynamic-elements">Testing Dynamic Elements</a></li>
+<li class="last"><a class="reference internal" href="#ajax-tests">Ajax Tests</a></li>
+</ul>
+</li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#validating-results">Validating Results</a><ul class="treeview" style="display: none;">
+<li><a class="reference internal" href="#assert-vs-verify">Assert vs. Verify</a></li>
+<li class="last"><a class="reference internal" href="#trade-offs-asserttextpresent-assertelementpresent-asserttext">Trade-offs: <em>assertTextPresent</em>, <em>assertElementPresent</em>, <em>assertText</em></a></li>
+</ul>
+</li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#location-strategies">Location Strategies</a><ul class="treeview" style="display: none;">
+<li><a class="reference internal" href="#choosing-a-location-strategy">Choosing a Location Strategy</a></li>
+<li><a class="reference internal" href="#locating-dynamic-elements">Locating Dynamic Elements</a></li>
+<li class="last"><a class="reference internal" href="#locating-ajax-elements">Locating Ajax Elements</a></li>
+</ul>
+</li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#wrapping-selenium-calls">Wrapping Selenium Calls</a><ul class="treeview" style="display: none;">
+<li class="last"><a class="reference internal" href="#safe-operations-for-element-presence">‘Safe Operations’ for Element Presence</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ui-mapping">UI Mapping</a></li>
+<li><a class="reference internal" href="#page-object-design-pattern">Page Object Design Pattern</a></li>
+<li><a class="reference internal" href="#data-driven-testing">Data Driven Testing</a></li>
+<li class="last"><a class="reference internal" href="#database-validation">Database Validation</a></li>
 
 #:body
-:key2
-内容行两边不需要使用字符串括起来
-#34343   #注释行与空行将忽略
+:body
+<h1>Test Design Considerations<a class="headerlink" href="#test-design-considerations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introducing-test-design">
+<span id="chapter06-reference"></span><h2>Introducing Test Design<a class="headerlink" href="#introducing-test-design" title="Permalink to this headline">¶</a></h2>
+<p>We’ve provided in this chapter information that will be useful to both those new to test automation
+and for the experienced QA professional.  Here we describe the most common types of automated tests.
+We also describe ‘design patterns’ commonly used in test automation for improving the maintenance
+and extensibily of your automation suite.  The more experienced reader will find these interesting
+if not already using these techniques.</p>
+</div>
+<div class="section" id="types-of-tests">
+<h2>Types of Tests<a class="headerlink" href="#types-of-tests" title="Permalink to this headline">¶</a></h2>
+<p>What parts of your application should you test?  That depends on aspects of
+your project:  user expectations, time allowed for the project, priorities
+set by the project manager and so on.  Once the project boundaries are defined
+though, you, the tester, will certainly make many decisions on what to test.</p>
+<p>We’ve created a few terms here for the purpose of categorizing the types of test you may
+perform on your web application.  These terms are by no means standard, although the concepts
+we present here are typical for web-application testing.</p>
+<div class="section" id="testing-static-content">
+<h3>Testing Static Content<a class="headerlink" href="#testing-static-content" title="Permalink to this headline">¶</a></h3>
+<p>The simplest type of test, a <em>content test</em>, is a simple test for the existence
+of a static, non-changing, UI element.  For instance</p>
+<ul class="simple">
+<li>Does each page have its expected page title?  This can be used to verify your test found an expected page after following a link.</li>
+<li>Does the application’s home page contain an image expected to be at the top of the page?</li>
+<li>Does each page of the website contain a footer area with links to the company contact page, privacy policy, and trademarks information?</li>
+<li>Does each page begin with heading text using the &lt;h1&gt; tag?  And, does each page have the correct text within that header?</li>
+</ul>
+<p>You may or may not need content tests.  If your page content is not likely to be
+affected then it may be more efficient to test page content manually.  If, for example,
+your application involves files being moved to different locations, content tests may prove valuable.</p>
+</div>
+<div class="section" id="testing-links">
+<h3>Testing Links<a class="headerlink" href="#testing-links" title="Permalink to this headline">¶</a></h3>
+<p>A frequent source of errors for web-sites is broken links or missing pages
+behind links.  Testing involves clicking each link
+and verifying the expected page.  If static links are infrequently changed then manual testing
+may be sufficient.  However if your web designers frequently alter links, or if files are occasionally
+relocated, link tests should be automated.</p>
+</div>
+<div class="section" id="function-tests">
+<h3>Function Tests<a class="headerlink" href="#function-tests" title="Permalink to this headline">¶</a></h3>
+<p>These would be tests of a specific function within your application, requiring
+some type of user input, and returning some type of results.  Often a function
+test will involve multiple pages with a form-based input page containing a
+collection of input fields, Submit and Cancel operations, and one or more
+response pages.  User input can be via text-input fields, check boxes, drop-down
+lists, or any other browser-supported input.</p>
+<p>Function tests are often the most complex tests you’ll automate, but are usually the most
+important.  Typical tests can be for login, registration to the site, user account operations,
+account settings changes, complex data retrieval operations, among others.  Function tests
+typically mirror the user-scenarios used to specify the features and design or your application.</p>
+</div>
+<div class="section" id="testing-dynamic-elements">
+<h3>Testing Dynamic Elements<a class="headerlink" href="#testing-dynamic-elements" title="Permalink to this headline">¶</a></h3>
+<p>Often a web page element has a unique identifier used to uniquely locate that
+element within the page.  Usually these are implemented using the html tag’s
+‘id’ attribute or its ‘name’ attribute.  These names can be a static, i.e
+unchanging, string constant.  They can also be dynamically generated values that
+vary each  instance of the page.  For example, some web servers might name a displayed
+document doc3861 one instance of a page, and ‘doc6148’ on a different instance of the
+page depending on what ‘document’ the user was retrieving.  A test script verifying that
+a document exists may not have a consistent identifier to use for locating that document.
+Often, dynamic elements with varying identifiers are on some type of result page
+based on a user action.  This though certainly depends on the function of the web application.</p>
+<p>Here’s an example.</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"true"</span> <span class="na">id=</span><span class="s">"addForm:_ID74:_ID75:0:_ID79:0:</span>
+<span class="s">    checkBox"</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>This shows an HTML tag for a check box. Its ID
+(addForm:_ID74:_ID75:0:_ID79:0:checkBox) is a dynamically generated value.
+The next time the same page is opened it will likely be a different value.</p>
+</div>
+<div class="section" id="ajax-tests">
+<h3>Ajax Tests<a class="headerlink" href="#ajax-tests" title="Permalink to this headline">¶</a></h3>
+<p>Ajax is a technology which supports dynamically changing user interface
+elements which can dynamically change without the browser having to reload
+the page, such as animation, RSS feeds, and real-time data updates among others.
+There’s a countless ways Ajax can be used to update elements on a web page.
+But, the easy way to think of this is that in Ajax-driven applications, data can
+retrieved from the application server and then displayed on the page without
+reloading the entire page.  Only a portion of the page, or strictly the element
+itself is reloaded.</p>
+</div>
+</div>
+<div class="section" id="validating-results">
+<h2>Validating Results<a class="headerlink" href="#validating-results" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="assert-vs-verify">
+<h3>Assert vs. Verify<a class="headerlink" href="#assert-vs-verify" title="Permalink to this headline">¶</a></h3>
+<p>When should you use an assert command and when should you use a verify command?
+This is up to you.  The difference is in what you want to happen when the check
+fails.  Do you want your test to terminate, or to continue and simply record that the check
+failed?</p>
+<p>Here’s the trade-off. If you use an assert, the test will stop at that point and
+not run any subsequent checks.  Sometimes, perhaps often, that is what you want.
+If the test fails you will immediately know the test did not pass.  Test engines
+such as TestNG and JUnit have plugins for commonly used development environments
+(Chap 5) which conveniently flag these tests as failed tests.  The advantage:
+you have an immediate visual of whether the checks
+passed.  The disadvantage:  when a check does fail, there are other checks
+which were never performed, so you have no information on their status.</p>
+<p>In contrast, verify commands will not terminate the test.  If your test uses
+only verify commands you are guaranteed (assuming no unexpected exceptions)
+the test will run to completion whether the checks find defects
+or not.  The disadvantage:  you have to do more work to examine your test
+results.  That is, you won’t get feedback from TestNG or JUnit.
+You will need to look at the results of a console printout or a log output.
+And you will need to take the time to look through
+this output every time you run your test.  If you are
+running hundreds of tests, each with its own log, this will be time-consuming,
+and the immediate feedback of asserts will be more appropriate.  Asserts are more
+commonly used than verifys due to their immediate feedback.</p>
+</div>
+<div class="section" id="trade-offs-asserttextpresent-assertelementpresent-asserttext">
+<h3>Trade-offs: <em>assertTextPresent</em>, <em>assertElementPresent</em>, <em>assertText</em><a class="headerlink" href="#trade-offs-asserttextpresent-assertelementpresent-asserttext" title="Permalink to this headline">¶</a></h3>
+<p>You should now be familiar with these commands, and the mechanics of using them.
+If not, please refer to Chapter 3 first.  When constructing your tests, you
+will need to decide</p>
+<ul class="simple">
+<li>Do I only check that the text exists on the page?  (<em>verify/assertTextPresent</em>)</li>
+<li>Do I only check that the HTML element exists on the page?  That is, the text, image, or other content is not to be checked, only the HTML tag is what is relevant. (<em>verify/assertElementPresent</em>)</li>
+<li>Must I test both, the element and its text content?  (<em>verify/assertText</em>)</li>
+</ul>
+<p>There is no right answer.  It depends on the requirements for your test.  Which, of course,
+depend on the requirements for the application you’re testing.
+If in doubt, use <em>assertText</em> since this is the strictest type of checkpoint.  You
+can always change it later but at least you won’t be missing any potential failures.</p>
+<p><em>Verify/assertText</em> is the <em>most specific test</em> type.  This can fail if either the HTML element (tag)
+OR the text is not what your test is expecting.
+Perhaps your web-designers are frequently changing the page and you don’t want your test to fail every time
+they do this because the changes themselves are expected periodically.  However, assume you still need to
+check that <em>something</em> is on the page, say a paragraph, or heading text, or an image.  In this case you
+can use <em>verify/assertElementPresent</em>.  It will ensure that a particular type of element exists
+(and if using XPath can ensure it exists relative to other objects within the page).  But you don’t
+care what the content is.  You only care that a specific element, say, an image, is at a specific location.</p>
+<p>Getting a feel for these types of decisions will come with time and a little experience.  They are
+easy concepts, and easy to change in your test.</p>
+</div>
+</div>
+<div class="section" id="location-strategies">
+<h2>Location Strategies<a class="headerlink" href="#location-strategies" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="choosing-a-location-strategy">
+<h3>Choosing a Location Strategy<a class="headerlink" href="#choosing-a-location-strategy" title="Permalink to this headline">¶</a></h3>
+<p>There are multiple ways of selecting an object
+on a page.  But what are the trade offs of each of these locator types?  Recall
+we can locate an object using</p>
+<ul class="simple">
+<li>the element’s ID</li>
+<li>the element’s name attribute</li>
+<li>an XPath statement</li>
+<li>by a links text</li>
+<li>document object model (DOM)</li>
+</ul>
+<p>Using an element ID or name locator is the most efficient in terms of test performance,
+and also makes your test code more readable, assuming the ID or name within the page source is well-named.
+XPath statements take longer to process since the browser must run its XPath processor.  XPath has
+been known to be especially slow in Internet Explorer version 7.  Locating via a link’s text is often
+convenient and performs well.  This technique is specific to links though.  Also,
+if the link text is likely to change frequently, locating by the &lt;a&gt; element
+would be the better choice.</p>
+<p>Sometimes though, you must use an XPath locator.  If the page source does not
+have an ID or name attribute you may have no choice but to use an XPath locator.
+(DOM locators are no longer commonly used since XPath can do everything they can and more.
+DOM locators are available simply to support legacy tests.)</p>
+<p>There is an advantage to using XPath that locating via ID or name
+attributes do not have. With XPath (and DOM) you can locate an object with
+respect to another object on the page.  For example, if there is a link
+that must occur within the second paragraph within a &lt;div&gt; section,
+you can use XPath to specify this.  With ID and name locators,
+you can only specify that they occur on the page that is, somewhere on the page.
+If you must test that an image displaying the company logo appears at
+the top of the page within a header section XPath may be the better locator.</p>
+</div>
+<div class="section" id="locating-dynamic-elements">
+<h3>Locating Dynamic Elements<a class="headerlink" href="#locating-dynamic-elements" title="Permalink to this headline">¶</a></h3>
+<p>As was described earlier in the section on types of tests, a dynamic element is a page element whose identifer varies with each instance of the page.  For example,</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"button"</span> <span class="na">id=</span><span class="s">"adminHomeForm"</span> <span class="na">onclick=</span><span class="s">"return oamSubmitForm('adminHomeForm',</span>
+<span class="s">    'adminHomeForm:_ID38');"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>View Archived Allocation Events<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+</div>
+<p>This HTML anchor tag defines a button with an ID attribute of “adminHomeForm”.
+It’s a fairly complex anchor tag when compared to most HTML tags, but it is still
+a static tag.  The HTML will be the same each time this page is loaded in the
+browser.  Its ID remains constant with all instances of this page. That is,
+when this page is displayed, this UI element will always have this Identifier.
+So, for your test script to click this button you simply need to use the following
+selenium command.</p>
+<div class="highlight-html"><div class="highlight"><pre>click       adminHomeForm
+</pre></div>
+</div>
+<p>Or, in Selenium 1.0</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="s">"adminHomeForm"</span><span class="o">);</span>
+</pre></div>
+</div>
+<p>Your application, however, may generate HTML
+dynamically where the identifier varies on different instances
+of the webpage.  For instance, HTML for a dynamic page element
+might look like this.</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"true"</span> <span class="na">id=</span><span class="s">"addForm:_ID74:_ID75:0:_ID79:0:checkBox"</span>
+    <span class="na">name=</span><span class="s">"addForm:_ID74:_ID75:0:_ID79:0:checkBox"</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>This defines a checkbox. Its ID and name  attributes
+(both addForm:_ID74:_ID75:0:_ID79:0:checkBox) are dynamically generated values.
+In this case, using a standard locator would look something like the following.</p>
+<div class="highlight-html"><div class="highlight"><pre>click       addForm:_ID74:_ID75:0:_ID79:0:checkBox
+</pre></div>
+</div>
+<p>Or, again in Selenium-RC</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="s">"addForm:_ID74:_ID75:0:_ID79:0:checkBox"</span><span class="o">);</span>
+</pre></div>
+</div>
+<p>Given the dynamically generated Identifier, this approach would not work.
+The next time this page is loaded the Identifier will be a different value
+from the one used in the Selenium command and therefore, will not be found.
+The click operation will fail with an “element not found” error.</p>
+<p>To correct this, a simple solution would be to just use an XPath locator rather than
+trying to use an ID locator.  So, for the checkbox you can simply use</p>
+<div class="highlight-html"><div class="highlight"><pre>click       //input
+</pre></div>
+</div>
+<p>Or, if it is not the first input element on the page (which it likely is not)
+try a more detailed XPath statement.</p>
+<div class="highlight-html"><div class="highlight"><pre>click       //input[3]
+</pre></div>
+</div>
+<p>Or</p>
+<div class="highlight-html"><div class="highlight"><pre>click       //div/p[2]/input[3]
+</pre></div>
+</div>
+<p>If however, you do need to use the ID to locate the element, a different solution
+is needed.  You can capture this ID from the website before you use it in a Selenium
+command. It can be done like this.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">String</span><span class="o">[]</span> <span class="n">checkboxids</span>  <span class="o">=</span> <span class="n">selenium</span><span class="o">.</span><span class="na">getAllFields</span><span class="o">();</span> <span class="c1">// Collect all input IDs on page.</span>
+
+<span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="nl">checkboxid:</span><span class="n">checkboxids</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">checkboxid</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"addForm"</span><span class="o">))</span> <span class="o">{</span>
+        <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">checkboxid</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>This approach will work if there is only one check box whose ID contains the text
+‘addForm’.</p>
+</div>
+<div class="section" id="locating-ajax-elements">
+<h3>Locating Ajax Elements<a class="headerlink" href="#locating-ajax-elements" title="Permalink to this headline">¶</a></h3>
+<p>As was presented in the Test Types subsection above, a page element implemented with Ajax
+is an element that
+can be dynamically refreshed without having to refresh the entire page.
+The best way to locate and verify an Ajax element is to use the Selenium 2.0 WebDriver API.
+It was specifically designed to address testing of Ajax elements where Selenium 1 has some
+limitations.</p>
+<p>In Selenim 2.0 you use the waitFor() method to wait for a page element to become available.
+The parameter is a By object which is how WebDriver implements locators.  This is explained in detail in the WebDriver chapters.</p>
+<p>To do this with Selenium 1.0 (Selenium-RC) a bit more coding is involved, but it
+isn’t difficult.  The approach is to check for the element, if it’s not available
+wait for a predefined period and then again recheck it.  This is then executed with a loop with a predetermined time-out terminating the loop if the element isn’t found.</p>
+<p>Let’s consider a page which brings a link (link=ajaxLink) on click
+of a button on page (without refreshing the page)  This could be handled
+by Selenium using a <em>for</em> loop.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="c1">// Loop initialization.</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">second</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;;</span> <span class="n">second</span><span class="o">++)</span> <span class="o">{</span>
+
+     <span class="c1">// If loop is reached 60 seconds then break the loop.</span>
+     <span class="k">if</span> <span class="o">(</span><span class="n">second</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="o">)</span> <span class="k">break</span><span class="o">;</span>
+
+     <span class="c1">// Search for element "link=ajaxLink" and if available then break loop.</span>
+     <span class="k">try</span> <span class="o">{</span> <span class="k">if</span> <span class="o">(</span><span class="n">selenium</span><span class="o">.</span><span class="na">isElementPresent</span><span class="o">(</span><span class="s">"link=ajaxLink"</span><span class="o">))</span> <span class="k">break</span><span class="o">;</span> <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{}</span>
+
+     <span class="c1">// Pause for 1 second.</span>
+     <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">1000</span><span class="o">);</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>This certainly isn’t the only solution.  Ajax is a common topic in the user forum and we
+recommend searching previous discussions to see what others have done.</p>
+</div>
+</div>
+<div class="section" id="wrapping-selenium-calls">
+<h2>Wrapping Selenium Calls<a class="headerlink" href="#wrapping-selenium-calls" title="Permalink to this headline">¶</a></h2>
+<p>As with any programming, you will want to use utility functions to handle code
+that would otherwise be duplicated throughout your tests.  One way to prevent this
+is to wrap frequently used selenium calls with functions or class methods of your
+own design.  For example, many tests will frequently click on a page element
+and wait for page to load multiple times within a test.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">elementLocator</span><span class="o">);</span>
+<span class="n">selenium</span><span class="o">.</span><span class="na">waitForPageToLoad</span><span class="o">(</span><span class="n">waitPeriod</span><span class="o">);</span>
+</pre></div>
+</div>
+<p>Instead of duplicating this code you    could write a wrapper method that performs
+both functions.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Clicks and Waits for page to load.</span>
+<span class="cm"> *</span>
+<span class="cm"> * param elementLocator</span>
+<span class="cm"> * param waitPeriod</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">clickAndWait</span><span class="o">(</span><span class="n">String</span> <span class="n">elementLocator</span><span class="o">,</span> <span class="n">String</span> <span class="n">waitPeriod</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">elementLocator</span><span class="o">);</span>
+        <span class="n">selenium</span><span class="o">.</span><span class="na">waitForPageToLoad</span><span class="o">(</span><span class="n">waitPeriod</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<div class="section" id="safe-operations-for-element-presence">
+<h3>‘Safe Operations’ for Element Presence<a class="headerlink" href="#safe-operations-for-element-presence" title="Permalink to this headline">¶</a></h3>
+<p>Another common usage of wrapping Selenium methods is to check for presence of
+an element on page before carrying out some operation. This is sometimes called
+a ‘safe operation’.  For instance, the following method could be used to implement
+a safe operation that depends on an expected element being present.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Selenum-RC -- Clicks on element only if it is available on page.</span>
+<span class="cm"> *</span>
+<span class="cm"> * param elementLocator</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">safeClick</span><span class="o">(</span><span class="n">String</span> <span class="n">elementLocator</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">selenium</span><span class="o">.</span><span class="na">isElementPresent</span><span class="o">(</span><span class="n">elementLocator</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">elementLocator</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="c1">// Using the TestNG API for logging</span>
+                <span class="n">Reporter</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="s">"Element: "</span> <span class="o">+</span><span class="n">elementLocator</span><span class="o">+</span> <span class="s">", is not available on page - "</span>
+                                <span class="o">+</span><span class="n">selenium</span><span class="o">.</span><span class="na">getLocation</span><span class="o">());</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>This example uses the Selenium 1 API but Selenium 2 also supports this.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Selenium-WebDriver -- Clicks on element only if it is available on page.</span>
+<span class="cm"> *</span>
+<span class="cm"> * param elementLocator</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">safeClick</span><span class="o">(</span><span class="n">String</span> <span class="n">elementLocator</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">WebElement</span> <span class="n">webElement</span> <span class="o">=</span> <span class="n">getDriver</span><span class="o">().</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">XXXX</span><span class="o">(</span><span class="n">elementLocator</span><span class="o">));</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">webElement</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">elementLocator</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="c1">// Using the TestNG API for logging</span>
+                <span class="n">Reporter</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="s">"Element: "</span> <span class="o">+</span><span class="n">elementLocator</span><span class="o">+</span> <span class="s">", is not available on page - "</span>
+                                <span class="o">+</span> <span class="n">getDriver</span><span class="o">().</span><span class="na">getUrl</span><span class="o">());</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>In this second example ‘XXXX’ is simply a placeholder for one of the multiple location
+methods that can be called here.</p>
+<p>Using safe methods is up to the test developer’s discretion.
+Hence, if test execution is to be continued, even in the wake of missing elements
+on the page, then safe methods could be used, while posting a message to a log about
+the missing element. This, essentially, implements a ‘verify’ with a reporting
+mechanism as opposed to an abortive assert.  But if element must be available on page in order
+to be able to carry out further operations (i.e. login button on home page
+of a portal) then this safe method technique should not be used.</p>
+</div>
+</div>
+<div class="section" id="ui-mapping">
+<h2>UI Mapping<a class="headerlink" href="#ui-mapping" title="Permalink to this headline">¶</a></h2>
+<p>A UI map is a mechanism that stores all the locators for a test suite in one place
+for easy modification when identifiers or paths to UI elements change in
+the AUT.  The test script then uses the UI Map for locating
+the elements to be tested.  Basically, a UI map is a repository of test script objects
+that correspond to UI elements of the application being tested.</p>
+<p>What makes a UI map helpful?  Its primary purpose is making test script management
+much easier.  When a locator needs to be edited, there is a central location for easily
+finding that object, rather than having to search through test script code.  Also, it allows
+changing the Identifier in a single place, rather than having to make the change in multiple
+places within a test script, or for that matter, in multiple test scripts.</p>
+<p>To summarize, a UI map has two significant advantages.</p>
+<ul class="simple">
+<li>Using a centralized location for UI objects instead of having them scattered
+throughout the script.  This makes script maintenance more efficient.</li>
+<li>Cryptic HTML Identifiers and names can be given more human-readable names improving the
+readability of test scripts.</li>
+</ul>
+<p>Consider the following, difficult to understand, example (in java).</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">testNew</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">open</span><span class="o">(</span><span class="s">"http://www.test.com"</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">type</span><span class="o">(</span><span class="s">"loginForm:tbUsername"</span><span class="o">,</span> <span class="s">"xxxxxxxx"</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="s">"loginForm:btnLogin"</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="s">"adminHomeForm:_activitynew"</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">waitForPageToLoad</span><span class="o">(</span><span class="s">"30000"</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="s">"addEditEventForm:_IDcancel"</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">waitForPageToLoad</span><span class="o">(</span><span class="s">"30000"</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="s">"adminHomeForm:_activityold"</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">waitForPageToLoad</span><span class="o">(</span><span class="s">"30000"</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>This script would be hard to follow for anyone not familiar
+with the AUT’s page source. Even regular users of the application
+might have difficulty understanding what thus script does. A better
+script could be:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">testNew</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">open</span><span class="o">(</span><span class="s">"http://www.test.com"</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">type</span><span class="o">(</span><span class="n">admin</span><span class="o">.</span><span class="na">username</span><span class="o">,</span> <span class="s">"xxxxxxxx"</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">admin</span><span class="o">.</span><span class="na">loginbutton</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">admin</span><span class="o">.</span><span class="na">events</span><span class="o">.</span><span class="na">createnewevent</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">waitForPageToLoad</span><span class="o">(</span><span class="s">"30000"</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">admin</span><span class="o">.</span><span class="na">events</span><span class="o">.</span><span class="na">cancel</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">waitForPageToLoad</span><span class="o">(</span><span class="s">"30000"</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">admin</span><span class="o">.</span><span class="na">events</span><span class="o">.</span><span class="na">viewoldevents</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">waitForPageToLoad</span><span class="o">(</span><span class="s">"30000"</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Now, using some comments and whitespace along with the UI Map identifiers makes
+a very readable script.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">testNew</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+
+             <span class="c1">// Open app url.</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">open</span><span class="o">(</span><span class="s">"http://www.test.com"</span><span class="o">);</span>
+
+             <span class="c1">// Provide admin username.</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">type</span><span class="o">(</span><span class="n">admin</span><span class="o">.</span><span class="na">username</span><span class="o">,</span> <span class="s">"xxxxxxxx"</span><span class="o">);</span>
+
+             <span class="c1">// Click on Login button.</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">admin</span><span class="o">.</span><span class="na">loginbutton</span><span class="o">);</span>
+
+             <span class="c1">// Click on Create New Event button.</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">admin</span><span class="o">.</span><span class="na">events</span><span class="o">.</span><span class="na">createnewevent</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">waitForPageToLoad</span><span class="o">(</span><span class="s">"30000"</span><span class="o">);</span>
+
+             <span class="c1">// Click on Cancel button.</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">admin</span><span class="o">.</span><span class="na">events</span><span class="o">.</span><span class="na">cancel</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">waitForPageToLoad</span><span class="o">(</span><span class="s">"30000"</span><span class="o">);</span>
+
+             <span class="c1">// Click on View Old Events button.</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="n">admin</span><span class="o">.</span><span class="na">events</span><span class="o">.</span><span class="na">viewoldevents</span><span class="o">);</span>
+             <span class="n">selenium</span><span class="o">.</span><span class="na">waitForPageToLoad</span><span class="o">(</span><span class="s">"30000"</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>There are various ways a UI Map can be implemented.  One could create a class
+or struct which only stores public String variables each storing a locator.
+Alternatively, a text file storing key value pairs could be used.  In Java, a properties file containing key/value pairs is probably best method.</p>
+<p>Consider a property file <em>prop.properties</em> which assigns as ‘aliases’
+reader-friendly identifiers for UI elements from the previous example.</p>
+<div class="highlight-text"><div class="highlight"><pre>admin.username = loginForm:tbUsername
+admin.loginbutton = loginForm:btnLogin
+admin.events.createnewevent = adminHomeForm:_activitynew
+admin.events.cancel = addEditEventForm:_IDcancel
+admin.events.viewoldevents = adminHomeForm:_activityold
+</pre></div>
+</div>
+<p>The locators will still refer to html objects, but we have introduced a layer
+of abstraction between the test script and the UI elements.
+Values are read from the properties file and used in the Test Class to
+implement the UI
+Map. For more on Java properties files refer to the following <a class="reference external" href="http://java.sun.com/docs/books/tutorial/essential/environment/properties.html">link</a>.</p>
+</div>
+<div class="section" id="page-object-design-pattern">
+<h2>Page Object Design Pattern<a class="headerlink" href="#page-object-design-pattern" title="Permalink to this headline">¶</a></h2>
+<p>Page Object is a Design Pattern which has become popular in test automation
+for enhancing test maintenance and reducing code duplication.  A page object
+is an object-oriented class that serves as an interface to a page of your AUT.
+The tests then use the methods of this page object class whenever they need to
+interact with that page of the UI.  The benefit is that if the UI changes for
+the page, the tests themselves don’t need to change, only the code within the page
+object needs to change.  Subsequently all changes to support that new UI are located in one place.</p>
+<p>The Page Object Design Pattern provides the following
+advantages.</p>
+<p>1. There is clean separation between test code and page specific code such
+as locators (or their use if you’re using a UI map) and layout.</p>
+<p>2. There is single repository for the services or operations offered by the
+page rather than having these services scattered through out the tests.</p>
+<p>In both cases this allows any modifications required due to UI changes to all
+be made in one place.  Useful information on this technique can be found on
+numerous blogs as this ‘test design pattern’ is becoming widely used.
+<em>We encourage the reader who wishes to know more to search the internet for blogs on this subject.</em>
+Many have written on this design pattern and can provide useful tips beyond the scope
+of this user guide.  To get you started, though, we’ll illustrate page objects with a simple example.</p>
+<p>First, consider an example, typical of test automation, that does not use a page object.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="cm">/***</span>
+<span class="cm"> * Tests login feature</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Login</span> <span class="o">{</span>
+
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testLogin</span><span class="o">()</span> <span class="o">{</span>
+                <span class="n">selenium</span><span class="o">.</span><span class="na">type</span><span class="o">(</span><span class="s">"inputBox"</span><span class="o">,</span> <span class="s">"testUser"</span><span class="o">);</span>
+                <span class="n">selenium</span><span class="o">.</span><span class="na">type</span><span class="o">(</span><span class="s">"password"</span><span class="o">,</span> <span class="s">"my supersecret password"</span><span class="o">);</span>
+                <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="s">"sign-in"</span><span class="o">);</span>
+                <span class="n">selenium</span><span class="o">.</span><span class="na">waitForPageToLoad</span><span class="o">(</span><span class="s">"PageWaitPeriod"</span><span class="o">);</span>
+                <span class="n">Assert</span><span class="o">.</span><span class="na">assertTrue</span><span class="o">(</span><span class="n">selenium</span><span class="o">.</span><span class="na">isElementPresent</span><span class="o">(</span><span class="s">"compose button"</span><span class="o">),</span>
+                                <span class="s">"Login was unsuccessful"</span><span class="o">);</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>There are two problems with this approach.</p>
+<ol class="arabic simple">
+<li>There is no separation between the test method and the AUTs locators (IDs in this example); both are intertwined in a single method.  If the AUT’s UI changes its identifiers, layout, or how a login is input and processed, the test itself must change.</li>
+<li>The id-locators would be spread in multiple tests, all tests that had to use this login page.</li>
+</ol>
+<p>Applying the page object techniques this example could be rewritten like this in the following example of a page object for a Sign-in page.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Page Object encapsulates the Sign-in page.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SignInPage</span> <span class="o">{</span>
+
+        <span class="kd">private</span> <span class="n">Selenium</span> <span class="n">selenium</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">SignInPage</span><span class="o">(</span><span class="n">Selenium</span> <span class="n">selenium</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">this</span><span class="o">.</span><span class="na">selenium</span> <span class="o">=</span> <span class="n">selenium</span><span class="o">;</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">selenium</span><span class="o">.</span><span class="na">getTitle</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"Sign in page"</span><span class="o">))</span> <span class="o">{</span>
+                        <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalStateException</span><span class="o">(</span><span class="s">"This is not sign in page, current page is: "</span>
+                                        <span class="o">+</span><span class="n">selenium</span><span class="o">.</span><span class="na">getLocation</span><span class="o">());</span>
+                <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="cm">/**</span>
+<span class="cm">         * Login as valid user</span>
+<span class="cm">         *</span>
+<span class="cm">         * @param userName</span>
+<span class="cm">         * @param password</span>
+<span class="cm">         * @return HomePage object</span>
+<span class="cm">         */</span>
+        <span class="kd">public</span> <span class="n">HomePage</span> <span class="nf">loginValidUser</span><span class="o">(</span><span class="n">String</span> <span class="n">userName</span><span class="o">,</span> <span class="n">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">selenium</span><span class="o">.</span><span class="na">type</span><span class="o">(</span><span class="s">"usernamefield"</span><span class="o">,</span> <span class="n">userName</span><span class="o">);</span>
+                <span class="n">selenium</span><span class="o">.</span><span class="na">type</span><span class="o">(</span><span class="s">"passwordfield"</span><span class="o">,</span> <span class="n">password</span><span class="o">);</span>
+                <span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="s">"sign-in"</span><span class="o">);</span>
+                <span class="n">selenium</span><span class="o">.</span><span class="na">waitForPageToLoad</span><span class="o">(</span><span class="s">"waitPeriod"</span><span class="o">);</span>
+
+                <span class="k">return</span> <span class="k">new</span> <span class="nf">HomePage</span><span class="o">(</span><span class="n">selenium</span><span class="o">);</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>and page object for a Home page could look like this.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Page Object encapsulates the Home Page</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="o">{</span>
+
+        <span class="kd">private</span> <span class="n">Selenium</span> <span class="n">selenium</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">HomePage</span><span class="o">(</span><span class="n">Selenium</span> <span class="n">selenium</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">selenium</span><span class="o">.</span><span class="na">getTitle</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"Home Page of logged in user"</span><span class="o">))</span> <span class="o">{</span>
+                        <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalStateException</span><span class="o">(</span><span class="s">"This is not Home Page of logged in user, current page"</span> <span class="o">+</span>
+                                        <span class="s">"is: "</span> <span class="o">+</span><span class="n">selenium</span><span class="o">.</span><span class="na">getLocation</span><span class="o">());</span>
+                <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="n">HomePage</span> <span class="nf">manageProfile</span><span class="o">()</span> <span class="o">{</span>
+                <span class="c1">// Page encapsulation to manage profile functionality</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nf">HomePage</span><span class="o">(</span><span class="n">selenium</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="cm">/*More methods offering the services represented by Home Page</span>
+<span class="cm">        of Logged User. These methods in turn might return more Page Objects</span>
+<span class="cm">        for example click on Compose mail button could return ComposeMail class object*/</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>So now, the login test would use these two page objects as follows.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="cm">/***</span>
+<span class="cm"> * Tests login feature</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestLogin</span> <span class="o">{</span>
+
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testLogin</span><span class="o">()</span> <span class="o">{</span>
+                <span class="n">SignInPage</span> <span class="n">signInPage</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SignInPage</span><span class="o">(</span><span class="n">selenium</span><span class="o">);</span>
+                <span class="n">HomePage</span> <span class="n">homePage</span> <span class="o">=</span> <span class="n">signInPage</span><span class="o">.</span><span class="na">loginValidUser</span><span class="o">(</span><span class="s">"userName"</span><span class="o">,</span> <span class="s">"password"</span><span class="o">);</span>
+                <span class="n">Assert</span><span class="o">.</span><span class="na">assertTrue</span><span class="o">(</span><span class="n">selenium</span><span class="o">.</span><span class="na">isElementPresent</span><span class="o">(</span><span class="s">"compose button"</span><span class="o">),</span>
+                                <span class="s">"Login was unsuccessful"</span><span class="o">);</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>There is a lot of flexibility in how the page objects may be designed, but there are a few basic rules for getting the desired maintainability of your test code.
+Page objects themselves should never be make verifications or assertions. This is part of your test and should always be within the test’s code, never in an page object. The page object will contain the representation of the page, and the services the page provides via methods but no code related to what is being tested should be within the page object.</p>
+<p>There is one, single, verification which can, and should, be within the page object and that is to verify that the page, and possibly critical elements on the page, were loaded correctly.  This verification should be done while instantiating the page object. In the examples above, both the SignInPage and HomePage constructors check that the expected page is available and ready for requests from the test.</p>
+<p>A page object does not necessarily need to represent an entire page. The Page Object design pattern could be used to represent components on a page.  If a page in the AUT has multiple components, it may improved maintainability if there was a separate page object for each component.</p>
+<p>There are other design patterns that also may be used in testing.  Some use a Page Factory for instantiating their page objects.  Discussing all of these is beyond the scope of this user guide.  Here, we merely want to introduce the concepts to make the reader aware of some of the things that can be done.  As was mentioned earlier, many have blogged on this topic and we encourage the reader to search for blogs on these topics.</p>
+</div>
+<div class="section" id="data-driven-testing">
+<h2>Data Driven Testing<a class="headerlink" href="#data-driven-testing" title="Permalink to this headline">¶</a></h2>
+<p>Data Driven Testing refers to using the same test (or tests) multiple times with varying data.  These data sets are often from external files i.e. .csv file, text file, or perhaps loaded from a database. Data driven testing is a commonly used test automation technique used to validate an application against many varying input.  When the test is designed for varying data, the input data can expand, essentially creating additional tests, without requiring changes to the test code.</p>
+<p><strong>In Python:</strong></p>
+<div class="highlight-python" style="display: none;"><div class="highlight"><pre><span class="c"># Collection of String values</span>
+<span class="n">source</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"input_file.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="n">source</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="c"># Execute For loop for each String in the values array</span>
+<span class="k">for</span> <span class="n">search</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+    <span class="n">sel</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">"/"</span><span class="p">)</span>
+    <span class="n">sel</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="s">"q"</span><span class="p">,</span> <span class="n">search</span><span class="p">)</span>
+    <span class="n">sel</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="s">"btnG"</span><span class="p">)</span>
+    <span class="n">sel</span><span class="o">.</span><span class="n">waitForPageToLoad</span><span class="p">(</span><span class="s">"30000"</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">failUnless</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">is_text_present</span><span class="p">(</span><span class="s">"Results * for "</span> <span class="o">+</span> <span class="n">search</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The Python script above opens a text file.  This file contains a different search string on each line. The code then saves this in an array of strings, and iterates over the array doing a search and assert on each string.</p>
+<p>This is a very basic example, but the idea is to show that running a test with varying data can be done easily with a programming or scripting
+language.  For more examples, refer to the <a class="reference external" href="http://wiki.openqa.org/pages/viewpage.action?pageID=21430298">Selenium RC wiki</a> for examples of reading data from a spreadsheet or for using the data provider capabilities of TestNG.  Additionally, this is a well-known topic among test automation professionals including those who don’t use Selenium so searching the internet on “data-driven testing” should reveal many blogs on this topic.</p>
+</div>
+<div class="section" id="database-validation">
+<h2>Database Validation<a class="headerlink" href="#database-validation" title="Permalink to this headline">¶</a></h2>
+<p>Another common type of testing is to compare data in the UI against the data actually stored in the AUT’s database.  Since you can also do database queries from a programming language, assuming you have database support functions, you can use them to retrieve data and then use the data to verify what’s displayed by the AUT is correct.</p>
+<p>Consider the example of a registered email address to be retrieved from a database and then later compared against the UI. An example of establishing a DB connection and retrieving data from the DB could look like this.</p>
+<p><strong>In Java:</strong></p>
+<div class="highlight-java"><div class="highlight"><pre><span class="c1">// Load Microsoft SQL Server JDBC driver.</span>
+<span class="n">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"com.microsoft.sqlserver.jdbc.SQLServerDriver"</span><span class="o">);</span>
+
+<span class="c1">// Prepare connection url.</span>
+<span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"jdbc:sqlserver://192.168.1.180:1433;DatabaseName=TEST_DB"</span><span class="o">;</span>
+
+<span class="c1">// Get connection to DB.</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Connection</span> <span class="n">con</span> <span class="o">=</span>
+<span class="n">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="s">"username"</span><span class="o">,</span> <span class="s">"password"</span><span class="o">);</span>
+
+<span class="c1">// Create statement object which would be used in writing DDL and DML</span>
+<span class="c1">// SQL statement.</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Statement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">createStatement</span><span class="o">();</span>
+
+<span class="c1">// Send SQL SELECT statements to the database via the Statement.executeQuery</span>
+<span class="c1">// method which returns the requested information as rows of data in a</span>
+<span class="c1">// ResultSet object.</span>
+
+<span class="n">ResultSet</span> <span class="n">result</span> <span class="o">=</span>  <span class="n">stmt</span><span class="o">.</span><span class="na">executeQuery</span>
+<span class="o">(</span><span class="s">"select top 1 email_address from user_register_table"</span><span class="o">);</span>
+
+<span class="c1">// Fetch value of "email_address" from "result" object.</span>
+<span class="n">String</span> <span class="n">emailaddress</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"email_address"</span><span class="o">);</span>
+
+<span class="c1">// Use the emailAddress value to login to application.</span>
+<span class="n">selenium</span><span class="o">.</span><span class="na">type</span><span class="o">(</span><span class="s">"userID"</span><span class="o">,</span> <span class="n">emailaddress</span><span class="o">);</span>
+<span class="n">selenium</span><span class="o">.</span><span class="na">type</span><span class="o">(</span><span class="s">"password"</span><span class="o">,</span> <span class="n">secretPassword</span><span class="o">);</span>
+<span class="n">selenium</span><span class="o">.</span><span class="na">click</span><span class="o">(</span><span class="s">"loginButton"</span><span class="o">);</span>
+<span class="n">selenium</span><span class="o">.</span><span class="na">waitForPageToLoad</span><span class="o">(</span><span class="n">timeOut</span><span class="o">);</span>
+<span class="n">Assert</span><span class="o">.</span><span class="na">assertTrue</span><span class="o">(</span><span class="n">selenium</span><span class="o">.</span><span class="na">isTextPresent</span><span class="o">(</span><span class="s">"Welcome back"</span> <span class="o">+</span><span class="n">emailaddress</span><span class="o">),</span> <span class="s">"Unable to log in for user"</span> <span class="o">+</span><span class="n">emailaddress</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>This is a simple Java example of data retrieval from a database.</p>

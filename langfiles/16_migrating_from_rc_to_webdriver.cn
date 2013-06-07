@@ -1,0 +1,158 @@
+#:page_title
+"从Selenium RC向Selenium WebDriver迁移"
+
+#:previous_link
+"15_locating_techniques"
+
+#:previous_title
+"Locating Techniques"
+
+#:next_link
+""
+
+#:next_title
+""
+
+#:side
+:list
+<li><a class="reference internal" href="#">Migrating From Selenium RC to Selenium WebDriver</a><ul class="treeview">
+<li><a class="reference internal" href="#how-to-migrate-to-selenium-webdriver">How to Migrate to Selenium WebDriver</a></li>
+<li><a class="reference internal" href="#why-migrate-to-webdriver">Why Migrate to WebDriver</a></li>
+<li><a class="reference internal" href="#before-starting">Before Starting</a></li>
+<li><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li><a class="reference internal" href="#next-steps">Next Steps</a></li>
+<li class="expandable lastExpandable"><div class="hitarea expandable-hitarea lastExpandable-hitarea"></div><a class="reference internal" href="#common-problems">Common Problems</a><ul class="treeview" style="display: none;">
+<li><a class="reference internal" href="#clicking-and-typing-is-more-complete">Clicking and Typing is More Complete</a></li>
+<li><a class="reference internal" href="#waitforpagetoload-returns-too-soon">WaitForPageToLoad Returns Too Soon</a></li>
+<li><a class="reference internal" href="#finding-by-xpath-or-css-selectors-doesn-t-always-work-but-it-does-in-selenium-1">Finding By XPath or CSS Selectors Doesn’t Always Work, But It Does In Selenium 1</a></li>
+<li><a class="reference internal" href="#there-is-no-browserbot">There is No Browserbot</a></li>
+<li class="last"><a class="reference internal" href="#executing-javascript-doesn-t-return-anything">Executing Javascript Doesn’t Return Anything</a></li>
+</ul>
+
+#:body
+:body
+<h1>Migrating From Selenium RC to Selenium WebDriver<a class="headerlink" href="#migrating-from-selenium-rc-to-selenium-webdriver" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="how-to-migrate-to-selenium-webdriver">
+<span id="migrating-to-webdriver-reference"></span><h2>How to Migrate to Selenium WebDriver<a class="headerlink" href="#how-to-migrate-to-selenium-webdriver" title="Permalink to this headline">¶</a></h2>
+<p>A common question when adopting Selenium 2 is what’s the correct thing to do when adding new tests to an existing set of tests? Users who are new to the framework can begin by using the new WebDriver APIs for writing their tests. But what of users who already have suites of existing tests? This guide is designed to demonstrate how to migrate your existing tests to the new APIs, allowing all new tests to be written using the new features offered by WebDriver.</p>
+<p>The method presented here describes a piecemeal migration to the WebDriver APIs without needing to rework everything in one massive push. This means that you can allow more time for migrating your existing tests, which may make it easier for you to decide where to spend your effort.</p>
+<p>This guide is written using Java, because this has the best support for making the migration. As we provide better tools for other languages, this guide shall be expanded to include those languages.</p>
+</div>
+<div class="section" id="why-migrate-to-webdriver">
+<h2>Why Migrate to WebDriver<a class="headerlink" href="#why-migrate-to-webdriver" title="Permalink to this headline">¶</a></h2>
+<p>Moving a suite of tests from one API to another API requires an enormous amount of effort. Why would you and your team consider making this move? Here are some reasons why you should consider migrating your Selenium Tests to use WebDriver.</p>
+<ul class="simple">
+<li>Smaller, compact API. WebDriver’s API is more Object Oriented than the original Selenium RC API. This can make it easier to work with.</li>
+<li>Better emulation of user interactions. Where possible, WebDriver makes use of native events in order to interact with a web page. This more closely mimics the way that your users work with your site and apps. In addition, WebDriver offers the advanced user interactions APIs which allow you to model complex interactions with your site.</li>
+<li>Support by browser vendors. Opera, Mozilla and Google are all active participants in WebDriver’s development, and each have engineers working to improve the framework. Often, this means that support for WebDriver is baked into the browser itself: your tests run as fast and as stably as possible.</li>
+</ul>
+</div>
+<div class="section" id="before-starting">
+<h2>Before Starting<a class="headerlink" href="#before-starting" title="Permalink to this headline">¶</a></h2>
+<p>In order to make the process of migrating as painless as possible, make sure that all your tests run properly with the latest Selenium release. This may sound obvious, but it’s best to have it said!</p>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>The first step when starting the migration is to change how you obtain your instance of Selenium. When using Selenium RC, this is done like so:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Selenium</span> <span class="n">selenium</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultSelenium</span><span class="o">(</span>
+    <span class="s">"localhost"</span><span class="o">,</span> <span class="mi">4444</span><span class="o">,</span> <span class="s">"*firefox"</span><span class="o">,</span> <span class="s">"http://www.yoursite.com"</span><span class="o">);</span>
+<span class="n">selenium</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</pre></div>
+</div>
+<p>This should be replaced like so:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">WebDriver</span> <span class="n">driver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxDriver</span><span class="o">();</span>
+<span class="n">Selenium</span> <span class="n">selenium</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WebDriverBackedSelenium</span><span class="o">(</span><span class="n">driver</span><span class="o">,</span> <span class="s">"http://www.yoursite.com"</span><span class="o">);</span>
+</pre></div>
+</div>
+<p>Once you’ve done this, run your existing tests. This will give you a fair idea of how much work needs to be done. The Selenium emulation is good, but it’s not completely perfect, so it’s completely normal for there to be some bumps and hiccups.</p>
+</div>
+<div class="section" id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p>Once your tests execute without errors, the next stage is to migrate the actual test code to use the WebDriver APIs. Depending on how well abstracted your code is, this might be a short process or a long one. In either case, the approach is the same and can be summed up simply: modify code to use the new API when you come to edit it.</p>
+<p>If you need to extract the underlying WebDriver implementation from the Selenium instance, you can simply cast it to WrapsDriver:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">WebDriver</span> <span class="n">driver</span> <span class="o">=</span> <span class="o">((</span><span class="n">WrapsDriver</span><span class="o">)</span> <span class="n">selenium</span><span class="o">).</span><span class="na">getWrappedDriver</span><span class="o">();</span>
+</pre></div>
+</div>
+<p>This allows you to continue passing the Selenium instance around as normal, but to unwrap the WebDriver instance as required.</p>
+<p>At some point, you’re codebase will mostly be using the newer APIs. At this point, you can flip the relationship, using WebDriver throughout and instantiating a Selenium instance on demand:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Selenium</span> <span class="n">selenium</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WebDriverBackedSelenium</span><span class="o">(</span><span class="n">driver</span><span class="o">,</span> <span class="n">baseUrl</span><span class="o">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="common-problems">
+<h2>Common Problems<a class="headerlink" href="#common-problems" title="Permalink to this headline">¶</a></h2>
+<p>Fortunately, you’re not the first person to go through this migration, so here are some common problems that others have seen, and how to solve them.</p>
+<div class="section" id="clicking-and-typing-is-more-complete">
+<h3>Clicking and Typing is More Complete<a class="headerlink" href="#clicking-and-typing-is-more-complete" title="Permalink to this headline">¶</a></h3>
+<p>A common pattern in a Selenium RC test is to see something like:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">selenium</span><span class="o">.</span><span class="na">type</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"exciting tex"</span><span class="o">);</span>
+<span class="n">selenium</span><span class="o">.</span><span class="na">keyDown</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"t"</span><span class="o">);</span>
+<span class="n">selenium</span><span class="o">.</span><span class="na">keyPress</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"t"</span><span class="o">);</span>
+<span class="n">selenium</span><span class="o">.</span><span class="na">keyUp</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"t"</span><span class="o">);</span>
+</pre></div>
+</div>
+<p>This relies on the fact that “type” simply replaces the content of the identified element without also firing all the events that would normally be fired if a user interacts with the page. The final direct invocations of “key*” cause the JS handlers to fire as expected.</p>
+<p>When using the WebDriverBackedSelenium, the result of filling in the form field would be “exciting texttt”: not what you’d expect! The reason for this is that WebDriver more accurately emulates user behavior, and so will have been firing events all along.</p>
+<p>This same fact may sometimes cause a page load to fire earlier than it would do in a Selenium 1 test. You can tell that this has happened if a “StaleElementException” is thrown by WebDriver.</p>
+</div>
+<div class="section" id="waitforpagetoload-returns-too-soon">
+<h3>WaitForPageToLoad Returns Too Soon<a class="headerlink" href="#waitforpagetoload-returns-too-soon" title="Permalink to this headline">¶</a></h3>
+<p>Discovering when a page load is complete is a tricky business. Do we mean “when the load event fires”, “when all AJAX requests are complete”, “when there’s no network traffic”, “when document.readyState has changed” or something else entirely?</p>
+<p>WebDriver attempts to simulate the original Selenium behavior, but this doesn’t always work perfectly for various reasons. The most common reason is that it’s hard to tell the difference between a page load not having started yet, and a page load having completed between method calls. This sometimes means that control is returned to your test before the page has finished (or even started!) loading.</p>
+<p>The solution to this is to wait on something specific. Commonly, this might be for the element you want to interact with next, or for some Javascript variable to be set to a specific value. An example would be:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Wait</span><span class="o">&lt;</span><span class="n">WebDriver</span><span class="o">&gt;</span> <span class="n">wait</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WebDriverWait</span><span class="o">(</span><span class="n">driver</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+<span class="n">WebElement</span> <span class="n">element</span><span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="na">until</span><span class="o">(</span><span class="n">visibilityOfElementLocated</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"some_id"</span><span class="o">)));</span>
+</pre></div>
+</div>
+<p>Where “visibilityOfElementLocated” is implemented as:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="n">ExpectedCondition</span><span class="o">&lt;</span><span class="n">WebElement</span><span class="o">&gt;</span> <span class="nf">visibilityOfElementLocated</span><span class="o">(</span><span class="kd">final</span> <span class="n">By</span> <span class="n">locator</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="n">ExpectedCondition</span><span class="o">&lt;</span><span class="n">WebElement</span><span class="o">&gt;()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">WebElement</span> <span class="nf">apply</span><span class="o">(</span><span class="n">WebDriver</span> <span class="n">driver</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">WebElement</span> <span class="n">toReturn</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">locator</span><span class="o">);</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">toReturn</span><span class="o">.</span><span class="na">isDisplayed</span><span class="o">())</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">toReturn</span><span class="o">;</span>
+      <span class="o">}</span>
+      <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+  <span class="o">};</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>This may look complex, but it’s almost all boiler-plate code. The only interesting bit is that the “ExpectedCondition” will be evaluated repeatedly until the “apply” method returns something that is neither “null” nor Boolean.FALSE.</p>
+<p>Of course, adding all these “wait” calls may clutter up your code. If that’s the case, and your needs are simple, consider using the implicit waits:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">driver</span><span class="o">.</span><span class="na">manage</span><span class="o">().</span><span class="na">timeouts</span><span class="o">().</span><span class="na">implicitlyWait</span><span class="o">(</span><span class="mi">30</span><span class="o">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">);</span>
+</pre></div>
+</div>
+<p>By doing this, every time an element is located, if the element is not present, the location is retried until either it is present, or until 30 seconds have passed.</p>
+</div>
+<div class="section" id="finding-by-xpath-or-css-selectors-doesn-t-always-work-but-it-does-in-selenium-1">
+<h3>Finding By XPath or CSS Selectors Doesn’t Always Work, But It Does In Selenium 1<a class="headerlink" href="#finding-by-xpath-or-css-selectors-doesn-t-always-work-but-it-does-in-selenium-1" title="Permalink to this headline">¶</a></h3>
+<p>In Selenium 1, it was common for xpath to use a bundled library rather than the capabilities of the browser itself. WebDriver will always use the native browser methods unless there’s no alternative. That means that complex xpath expressions may break on some browsers.</p>
+<p>CSS Selectors in Selenium 1 were implemented using the Sizzle library. This implements a superset of the CSS Selector spec, and it’s not always clear where you’ve crossed the line. If you’re using the WebDriverBackedSelenium and use a Sizzle locator instead of a CSS Selector for finding elements, a warning will be logged to the console. It’s worth taking the time to look for these, particularly if tests are failing because of not being able to find elements.</p>
+</div>
+<div class="section" id="there-is-no-browserbot">
+<h3>There is No Browserbot<a class="headerlink" href="#there-is-no-browserbot" title="Permalink to this headline">¶</a></h3>
+<p>Selenium RC was based on Selenium Core, and therefore when you executed Javascript, you could access bits of Selenium Core to make things easier. As WebDriver is not based on Selenium Core, this is no longer possible. How can you tell if you’re using Selenium Core? Simple! Just look to see if your “getEval” or similar calls are using “selenium” or “browserbot” in the evaluated Javascript.</p>
+<p>You might be using the browserbot to obtain a handle to the current window or document of the test. Fortunately, WebDriver always evaluates JS in the context of the current window, so you can use “window” or “document” directly.</p>
+<p>Alternatively, you might be using the browserbot to locate elements. In WebDriver, the idiom for doing this is to first locate the element, and then pass that as an argument to the Javascript. Thus:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">selenium</span><span class="o">.</span><span class="na">getEval</span><span class="o">(</span>
+    <span class="s">"selenium.browserbot.findElement('id=foo', browserbot.getCurrentWindow()).tagName"</span><span class="o">);</span>
+</pre></div>
+</div>
+<p>becomes:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">WebElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"foo"</span><span class="o">));</span>
+<span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span> <span class="o">((</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">).</span><span class="na">executeScript</span><span class="o">(</span>
+    <span class="s">"return arguments[0].tagName"</span><span class="o">,</span> <span class="n">element</span><span class="o">);</span>
+</pre></div>
+</div>
+<p>Notice how the passed in “element” variable appears as the first item in the JS standard “arguments” array.</p>
+</div>
+<div class="section" id="executing-javascript-doesn-t-return-anything">
+<h3>Executing Javascript Doesn’t Return Anything<a class="headerlink" href="#executing-javascript-doesn-t-return-anything" title="Permalink to this headline">¶</a></h3>
+<p>WebDriver’s JavascriptExecutor will wrap all JS and evaluate it as an anonymous expression. This means that you need to use the “return” keyword:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">String</span> <span class="n">title</span> <span class="o">=</span> <span class="n">selenium</span><span class="o">.</span><span class="na">getEval</span><span class="o">(</span><span class="s">"browserbot.getCurrentWindow().document.title"</span><span class="o">);</span>
+</pre></div>
+</div>
+<p>becomes:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="o">((</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">).</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"return document.title;"</span><span class="o">);</span>
+</pre></div>

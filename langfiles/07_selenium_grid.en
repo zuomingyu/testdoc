@@ -1,5 +1,5 @@
 #:page_title
-"selenium webdriver"
+"selenium Grid"
 
 #:previous_link
 "06_test_design_considerations"
@@ -14,12 +14,287 @@
 "User-Extensions"
 
 #:side
-:Introduction
-Introduction
-:titile2
-content2
+:list
+<li><a class="reference internal" href="#">Selenium-Grid</a><ul class="treeview">
+<li><a class="reference internal" href="#quick-start">Quick Start</a></li>
+<li><a class="reference internal" href="#what-is-selenium-grid">What is Selenium-Grid?</a></li>
+<li><a class="reference internal" href="#when-to-use-it">When to Use It</a></li>
+<li><a class="reference internal" href="#selenium-grid-2-0">Selenium-Grid 2.0</a></li>
+<li><a class="reference internal" href="#selenium-grid-1-0">Selenium-Grid 1.0</a></li>
+<li><a class="reference internal" href="#how-selenium-grid-works-with-a-hub-and-nodes">How Selenium-Grid Works–With a Hub and Nodes</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#starting-selenium-grid">Starting Selenium-Grid</a><ul class="treeview" style="display: none;">
+<li><a class="reference internal" href="#starting-a-hub">Starting a Hub</a></li>
+<li class="last"><a class="reference internal" href="#starting-a-node">Starting a Node</a></li>
+</ul>
+</li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#configuring-selenium-grid">Configuring Selenium-Grid</a><ul class="treeview" style="display: none;">
+<li><a class="reference internal" href="#default-configuration">Default Configuration</a></li>
+<li><a class="reference internal" href="#json-configuration-file">JSON Configuration File</a></li>
+<li class="last"><a class="reference internal" href="#configuring-via-the-command-line-options">Configuring Via the Command-Line Options</a></li>
+</ul>
+</li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#hub-configuration">Hub Configuration</a><ul class="treeview" style="display: none;">
+<li class="last"><a class="reference internal" href="#specifying-the-port">Specifying the Port</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#node-configuration">Node Configuration</a></li>
+<li><a class="reference internal" href="#timing-parameters">Timing Parameters</a></li>
+<li><a class="reference internal" href="#getting-command-line-help">Getting Command-Line Help</a></li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#common-errors">Common Errors</a><ul class="treeview" style="display: none;">
+<li class="last"><a class="reference internal" href="#unable-to-acess-the-jarfile">Unable to acess the jarfile</a></li>
+</ul>
+</li>
+<li class="last"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 
 #:body
-:key2
-内容行两边不需要使用字符串括起来
-#34343   #注释行与空行将忽略
+:body
+<h1>Selenium-Grid<a class="headerlink" href="#selenium-grid" title="Permalink to this headline">¶</a></h1>
+<p id="chapter07-reference"><em>Note:  We are currently working on this chapter.  Presently we have introductory info here for people
+completely new to Selnium-Grid.  Over the next few months we hope to provide useful examples and illustrations
+to thoroughly explain how to use Selenium-Grid.</em></p>
+<div class="section" id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
+<p>If you’re already experienced in Selenium test automation you may simply need a quick-start to get
+up and running.  This chapter has much information geared to many skill levels, but may be too much
+if you’re looking for just a quick reference to quickly try things out.  For a quick-start, refer
+to the Selenium-Grid articles in the <a class="reference external" href="http://code.google.com/p/selenium/wiki/Grid2">Selenium Wiki</a>.</p>
+</div>
+<div class="section" id="what-is-selenium-grid">
+<h2>What is Selenium-Grid?<a class="headerlink" href="#what-is-selenium-grid" title="Permalink to this headline">¶</a></h2>
+<p>Selenium-Grid allows you run your tests on different machines against
+different browsers in parallel.  That is, running multiple tests at the same time against
+different machines running different browsers and operating systems.  Essentially, Selenium-Grid
+support distributed test execution.  It allows for running your tests in
+a <em>distributed test execution</em> environment.</p>
+</div>
+<div class="section" id="when-to-use-it">
+<h2>When to Use It<a class="headerlink" href="#when-to-use-it" title="Permalink to this headline">¶</a></h2>
+<p>Generally speaking, there’s two reasons why you might want to use Selenium-Grid.</p>
+<ul class="simple">
+<li>To run your tests against multiple browsers, multiple versions of browser, and browsers running on different operating systems.</li>
+<li>To reduce the time it takes for the test suite to complete a test pass.</li>
+</ul>
+<p>Selenium-Grid is used to speed up the execution of a test pass by using multiple machines to run
+tests in parallel.  For example, if you have a suite of 100 tests, but you set up Selenium-Grid
+to support 4 different machines (VMs or separate physical machines) to run those tests, your test
+suite will complete in (roughly) one-fourth the time as it would if you ran your tests sequentially
+on a single machine.  For large test suites, and long-running test suite such as those performing
+large amounts of data-validation, this can be a significant time-saver.  Some test suites can take
+hours to run.  Another reason to boost the time spent running the suite is to shorten the
+turnaround time for test results after developers check-in code for the AUT.  Increasingly
+software teams practicing Agile software development want test feedback as immediately as possible
+as opposed to wait overnight for an overnight test pass.</p>
+<p>Selenium-Grid is also used to support running tests against multiple runtime environments, specifically,
+against different browsers at the same time.  For example, a ‘grid’ of virtual machines can be
+setup with each supporting a different browser that the application to be tested must support.  So,
+machine 1 has Internet Explorer 8, machine 2, Internet Explorer 9, machine 3 the latest Chrome, and
+machine 4 the latest Firefox.  When the test suite is run, Selenium-Grid receives each test-browser
+combination and assigs each test to run against it’s required browser.</p>
+<p>In addition, one can have a grid of all the same browser, type and version.  For instance, one
+could have a grid of 4 machines each running 3 instances of Firefox 12, allowing for a ‘server-farm’
+(in a sense) of available Firefox instances.  When the suite runs, each test is passed to
+Selenium-Grid which assigns the test to the next available Firefox instance.  In this manner
+one gets test pass where conceivably 12 tests are all running at the same time in parallel,
+significantly reducing the time required to complete a test pass.</p>
+<p>Selenium-Grid is very flexible.  These two examples can be combined to allow multiple instances
+of each browser type and version.  A configuration such as this would provide both, parallel
+execution for fast test pass completion and support for multiple browser types and versions
+simultaneously.</p>
+</div>
+<div class="section" id="selenium-grid-2-0">
+<h2>Selenium-Grid 2.0<a class="headerlink" href="#selenium-grid-2-0" title="Permalink to this headline">¶</a></h2>
+<p>Selenium-Grid 2.0 is the latest release as of the writing of this document (5/26/2012).  It is
+quite different from version 1 of Selenium-Grid.  In 2.0 Selenium-Grid was merged with the
+Selenium-RC server.  Now, you only need to download a single .jar file to get the remote
+Selenium-RC-Server and Selenium-Grid all in one package.</p>
+</div>
+<div class="section" id="selenium-grid-1-0">
+<h2>Selenium-Grid 1.0<a class="headerlink" href="#selenium-grid-1-0" title="Permalink to this headline">¶</a></h2>
+<p>Version 1 was the first general release of Selenium-Grid.  If you are new to Selenium-Grid you should
+use version 2.  It’s been updated and has new features, and supports Selenium-WebDriver.  Legacy
+test systems may still be using version 1 however.  Information on Selenium-Grid version 1 may be
+found at the <a class="reference external" href="http://selenium-grid.seleniumhq.org/">Selenium-Grid website</a>.</p>
+</div>
+<div class="section" id="how-selenium-grid-works-with-a-hub-and-nodes">
+<h2>How Selenium-Grid Works–With a Hub and Nodes<a class="headerlink" href="#how-selenium-grid-works-with-a-hub-and-nodes" title="Permalink to this headline">¶</a></h2>
+<p>A grid consists of a single hub, and one or more nodes.  Both are started using the
+selenium-server.jar executable.  We’ve listed some examples in the following sections of this
+chapter.</p>
+<p>The hub receives a test to be executed along with information on which
+browser and ‘platform’ (i.e. WINDOWS, LINUX, etc) where the test should be run.  It ‘knows’ the
+configuration of each node that has been ‘registered’ to the hub.  Using this information it
+selects an available node that has the requested browser-platform combination.  Once a node has
+been selected, Selenium commands initiated by the test are send the the hub, which passes them to
+the node assigned to that test.  The node runs the browser, and executes the Selenium commands
+within that browser against the application under test.</p>
+<p>A <a class="reference external" href="http://selenium-grid.seleniumhq.org/how_it_works.html">diagram</a> illustrates this.  Refer to the
+second diagram on this page (the first one is illustrating Selenium-RC).  The second diagram was for
+Selenium-Grid 1, however it still applies and is a good illustration of what we’re describing here.
+The only difference is one of terminology.
+Replace the term ‘Selenium Remote Control’ with ‘Selenium-Grid node’ the diagram will match our
+description for Selenium-Grid 2.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Installation is simple.  Download the Selenium-Server jar file from the <a class="reference external" href="http://seleniumhq.org/download/">SeleniumHq website’s
+download page</a>.  You want the link under the section
+“Selenium-Server (formerly Selenium-RC)”.</p>
+<p>Install it in a folder of your choice.  You’ll need to be sure the java executable is on your
+execution path so you can run it from the command-line.  If it does not run correcly, verify
+your system’s path variable includes the path to the java.exe.</p>
+</div>
+<div class="section" id="starting-selenium-grid">
+<h2>Starting Selenium-Grid<a class="headerlink" href="#starting-selenium-grid" title="Permalink to this headline">¶</a></h2>
+<p>Generally you would start a hub first since nodes depend on a hub.  This is not abolutely necessary
+however, since nodes can recognize when a hub has been started and vice-versa.  For learning
+purposes though, it would easier to start the hub first, otherwise you’ll see error
+messages that may not want to start off with your first time using Selenium-Grid.</p>
+<div class="section" id="starting-a-hub">
+<h3>Starting a Hub<a class="headerlink" href="#starting-a-hub" title="Permalink to this headline">¶</a></h3>
+<p>To start a hub with default parameters, run the following command from a command-line shell.  This
+will work on all the supported platforms, Windows Linux, or MacOs.</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-2.21.0.jar -role hub
+</pre></div>
+</div>
+<p>This starts a hub using default parameter values.  We’ll explain these parameters in folowing
+subsections.  Note that you will likely have to change the version number in the jar filename
+depending on which version of the selenium-server you’re using.</p>
+</div>
+<div class="section" id="starting-a-node">
+<h3>Starting a Node<a class="headerlink" href="#starting-a-node" title="Permalink to this headline">¶</a></h3>
+<p>To start a node using default parameters, run the following command from a command-line.</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-2.21.0.jar -role node  -hub http://localhost:4444/grid/register
+</pre></div>
+</div>
+<p>This assumes the hub has been started above using default parameters.  The default port the hub
+uses to listen for new requests is port 4444.  This is why port 4444 was used in the URL for
+locating the hub.  Also the use of ‘localhost’ assumes your node is running on the same machine
+as your hub.  For getting started this is probably easiest.  If running the hub and node on
+separate machines, simply replace ‘localhost’ with the hostname of the remote machine running the
+hub.</p>
+<p>WARNING:  Be sure to turn off the firewalls on the machine running your hub and nodes.  Otherwise
+you may get connection errors.</p>
+</div>
+</div>
+<div class="section" id="configuring-selenium-grid">
+<h2>Configuring Selenium-Grid<a class="headerlink" href="#configuring-selenium-grid" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="default-configuration">
+<h3>Default Configuration<a class="headerlink" href="#default-configuration" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="json-configuration-file">
+<h3>JSON Configuration File<a class="headerlink" href="#json-configuration-file" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="configuring-via-the-command-line-options">
+<h3>Configuring Via the Command-Line Options<a class="headerlink" href="#configuring-via-the-command-line-options" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="hub-configuration">
+<h2>Hub Configuration<a class="headerlink" href="#hub-configuration" title="Permalink to this headline">¶</a></h2>
+<p>To run the hub using the default options simply specify -role hub to the Selenim-Server</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-2.21.0.jar -hub
+</pre></div>
+</div>
+<p>You should see the following logging output.</p>
+<div class="highlight-bash"><div class="highlight"><pre>Jul 19, 2012 10:46:21 AM org.openqa.grid.selenium.GridLauncher main
+INFO: Launching a selenium grid server
+2012-07-19 10:46:25.082:INFO:osjs.Server:jetty-7.x.y-SNAPSHOT
+2012-07-19 10:46:25.151:INFO:osjsh.ContextHandler:started o.s.j.s.ServletContextHandler<span class="o">{</span>/,null<span class="o">}</span>
+2012-07-19 10:46:25.185:INFO:osjs.AbstractConnector:Started SocketConnector@0.0.0.0:4444
+</pre></div>
+</div>
+<div class="section" id="specifying-the-port">
+<h3>Specifying the Port<a class="headerlink" href="#specifying-the-port" title="Permalink to this headline">¶</a></h3>
+<p>The default port used by the hub is 4444.  The port being referred to hear, is the TCP/IP port used when the
+‘client’, that is, the automated tests connect to the Selenium-Grid hub.  If another application
+on your computer is already using this port, or if, you already have a Selenium-Server started,
+you’ll see the following message in the log output.</p>
+<div class="highlight-bash"><div class="highlight"><pre>10:56:35.490 WARN - Failed to start: SocketListener0@0.0.0.0:4444
+Exception in thread <span class="s2">"main"</span> java.net.BindException: Selenium is already running on port 4444. Or some other service is.
+</pre></div>
+</div>
+<p>If this occurs you can either shutdown the other process that is using port 4444, or you can
+tell Selenium-Grid to use a different port for its hub.  Use the -port option for changing the
+port used by the hub.</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-2.21.0.jar -role hub -port 4441
+</pre></div>
+</div>
+<p>This will work even if another hub is already running on the same machine, that is, as long as
+they’re both not using port 4441.</p>
+<p>You may, however, want to see what process is using port 4444 so you can allow the hub to use the
+default.  To see the ports used by all running programs on your machine use the command.</p>
+<div class="highlight-bash"><div class="highlight"><pre>netstat -a
+</pre></div>
+</div>
+<p>This should work on all supported systems, Unix/Linux, MacOs, and Windows although additional options
+beyond -a may be required.  Basically you need to display the process ID along with the port.  In
+Unix you may ‘grep’ the output (use a pipe) from the port number to only display those records
+you’re concerned with.</p>
+</div>
+</div>
+<div class="section" id="node-configuration">
+<h2>Node Configuration<a class="headerlink" href="#node-configuration" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="timing-parameters">
+<h2>Timing Parameters<a class="headerlink" href="#timing-parameters" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="getting-command-line-help">
+<h2>Getting Command-Line Help<a class="headerlink" href="#getting-command-line-help" title="Permalink to this headline">¶</a></h2>
+<p>The Selenium-Server provides listings of available options with a brief description of each.
+Currently (summer 2012), the command-line help has some oddities, but it can be helpful if you know
+where to look and how to interpret the information.</p>
+<p>The Selenium-Server provides two distinct functions, that of the Selenium-RC server
+and that of Selenium-Grid.  These were likely written by different Selenium teams, and therefore
+the command-line help for each function has ended up in two different places.  And, for the
+new user, it may not be apparent at first which of these two you are viewing.</p>
+<p>If you simply pass a -h option as you might first assume, you get the Selenium-RC Server options
+but not those for Selenium-Grid.</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-2.21.0.jar -h
+</pre></div>
+</div>
+<p>This would give you Selenium-RC’s server options.  If you want the command-line help for
+Selenium-Grid, you first use the -hub or -node options to tell Selenium-Server you’re intereted
+in Selenium-Grid, and then follow with a -h.</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-2.21.0.jar -role node -h
+</pre></div>
+</div>
+<p>Or, for that matter, just pass a garbage argument to the -role node as follows.</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-2.21.0.jar -role node xx
+</pre></div>
+</div>
+<p>You will first see “INFO...” and an “ERROR” but below that you’ll get the command-line options for
+Selenium-Grid.  We won’t list the whole output here since it’s rather long, but the first few
+lines look like this.</p>
+<div class="highlight-bash"><pre>Jul 19, 2012 10:10:39 AM org.openqa.grid.selenium.GridLauncher main
+INFO: Launching a selenium grid node
+org.openqa.grid.common.exception.GridConfigurationException: You need to specify a hub to register to using -hubHost X -hubPort 5555. The specified config was -hubHost null -hubPort 4444
+        at org.openqa.grid.common.RegistrationRequest.validate(RegistrationRequest.java:610)
+        at org.openqa.grid.internal.utils.SelfRegisteringRemote.startRemoteServer(SelfRegisteringRemote.java:88)
+        at org.openqa.grid.selenium.GridLauncher.main(GridLauncher.java:72)
+Error building the config :You need to specify a hub to register to using -hubHost X -hubPort 5555. The specified config was -hubHost null -hubPort 4444
+Usage :
+  -hubConfig:
+        (hub) a JSON file following grid2 format.
+
+ -nodeTimeout:
+        (node) &lt;XXXX&gt;  the timeout in seconds before the hub
+          automatically ends a test that hasn't had aby activity than XX
+          sec.The browser will be released for another test to use.This
+          typically takes care of the client crashes.</pre>
+</div>
+</div>
+<div class="section" id="common-errors">
+<h2>Common Errors<a class="headerlink" href="#common-errors" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="unable-to-acess-the-jarfile">
+<h3>Unable to acess the jarfile<a class="headerlink" href="#unable-to-acess-the-jarfile" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre>Unable to access jarfile selenium-server-standalone-2.21.0.jar
+</pre></div>
+</div>
+<p>This error can occur when starting up either a hub or node.
+This means Java cannot find the selenium-server jar file.  Either run the command from the
+directory where the selenium-server-XXXX.jar file is stored, or specify an explicit path to
+the jar.</p>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>

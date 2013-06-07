@@ -1835,3 +1835,16 @@ text-align:center;
     color: white;
     font-weight: bold;
 }
+#scrolltop {
+	position: fixed;
+	bottom: 238px;
+	display: block;
+	margin: -30px 0 0 20px;
+	width: 58px;
+	height: 58px;
+	background: url(../scrolltop.png) no-repeat 0 0;
+	line-height: 999px;
+	overflow: hidden;
+	cursor: pointer;
+	z-index: 5;
+}

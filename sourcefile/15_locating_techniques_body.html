@@ -4,46 +4,7 @@
           <div class="body">
             
   <div class="section" id="locating-techniques">
-<h1>Locating Techniques<a class="headerlink" href="#locating-techniques" title="Permalink to this headline">¶</a></h1>
-<span class="target" id="appendix-locators-reference"></span><div class="section" id="useful-xpath-patterns">
-<h2>Useful XPATH patterns<a class="headerlink" href="#useful-xpath-patterns" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="text">
-<h3>text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h3>
-<p>Not yet written - locate elements based on the text content of the node.</p>
-</div>
-<div class="section" id="starts-with">
-<h3>starts-with<a class="headerlink" href="#starts-with" title="Permalink to this headline">¶</a></h3>
-<p>Many sites use dynamic values for element’s id attributes, which can make them
-difficult to locate. One simple solution is to use XPath functions and base the
-location on what you do know about the element. For example, if your dynamic ids
-have the format <tt class="docutils literal"><span class="pre">&lt;input</span> <span class="pre">id="text-12345"</span> <span class="pre">/&gt;</span></tt> where <tt class="docutils literal"><span class="pre">12345</span></tt> is a dynamic number
-you could use the following XPath: <tt class="docutils literal"><span class="pre">//input[starts-with(@id,</span> <span class="pre">'text-')]</span></tt></p>
-</div>
-<div class="section" id="contains">
-<h3>contains<a class="headerlink" href="#contains" title="Permalink to this headline">¶</a></h3>
-<p>If an element can be located by a value that could be surrounded by other text, the
-contains function can be used. To demonstrate, the element <tt class="docutils literal"><span class="pre">&lt;span</span> <span class="pre">class="top</span> <span class="pre">heading</span>
-<span class="pre">bold"&gt;</span></tt> can be located based on the ‘heading’ class without having to couple it with
-the ‘top’ and ‘bold’ classes using the following XPath: <tt class="docutils literal"><span class="pre">//span[contains(@class,</span>
-<span class="pre">'heading')]</span></tt>. Incidentally, this would be much neater (and probably faster) using
-the CSS locator strategy <tt class="docutils literal"><span class="pre">css=span.heading</span></tt></p>
-</div>
-<div class="section" id="siblings">
-<h3>siblings<a class="headerlink" href="#siblings" title="Permalink to this headline">¶</a></h3>
-<p>Not yet written - locate elements based on their siblings. Useful for forms and tables.</p>
-</div>
-</div>
-<div class="section" id="starting-to-use-css-instead-of-xpath">
-<h2>Starting to use CSS instead of XPATH<a class="headerlink" href="#starting-to-use-css-instead-of-xpath" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="locating-elements-based-on-class">
-<h3>Locating elements based on class<a class="headerlink" href="#locating-elements-based-on-class" title="Permalink to this headline">¶</a></h3>
-<p>In order to locate an element based on associated class in XPath you must consider that
-the element could have multiple classes and defined in any order. However with CSS
-locators this is much simpler (and faster).</p>
-<ul class="simple">
-<li>XPath: <tt class="docutils literal"><span class="pre">//div[contains(@class,</span> <span class="pre">'article-heading')]</span></tt></li>
-<li>CSS: <tt class="docutils literal"><span class="pre">css=div.article-heading</span></tt></li>
-</ul>
+$('body')
 </div>
 </div>
 </div>

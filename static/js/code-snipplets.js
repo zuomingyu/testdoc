@@ -32,7 +32,7 @@ $(document).ready(function() {
         if (this.src.indexOf("highlight") != -1) {
             this.src = this.src.replace("highlight-", "");
         } else {
-            this.src = this.src.replace("icons/", "icons/highlight-");
+            this.src = this.src.replace("static/", "static/highlight-");
         }
         $(this).next().slideToggle();
     }).css({"padding":"3px"});
