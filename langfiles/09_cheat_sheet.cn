@@ -1,17 +1,17 @@
 #:page_title
-"Selenium WebDriver Cheat Sheet"
+"Selenium WebDriver速查表"
 
 #:previous_link
 "08_user_extensions"
 
 #:previous_title
-"User-Extensions"
+"用户扩展"
 
 #:next_link
 "10_installing_android_driver"
 
 #:next_title
-"How to Install the Android Driver"
+"如何安装Android驱动"
 
 #:side
 :list

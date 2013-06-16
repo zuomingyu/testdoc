@@ -5,13 +5,13 @@
 "10_installing_android_driver"
 
 #:previous_title
-"How to Install the Android Driver"
+"如何安装Android驱动"
 
 #:next_link
 "12_installing_java_driver_Sel20_via_maven"
 
 #:next_title
-"Importing Sel2.0 Project into Eclipse using Maven"
+"使用Maven导入Sel2.0项目到Eclipse"
 
 #:side
 :list

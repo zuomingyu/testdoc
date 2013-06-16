@@ -5,13 +5,13 @@
 "11_installing_dotnet_driver_client"
 
 #:previous_title
-".NET client driver configuration"
+".NET客户端驱动配置"
 
 #:next_link
 "13_installing_java_driver_client"
 
 #:next_title
-"Selenium 1.0 Java Client Driver Configuration"
+"Selenium 1.0 Java客户端驱动配置"
 
 #:side
 :list

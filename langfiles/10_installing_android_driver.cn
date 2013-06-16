@@ -5,13 +5,13 @@
 "09_cheat_sheet"
 
 #:previous_title
-"Selenium WebDriver Cheat Sheet"
+"Selenium WebDriver速查表"
 
 #:next_link
 "11_installing_dotnet_driver_client"
 
 #:next_title
-".NET client driver configuration"
+".NET客户端驱动配置"
 
 #:side
 :list
@@ -20,4 +20,4 @@
 #:body
 :body
 <h1>How to Install the Android Driver<a class="headerlink" href="#how-to-install-the-android-driver" title="Permalink to this headline">¶</a></h1>
-<p id="installing-android-driver-reference">This is a placeholder.</p>
+<p id="installing-android-driver-reference">这是占位符，内容未提供</p>

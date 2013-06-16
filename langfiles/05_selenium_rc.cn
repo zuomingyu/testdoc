@@ -5,13 +5,13 @@
 "04_webdriver_advanced"
 
 #:previous_title
-"WebDriver: Advanced Usage"
+"WebDriver: 高级使用"
 
 #:next_link
 "06_test_design_considerations"
 
 #:next_title
-"Test Design Considerations"
+"测试设计考虑"
 
 #:side
 :list

@@ -5,13 +5,13 @@
 "14_installing_python_driver_client"
 
 #:previous_title
-"Python Client Driver Configuration"
+"Python客户端驱动配置"
 
 #:next_link
 "16_migrating_from_rc_to_webdriver"
 
 #:next_title
-"Migrating From Selenium RC to Selenium WebDriver"
+"从Selenium RC迁移到Selenium WebDriver"
 
 #:side
 :list
