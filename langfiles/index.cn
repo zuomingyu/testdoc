@@ -11,7 +11,7 @@
 "00_note"
 
 #:next_title
-"读者通知-文档已开始向selenium2.0更新!"
+"读者说明-开始修订Selenium 2.0文档!"
 
 #:side
 :none
@@ -23,7 +23,7 @@ Selenium 文档
 :Contents
 目录:
 :note_to_reader
-读者通知-<em>文档已开始向selenium2.0更新!
+读者说明-<em>开始修订Selenium 2.0文档!
 :Introduction
 介绍
 :test_auto_4_web
@@ -33,7 +33,7 @@ Web应用程序的测试自动化
 :Introducing_Selenium
 Selenium介绍
 :Selenium_Project_History
-Selenium项目的简要背景
+Selenium项目简史
 :Selenium_Tool_Suite
 Selenium工具集套件
 :Choosing_Selenium_Tool
@@ -41,7 +41,7 @@ Selenium工具集套件
 :Supported_Browsers_Platforms
 支持的浏览器和平台
 :Flexibility_Extensibility
-稳定性和扩展性
+灵活性和扩展性
 :What_in_this_Book
 本书中有什么？
 :Documentation_Team_Authors

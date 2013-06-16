@@ -5,7 +5,7 @@
 "00_note"
 
 #:previous_title
-"Note to the Reader–Docs Being Revised for Selenium 2.0!"
+"读者说明–开始修订Selenium 2.0文档"
 
 #:next_link
 "02_selenium_ide"
@@ -17,39 +17,39 @@
 :1
 介绍
 :2
-Test Automation for Web Applications
+Web应用测试自动化
 :3
-To Automate or Not to Automate?
+是否进行自动化？
 :4
-Introducing Selenium
+Selenium介绍
 :5
-Brief History of The Selenium Project
+Selenium项目简史
 :6
-Selenium’s Tool Suite
+Selenium工具套件
 :7
-Selenium 2 (aka. Selenium Webdriver)
+Selenium 2 （亦称Selenium WebDriver）
 :8
-Selenium 1 (aka. Selenium RC or Remote Control)
+Selenium 1 (亦称Selenium RC 或 远程控制)
 :9
 Selenium IDE
 :10
 Selenium-Grid
 :11
-Choosing Your Selenium Tool
+选择您的Selenium工具
 :12
-Supported Browsers and Platforms
+支持的浏览器和平台
 :13
 Selenium-WebDriver
 :14
-Selenium 1.0 and Selenium-RC.
+Selenium 1.0和Selenium-RC.
 :15
-Flexibility and Extensibility
+灵活性和扩展性
 :16
-What’s in this Book?
+本文档包含内容
 :17
-The Documentation Team–Authors Past and Present
+文档团队 - 过去和现在的作者们
 :18
-Acknowledgements
+致谢
 
 #:body
 :Introduction
@@ -86,173 +86,113 @@ Web应用测试自动化
 给定的时间范围内完成，显然手工测试是最佳的解决方案。</p>
 </div>
 <div class="section" id="introducing-selenium">
-<h2>Introducing Selenium<a class="headerlink" href="#introducing-selenium" title="Permalink to this headline">¶</a></h2>
-<p>Selenium is a set of different software tools each with a different approach
-to supporting test automation. Most Selenium QA Engineers focus on the one
-or two tools that most meet the needs of their project, however learning all
-the tools will give you many different options for approaching different
-test automation problems.
-The entire suite of tools results in a rich set of
-testing functions specifically geared to the needs of testing of web
-applications of all types. These operations are highly flexible, allowing many options for
-locating UI elements and comparing expected test results against actual
-application behavior. One of Selenium’s key features is the support for executing one’s tests on
-multiple browser platforms.</p>
+<h2>Selenium介绍<a class="headerlink" href="#introducing-selenium" title="Permalink to this headline">¶</a></h2>
+<p>Selenium是一套不同软件的工具集， 每个工具拥有不同的方法来支持测试自动化。大多数的Selenium QA工程师聚焦于
+一个或两个，很好地满足他们的项目需求的工具，然而，学习所有的工具将给予你许多解决不同的测试自动化问题
+的选项。整个工具集，带有一套丰富的测试特性，特别适合于所有类型的Web应用程序测试的需要。这些操作是高度灵
+活的，为定位UI元素，比较预期的测试结果和实际的应用程序行为，提供许多选项。Selenium的一个关键特征是，支持
+在多个浏览器平台执行一个测试用例。</p>
 </div>
 <div class="section" id="brief-history-of-the-selenium-project">
-<span id="selenium-history"></span><h2>Brief History of The Selenium Project<a class="headerlink" href="#brief-history-of-the-selenium-project" title="Permalink to this headline">¶</a></h2>
-<p>Selenium first came to life in 2004 when Jason Huggins was testing an internal
-application at ThoughtWorks. Being a smart guy, he realized there were better
-uses of his time than manually stepping through the same tests with every
-change he made. He developed a Javascript library that could drive interactions
-with the page, allowing him to automatically rerun tests against multiple
-browsers. That library eventually became Selenium Core, which underlies all the
-functionality of Selenium Remote Control (RC) and Selenium IDE. Selenium RC was
-ground-breaking because no other product allowed you to control a browser from
-a language of your choice.</p>
-<p>While Selenium was a tremendous tool, it wasn’t without its drawbacks.
-Because of its Javascript based automation engine and the security limitations
-browsers apply to Javascript, different things became impossible to do.  To
-make things worse, webapps became more and more powerful over time, using all
-sorts of special features new browsers provide and making this restrictions
-more and more painful.</p>
-<p>In 2006 a plucky engineer at Google named Simon Stewart started work on
-a project he called WebDriver. Google had long been a heavy user of Selenium,
-but testers had to work around the limitations of the product. Simon wanted
-a testing tool that spoke directly to the browser using the ‘native’ method for
-the browser and operating system, thus avoiding the restrictions of a sandboxed
-Javascript environment. The WebDriver project began with the aim to solve the
-Selenium’ pain-points.</p>
-<p>Jump to 2008. The Beijing Olympics mark China’s arrival as a global power,
-massive mortgage default in the United States triggers the worst international
-recession since the Great Depression, The Dark Knight is viewed by every human
-(twice), still reeling from the untimely loss of Heath Ledger. But the most
-important story of that year was the merging of Selenium and WebDriver.
-Selenium had massive community and commercial support, but WebDriver was
-clearly the tool of the future. The joining of the two tools provided a common
-set of features for all users and brought some of the brightest minds in test
-automation under one roof.  Perhaps the best explanation for why WebDriver and
-Selenium are merging was detailed by Simon Stewart, the creator of WebDriver,
-in a joint email to the WebDriver and Selenium community on August 6, 2009.</p>
+<span id="selenium-history"></span><h2>Selenium项目简史<a class="headerlink" href="#brief-history-of-the-selenium-project" title="Permalink to this headline">¶</a></h2>
+<p>Selenium首次诞生在2004年，当Jason Huggins在ThoughtWorks公司测试一个内部的应用程序的时候。作为一个聪
+明的家伙，他意识到可以更好利用每次程序作出变更时重复进行手工地测试的时间。他开发了一个可以驱动与页面交互的
+Javascript库，允许他自动地在多个浏览器上自动地重复运行测试。那个Javascript库最终成为Selenium的内核，成为
+所有的Selenium RC（远程控制）和Selenium IDE的基础。Selenium RC是开拓性的，因为没有其他的产品允许你从一
+个你选择的语言去控制浏览器。</p>
+<p>尽管selenium是个强大的工具，但也不是没有缺点。因为它是基于javascript的自动化引擎，所以要受限于浏览器
+针对于JavaScript的安全限制，限制以外的事情都无法做到。让这个情况更糟糕的是，随着技术的发展，webapp的功能
+越来越强大，尤其是使用了新浏览器提供的各种特性的应用，使这种限制越发严重。</p>
+<p>在2006年，一个有魄力的Google工程师Simon Stewart启动了一个称之为WebDriver的项目。Google已经是
+Selenium的一个重量级用户，但测试者不得不工作在有限制的产品上。Simon想要一个测试工具。可以使用浏览器和
+操作系统的“本地”方法与浏览器直接对话，因此可以避免沙盒Javascript环境的约束。WebDriver项目开始致力于解
+决Selenium的痛处。</p>
+<p>转眼到了2008年，北京的奥林匹克运动会标志着中国作为一个全球力量的到来，在美国庞大的抵押贷款违约触发了自大萧条以
+来最糟糕的国际衰退，黑暗骑士被人们看见了两次，还要遭受不合时宜的失去希斯·莱杰（希斯·安德魯·莱杰，Heath
+Andrew Ledger，1979年4月4日－2008年1月22日，澳大利亚男演员，曾以《黑暗騎士》一片获得第81屆奧斯卡金像
+奖）的不良影响。但那一年最重大的故事是Selenium和WebDriver的融合。Selenium有着庞大的社区和商业支持，但
+WebDriver无疑地是这个工具的未来。两个工具的结合为所有的用户提供了一个公共的特征集，并且带来了某些最耀眼
+地、在同一个屋檐下的测试自动化思想。或许为何WebDriver和Selenium进行融合的最佳说明是Simon Stewart在
+2009年8月6日给WebDriver和Selenium社区的一封邮件中的的陈述，</p>
 <blockquote>
-<div>“Why are the projects merging?  Partly because webdriver addresses some
-shortcomings in selenium (by being able to bypass the JS sandbox, for
-example. And we’ve got a gorgeous API), partly because selenium addresses
-some shortcomings in webdriver (such as supporting a broader range of
-browsers) and partly because the main selenium contributors and I felt that
-it was the best way to offer users the best possible framework.”</div></blockquote>
+<div>为何两个项目合并？部分原因是WebDreiver补充了Selenium的不足之处（例如能够去掉javascript沙盒，并且我们
+有一个华丽的API），部分是因为Selenium补充了WebDriver的不足之处（诸如对广泛的浏览器的支持），还有一部分是
+因为主要的Selenium贡献者和我觉得这可能是给用户提供一个最佳框架的最好方式。</div></blockquote>
 </div>
 <div class="section" id="selenium-s-tool-suite">
-<h2>Selenium’s Tool Suite<a class="headerlink" href="#selenium-s-tool-suite" title="Permalink to this headline">¶</a></h2>
-<p>Selenium is composed of multiple software tools. Each has a specific role.</p>
+<h2>Selenium工具套件<a class="headerlink" href="#selenium-s-tool-suite" title="Permalink to this headline">¶</a></h2>
+<p>Selenium是由多个软件工具组成的。每一个都有其特定的角色。</p>
 <div class="section" id="selenium-2-aka-selenium-webdriver">
-<h3>Selenium 2 (aka. Selenium Webdriver)<a class="headerlink" href="#selenium-2-aka-selenium-webdriver" title="Permalink to this headline">¶</a></h3>
-<p>Selenium 2 is the future direction of the project and the newest addition
-to the Selenium toolkit.  This brand new automation tool provides all sorts of
-awesome features, including a more cohesive and object oriented API as well as
-an answer to the limitations of the old implementation.</p>
-<p>As you can read in <a class="reference internal" href="#brief-history-of-the-selenium-project">Brief History of The Selenium Project</a>, both the Selenium
-and WebDriver developers agreed that both tools have advantages and that
-merging the two projects would make a much more robust automation tool.</p>
-<p>Selenium 2.0 is the product of that effort.  It supports the WebDriver API and
-underlying technology, along with the Selenium 1 technology underneath the
-WebDriver API for maximum flexibility in porting your tests.
-In addition, Selenium 2 still runs Selenium 1’s Selenium RC interface for
-backwards compatibility.</p>
+<h3>Selenium2（亦称Selenium WebDriver）<a class="headerlink" href="#selenium-2-aka-selenium-webdriver" title="Permalink to this headline">¶</a></h3>
+<p>Selenium 2是该项目的未来方向，也是selenium工具箱的最新成员。这个全新的工具提供了各种优秀的特征，包括一个更有聚合力和面向对象的API，以及一个对旧有实现的限制的解决方法。</p>
+<p>正如你在<a class="reference internal" href="#brief-history-of-the-selenium-project">Selenium项目简史</a>中看到的, Selenium和WebDriver的开发者一致同意两个工具个有优势，
+并且合并这两个项目将产生一个更健壮的自动化工具。</p>
+<p>Selenium 2.0就是努力的产物。它支持WebDriver API及其底层技术，以及WebDriver下的Selenium 1的技术，
+目的是为了最大化提高移植测试的灵活性。此外，为了向后兼容Selenium 2仍然运行Selenium 1的Selenium RC接口。</p>
 </div>
 <div class="section" id="selenium-1-aka-selenium-rc-or-remote-control">
-<h3>Selenium 1 (aka. Selenium RC or Remote Control)<a class="headerlink" href="#selenium-1-aka-selenium-rc-or-remote-control" title="Permalink to this headline">¶</a></h3>
-<p>As you can read in <a class="reference internal" href="#brief-history-of-the-selenium-project">Brief History of The Selenium Project</a>, Selenium RC was
-the main Selenium project for a long time, before the WebDriver/Selenium merge
-brought up Selenium 2, the newest and more powerful tool.</p>
-<p>Selenium 1 is still actively supported (mostly in maintenance mode) and
-provides some features that may not be available in Selenium 2 for a while,
-including support for several languages (Java, Javascript, Ruby, PHP, Python,
-Perl and C#) and support for almost every browser out there.</p>
+<h3>Selenium 1（亦称Selenium RC或远程控制）<a class="headerlink" href="#selenium-1-aka-selenium-rc-or-remote-control" title="Permalink to this headline">¶</a></h3>
+<p>正如你在<a class="reference internal" href="#brief-history-of-the-selenium-project">Selenium项目简史</a>中看到的，
+在WebDriver/Selenium合并产生Selenium 2这个最新的、更加强大的工具之前，Selenium RC一直是最主要的Selenium项目。</p>
+<p>Selenium 1 仍然被支持（大部分是在维护模式），并且提供了某些在Selenium 2可能暂时没有提供的特征，包括对几
+个语言（Java，Javascript，Ruby，PHP，Python，Perl和C#）的支持，以及对几乎每种浏览器的支持。</p>
 </div>
 <div class="section" id="selenium-ide">
 <h3>Selenium IDE<a class="headerlink" href="#selenium-ide" title="Permalink to this headline">¶</a></h3>
-<p>Selenium IDE (Integrated Development Environment) is a prototyping tool for
-building test scripts. It is a Firefox plugin and provides an easy-to-use
-interface for developing automated tests. Selenium IDE has a recording feature,
-which records user actions as they are performed and then exports them as
-a reusable script in one of many programming languages that can be later
-executed.</p>
+<p>Selenium IDE（集成开发环境）是一个用于构建测试脚本的原型工具。它是一个Firefox插件，并且提供了一个易于使
+用的开发自动化测试的接口。Selenium IDE有一个录制功能，可以记录用户执行的动作，然后以多种编程语言中的任意一种形式
+将它们导出并作为可重用的脚本，在以后可以被执行。</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Even though Selenium IDE has a “Save” feature that allows users to
-keep the tests in a table-based format for later import and execution, it
-<em>is not designed to run your test passes nor is it designed to build all the
-automated tests you will need</em>. Specifically, Selenium IDE doesn’t provide
-iteration or conditional statements for test scripts.  At the time of writing
-there is no plan to add such thing.  The reasons are partly technical and
-partly based on the Selenium developers encouraging best practices in test
-automation which always requires some amount of programming. <strong>Selenium IDE
-is simply intended as a rapid prototyping tool</strong>.  The Selenium developers
-recommend for serious, robust test automation either Selenium 2 or Selenium
-1 to be used with one of the many supported programming languages.</p>
+<p class="first admonition-title">注意</p>
+<p class="last">虽然Selenium IDE有一个“保存（Save）”功能，那个允许用户去以基于表格的形式保存这些测试，为了稍后的导入
+和执行，但它不是设计用于运行你的测试，也不是设计用于构造你将需要的所有自动化测试。特别是Selenium IDE不为
+测试脚本提供迭代或条件语句。在编写的时候没有计划去增加这些功能。这理由部分是技术上的，部分是基于
+Selenium的开发者鼓励在测试自动化中总是需要一定数量的编程工作的最佳实践。Selenium IDE仅仅打算做为一个快
+速原型工具。Selenium的开发者推荐，健壮的自动化测试应该使用Selenium 2或Selenium 1中许多支持的编程语言中的一种来编写。</p>
 </div>
 </div>
 <div class="section" id="selenium-grid">
 <h3>Selenium-Grid<a class="headerlink" href="#selenium-grid" title="Permalink to this headline">¶</a></h3>
-<p>Selenium-Grid allows the Selenium RC solution to scale for large test suites
-and for test suites that must be run in multiple environments. Selenium Grid
-allows you to run your tests in parallel, that is, different tests can be run
-at the same time on different remote machines.  This has two advantages.
-First, if you have a large test suite, or a slow-running test suite, you can
-boost its performance substantially by using Selenium Grid to divide your
-test suite to run different tests at the same time using those different
-machines.  Also, if you must run your test suite on multiple environments you
-can have different remote machines supporting and running your tests in them at
-the same time.  In each case Selenium Grid greatly improves the time it takes
-to run your suite by making use of parallel processing.</p>
+<p>Selenium-Grid使得Selenium RC可以解决大规模的扩展测试集，以及那些必须运行在多个环境下的测试集。 Selenium Grid
+允许你并行地运行你的测试，也就是说，不同的测试可以在相同的时间运行在不同的远程机器上。这有两点好处。首先，
+如果你有一个大规模的测试集，或一个运行缓慢的测试集，你可以增加它的性能，通过使用
+Selenium-Grid去划分你的测试集，运行不同的测试在同一时间的不同机器上。 同样，如果你必须运行你的测试集在
+多个环境，你可以有不同的远程机器的支持和在同一时间的不同远程机器上运行你的测试。在任何一种情形下，
+Selenium都将充分利用并行处理，极大地改善运行你的测试所花费的时间。</p>
 </div>
 </div>
 <div class="section" id="choosing-your-selenium-tool">
-<h2>Choosing Your Selenium Tool<a class="headerlink" href="#choosing-your-selenium-tool" title="Permalink to this headline">¶</a></h2>
-<p>Many people get started with Selenium IDE. If you are not already experienced
-with a programming or scripting language you can use Selenium IDE to get
-familiar with Selenium commands.  Using the IDE you can create simple tests
-quickly, sometimes within seconds.</p>
-<p>We don’t, however, recommend you do all your test automation using Selenium
-IDE.  To effectively use Selenium you will need to build and run your tests
-using either Selenium 2 or Selenium 1 in conjunction with one of the supported
-programming languages.  Which one you choose depends on you.</p>
-<p>At the time of writing the Selenium developers are planning on the
-Selenium-WebDriver API being the future direction for Selenium.  Selenium 1 is
-provided for backwards compatibility.  Still, both have strengths and
-weaknesses which are discussed in the corresponding chapters of this document.</p>
-<p>We recommend those who are completely new to Selenium to read through these
-sections.  However, for those who are adopting Selenium for the first time, and
-therefore building a new test suite from scratch, you will probably want to go
-with Selenium 2 since this is the portion of Selenium that will continue to be
-supported in the future.</p>
+<h2>选择您的Selenium工具<a class="headerlink" href="#choosing-your-selenium-tool" title="Permalink to this headline">¶</a></h2>
+<p>许多人从Selenium IDE开始，如果你还没有编程或脚本语言的经验，你可以使用Selenium IDE去熟悉Selenium命令。
+使用IDE你可以快速地创建简单的测试，有时甚至在几秒内。</p>
+<p>然而，我们不推荐你使用Selenium IDE做所有的自动化测试。为了有效地使用Selenium，你需要使用Selenium 2或Selenium 1
+中支持的任何一种编程语言来构造和运行你的测试，选择哪种编程语言取决于你。</p>
+<p>在编写本文档的时候,Selenium的开发者正计划使Selenium-WebDriver成为Selenium的未来方向。Selenium 1被提供
+为了向后兼容。我们将在相应的章节讨论两者的优缺点。</p>
+<p>我们推荐Selenium的新手应通读所有的章节。然而对那些正在使用Selenium并且正在从头开始构造一个新的测试
+的开发者，你或许想要选用Selenium 2，因为这是Selenium将在未来继续支持的部分。</p>
 </div>
 <div class="section" id="supported-browsers-and-platforms">
-<h2>Supported Browsers and Platforms<a class="headerlink" href="#supported-browsers-and-platforms" title="Permalink to this headline">¶</a></h2>
-<p>In Selenium 2.0, the supported browsers vary depending on whether you are using Selenium-WebDriver
-or Selenium-RC.</p>
+<h2>支持的浏览器平台<a class="headerlink" href="#supported-browsers-and-platforms" title="Permalink to this headline">¶</a></h2>
+<p>在Selenium 2.0, 支持的浏览器将依赖于你使用的是Selenium-WebDriver还是Selenium-RC而变化。</p>
 <div class="section" id="selenium-webdriver">
 <h3>Selenium-WebDriver<a class="headerlink" href="#selenium-webdriver" title="Permalink to this headline">¶</a></h3>
-<p>Selenium-WebDriver supports the following browsers along with the operating systems these browsers
-are compatible with.</p>
+<p>Selenium-WebDriver支持下面的浏览器，以及这些浏览器兼容的操作系统。</p>
 <ul class="simple">
 <li>Google Chrome 12.0.712.0+</li>
-<li>Internet Explorer 6, 7, 8, 9 - 32 and 64-bit where applicable</li>
+<li>Internet Explorer 6, 7, 8, 9 - 32 and 64-bit</li>
 <li>Firefox 3.0, 3.5, 3.6, 4.0, 5.0, 6, 7</li>
 <li>Opera 11.5+</li>
 <li>HtmlUnit 2.9</li>
-<li>Android – 2.3+ for phones and tablets (devices &amp; emulators)</li>
-<li>iOS 3+ for phones (devices &amp; emulators) and 3.2+ for tablets (devices &amp; emulators)</li>
+<li>Android – 2.3+ 为移动电话和平板电脑(设备或模拟器)</li>
+<li>iOS 3+ 移动电话(设备或模拟器) 以及3.2+ 平板电脑(设备或模拟器)</li>
 </ul>
-<p><em>Note:  At the time of writing there is an emulator bug with Android 2.3 that prevents the driver
-from working properly on device emulators.  However, it works fine on tablet emulators and real
-devices.</em></p>
+<p><em>注意: 在编写文档时，Android2.3有一个模拟器bug，会妨碍驱动器在设备模拟器上正常的工作。然而，在平板电脑模
+拟器和真实的设备上是工作良好的。</em></p>
 </div>
 <div class="section" id="selenium-1-0-and-selenium-rc">
 <h3>Selenium 1.0 and Selenium-RC.<a class="headerlink" href="#selenium-1-0-and-selenium-rc" title="Permalink to this headline">¶</a></h3>
-<p>This is the old, support platform for Selenium 1.0.  It should still apply to the Selenium 2.0
-release of Selenium-RC.</p>
+<p>这是旧的Selenium 1.0的支持平台。它应该仍然适用于Selenium 2.0的Selenium-RC。</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%">
@@ -267,143 +207,122 @@ release of Selenium-RC.</p>
 <td><strong>Operating Systems</strong></td>
 </tr>
 <tr class="row-even"><td>Firefox 3.x</td>
-<td>Record and playback tests</td>
-<td>Start browser, run tests</td>
+<td>录制和回放测试</td>
+<td>启动浏览器运测试</td>
 <td>Windows, Linux, Mac</td>
 </tr>
 <tr class="row-odd"><td>Firefox 3</td>
-<td>Record and playback tests</td>
-<td>Start browser, run tests</td>
+<td>录制和回放测试</td>
+<td>启动浏览器运测试</td>
 <td>Windows, Linux, Mac</td>
 </tr>
 <tr class="row-even"><td>Firefox 2</td>
-<td>Record and playback tests</td>
-<td>Start browser, run tests</td>
+<td>录制和回放测试</td>
+<td>启动浏览器运测试</td>
 <td>Windows, Linux, Mac</td>
 </tr>
 <tr class="row-odd"><td>IE 8</td>
-<td>Test execution only via Selenium RC*</td>
-<td>Start browser, run tests</td>
+<td>仅通过Selenium RC*执行测试</td>
+<td>启动浏览器运测试</td>
 <td>Windows</td>
 </tr>
 <tr class="row-even"><td>IE 7</td>
-<td>Test execution only via Selenium RC*</td>
-<td>Start browser, run tests</td>
+<td>仅通过Selenium RC*执行测试*</td>
+<td>启动浏览器运测试</td>
 <td>Windows</td>
 </tr>
 <tr class="row-odd"><td>IE 6</td>
-<td>Test execution only via Selenium RC*</td>
-<td>Start browser, run tests</td>
+<td>仅通过Selenium RC*执行测试*</td>
+<td>启动浏览器运测试</td>
 <td>Windows</td>
 </tr>
 <tr class="row-even"><td>Safari 4</td>
-<td>Test execution only via Selenium RC</td>
-<td>Start browser, run tests</td>
+<td>仅通过Selenium RC*执行测试</td>
+<td>启动浏览器运测试</td>
 <td>Windows, Mac</td>
 </tr>
 <tr class="row-odd"><td>Safari 3</td>
-<td>Test execution only via Selenium RC</td>
-<td>Start browser, run tests</td>
+<td>仅通过Selenium RC*执行测试</td>
+<td>启动浏览器运测试</td>
 <td>Windows, Mac</td>
 </tr>
 <tr class="row-even"><td>Safari 2</td>
-<td>Test execution only via Selenium RC</td>
-<td>Start browser, run tests</td>
+<td>仅通过Selenium RC*执行测试</td>
+<td>启动浏览器运测试</td>
 <td>Windows, Mac</td>
 </tr>
 <tr class="row-odd"><td>Opera 10</td>
-<td>Test execution only via Selenium RC</td>
-<td>Start browser, run tests</td>
+<td>仅通过Selenium RC*执行测试</td>
+<td>启动浏览器运测试</td>
 <td>Windows, Linux, Mac</td>
 </tr>
 <tr class="row-even"><td>Opera 9</td>
-<td>Test execution only via Selenium RC</td>
-<td>Start browser, run tests</td>
+<td>仅通过Selenium RC*执行测试</td>
+<td>启动浏览器运测试</td>
 <td>Windows, Linux, Mac</td>
 </tr>
 <tr class="row-odd"><td>Opera 8</td>
-<td>Test execution only via Selenium RC</td>
-<td>Start browser, run tests</td>
+<td>仅通过Selenium RC*执行测试</td>
+<td>启动浏览器运测试</td>
 <td>Windows, Linux, Mac</td>
 </tr>
 <tr class="row-even"><td>Google Chrome</td>
-<td>Test execution only via Selenium RC</td>
-<td>Start browser, run tests</td>
+<td>仅通过Selenium RC*执行测试</td>
+<td>启动浏览器运测试</td>
 <td>Windows, Linux, Mac</td>
 </tr>
 <tr class="row-odd"><td>Others</td>
-<td>Test execution only via Selenium RC</td>
-<td>Partial support possible**</td>
-<td>As applicable</td>
+<td>仅通过Selenium RC*执行测试</td>
+<td>可能部分支持**</td>
+<td>如适用</td>
 </tr>
 </tbody>
 </table>
-<p>* Tests developed on Firefox via Selenium IDE can be executed on any other
-supported browser via a simple Selenium RC command line.</p>
-<p>** Selenium RC server can start any executable, but depending on
-browser security settings there may be technical limitations that would limit
-certain features.</p>
+<p>* 通过Selenium IDE在Firfox上开发的测试，可用通过一个简单的Selenium RC命令行在任何其它的浏览器上执行。</p>
+<p>** Selenium RC服务器可以启动任何执行，但依赖于浏览器的安全设置，可能有技术上的限制将限制某些功能。</p>
 </div>
 </div>
 <div class="section" id="flexibility-and-extensibility">
-<h2>Flexibility and Extensibility<a class="headerlink" href="#flexibility-and-extensibility" title="Permalink to this headline">¶</a></h2>
-<p>You’ll find that Selenium is highly flexible.  There are many ways you
-can add functionality to both Selenium test scripts and Selenium’s framework
-to customize your test automation. This is perhaps Selenium’s
-greatest strength when compared with other automation tools. These customizations
-are described in various places throughout this document.  In addition, since Selenium is Open Source, the sourcecode can always be
-downloaded and modified.</p>
+<h2>灵活性和扩展性<a class="headerlink" href="#flexibility-and-extensibility" title="Permalink to this headline">¶</a></h2>
+<p>你将发现Selenium是高度灵活的。你可以通过许多的途径增加功能到Selenium测试脚本和Selenium框架中来自定义你的测试
+自动化。这或许是Selenium与其它自动化工具比较而言最伟大的地方。这些自定义方法描述在贯穿本文档的各个地
+方。此外，因为Selenium是开源的，源代码总是可以被下载和修改。</p>
 </div>
 <div class="section" id="what-s-in-this-book">
-<h2>What’s in this Book?<a class="headerlink" href="#what-s-in-this-book" title="Permalink to this headline">¶</a></h2>
-<p>This user’s guide targets both new users and those who
-have already used Selenium but are seeking additional knowledge. We introduce
-Selenium to new users and we do not assume prior Selenium experience.  We do
-assume, however, that the user has at least a basic understanding of test
-automation.  For the more experienced user, this guide can act as a reference.
-For the more experienced, we recommend browsing the chapter and subheadings.
-We’ve provided information on the Selenium architecture, examples of common usage,
-and a chapter on test design techniques.</p>
-<p>The remaining chapters of the reference present:</p>
+<h2>本文档包含内容<a class="headerlink" href="#what-s-in-this-book" title="Permalink to this headline">¶</a></h2>
+<p>该用户指南以新用户和那些已经使用过Selenium但仍在寻找额外知识的用户为目标。对于Selenium新用户，
+我们不假定先前有Selenium的经验。然而，我们假定用户至少对自动化测试有一些的基本理解。对那些有经验的
+用户，本指南可以作为一个参考资料。对有经验的用户，我们推荐浏览章节和子标题（选择阅读）。我们提供了有关
+Selenium架构的信息，常见用法的示例，和一个有关测试设计技术的章节。</p>
+<p>本参考在剩下的章节里提供了：</p>
 <dl class="docutils">
 <dt><a class="reference internal" href="02_selenium_ide.jsp#chapter02-reference"><em>Selenium IDE</em></a></dt>
-<dd>Introduces Selenium IDE and describes how to use it to build test scripts. using the
-Selenium Integrated Development Environment.  If you are not experienced in programming,
-but still hoping to learn test automation this is where you should start and you’ll find
-you can create quite a few automated tests with Selenium IDE.  Also, if you are experienced
-in programming, this chapter may still interest you in that you can use Selenium IDE
-to do rapid prototyping of your tests.  This section also demonstrates how your test
-script can be “exported” to a programming language for adding more advanced capabilities
-not supported by Selenium IDE.</dd>
+<dd>介绍了Selenium IDE以及描述了如何使用SeleniumIDE构造测试脚本。如果你在编程南方面没
+有多少经验，但仍然希望学习测试自动化，这是你应该开始的地方，你会发现你可以使用Selenium IDE创建一些自动化
+的测试。同样如果你是一个在编程方面有经验的用户，这一章可能仍然对你来说是有趣，因为你可以使用Selenium IDE
+来开发你测试的快速原型。这一章也演示了如何“导出”你的测试脚本到一种支持的编程语言，为了增加更多的
+Selenium IDE不支持的高级能力。</dd>
 <dt><a class="reference internal" href="03_webdriver.jsp#chapter03-reference"><em>Selenium 2</em></a></dt>
-<dd>Explains how to develop an automated test program using Selenium 2.</dd>
+<dd>解释了如何使用Selenium 2 开发一个自动化测试程序。</dd>
 <dt><a class="reference internal" href="05_selenium_rc.jsp#chapter05-reference"><em>Selenium 1</em></a></dt>
-<dd>Explains how to develop an automated test program using the Selenium RC API.
-Many examples are presented in both programming languages and scripting
-languages. Also, the installation and setup of Selenium RC is covered here.
-The various modes, or configurations, that Selenium RC supports are
-described, along with their trade-offs and limitations. An architecture
-diagram is provided to help illustrate these points.
-Solutions to common problems frequently difficult for new Sel-R users are
-described here, for instance, handling Security Certificates,
-https requests, pop-ups, and the opening of new windows.</dd>
-<dt><a class="reference internal" href="06_test_design_considerations.jsp#chapter06-reference"><em>Test Design Considerations</em></a></dt>
-<dd>This chapter presents programming techniques for use with Selenium-WebDriver and
-Selenium RC. We also demonstrate techniques commonly asked about
-in the user forum such as how to design setup and teardown functions, how to
-implement data-driven tests (tests where one can vary the data between test passes)
-and other methods of programming common test automation tasks.</dd>
+<dd>解
+释如何使用Selenium RC API开发一个自动化的测试程序。提供了许多示例使用编程语言和脚本语言。同样，Selenium
+RC的安装和设置也被包含在这一章。描述了Selenium RC支持的各种各样的模式或配置，以及他们的优缺点和限制。提
+供了一个构架图有助于演示这些关键点。对新的Sel-R用户感觉困难的经常发生的公共问题的解决方案也在本章描述，
+例如，处理安全证书，https请求，弹出和打开一个新的窗口。</dd>
+<dt><a class="reference internal" href="06_test_design_considerations.jsp#chapter06-reference"><em>测试设计考虑</em></a></dt>
+<dd>这一章提供了Selenium-WebDriver和
+Selenium RC使用的编程技术。我们也演示了一些在用户论坛上经常提及的一些技术，诸如如何设计setup和teardown
+函数，如何实现数据驱动的测试（可以在多次测试时改变数据的测试），以及其他的公共的测试自动化编程方法。</dd>
 <dt><a class="reference internal" href="07_selenium_grid.jsp#chapter07-reference"><em>Selenium-Grid</em></a></dt>
-<dd><em>This chapter is not yet developed.</em></dd>
-<dt><a class="reference internal" href="08_user_extensions.jsp#chapter08-reference"><em>User extensions</em></a></dt>
-<dd>Describes ways that Selenium can be modified, extended and customized.</dd>
+<dd><em>这一章仍然没有开始。</em></dd>
+<dt><a class="reference internal" href="08_user_extensions.jsp#chapter08-reference"><em>用户扩展</em></a></dt>
+<dd>描述了Selenium可以被修改，扩展和自定义的途径和方法。</dd>
 </dl>
 </div>
 <div class="section" id="the-documentation-team-authors-past-and-present">
-<h2>The Documentation Team–Authors Past and Present<a class="headerlink" href="#the-documentation-team-authors-past-and-present" title="Permalink to this headline">¶</a></h2>
-<p>In alphabetical order, the following people have made significant contributions
-to the authoring of this user’s guide, its publishing infrastructure,
-or both.  We are very grateful to all of them.</p>
+<h2>文档团队 - 过去和现在的作者们<a class="headerlink" href="#the-documentation-team-authors-past-and-present" title="Permalink to this headline">¶</a></h2>
+<p>按字母的顺序，下面的人员对本用户指南的创作，发布结构或两者做出了重要的贡献。我们非常感激他们所有人。</p>
 <ul class="simple">
 <li>Dave Hunt</li>
 <li>Luke Inman-Semerau</li>
@@ -416,16 +335,10 @@ or both.  We are very grateful to all of them.</p>
 <li><a class="reference external" href="http://seleniumtests.com/">Tarun Kumar</a></li>
 </ul>
 <div class="section" id="acknowledgements">
-<h3>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h3>
-<p>A special thanks goes to Patrick Lightbody.  As an administrator of the
-SeleniumHQ website, major contributor to Selenium RC, his support was invaluable when
-writing the first release of the user’s guide.  Patrick helped us understand our audience.
-He also set us up with
-everything we needed on the seleniumhq.org website for publishing the documents.
-Also a thanks goes to Andras Hatvani for his advice on publishing
-solutions, and to Amit Kumar for participating in our discussions and for
-assisting with reviewing the document.</p>
-<p>And of course, we must <em>recognize the Selenium Developers</em>.  They have truly
-designed an amazing tool. Without the vision of the original designers, and
-the continued efforts of the current developers, we would not have such a
-great tool to pass on to you.</p>
+<h3>致谢<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h3>
+<p>特别感谢Patrick Lightbody。作为一个SeleniumHQ站点的管理员，对Selenium RC的主要贡献者，他的支持是无价
+的，对编写本用户指南的第一个发布。Patrick帮助我们理解我们的读者。他为了我们每一个人发布本文档到
+seleniumhq.org提供了所需的一切。同样要感谢Andras Hatvani 有关在发布解决方案上的建议，感谢Amit Kumar参
+与我们的讨论并协助审核本文档。</p>
+<p>当然，我们必须对Selenium的开发者致谢。他们真的设计了一个令人惊奇的工具。没有最初的设计者的想象力，和现
+在的开发者的不断地努力，我们就不会有这样一个很棒的工具需要推荐给你。</p>
