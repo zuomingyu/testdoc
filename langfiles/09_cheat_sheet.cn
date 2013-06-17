@@ -15,15 +15,16 @@
 
 #:side
 :list
-<li><a class="reference internal" href="#">Selenium WebDriver Cheat Sheet</a><ul class="treeview">
-<li class="last"><a class="reference internal" href="#role-based-interfaces-in-selenium-webdriver">Role Based Interfaces in Selenium WebDriver</a></li>
+<li><a class="reference internal" href="#">Selenium WebDriver速查表</a><ul class="treeview">
+<li class="last"><a class="reference internal" href="#role-based-interfaces-in-selenium-webdriver">Selenium WebDriver中基于角色的接口</a></li>
 
 #:body
 :body
-<h1>Selenium WebDriver Cheat Sheet<a class="headerlink" href="#selenium-webdriver-cheat-sheet" title="Permalink to this headline">¶</a></h1>
+<h1>Selenium WebDriver速查表<a class="headerlink" href="#selenium-webdriver-cheat-sheet" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="role-based-interfaces-in-selenium-webdriver">
-<span id="cheat-sheet-reference"></span><h2>Role Based Interfaces in Selenium WebDriver<a class="headerlink" href="#role-based-interfaces-in-selenium-webdriver" title="Permalink to this headline">¶</a></h2>
-<p>One of the differences between Selenium RC and Selenium WebDriver is that the WebDriver APIs make extensive use of “role-based interfaces” to allow users to determine whether a particular driver supports a feature. This can make it hard to know what features are available without first knowing which interface to try and use. The key interfaces are listed below.</p>
+<span id="cheat-sheet-reference"></span><h2>Selenium WebDriver中基于角色的接口<a class="headerlink" href="#role-based-interfaces-in-selenium-webdriver" title="Permalink to this headline">¶</a></h2>
+<p>Selenium RC和Selenium WebDriver其中一个不同的地方就是WebDriver APIs广泛的使用“基于角色的接口”来让用户决定是否一个特定的驱动支持某个功能。
+这个让它很难在事先不知道哪个要去尝试和使用的情况下清楚哪个功能是有效的。 主要的接口在下面罗列出来了。</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="8%">
@@ -38,19 +39,19 @@
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>HasCapabilities</td>
-<td>Provides access to the capabilities supported by this driver.</td>
+<td>提供此驱动程序支持的能力。</td>
 <td><a class="reference external" href="http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/HasCapabilities.html">Java HasCapabilities.java</a></td>
 </tr>
 <tr class="row-odd"><td>JavascriptExecutor</td>
-<td>Allows the execution of arbitrary JS commands.</td>
+<td>允许执行任意JS命令</td>
 <td><a class="reference external" href="http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/JavascriptExecutor.html">Java JavascriptExecutor.java</a></td>
 </tr>
 <tr class="row-even"><td>Rotatable</td>
-<td>Indicates whether the driver supports rotating the display (mostly just mobile drivers).</td>
+<td>识别驱动程序是否支持旋转显示（大多只是移动驱动器）。</td>
 <td><a class="reference external" href="http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/Rotatable.html">Java Rotatable.java</a></td>
 </tr>
 <tr class="row-odd"><td>TakesScreenshot</td>
-<td>Provides a mechanism for taking screenshots.</td>
+<td>提供了一种截图机制。</td>
 <td><a class="reference external" href="http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/TakesScreenshot.html">Java TakesScreenshot.java</a></td>
 </tr>
 </tbody>

@@ -18,37 +18,37 @@
 
 #:body
 :body
-<h1>.NET client driver configuration<a class="headerlink" href="#net-client-driver-configuration" title="Permalink to this headline">¶</a></h1>
-<p id="configuring-selenium-rc-net-reference">.NET client Driver can be used with Microsoft Visual Studio.
-To Configure it with Visual Studio do as Following.</p>
+<h1>.NET客户端驱动配置<a class="headerlink" href="#net-client-driver-configuration" title="Permalink to this headline">¶</a></h1>
+<p id="configuring-selenium-rc-net-reference">.NET客户端驱动可以和Microsoft Visual Studio一起使用。
+按照下面的步骤来配置Visual Studio中的.NET客户端。</p>
 <ul>
-<li><p class="first">Launch Visual Studio and navigate to File &gt; New &gt; Project.</p>
+<li><p class="first">启动Visual Studio然后依次打开File &gt; New &gt; Project.</p>
 <img alt="/static/chapt5_img01_Launch_VisualStudio.png" class="align-center" src="/static/chapt5_img01_Launch_VisualStudio.png">
 </li>
 </ul>
 <ul>
-<li><p class="first">Select Visual C# &gt; Class Library &gt; Name your project &gt; Click on OK button.</p>
+<li><p class="first">选择Visual C# &gt; Class Library &gt; 命名你的项目 &gt; 点击ok按钮。</p>
 <img alt="/static/chapt5_img02_CreateProject.png" class="align-center" src="/static/chapt5_img02_CreateProject.png">
 </li>
 </ul>
 <ul>
-<li><p class="first">A Class (.cs) is created. Rename it as appropriate.</p>
+<li><p class="first">一个类文件(.cs)被创建，按照需要重命名它。</p>
 <img alt="/static/chapt5_img03_TestClassFile.png" class="align-center" src="/static/chapt5_img03_TestClassFile.png">
 </li>
 </ul>
 <ul>
-<li><p class="first">Under right hand pane of Solution Explorer right click on References &gt; Add
+<li><p class="first">在右侧窗格中的Solution Explorer里右键References &gt; Add
 References.</p>
 <img alt="/static/chapt5_img04_AddReference.png" class="align-center" src="/static/chapt5_img04_AddReference.png">
 </li>
 </ul>
 <ul>
-<li><p class="first">Select following dll files -
+<li><p class="first">选择这些DLL文件 -
 nmock.dll, nunit.core.dll, nunit.framework.dll,ThoughtWorks.
 Selenium.Core.dll, ThoughtWorks.Selenium.IntegrationTests.dll,
-ThoughtWorks.Selenium.UnitTests.dll and click on Ok button</p>
+ThoughtWorks.Selenium.UnitTests.dll然后点击ok按钮。</p>
 <img alt="/static/chapt5_img05_AddDlls.png" class="align-center" src="/static/chapt5_img05_AddDlls.png">
 </li>
 </ul>
-<p>With This Visual Studio is ready for Selenium Test Cases.</p>
+<p>这个Visual Studio已经可以编写Selenium测试用例了。</p>
 </div>

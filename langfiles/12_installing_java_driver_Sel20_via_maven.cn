@@ -15,20 +15,18 @@
 
 #:side
 :list
-<li><a class="reference internal" href="#">Importing Sel2.0 Project into Eclipse using Maven</a></li>
-<li><a class="reference internal" href="#importing-sel2-0-project-into-intellij-using-maven">Importing Sel2.0 Project into IntelliJ Using Maven</a></li>
+<li><a class="reference internal" href="#">使用Maven导入Sel2.0项目到Eclipse</a></li>
+<li><a class="reference internal" href="#importing-sel2-0-project-into-intellij-using-maven">使用Maven导入Sel2.0项目到IntelliJ</a></li>
 
 #:body
 :body
-<h1>Importing Sel2.0 Project into Eclipse using Maven<a class="headerlink" href="#importing-sel2-0-project-into-eclipse-using-maven" title="Permalink to this headline">¶</a></h1>
-<p id="importing-maven-into-eclipse-reference">Once you have created your pom.xml file in your project, you can have
-maven autogenerate the project files necessary for eclipse with a simple
-command:</p>
+<h1>使用Maven导入Sel2.0项目到Eclipse<a class="headerlink" href="#importing-sel2-0-project-into-eclipse-using-maven" title="Permalink to this headline">¶</a></h1>
+<p id="importing-maven-into-eclipse-reference">只要在你的项目里创建了pom.xml文件, 你就可以使用
+一个简单的maven命令来自动生成eclipse所需要的文件:</p>
 <div class="highlight-bash"><div class="highlight"><pre>mvn eclipse:eclipse
 </pre></div>
 </div>
-<p>Then open eclipse. Choose your workspace or create a new one. Once the Eclipse
-IDE loads, do the following:</p>
+<p>然后打开eclipse选择你的workspace或新建一个目录. 当Eclipse IDE加载完成后, 做如下步骤:</p>
 <blockquote>
 <div># File -&gt; Import...
 # General -&gt; Existing Projects into Workspace
@@ -37,68 +35,60 @@ IDE loads, do the following:</p>
 # locate the project folder containing your pom.xml and click ok.
 # Your project should appear in the “Projects” box already
 # click finish</div></blockquote>
-<p>If you haven’t already, install the <a class="reference external" href="http://m2eclipse.sonatype.org/installing-m2eclipse.html">m2eclipse plugin</a> then
-right click on your project and select Maven -&gt; Enable Dependency Management.</p>
+<p>如果你还没有selenium项目, 先安装<a class="reference external" href="http://m2eclipse.sonatype.org/installing-m2eclipse.html">m2eclipse plugin</a> 
+然后右键你的项目再选择Maven -&gt; Enable Dependency Management.</p>
 </div>
 <div class="section" id="importing-sel2-0-project-into-intellij-using-maven">
-<h1>Importing Sel2.0 Project into IntelliJ Using Maven<a class="headerlink" href="#importing-sel2-0-project-into-intellij-using-maven" title="Permalink to this headline">¶</a></h1>
-<p id="importing-maven-into-intellij-reference"><em>We are currently working on this appendix.  The information provided
-here is accurate, although it may not be finished.</em></p>
-<p>In this appendix we provide the steps, including screen captures, showing
-how to create a Selenium 2.0 java client-driver project in IntelliJ IDEA.
-These steps assume you have already used maven with a pom.xml file to set up the
-project.  This process is described in the Selenium 2.0 chapter.  You must
-have followed that process before you can perform these steps.  This appendix
-then shows you how to import the maven-created Selenium 2.0 java
-project into IntelliJ.</p>
-<p>First, open IntelliJ and from the entry page, click Create New Project.</p>
+<h1>使用Maven导入Sel2.0项目到IntelliJ<a class="headerlink" href="#importing-sel2-0-project-into-intellij-using-maven" title="Permalink to this headline">¶</a></h1>
+<p id="importing-maven-into-intellij-reference"><em>我们正在整理这个附录。尽管还没有完成，但是这里提供的信息都是准确的。</em></p>
+<p>在这个附录里我们提供了步骤, 包括截图, 展示如何在IntelliJ IDEA中创建一个Selenium 2.0的java客户端项目。
+这些步骤假设你已经会使用maven的pom.xml文件来搭建一个项目。
+这个过程在Selenium 2.0章节由描述。在你执行这些步骤之前你必须先完成那个进度。
+这个附录将告诉你 如何导入由maven创建的Selenium 2.0 java项目到IntelliJ中。</p>
+<p>首先, 打开IntelliJ然后在默认页中点击“Create New Project”。</p>
 <img alt="/static/Appendix_Sel20_Java_Img01_EntryPage.png" class="align-center" src="/static/Appendix_Sel20_Java_Img01_EntryPage.png">
-<p>From the New Project dialog select Import Project from External Model.</p>
+<p>从New Project对话框选择 Import Project from External Model.</p>
 <img alt="/static/Appendix_Sel20_Java_Img02_ImportProject.png" class="align-center" src="/static/Appendix_Sel20_Java_Img02_ImportProject.png">
-<p>From the list of project types, select maven.</p>
+<p>在项目类型列表中选择 maven。</p>
 <img alt="/static/Appendix_Sel20_Java_Img03_SelectMaven.png" class="align-center" src="/static/Appendix_Sel20_Java_Img03_SelectMaven.png">
-<p>Now you will see a dialog allowing you to set project options including the
-project’s root directory.</p>
+<p>现在你可以看到一个对话框允许你去设置项目选项，包括项目的主目录。</p>
 <img alt="/static/Appendix_Sel20_Java_Img04_RootDirAndProjOptions.png" class="align-center" src="/static/Appendix_Sel20_Java_Img04_RootDirAndProjOptions.png">
-<p>Click the ‘...’ button to set the root folder.</p>
+<p>点击 ‘...’ 按钮去设置主目录</p>
 <img alt="/static/Appendix_Sel20_Java_Img04a_SetRootFolder.png" class="align-center" src="/static/Appendix_Sel20_Java_Img04a_SetRootFolder.png">
-<p>Now the settings dialog will show the directory you just selected.</p>
+<p>现在设置对话框显示了你选择的目录</p>
 <img alt="/static/Appendix_Sel20_Java_Img05_RootFolderSet.png" class="align-center" src="/static/Appendix_Sel20_Java_Img05_RootFolderSet.png">
-<p>This next dialog shows the name of your maven project as specified in the pom.xml file.
-Select your maven project and continue.</p>
+<p>下一个对话框将显示pom.xml文件中指定的maven项目名。
+S选择你的maven项目，然后继续。</p>
 <img alt="/static/Appendix_Sel20_Java_Img06_SelectTheMavenProject.png" class="align-center" src="/static/Appendix_Sel20_Java_Img06_SelectTheMavenProject.png">
-<p>Enter a name for your project.</p>
+<p>为你的项目输入一个名字。</p>
 <img alt="/static/Appendix_Sel20_Java_Img07_ProjectName.png" class="align-center" src="/static/Appendix_Sel20_Java_Img07_ProjectName.png">
-<p>Once your project has been imported it should look like this in IntelliJ.</p>
+<p>一旦你的项目导入成功， 在IntelliJ中应该像下面这样。</p>
 <img alt="/static/Appendix_Sel20_Java_Img08_ProjectImported.png" class="align-center" src="/static/Appendix_Sel20_Java_Img08_ProjectImported.png">
-<p>The maven project download many dependencies (libraries) when you originally ran
-‘mvn install’.  Now in IntelliJ you can see all these libraries.  These next two
-screen captures shows the libraries you should now have in your project.</p>
+<p>当你最初运行‘mvn install’时maven项目会下载许多依赖(库)。 
+现在在IntelliJ中你可以看到这些所有的库。 下面的两张截图展示了你的项目中应该需要哪些库。</p>
 <img alt="/static/Appendix_Sel20_Java_Img09_Libraries1.png" class="align-center" src="/static/Appendix_Sel20_Java_Img09_Libraries1.png">
 <img alt="/static/Appendix_Sel20_Java_Img10_Libraries2.png" class="align-center" src="/static/Appendix_Sel20_Java_Img10_Libraries2.png">
-<p>Before you can start writing Selenium code, you still need to create a module and at least
-one Java class (a .java file).  First select the Project’s root in IntelliJ and right click.</p>
+<p>在你可以开始写Selenium代码之前， 你还需要创建一个模型和至少一个java类(a .java file)。 首先在IntelliJ中选择项目的根结点然后右键。</p>
 <img alt="/static/Appendix_Sel20_Java_Img11_CreateModuleSelectProject.png" class="align-center" src="/static/Appendix_Sel20_Java_Img11_CreateModuleSelectProject.png">
-<p>And select Create Module.</p>
+<p>选择Create Module.</p>
 <img alt="/static/Appendix_Sel20_Java_Img12_SelectCreateModule.png" class="align-center" src="/static/Appendix_Sel20_Java_Img12_SelectCreateModule.png">
-<p>In the dialog select the radio button Create Module From Scratch.</p>
+<p>在对话框中选择Create Module From Scratch单选框。</p>
 <img alt="/static/Appendix_Sel20_Java_Img13_CreateModuleFromScratch.png" class="align-center" src="/static/Appendix_Sel20_Java_Img13_CreateModuleFromScratch.png">
-<p>Select Java Module and enter a name for the new module.</p>
+<p>选择Java然后为新模型输入一个名字。</p>
 <img alt="/static/Appendix_Sel20_Java_Img14_JavaModuleAndModuleName.png" class="align-center" src="/static/Appendix_Sel20_Java_Img14_JavaModuleAndModuleName.png">
-<p>And next, you must create a folder for the source code.  By convention this is almost
-always named ‘src’.</p>
+<p>接下来，你必须为源代码创建一个目录。  按照惯例通常都叫‘src’。</p>
 <img alt="/static/Appendix_Sel20_Java_Img15_CreateSrcFolder.png" class="align-center" src="/static/Appendix_Sel20_Java_Img15_CreateSrcFolder.png">
-<p>Now we’re on the last dialog.  Typically you don’t need to select any ‘technollogies’ here.
-Unless you know for a fact you will be using Groovy or some other technology.</p>
+<p>现在已经是最后一个对话框， 通常在这你不用选择任何的‘technollogies’。
+除非你知道如何使用Groovy或其它的相关技术。</p>
 <img alt="/static/Appendix_Sel20_Java_Img16_SelectTechnologiesNoGroovy.png" class="align-center" src="/static/Appendix_Sel20_Java_Img16_SelectTechnologiesNoGroovy.png">
-<p>Now that the module is created, your project should show the following structure.</p>
+<p>现在模型已经创建了, 你的项目应该显示为如下的结构：</p>
 <img alt="/static/Appendix_Sel20_Java_Img17_ModuleCreated.png" class="align-center" src="/static/Appendix_Sel20_Java_Img17_ModuleCreated.png">
-<p>Finally, you need to create a .java file with a corresponding java class.</p>
+<p>最后，你需要创建一个拥有相应类的.java文件。</p>
 <img alt="/static/Appendix_Sel20_Java_Img18_SelectCreateJavaClass.png" class="align-center" src="/static/Appendix_Sel20_Java_Img18_SelectCreateJavaClass.png">
-<p>Enter the class name.</p>
+<p>输入一个类名</p>
 <img alt="/static/Appendix_Sel20_Java_Img19_EnterJavaClassName.png" class="align-center" src="/static/Appendix_Sel20_Java_Img19_EnterJavaClassName.png">
-<p>The .java file should now be created.  It should look like this in your project.</p>
+<p>.java文件现在应该已经被创建了， 在你的项目中它应该像这样：</p>
 <img alt="/static/Appendix_Sel20_Java_Img20_JavaClassCreated.png" class="align-center" src="/static/Appendix_Sel20_Java_Img20_JavaClassCreated.png">
-<p>If your project now looks like the one displayed above, you’re done, congrats!
-And hope you enjoy coding your first Selenium automation!</p>
+<p>如果你的项目现在看起来像上面展示的一样，那么祝贺，你已经完成了!
+希望你开心的开始你的第一个Selenium自动化!</p>
 </div>
