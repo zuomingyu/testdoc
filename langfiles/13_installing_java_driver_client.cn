@@ -22,100 +22,87 @@
 
 #:body
 :body
-<h1>Selenium 1.0 Java Client Driver Configuration<a class="headerlink" href="#selenium-1-0-java-client-driver-configuration" title="Permalink to this headline">¶</a></h1>
-<p>In General configuration of Selenium-RC with any java IDE would have following
-steps:</p>
+<h1>Selenium 1.0 Java客户端驱动配置<a class="headerlink" href="#selenium-1-0-java-client-driver-configuration" title="Permalink to this headline">¶</a></h1>
+<p>Selenium-RC的java IDE配置通常有下面几步：</p>
 <ul class="simple">
-<li>Download Selenium-RC from the SeleniumHQ <a class="reference external" href="http://seleniumhq.org/download/">downloads page</a></li>
-<li>Start any java IDE</li>
-<li>Create new project</li>
-<li>Add “selenium-java-&lt;version-number&gt;.jar” to your project classpath</li>
-<li>Record your test from Selenium-IDE and translate it to java code (Selenium
-IDE has automatic translation feature to generate tests in variety of languages)</li>
-<li>Run selenium server from console</li>
-<li>Run your test in the IDE</li>
+<li>在SeleniumHQ<a class="reference external" href="http://seleniumhq.org/download/">下载页面</a>下载Selenium-RC</li>
+<li>启动java IDE</li>
+<li>创建一个新项目</li>
+<li>添加“selenium-java-&lt;版本号&gt;.jar” 到你的classpath</li>
+<li>在Selenium-IDE中录制测试脚本然后转换成java代码(Selenium
+IDE有自动生成各种支持语言的对应脚本的功能)</li>
+<li>在命令行运行selenium server</li>
+<li>在IDE中运行你的测试</li>
 </ul>
-<p>These points have been delineated below with reference to Eclipse and IntelliJ:</p>
+<p>与Eclipse和IntelliJ有关的几个点在下面已经被划定:</p>
 <div class="section" id="configuring-selenium-rc-with-eclipse">
-<span id="configuring-selenium-rc-eclipse-reference"></span><h2>Configuring Selenium-RC With Eclipse<a class="headerlink" href="#configuring-selenium-rc-with-eclipse" title="Permalink to this headline">¶</a></h2>
-<p><strong>Eclipse</strong> is a multi-language software development platform comprising an IDE
-and a plug-in system to extend it. It is written primarily in Java and is used
-to develop applications in this language and, by means of the various plug-ins,
-in other languages as well as C/C++, Cobol, Python, Perl, PHP and more.</p>
-<p>Following lines describes configuration of Selenium-RC with Eclipse -
-Version: 3.3.0. (Europa Release). It should not be too different for higher
-versions of Eclipse</p>
+<span id="configuring-selenium-rc-eclipse-reference"></span><h2>在Eclipse中配置Selenium-RC<a class="headerlink" href="#configuring-selenium-rc-with-eclipse" title="Permalink to this headline">¶</a></h2>
+<p><strong>Eclipse</strong>是包含一个IDE和一个插件系统的多语言软件开发平台。它主要由Java开发并用于开发java应用的，
+ 通过各种插件可以支持像C/C++, Cobol, Python, Perl, PHP以及更多的语言的开发。</p>
+<p>下面描述了在Eclipse -Version: 3.3.0. (Europa Release)中配置Selenium-RC。对于更高版本的Eclipse应该也没用太大区别。</p>
 <ul class="simple">
-<li>Launch Eclipse.</li>
-<li>Select File &gt; New &gt; Other.</li>
+<li>启动Eclipse.</li>
+<li>选择 File &gt; New &gt; Other.</li>
 </ul>
 <img alt="/static/chapt5_img03_Launch_Eclipse.png" class="align-center" src="/static/chapt5_img03_Launch_Eclipse.png">
 <ul class="simple">
-<li>Java &gt; Java Project &gt; Next</li>
+<li>Java &gt; Java Project &gt; 下一步</li>
 </ul>
 <img alt="/static/chapt5_img04_Create_Java_Project.png" class="align-center" src="/static/chapt5_img04_Create_Java_Project.png">
 <ul class="simple">
-<li>Provide Name to your project, Select JDK in ‘Use a project Specific JRE’ option (JDK 1.5
-selected in this example) &gt; click Next</li>
+<li>给你的项目取个名字, 在‘Use a project Specific JRE’选项中选择JDK (样例中选择了JDK 1.5) &gt; 点击下一步</li>
 </ul>
 <img alt="/static/chapt5_img05_Create_Java_Project.png" class="align-center" src="/static/chapt5_img05_Create_Java_Project.png">
 <ul class="simple">
-<li>Keep ‘JAVA Settings’ intact in next window. Project specific libraries can be
-added here. (This described in detail in later part of document.)</li>
+<li>在下一个窗口中保留‘JAVA Settings’不变 。 项目所用到的外部类在这里添加。 (在接下来的文档中将有详细描述)</li>
 </ul>
 <img alt="/static/chapt5_img06_Create_Java_Project.png" class="align-center" src="/static/chapt5_img06_Create_Java_Project.png">
 <ul class="simple">
-<li>Click Finish &gt; Click on Yes in Open Associated Perspective pop up window.</li>
+<li>点击 Finish &gt; 在Open Associated Perspective弹出框中点击Yes</li>
 </ul>
 <img alt="/static/chapt5_img07_Create_Java_Project.png" class="align-center" src="/static/chapt5_img07_Create_Java_Project.png">
-<p>This would create Project Google in Package Explorer/Navigator pane.</p>
+<p>这里将在Package Explorer/Navigator里创建一个google项目。</p>
 <img alt="/static/chapt5_img08_Package_Explorer.png" class="align-center" src="/static/chapt5_img08_Package_Explorer.png">
 <ul class="simple">
-<li>Right click on src folder and click on New &gt; Folder</li>
+<li>右键src目录在点击 New &gt; Folder</li>
 </ul>
 <img alt="/static/chapt5_img09_Create_Com_Package.png" class="align-center" src="/static/chapt5_img09_Create_Com_Package.png">
-<p>Name this folder as com and click on Finish button.</p>
+<p>给这个目录取名 com然后点击Finish按钮。</p>
 <ul class="simple">
-<li>This should get com package insider src folder.</li>
+<li>这里将在src目录里创建一个com包。</li>
 </ul>
 <img alt="/static/chapt5_img10_Create_Com_Package.png" class="align-center" src="/static/chapt5_img10_Create_Com_Package.png">
 <ul class="simple">
-<li>Following the same steps create <em>core</em> folder inside <em>com</em></li>
+<li>下面使用相同的步骤在<em>com</em>中创建 <em>core</em>目录</li>
 </ul>
 <img alt="/static/chapt5_img11_Create_Core_Package.png" class="align-center" src="/static/chapt5_img11_Create_Core_Package.png">
-<p>SelTestCase class can be kept inside <em>core</em> package.</p>
-<p>Create one more package inside <em>src</em> folder named <em>testscripts</em>. This is a
-place holder for test scripts.</p>
-<p><em>Please notice this is about the organization of project and it entirely
-depends on individual’s choice /  organization’s standards. Test scripts
-package can further be segregated depending upon the project requirements.</em></p>
+<p>SelTestCase类可以放在<em>core</em>包中。</p>
+<p>在<em>src</em>中再创建一个<em>testscripts</em>包。这个是Test scripts的占位符。</p>
+<p><em>请注意这仅仅是有关项目的一个结构，它完全
+取决于个人的选择/组织的标准。根据项目的不同需求Test scripts包可以被进一步隔离。</em></p>
 <img alt="/static/chapt5_img12_Create_Test_Script_Package.png" class="align-center" src="/static/chapt5_img12_Create_Test_Script_Package.png">
 <ul class="simple">
-<li>Create a folder called lib inside project Google. Right click on Project name
-&gt; New &gt; Folder. This is a place holder for jar files to project (i.e. Selenium
-client driver, selenium server etc)</li>
+<li>在Google项目中创建一个lib目录。右键项目名
+&gt; New &gt; Folder. 这是项目所用到的jar文件占位符(i.e. Selenium客户端驱动, selenium server等等)</li>
 </ul>
 <img alt="/static/chapt5_img13_Create_Library_Package.png" class="align-center" src="/static/chapt5_img13_Create_Library_Package.png">
-<p>This would create lib folder in Project directory.</p>
+<p>这个将在项目的主目录创建一个lib目录。</p>
 <img alt="/static/chapt5_img14_Create_Library_Package.png" class="align-center" src="/static/chapt5_img14_Create_Library_Package.png">
 <ul class="simple">
-<li>Right click on <em>lib</em> folder &gt; Build Path &gt; Configure build Path</li>
+<li>右键<em>lib</em>目录 &gt; Build Path &gt; Configure build Path</li>
 </ul>
 <img alt="/static/chapt5_img15_Configure_Build_Path.png" class="align-center" src="/static/chapt5_img15_Configure_Build_Path.png">
 <ul class="simple">
-<li>Under Library tab click on Add External Jars to navigate to directory where
-jar files are saved. Select the jar files which are to be added and click on
-Open button.</li>
+<li>在Library标签下点击 Add External Jars然后浏览到jar文件的保存位置。选择需要添加的jar文件然后点击Open按钮。</li>
 </ul>
 <img alt="/static/chapt5_img16_Configure_Build_Path.png" class="align-center" src="/static/chapt5_img16_Configure_Build_Path.png">
-<p>After having added jar files click on OK button.</p>
+<p>添加完jar文件后点击OK按钮。</p>
 <img alt="/static/chapt5_img17_Configure_Build_Path.png" class="align-center" src="/static/chapt5_img17_Configure_Build_Path.png">
-<p>Added libraries would appear in Package Explorer as following:</p>
+<p>已添加的类库在Package Explorer中显示如下:</p>
 <img alt="/static/chapt5_img18_Configure_Build_Path.png" class="align-center" src="/static/chapt5_img18_Configure_Build_Path.png">
 </div>
 <div class="section" id="configuring-selenium-rc-with-intellij">
-<span id="configuring-selenium-rc-intellij-reference"></span><h2>Configuring Selenium-RC With Intellij<a class="headerlink" href="#configuring-selenium-rc-with-intellij" title="Permalink to this headline">¶</a></h2>
+<span id="configuring-selenium-rc-intellij-reference"></span><h2>在Intellij中Selenium-RC<a class="headerlink" href="#configuring-selenium-rc-with-intellij" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Watch <a class="reference external" href="http://www.youtube.com/watch?v=Eft3qGFoqwE">this excellent tutorial</a> by Simon Stewart on
-starting a Selenium project with IntelliJ</li>
+<li>观看这个由Simon Stewart提供的关于<a class="reference external" href="http://www.youtube.com/watch?v=Eft3qGFoqwE">‘使用IntelliJ开始一个selenium项目’</a>的优秀教程</li>
 </ul>

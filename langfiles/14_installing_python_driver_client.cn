@@ -18,33 +18,29 @@
 
 #:body
 :body
-<h1>Python Client Driver Configuration<a class="headerlink" href="#python-client-driver-configuration" title="Permalink to this headline">¶</a></h1>
+<h1>Python客户端驱动配置<a class="headerlink" href="#python-client-driver-configuration" title="Permalink to this headline">¶</a></h1>
 <ul class="simple" id="configuring-selenium-rc-python-reference">
-<li>Download Selenium-RC from the SeleniumHQ <a class="reference external" href="http://seleniumhq.org/download/">downloads page</a></li>
-<li>Extract the file <em>selenium.py</em></li>
-<li>Either write your Selenium test in Python or export
-a script from Selenium-IDE to a python file.</li>
-<li>Add to your test’s path the file <em>selenium.py</em></li>
-<li>Run Selenium server from the console</li>
-<li>Execute your test from a console or your Python IDE</li>
+<li>在SeleniumHQ <a class="reference external" href="http://seleniumhq.org/download/">下载页面</a>下载Selenium-RC</li>
+<li>解压<em>selenium.py</em>文件</li>
+<li>使用python编写一个Selenium脚本或者从Selenium-IDE导出一个python脚本文件。</li>
+<li>添加<em>selenium.py</em>文件到您的测试路径</li>
+<li>命令行运行Selenium server</li>
+<li>在命令行或者Python IDE启动你的python脚本文件</li>
 </ul>
-<p>The following steps describe the basic installation procedure. After following
-this, the user can start using the desired IDE, (even write tests in a text
-processor and run them from command line!) without any extra work (at least
-on the Selenium side).</p>
+<p>以下步骤描述了基本的安装流程。这个步骤之后, 用户可以开始使用所需的IDE， (甚至在文本编辑器中编写测试
+然后在命令行运行它们！) 不需要任何额外的工作 （至少在Selenium端）</p>
 <ul>
-<li><p class="first">Installing Python</p>
+<li><p class="first">安装Python</p>
 <blockquote>
 <div><div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This will cover python installation on Windows and Mac only, as
-in most linux distributions python is already pre-installed by default.</p>
+<p class="first admonition-title">注意</p>
+<p class="last">这里只介绍在Windows和 Mac上安装python, 因为在大多数的linux上python默认是预安装的。</p>
 </div>
 <ul class="simple">
 <li>Windows<ol class="arabic">
-<li>Download Active python’s installer from ActiveState’s official site:
+<li>从ActiveState的官方站点下载Active python安装包:
 <a class="reference external" href="http://activestate.com/Products/activepython/index.mhtml">http://activestate.com/Products/activepython/index.mhtml</a></li>
-<li>Run the installer downloaded (ActivePython-x.x.x.x-win32-x86.msi)</li>
+<li>允许下载下来的安装文件(ActivePython-x.x.x.x-win32-x86.msi)</li>
 </ol>
 </li>
 </ul>
@@ -60,34 +56,29 @@ in most linux distributions python is already pre-installed by default.</p>
 <blockquote>
 <div><ul>
 <li><p class="first">Mac</p>
-<p>The latest Mac OS X version (Leopard at this time) comes with Python
-pre-installed. To install an extra Python, get a universal binary at
-<a class="reference external" href="http://www.pythonmac.org/">http://www.pythonmac.org/</a> (packages for Python 2.5.x). You will get a
-.dmg file that you can mount. It contains a .pkg file that you can launch.</p>
+<p>最新版的Mac OS X(当前是Leopard)已经预装了python。要安装额外的python, 在
+<a class="reference external" href="http://www.pythonmac.org/">http://www.pythonmac.org/</a>下载一个通用的二进制包
+(Python 2.5.x的包). 你将得到一个可以加载的.dmg文件。其中包含了一个可以启动的.pkg文件。</p>
 <img alt="/static/chapt5_img19_Python_Mac_Install.png" class="align-center" src="/static/chapt5_img19_Python_Mac_Install.png">
 </li>
 </ul>
 </div></blockquote>
 <ul>
-<li><p class="first">Installing the Selenium driver client for python</p>
+<li><p class="first">为python安装Selenium驱动程序</p>
 <blockquote>
 <div><ol class="arabic">
-<li><p class="first">Download the last version of Selenium Remote Control from the
-<a class="reference external" href="http://seleniumhq.org/download/">downloads page</a></p>
+<li><p class="first">从
+<a class="reference external" href="http://seleniumhq.org/download/">下载页面</a>下载最新的Selenium Remote Control</p>
 </li>
-<li><p class="first">Extract the content of the downloaded zip file</p>
+<li><p class="first">解压下载的zip文件内容</p>
 </li>
-<li><p class="first">Copy the module with the Selenium’s driver for Python (selenium.py)
-in the folder <em>C:/Python25/Lib</em> (this will allow you to import it
-directly in any script you write).</p>
-<p>You will find the module in the extracted folder, it’s located inside
-<em>selenium-python-driver-client</em>.</p>
+<li><p class="first">复制Selenium的驱动模块(selenium.py)到Python的目录中 <em>C:/Python25/Lib</em> (这将允许你在任何地方的脚本中都可以直接引用)。</p>
+<p>你可以在解压目录里找到这些模块, 它位于<em>selenium-python-driver-client</em>中。</p>
 </li>
 </ol>
 <img alt="/static/chapt5_img25_Python_Driver_Install.png" class="align-center" src="/static/chapt5_img25_Python_Driver_Install.png">
 </div></blockquote>
 </li>
 </ul>
-<p>Congratulations, you’re done! Now any python script that you create can import
-selenium and start interacting with the browsers.</p>
+<p>恭喜, 你已经完成了! 现在你创建的任何python脚本都可以引用selenium并开始与浏览器进行交互操作。</p>
 </div>
