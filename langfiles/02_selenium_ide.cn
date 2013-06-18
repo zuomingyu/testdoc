@@ -132,206 +132,114 @@
 <h1>Selenium-IDE<a class="headerlink" href="#selenium-ide" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <span id="chapter02-reference"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>The Selenium-IDE (Integrated Development Environment) is the tool you use to
-develop your Selenium test cases.  It’s an easy-to-use Firefox plug-in and is
-generally the most efficient way to develop test cases.  It also contains a
-context menu that allows you to first select a UI element from the browser’s
-currently displayed page and then select from a list of Selenium commands
-with parameters pre-defined according to the context of the selected UI
-element.  This is not only a time-saver, but also an excellent way of
-learning Selenium script syntax.</p>
-<p>This chapter is all about the Selenium IDE and how to use it effectively.</p>
+<p>Selenium-IDE(集成开发环境)是用来开发Selenium测试用例的工具。它是易于使用的Firefox插件，基本上也是开发测试用例的最有效方法。通过Selinum-IDE的上下文菜单，用户可以首先从浏览器的当前页面选择一个UI element，然后从Selenium命令列表中选择一个命令，该命令的预定义参数由所选择的UI element的context决定。使用Selinum-IDE的右键菜单既节省了时间，也不失为学习Selenium脚本语法的一个好方法</p>
+<p>本章将介绍Selenium IDE以及如何有效的使用它。</p>
 </div>
 <div class="section" id="installing-the-ide">
 <h2>Installing the IDE<a class="headerlink" href="#installing-the-ide" title="Permalink to this headline">¶</a></h2>
-<p>Using Firefox, first, download the IDE from the SeleniumHQ <a class="reference external" href="http://seleniumhq.org/download/">downloads page</a></p>
-<p>Firefox will protect you from installing addons from unfamiliar locations, so
-you will need to click ‘Allow’ to proceed with the installation, as shown in the
-following screenshot.</p>
+<p>打开Firefox，首先从SeleniumHQ的<a class="reference external" href="http://seleniumhq.org/download/">下载地址</a>下载IDE</p>
+<p>Firefox不会自动安装来自不熟悉位置的插件，因此用户需要手动点击"Allow"来继续安装，如下图所示</p>
 <img alt="/static/chapt3_img01_IDE_Installation.png" class="align-center" src="/static/chapt3_img01_IDE_Installation.png">
-<p>When downloading from Firefox, you’ll be presented with the following window.</p>
+<p>从Firefox下载时，会弹出一个下面这样的窗口。</p>
 <img alt="/static/chapt3_img02_IDE_Installation.png" class="align-center" src="/static/chapt3_img02_IDE_Installation.png">
-<p>Select Install Now. The Firefox Add-ons window pops up, first showing a
-progress bar, and when the download is complete, displays the following.</p>
+<p>选择Install Now。会弹出Firefox Add-ons窗口，先显示一个进度条，然后等下载完成后再列出其它的。</p>
 <img alt="/static/chapt3_img03_IDE_Installation.png" class="align-center" src="/static/chapt3_img03_IDE_Installation.png">
-<p>Restart Firefox.  After Firefox reboots you will find the Selenium-IDE listed under the Firefox Tools menu.</p>
+<p>重启Firefox。Firefox重启完成以后可以在Firefox的Tools菜单栏找到Selenium IDE。</p>
 <img alt="/static/chapt3_img04_IDE_Installation.png" class="align-center" src="/static/chapt3_img04_IDE_Installation.png">
 </div>
 <div class="section" id="opening-the-ide">
 <h2>Opening the IDE<a class="headerlink" href="#opening-the-ide" title="Permalink to this headline">¶</a></h2>
-<p>To run the Selenium-IDE, simply select it from the Firefox Tools menu.  It opens
-as follows with an empty script-editing window and a menu for loading, or
-creating new test cases.</p>
+<p>运行Selenium-IDE很简单，只需要从Tools选择即可。然后就会打开一个如下图所示的空白脚本编辑窗口，并一个支持载入/创建新测试用例的菜单。</p>
 <img alt="/static/chapt3_img05_IDE_open.png" class="align-center" src="/static/chapt3_img05_IDE_open.png">
 </div>
 <div class="section" id="ide-features">
 <h2>IDE Features<a class="headerlink" href="#ide-features" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="menu-bar">
 <h3>Menu Bar<a class="headerlink" href="#menu-bar" title="Permalink to this headline">¶</a></h3>
-<p>The File menu has options for Test Case and Test Suite (suite of Test Cases).
-Using these you can add a new Test Case, open a Test Case, save a Test Case,
-export Test Case in a language of your choice. You can also open the recent
-Test Case.All these options are also available for Test Suite.</p>
-<p>The Edit menu allows copy, paste, delete, undo, and select all
-operations for editing the commands in your test case.  The Options menu allows
-the changing of settings.  You can set the timeout value for
-certain commands, add user-defined user extensions to the base set of Selenium
-commands, and specify the format (language) used when saving your
-test cases.  The Help menu is the standard Firefox Help menu; only one
-item on this menu–UI-Element Documentation–pertains to Selenium-IDE.</p>
+<p>File菜单里是关于测试用例和测试用例集的选项。可添加新测试用例，打开测试用例，保存测试用例，或是按指定语言导出测试用例。还可以打开最近的测试用例。所有选项对测试用例集（测试用例的集合）也同样适用。</p>
+<p>Edit菜单支持拷贝，粘贴，删除，撤销和全选等用于编辑测试用列的选项。Options菜单是用来更改配置的。可以对某些命令添加超时设置，想Selenium基本命令集添加用户定义的用户扩展，或者指定测试用例的保存格式（语言）。Help菜单则是标准的Firefox帮助菜单；其中只有选项UI-Element-Documentation是关于Selenium-IDE的。</p>
 </div>
 <div class="section" id="toolbar">
 <h3>Toolbar<a class="headerlink" href="#toolbar" title="Permalink to this headline">¶</a></h3>
-<p>The toolbar contains buttons for controlling the execution of your test
-cases, including a step feature for debugging your test cases.  The right-most
-button, the one with the red-dot, is the record button.</p>
+<p>工具栏的按钮用于控制测试用例执行过程，包括用来调试测试用例的单步功能。最右边红色的，是录制按钮。</p>
 <img alt="/static/chapt3_img06_IDE_features.png" class="align-center" src="/static/chapt3_img06_IDE_features.png">
 <dl class="docutils">
 <dt><img alt="speed control" src="/static/chapt3_img07_Speed_Control.png"></dt>
-<dd>Speed Control:  controls how fast your test case runs.</dd>
+<dd>Speed Control:  控制测试用例的运行速度。</dd>
 <dt><img alt="run all" src="/static/chapt3_img08_Run_All.png"></dt>
-<dd>Run All: Runs the entire test suite when a test suite with multiple test
-cases is loaded.</dd>
+<dd>Run All:  运行含多个测试用例的整个测试用例集。</dd>
 <dt><img alt="run" src="/static/chapt3_img09_Run.png"></dt>
-<dd>Run:  Runs the currently selected test.  When only a single test is
-loaded this button and the Run All button have the same effect.</dd>
+<dd>Run:  运行当前测试用例。在只有一个测试的时候，它和Run All是等效的。</dd>
 <dt><img alt="pause" src="/static/chapt3_img10_Pause.png"> <img alt="resume" src="/static/chapt3_img11_Resume.png"></dt>
-<dd>Pause/Resume:  Allows stopping and re-starting of a running test case.</dd>
+<dd>Pause/Resume:  停止和继续正在执行的测试用例</dd>
 <dt><img alt="step" src="/static/chapt3_img12_Step.png"></dt>
-<dd>Step:  Allows you to “step” through a test case by running it one command at a
-time.  Use for debugging test cases.</dd>
+<dd>Step:  支持通过每次执行一个命令的方式来单步执行测试用例。用于调试测试用例.</dd>
 <dt><img alt="testrunner" src="/static/chapt3_img13_TestRunner_Mode.png"></dt>
-<dd>TestRunner Mode:  Allows you to run the test case in a browser loaded with
-the Selenium-Core TestRunner.  The TestRunner is not commonly used now
-and is likely to be deprecated.  This button is for evaluating test cases
-for backwards compatibility with the TestRunner.  Most users will
-probably not need this button.</dd>
+<dd>TestRunner 模式:  在载入了Selenium-Core TestRunner的浏览器里运行测试用例。TestRunner现在已经不常用并且很可能将被启用。这个按钮主要是用于评估测试用例和TestRunner的向后兼容性。大部分用户应该不会用到这一功能。</dd>
 <dt><img alt="rollup" src="/static/chapt3_img14_Apply_Rollup_Rules.png"></dt>
-<dd>Apply Rollup Rules: This advanced feature allows repetitive sequences of
-Selenium commands to be grouped into a single action.  Detailed documentation
-on rollup rules can be found in the UI-Element Documentation on the Help
-menu.</dd>
+<dd>Apply Rollup Rules: 该高级功能支持将重复的Selenium 命令序列组成单个的action。关于rollup rules的详细文档参见帮助文档中的UI-Element Documentation.</dd>
 <dt><img alt="record" src="/static/chapt3_img15_Record.png"></dt>
-<dd>Record:  Records the user’s browser actions.</dd>
+<dd>Record:  录制用户的浏览器动作.</dd>
 </dl>
 </div>
 <div class="section" id="test-case-pane">
 <h3>Test Case Pane<a class="headerlink" href="#test-case-pane" title="Permalink to this headline">¶</a></h3>
-<p>Your script is displayed in the test case pane.  It has two tabs, one for
-displaying the command and their parameters in a readable “table” format.</p>
+<p>脚本是显示在测试用例面板里的。这个面板上有两个标签，其中一个是Table，以可读性较好的表格形式显示命令和参数</p>
 <img alt="/static/chapt3_img16_Table_Format.png" class="align-center" src="/static/chapt3_img16_Table_Format.png">
-<p>The other tab - Source displays the test case in the native format in which the file
-will be stored.  By default, this is HTML although it can be changed to a
-programming language such as Java or C#, or a scripting language like Python.
-See the Options menu for details.  The Source view also allows one to edit
-the test case in its raw form, including copy, cut and paste operations.</p>
-<p>The Command, Target, and Value entry fields display the currently selected
-command along with its parameters.  These are entry fields where you
-can modify the currently selected command.  The first parameter specified for
-a command in the Reference tab of the bottom pane always goes in the Target
-field.  If a second parameter is specified by the Reference tab, it always
-goes in the Value field.</p>
+<p>另一个是Source。以文件的原生存储格式来显示测试用例。默认情况下是HTML格式，不过可以转变为其它编程语言，比如Java或者C#，或者某个脚本语言，比如Python。更多详情请参考Options菜单。Source视图也支持在原始格式编辑测试用例，包括拷贝，剪切和粘贴操作。</p>
+<p>Command, Target, 和 Value 等输入字段显示了当前选中的命令和它的参数，可用于修改当前选中的名令。在底部面板的Reference页里指定了该命令的参数。第一个参数始终是Target字段。如果在Reference页该命令有第二个参数，那就是Value字段。</p>
 <img alt="/static/chapt3_img17_Entry_Fields.png" class="align-center" src="/static/chapt3_img17_Entry_Fields.png">
-<p>If you start typing in the Command field, a drop-down list will be populated
-based on the first characters you type; you can then select your desired
-command from the drop-down.</p>
+<p>如果在Command字段开始输入，会自动根据已输入字符弹出下拉列表以供从中选择需要的命令</p>
 </div>
 <div class="section" id="log-reference-ui-element-rollup-pane">
 <h3>Log/Reference/UI-Element/Rollup Pane<a class="headerlink" href="#log-reference-ui-element-rollup-pane" title="Permalink to this headline">¶</a></h3>
-<p>The bottom pane is used for four different functions–Log, Reference,
-UI-Element, and Rollup–depending on which tab is selected.</p>
+<p>底部的面板有四个不同的功能，Log，Reference，UI-Element和Rollup。具体使用哪个视选择而定。</p>
 <div class="section" id="log">
 <h4>Log<a class="headerlink" href="#log" title="Permalink to this headline">¶</a></h4>
-<p>When you run your test case, error messages
-and information messages showing the progress are displayed
-in this pane automatically, even if you do not first select the Log
-tab.  These messages are often useful for test case debugging.   Notice the Clear
-button for clearing the Log.  Also notice the Info button is a drop-down
-allowing selection of different levels of information to log.</p>
+<p>运行测试用例时，执行过程中的错误消息和提示信息会自动显示在该面板，即使没有选择Log页。值得注意的是，当选择Log页之后，该页右上角会有一个Info下拉按钮，可用于设置日志信息的等级</p>
 <img alt="/static/chapt3_img18_Bottom_Box.png" class="align-center" src="/static/chapt3_img18_Bottom_Box.png">
 </div>
 <div class="section" id="reference">
 <h4>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h4>
-<p>The Reference tab is the default selection whenever you are
-entering or modifying <a class="reference internal" href="#selenese">Selenese</a> commands and parameters in Table
-mode.  In Table mode, the Reference pane will display documentation on the current command.  When entering or modifying
-commands, whether from Table or Source mode, it is critically
-important to ensure that the parameters specified in the
-Target and Value fields match those specified in the parameter
-list in the Reference pane.  The number of parameters provided
-must match the number specified, the order of parameters provided must
-match the order specified, and the type of parameters provided must match
-the type specified.
-If there is a mismatch in any of these three areas, the command will not
-run correctly.</p>
+<p>在Table模式输入或者修改一个<a class="reference internal" href="#selenese">Selenese</a> 命令时，Reference页是默认选中的。在Table模式，Reference面板会显示当前命令的文本信息。无论是从Table模式还是Source模式输入或者修改命令时，都必须保证填入Target和Value字段的参数与Reference面板中参数的参数列表一致，包括参数的个数，参数的顺序以及参数的类型。如果任意一项出现不匹配，命令都有可能运行出错。</p>
 <img alt="/static/chapt3_img19_Bottom_Box_Ref.png" class="align-center" src="/static/chapt3_img19_Bottom_Box_Ref.png">
-<p>While the Reference tab is invaluable as a quick reference, it is still often
-necessary to consult the Selenium <a class="reference external" href="http://release.openqa.org/selenium-core/1.0/reference.html">Reference</a> document.</p>
+<p>尽管Reference页提供了极有价值的快速参考，经常查询参考Selenium的<a class="reference external" href="http://release.openqa.org/selenium-core/1.0/reference.html">参考</a> 文档依然是必要的。</p>
 </div>
 <div class="section" id="ui-element-and-rollup">
 <h4>UI-Element and Rollup<a class="headerlink" href="#ui-element-and-rollup" title="Permalink to this headline">¶</a></h4>
-<p>Detailed information on these two panes (which cover advanced features)
-can be found in the
-UI-Element Documentation on the Help menu of Selenium-IDE.</p>
+<p>关于这两个面板（涉及高级功能）的详细信息，请参考Selenium-IDE帮助菜单中的UI-Element Documentation。</p>
 </div>
 </div>
 </div>
 <div class="section" id="building-test-cases">
 <h2>Building Test Cases<a class="headerlink" href="#building-test-cases" title="Permalink to this headline">¶</a></h2>
-<p>There are three primary methods for developing test cases.  Frequently,
-a test
-developer will require all three techniques.</p>
+<p>创建测试用例有3种主要的方法。测试开发人员通常需要掌握所有这3种技术。</p>
 <div class="section" id="recording">
 <h3>Recording<a class="headerlink" href="#recording" title="Permalink to this headline">¶</a></h3>
-<p>Many first-time users begin by recording a test case from their interactions
-with a website.  When Selenium-IDE is first opened, the record button is ON by
-default. If you do not want Selenium-IDE to begin recording automatically you
-can turn this off by going under Options &gt; Options... and deselecting
-“Start recording immediately on open.”</p>
-<p>During recording, Selenium-IDE will automatically insert commands into your
-test case based on
-your actions.  Typically, this will include:</p>
+<p>许多新手是从与网站的交互录制一个测试用例开始的。第一次打开Selenium-IDE的时候，录制按钮默认是打开的。如果不希望Selenium-IDE自动开始录制，可以在Options &gt; Options... ，取消选择“Start recording immediately on open.”</p>
+<p>在录制过程中，Selenium-IDE会根据用户的操作自动向测试用例里添加命令。经典的命令包括：</p>
 <ul class="simple">
-<li>clicking a link - <em>click</em> or <em>clickAndWait</em> commands</li>
-<li>entering values - <em>type</em> command</li>
-<li>selecting options from a drop-down listbox - <em>select</em> command</li>
-<li>clicking checkboxes or radio buttons - <em>click</em> command</li>
+<li>点击连接 - <em>click</em> or <em>clickAndWait</em> 命令</li>
+<li>输入值 - <em>type</em> 命令</li>
+<li>从下拉列表框中选择 - <em>select</em> 命令</li>
+<li>点击 checkboxes 或 radio buttons - <em>click</em> 命令</li>
 </ul>
-<p>Here are some “gotchas” to be aware of:</p>
+<p>需要注意之处:</p>
 <ul class="simple">
-<li>The <em>type</em> command may require clicking on some other area of the web page
-for it to record.</li>
-<li>Following a link usually records a <em>click</em> command. You will often need to
-change this to <em>clickAndWait</em> to ensure your test case pauses until the new page
-is completely loaded.  Otherwise, your test case will continue running commands
-before the page has loaded all its UI elements. This will cause unexpected
-test case failures.</li>
+<li>录制<em>type</em> 命令可能会要求先点击网页的其它区域。</li>
+<li>跟踪链接一般会录下一个<em>click</em>命令. 一般来讲需要改成<em>clickAndWait</em>以保证测试用例在网页完全载入之后再结束。否则，测试用例可能会在网页完全载入所有UI elements之前就继续执行后面的命令了。</li>
 </ul>
 </div>
 <div class="section" id="adding-verifications-and-asserts-with-the-context-menu">
 <h3>Adding Verifications and Asserts With the Context Menu<a class="headerlink" href="#adding-verifications-and-asserts-with-the-context-menu" title="Permalink to this headline">¶</a></h3>
-<p>Your test cases will also need to check the properties of a web-page.  This
-requires <em>assert</em> and <em>verify</em> commands.  We won’t describe the specifics of
-these commands here; that is in the chapter on <a class="reference internal" href="#selenium-commands-selenese">Selenium Commands – “Selenese”</a>.  Here we’ll
-simply describe how to add them to your test case.</p>
-<p>With Selenium-IDE recording, go to the browser displaying your test application and
-right click anywhere on the page.  You will see a context menu showing <em>verify</em>
-and/or <em>assert</em> commands.</p>
-<p>The first time you use Selenium, there may only be one Selenium command listed.
-As you use the IDE however, you will find additional commands will quickly be
-added to this menu.  Selenium-IDE will attempt to predict what command, along
-with the parameters, you will need for a selected UI element on the current
-web-page.</p>
-<p>Let’s see how this works. Open a web-page of your choosing and select a block
-of text on the page. A paragraph or a heading will work fine.  Now, right-click
-the selected text.  The context menu should give you a <em>verifyTextPresent</em>
-command and the suggested parameter should be the text itself.</p>
-<p>Also, notice the Show All Available Commands menu option.  This shows many,
-many more commands, again, along with suggested parameters, for testing your
-currently selected UI element.</p>
-<p>Try a few more UI elements. Try right-clicking an image, or a user control
-like a button or a checkbox.  You may need to use Show All Available Commands
-to see options other than <em>verifyTextPresent</em>. Once you select these other
+<p>测试用例可能会需要check网页的属性。这时就需要<em>assert</em>和 <em>verify</em>命令。这些命令的规约将在后续章节<a class="reference internal" href="#selenium-commands-selenese">Selenium Commands – “Selenese”</a>介绍，此处将不做展开，只是简单介绍如何将它们添加到测试用例中去。</p>
+<p>在使用Selenium-IDE录制时，在打开了待测应用的浏览器页面任意一处右键鼠标。会弹出一个带有<em>verify</em>
+和/或<em>assert</em>命令的右键菜单.</p>
+<p>首次使用Selenium时，右键菜单里可能只列出了一条Selenium命令。然而随着IDE的使用，新的命令很快就会添加到右键菜单里。Selenium-IDE试图去预测用户在当前页面上对于选定的UI element需要使用的命令以及参数</p>
+<p>让我们看看这是如何做到的。选择一个网页打开，然后选中一段文本。文本或者标题都可以。现在，右键选中的文本。右键菜单应该列出<em>verifyTextPresent</em>
+命令，而推荐参数应该是文本本身。</p>
+<p>此外，注意Show All Available Commands菜单项。这里为测试当前选中的UI elements列出了许多许多的命令，且同样带有推荐参数。</p>
+<p>再多试一些UI elements。尝试右键图片或者用户控件，例如按钮或者checkbox。可能会需要使用Show All Available Commands菜单项来查看<em>verifyTextPresent</em>之外的命令。Once you select these other
 options, the more commonly used ones will show up on the primary context menu.
 For example, selecting <em>verifyElementPresent</em> for an image should later cause
 that command to be available on the primary context menu the next time you
