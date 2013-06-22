@@ -11,7 +11,7 @@
 "04_webdriver_advanced"
 
 #:next_title
-"WebDriver:高级使用"
+"WebDriver: Advanced Usage"
 
 #:side
 :list
@@ -107,50 +107,34 @@
 #:body
 :body
 <h1>Selenium WebDriver<a class="headerlink" href="#selenium-webdriver" title="Permalink to this headline">¶</a></h1>
-<p id="chapter03-reference"><em>NOTE: We’re currently working on documenting these sections.
-We believe the information here is accurate, however be aware we are also still working on this
-chapter.  Additional information will be provided as we go which should make this chapter more
-solid.</em></p>
+<p id="chapter03-reference"><em>注意：我们目前还在编写这部分的文档。我们确信这部分文档是准确的，但请注意，这个章节的内容还有待更新。我们会提供更多的信息来充实这一章节。</em></p>
 <div class="section" id="introducing-webdriver">
-<h2>Introducing WebDriver<a class="headerlink" href="#introducing-webdriver" title="Permalink to this headline">¶</a></h2>
-<p>The primary new feature in Selenium 2.0 is the integration of the WebDriver API.
-WebDriver is designed to provide a simpler, more concise programming interface in addition to
-addressing some limitations in the Selenium-RC API.  Selenium-WebDriver was developed
-to better support dynamic web pages where elements of a page may change without the page
-itself being reloaded.  WebDriver’s goal is to supply a well-designed object-oriented
-API that provides improved support for modern advanced web-app testing problems.</p>
+<h2>WebDriver介绍<a class="headerlink" href="#introducing-webdriver" title="Permalink to this headline">¶</a></h2>
+<p>Selenium 2.0的首要功能是集合了WebDriver API. 除了结果Selenium-RC API的一些局限外，WebDriver旨在提供更简洁，更紧凑的开发界面。Selenium-WebDriver可以更好的支持动态页面，那样的话，页面元素不需要重载就可以进行更改。
+WebDriver的目的就是提供一个设计良好的面向对象的API，以此来支持更先进，更高级的页面应用测试问题。</p>
 </div>
 <div class="section" id="how-does-webdriver-drive-the-browser-compared-to-selenium-rc">
-<h2>How Does WebDriver ‘Drive’ the Browser Compared to Selenium-RC?<a class="headerlink" href="#how-does-webdriver-drive-the-browser-compared-to-selenium-rc" title="Permalink to this headline">¶</a></h2>
-<p>Selenium-WebDriver makes direct calls to the browser using each browser’s native support for automation.
-How these direct calls are made, and the features they support depends on the browser you are using.
-Information on each ‘browser driver’ is provided later in this chapter.</p>
-<p>For those familiar with Selenium-RC, this is quite different from what you are used to.  Selenium-RC
-worked the same way for each supported browser.  It ‘injected’ javascript functions into the browser
-when the browser was loaded and then used its javascript to drive the AUT within the browser.
-WebDriver does not use this technique.  Again, it drives the browser directly using the browser’s
-built in support for automation.</p>
+<h2>相当于Selenium-RC，WebDriver是如何’驱动‘浏览器的?<a class="headerlink" href="#how-does-webdriver-drive-the-browser-compared-to-selenium-rc" title="Permalink to this headline">¶</a></h2>
+<p>Selenium-WebDriver使用各个浏览器自身支持的自动化机制直接调用浏览器。这些直接调用是如何工作的，各个浏览器支持哪些功能，这些都将在本章中进行讲解。</p>
+<p>对于那些已经熟悉Selenium-RC的人而言, Selenium-WebDriver与Selenium-RC是完全不同的。Selenium-RC对各个其所支持的浏览器使用相同的工作原理。浏览器加载完成后，Selenium-RC将
+javascript方法“注入”到浏览器中，并使用javascript来驱动浏览器自身携带的AUT。WebDriver使用的不是这个技术。WebDriver直接调用浏览器所支持的自动化程序来驱动各个不同的浏览器。</p>
 </div>
 <div class="section" id="webdriver-and-the-selenium-server">
-<h2>WebDriver and the Selenium-Server<a class="headerlink" href="#webdriver-and-the-selenium-server" title="Permalink to this headline">¶</a></h2>
-<p>You may, or may not, need the Selenium Server, depending on how you intend to use Selenium-WebDriver.
-If you will be only using the WebDriver API you do not need the Selenium-Server.  If your browser
-and tests will all run on the same machine, and your tests only use the WebDriver API, then you
-do not need to run the Selenium-Server; WebDriver will run the browser directly.</p>
-<p>There are some reasons though to use the Selenium-Server with Selenium-WebDriver.</p>
+<h2>WebDriver和Selenium-Server<a class="headerlink" href="#webdriver-and-the-selenium-server" title="Permalink to this headline">¶</a></h2>
+<p>你可能需要，也可能不需要使用到Selenium Server, 这完全取决于你打算如何使用Selenium-WebDriver。如果你只打算使用WebDriver API，那么你就不需要Selenium-Server。如果你的浏览器和测试
+脚本要在同一台机器上跑，并且你的测试脚本只需要使用WebDriver API，那么你也不需要Selenium-Server; WebDriver会直接调用浏览器</p>
+<p>但是，碰到以下这些情况，你会在使用Selenium-WebDriver的同时，还需要使用Selenium-Server：</p>
 <blockquote>
 <div><ul class="simple">
-<li>You are using Selenium-Grid to distribute your tests over multiple machines or virtual machines (VMs).</li>
-<li>You want to connect to a remote machine that has a particular browser version that is not on
-your current machine.</li>
-<li>You are not using the Java bindings (i.e. Python, C#, or Ruby) and would like to use <a class="reference internal" href="#htmlunit-driver">HtmlUnit Driver</a></li>
+<li>当你正在使用Selenium-Grid将测试脚本分布到多台机器或者虚拟机器上时。</li>
+<li>你想连接到远程机器上的某个特殊版本的浏览器时。</li>
+<li>你使用的不是Java bindings(例如Python, C#, or Ruby)但又要使用 <a class="reference internal" href="#htmlunit-driver">HtmlUnit Driver</a>时</li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="setting-up-a-selenium-webdriver-project">
-<span id="setting-up-webdriver-project"></span><h2>Setting Up a Selenium-WebDriver Project<a class="headerlink" href="#setting-up-a-selenium-webdriver-project" title="Permalink to this headline">¶</a></h2>
-<p>To install Selenium means to set up a project in a development so you can write a program using
-Selenium.  How you do this depends on your programming language and your development environment.</p>
+<span id="setting-up-webdriver-project"></span><h2>搭建一个Selenium-WebDriver项目<a class="headerlink" href="#setting-up-a-selenium-webdriver-project" title="Permalink to this headline">¶</a></h2>
+<p>为了安装Selenium，在开发时就需要搭建一个项目，在该项目中使用Selenium来编写程序。如何使用编程语言和开发环境来安装Selenium。</p>
 <div class="section" id="java">
 <h3>Java<a class="headerlink" href="#java" title="Permalink to this headline">¶</a></h3>
 <p>The easiest way to set up a Selenium 2.0 Java project is to use Maven.  Maven will download the
