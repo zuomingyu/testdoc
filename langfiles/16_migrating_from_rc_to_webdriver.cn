@@ -15,65 +15,70 @@
 
 #:side
 :list
-<li><a class="reference internal" href="#">Migrating From Selenium RC to Selenium WebDriver</a><ul class="treeview">
-<li><a class="reference internal" href="#how-to-migrate-to-selenium-webdriver">How to Migrate to Selenium WebDriver</a></li>
-<li><a class="reference internal" href="#why-migrate-to-webdriver">Why Migrate to WebDriver</a></li>
-<li><a class="reference internal" href="#before-starting">Before Starting</a></li>
-<li><a class="reference internal" href="#getting-started">Getting Started</a></li>
-<li><a class="reference internal" href="#next-steps">Next Steps</a></li>
-<li class="expandable lastExpandable"><div class="hitarea expandable-hitarea lastExpandable-hitarea"></div><a class="reference internal" href="#common-problems">Common Problems</a><ul class="treeview" style="display: none;">
-<li><a class="reference internal" href="#clicking-and-typing-is-more-complete">Clicking and Typing is More Complete</a></li>
-<li><a class="reference internal" href="#waitforpagetoload-returns-too-soon">WaitForPageToLoad Returns Too Soon</a></li>
-<li><a class="reference internal" href="#finding-by-xpath-or-css-selectors-doesn-t-always-work-but-it-does-in-selenium-1">Finding By XPath or CSS Selectors Doesn’t Always Work, But It Does In Selenium 1</a></li>
-<li><a class="reference internal" href="#there-is-no-browserbot">There is No Browserbot</a></li>
-<li class="last"><a class="reference internal" href="#executing-javascript-doesn-t-return-anything">Executing Javascript Doesn’t Return Anything</a></li>
+<li><a class="reference internal" href="#">从Selenium RC迁移到Selenium WebDriver</a><ul class="treeview">
+<li><a class="reference internal" href="#how-to-migrate-to-selenium-webdriver">如何迁移到Selenium WebDriver</a></li>
+<li><a class="reference internal" href="#why-migrate-to-webdriver">为什么迁移到WebDriver</a></li>
+<li><a class="reference internal" href="#before-starting">开始之前</a></li>
+<li><a class="reference internal" href="#getting-started">现在开始</a></li>
+<li><a class="reference internal" href="#next-steps">下一步</a></li>
+<li class="expandable lastExpandable"><div class="hitarea expandable-hitarea lastExpandable-hitarea"></div><a class="reference internal" href="#common-problems">常见问题</a><ul class="treeview" style="display: none;">
+<li><a class="reference internal" href="#clicking-and-typing-is-more-complete">Clicking and Typing更加完善</a></li>
+<li><a class="reference internal" href="#waitforpagetoload-returns-too-soon">WaitForPageToLoad返回更快</a></li>
+<li><a class="reference internal" href="#finding-by-xpath-or-css-selectors-doesn-t-always-work-but-it-does-in-selenium-1">按照XPath或CSS定位并不总是有效,但在Selenium 1有效</a></li>
+<li><a class="reference internal" href="#there-is-no-browserbot">没有Browserbot</a></li>
+<li class="last"><a class="reference internal" href="#executing-javascript-doesn-t-return-anything">执行Javascript不返回任何东西</a></li>
 </ul>
 
 #:body
 :body
-<h1>Migrating From Selenium RC to Selenium WebDriver<a class="headerlink" href="#migrating-from-selenium-rc-to-selenium-webdriver" title="Permalink to this headline">¶</a></h1>
+<h1>从Selenium RC迁移到Selenium WebDriver<a class="headerlink" href="#migrating-from-selenium-rc-to-selenium-webdriver" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="how-to-migrate-to-selenium-webdriver">
-<span id="migrating-to-webdriver-reference"></span><h2>How to Migrate to Selenium WebDriver<a class="headerlink" href="#how-to-migrate-to-selenium-webdriver" title="Permalink to this headline">¶</a></h2>
-<p>A common question when adopting Selenium 2 is what’s the correct thing to do when adding new tests to an existing set of tests? Users who are new to the framework can begin by using the new WebDriver APIs for writing their tests. But what of users who already have suites of existing tests? This guide is designed to demonstrate how to migrate your existing tests to the new APIs, allowing all new tests to be written using the new features offered by WebDriver.</p>
-<p>The method presented here describes a piecemeal migration to the WebDriver APIs without needing to rework everything in one massive push. This means that you can allow more time for migrating your existing tests, which may make it easier for you to decide where to spend your effort.</p>
-<p>This guide is written using Java, because this has the best support for making the migration. As we provide better tools for other languages, this guide shall be expanded to include those languages.</p>
+<span id="migrating-to-webdriver-reference"></span><h2>如何迁移到Selenium WebDriver<a class="headerlink" href="#how-to-migrate-to-selenium-webdriver" title="Permalink to this headline">¶</a></h2>
+<p>当采用Selenium 2时有一个常见的问题是在增加新用例到已有的用例集时怎么做才是正确的? 对于框架的新用户可以使用新的WebDriver APIs来编写他们的测试用例。 
+但是对于已有测试套件的旧用户怎么办呢? 这个文档用来演示如何迁移已有的测试用例到新的APIs, 让所有新测试用例都使用由WebDriver提供的新功能编写。</p>
+<p>这里介绍的方法描述了无需任何返工针对性的迁移到WebDriver APIs。 这意为着你可以有更多的时间去迁移已有的测试, 这可以更容易让你决定把精力放在哪。</p>
+<p>该文档使用Java, 因为java对迁移有最好的支持。当我们为其它语言提供了更好的工具，该文档将扩展到包括这些语言。</p>
 </div>
 <div class="section" id="why-migrate-to-webdriver">
-<h2>Why Migrate to WebDriver<a class="headerlink" href="#why-migrate-to-webdriver" title="Permalink to this headline">¶</a></h2>
-<p>Moving a suite of tests from one API to another API requires an enormous amount of effort. Why would you and your team consider making this move? Here are some reasons why you should consider migrating your Selenium Tests to use WebDriver.</p>
+<h2>为什么迁移到WebDriver<a class="headerlink" href="#why-migrate-to-webdriver" title="Permalink to this headline">¶</a></h2>
+<p>把测试套件从一个API迁移到另一个API需要花费大量的努力。 为什你和你的团队要进行迁移呢? 这里有几个原因告诉你为什么应该考虑把selenium测试迁移到WebDriver。</p>
 <ul class="simple">
-<li>Smaller, compact API. WebDriver’s API is more Object Oriented than the original Selenium RC API. This can make it easier to work with.</li>
-<li>Better emulation of user interactions. Where possible, WebDriver makes use of native events in order to interact with a web page. This more closely mimics the way that your users work with your site and apps. In addition, WebDriver offers the advanced user interactions APIs which allow you to model complex interactions with your site.</li>
-<li>Support by browser vendors. Opera, Mozilla and Google are all active participants in WebDriver’s development, and each have engineers working to improve the framework. Often, this means that support for WebDriver is baked into the browser itself: your tests run as fast and as stably as possible.</li>
+<li>较小的、紧凑的API。 WebDriver的API比原来Selenium RC API更加的支持面向对象，这可以让它更容易使用。</li>
+<li>更好的用户行为模拟。  WebDriver尽可能的调用原生的事件去与页面交互。这个更加真实的模拟了用户在您网站和页面上的操作。
+此外, WebDriver提供了高级的用户接口APIs允许你去模拟复杂的页面交互。</li>
+<li>被浏览器厂商支持。 Opera, Mozilla和Google都是WebDriver发展的积极推动者，而且都有工程师参与到帮助框架的改进。
+ 通常这意味着WebDriver获得浏览器本身的支持: 您的测试将更快、更稳定的允许。</li>
 </ul>
 </div>
 <div class="section" id="before-starting">
-<h2>Before Starting<a class="headerlink" href="#before-starting" title="Permalink to this headline">¶</a></h2>
-<p>In order to make the process of migrating as painless as possible, make sure that all your tests run properly with the latest Selenium release. This may sound obvious, but it’s best to have it said!</p>
+<h2>开始之前<a class="headerlink" href="#before-starting" title="Permalink to this headline">¶</a></h2>
+<p>为了让迁移的过程尽可能的顺利, 确信你的测试在Selenium的最新版本都可以运行。 这听起来很应该，但是最好还是要说一下!</p>
 </div>
 <div class="section" id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<p>The first step when starting the migration is to change how you obtain your instance of Selenium. When using Selenium RC, this is done like so:</p>
+<h2>正式开始<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>开始迁移的第一步是改变你获取Selenium实例的方式。在使用Selenium RC时应该像这样:</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">Selenium</span> <span class="n">selenium</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultSelenium</span><span class="o">(</span>
     <span class="s">"localhost"</span><span class="o">,</span> <span class="mi">4444</span><span class="o">,</span> <span class="s">"*firefox"</span><span class="o">,</span> <span class="s">"http://www.yoursite.com"</span><span class="o">);</span>
 <span class="n">selenium</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
 </pre></div>
 </div>
-<p>This should be replaced like so:</p>
+<p>这个应该被替换成这样:</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">WebDriver</span> <span class="n">driver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxDriver</span><span class="o">();</span>
 <span class="n">Selenium</span> <span class="n">selenium</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WebDriverBackedSelenium</span><span class="o">(</span><span class="n">driver</span><span class="o">,</span> <span class="s">"http://www.yoursite.com"</span><span class="o">);</span>
 </pre></div>
 </div>
-<p>Once you’ve done this, run your existing tests. This will give you a fair idea of how much work needs to be done. The Selenium emulation is good, but it’s not completely perfect, so it’s completely normal for there to be some bumps and hiccups.</p>
+<p>一旦你修改了，运行你已有的测试。这将给你一个有多少工作量需要去做的反馈 。
+Selenium模拟虽好，但并不完美, 所以当有一些小的瑕疵是完全正常的。</p>
 </div>
 <div class="section" id="next-steps">
-<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
-<p>Once your tests execute without errors, the next stage is to migrate the actual test code to use the WebDriver APIs. Depending on how well abstracted your code is, this might be a short process or a long one. In either case, the approach is the same and can be summed up simply: modify code to use the new API when you come to edit it.</p>
-<p>If you need to extract the underlying WebDriver implementation from the Selenium instance, you can simply cast it to WrapsDriver:</p>
+<h2>下一步<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p>当你的测试运行没有错误了, 下一步就是迁移实际的测试代码到WebDriver APIs。这过程的时间长短取决于你的代码抽象的质量。
+这两种情况下, 使用的方法是相同的，而且可以简单总结:当你编辑它的时候修改代码使用新的API。</p>
+<p>如果你需要从selenium实例中提取底层webdriver的实现, 你可以简单的转换为WrapsDriver:</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">WebDriver</span> <span class="n">driver</span> <span class="o">=</span> <span class="o">((</span><span class="n">WrapsDriver</span><span class="o">)</span> <span class="n">selenium</span><span class="o">).</span><span class="na">getWrappedDriver</span><span class="o">();</span>
 </pre></div>
 </div>
-<p>This allows you to continue passing the Selenium instance around as normal, but to unwrap the WebDriver instance as required.</p>
+<p>这个允许你继续正常的传递Selenium实例, 并且在需要的时候解封装WebDriver。</p>
 <p>At some point, you’re codebase will mostly be using the newer APIs. At this point, you can flip the relationship, using WebDriver throughout and instantiating a Selenium instance on demand:</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">Selenium</span> <span class="n">selenium</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WebDriverBackedSelenium</span><span class="o">(</span><span class="n">driver</span><span class="o">,</span> <span class="n">baseUrl</span><span class="o">);</span>
 </pre></div>
