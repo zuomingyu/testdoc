@@ -1,6 +1,9 @@
+﻿如何在github上参与项目：
+http://www.360doc.com/content/13/0410/18/2569758_277424931.shtml
+
 翻译操作步骤：
 1、github上clone本项目
-2、同步文件到本地库
+2、同步文件到本地库[下载一个github for windows客户端，登录后选择项目同步到本地]
 3、在/langfiles目录下找到你想要进行内容翻译的中文语言文件.如：07_selenium_grid.cn
 4、修改其中的 #:side、#:body下方未翻译的部分
 5、保存修改并同步到github
