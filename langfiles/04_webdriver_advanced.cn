@@ -47,16 +47,13 @@
 
 #:body
 :body
-<h1>WebDriver: Advanced Usage<a class="headerlink" href="#webdriver-advanced-usage" title="Permalink to this headline">¶</a></h1>
+<h1>WebDriver: 高级用法<a class="headerlink" href="#webdriver-advanced-usage" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="explicit-and-implicit-waits">
-<span id="explicit-and-implicit-waits-reference"></span><span id="chapter04-reference"></span><h2>Explicit and Implicit Waits<a class="headerlink" href="#explicit-and-implicit-waits" title="Permalink to this headline">¶</a></h2>
-<p>Waiting is having the automated task execution elapse a certain amount of time before continuing with the next step.</p>
+<span id="explicit-and-implicit-waits-reference"></span><span id="chapter04-reference"></span><h2>显示等待和隐式等待<a class="headerlink" href="#explicit-and-implicit-waits" title="Permalink to this headline">¶</a></h2>
+<p>等待是在执行自动化任务一段时间后才继续下一步。</p>
 <div class="section" id="explicit-waits">
-<h3>Explicit Waits<a class="headerlink" href="#explicit-waits" title="Permalink to this headline">¶</a></h3>
-<p>An explicit waits is code you define to wait for a certain condition to occur before proceeding further in the code.
-The worst case of this is Thread.sleep(), which sets the condition to an exact time period to wait.
-There are some convenience methods provided that help you write code that will wait only as long as required.
-WebDriverWait in combination with ExpectedCondition is one way this can be accomplished.</p>
+<h3>显示等待<a class="headerlink" href="#explicit-waits" title="Permalink to this headline">¶</a></h3>
+<p>一个显示等待是你定义的一段代码，用于等待某个条件发生然后再继续执行后续代码。最坏的一个例子当属Thread.sleep()，它用一段明确的等待时间作为条件。WebDriver有一些方便的方法可以帮助你写出按需等待的代码。WebDriverWait结合ExpectedCondition便是其中一种。</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">WebDriver</span> <span class="n">driver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxDriver</span><span class="o">();</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"http://somedomain/url_that_delays_loading"</span><span class="o">);</span>
 <span class="n">WebElement</span> <span class="n">myDynamicElement</span> <span class="o">=</span> <span class="o">(</span><span class="k">new</span> <span class="n">WebDriverWait</span><span class="o">(</span><span class="n">driver</span><span class="o">,</span> <span class="mi">10</span><span class="o">))</span>
@@ -99,17 +96,13 @@ WebDriverWait in combination with ExpectedCondition is one way this can be accom
 <span class="k">end</span>
 </pre></div>
 </div>
-<p>This waits up to 10 seconds before throwing a TimeoutException or if it finds the element will return it in 0 - 10 seconds.
-WebDriverWait by default calls the ExpectedCondition every 500 milliseconds until it returns successfully. A successful return is
-for ExpectedCondition type is Boolean return true or not null return value for all other ExpectedCondition types.</p>
-<p>This example is also functionally equivalent to the first <a class="reference internal" href="#implicit-waits">Implicit Waits</a> example.</p>
+<p>这段代码会等待10秒直到抛出TimeoutException或者它找到了相关Element，在0-10秒返回该Element。默认情况下，WebDriverWait每500ms调用一次ExpectedCondition直到其成功返回。对于Boolean类型的ExpectedCondition而言，表示成功的返回值是true，而对于所有其他类型的ExpectedCondition而言则是非空返回值。</p>
+<p>本例与第一个<a class="reference internal" href="#implicit-waits">隐式等待</a> 例子在功能上是等价的.</p>
 <div class="section" id="expected-conditions">
 <h4>Expected Conditions<a class="headerlink" href="#expected-conditions" title="Permalink to this headline">¶</a></h4>
-<p>There are some common conditions that are frequently come across when automating web browsers. Listed below are
-Implementations of each. Java happens to have convienence methods so you don’t have to code an ExpectedCondition
-class yourself or create your own utility package for them.</p>
+<p>在自动化web浏览器时有一些常用的条件。下面列出了每个条件的实现。Java恰巧有方便的方法,因此您不需要自己编写一个ExpectedCondition类或为它们创建自己的实用程序包。</p>
 <ul class="simple">
-<li>Element is Clickable - it is Displayed and Enabled.</li>
+<li>元素可点击–元素已显示并且可用。</li>
 </ul>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">WebDriverWait</span> <span class="n">wait</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WebDriverWait</span><span class="o">(</span><span class="n">driver</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span>
 <span class="n">WebElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="na">until</span><span class="o">(</span><span class="n">ExpectedConditions</span><span class="o">.</span><span class="na">elementToBeClickable</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"someid"</span><span class="o">)));</span>
@@ -120,13 +113,12 @@ class yourself or create your own utility package for them.</p>
 <span class="n">element</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">Id</span><span class="p">,</span><span class="s">'someid'</span><span class="p">)))</span>
 </pre></div>
 </div>
-<p>The ExpectedConditions package (<a class="reference external" href="http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/support/ui/ExpectedConditions.html">Java</a>)  (<a class="reference external" href="http://selenium.googlecode.com/git/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html">Python</a>) (<a class="reference external" href="http://selenium.googlecode.com/git/docs/api/dotnet/html/AllMembers_T_OpenQA_Selenium_Support_UI_ExpectedConditions.htm">.NET</a>) contains a set of predefined conditions to use with WebDriverWait.</p>
+<p>ExpectedConditions包 (<a class="reference external" href="http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/support/ui/ExpectedConditions.html">Java</a>)  (<a class="reference external" href="http://selenium.googlecode.com/git/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html">Python</a>) (<a class="reference external" href="http://selenium.googlecode.com/git/docs/api/dotnet/html/AllMembers_T_OpenQA_Selenium_Support_UI_ExpectedConditions.htm">.NET</a>) 含有一组可同WebDriverWait一同使用的预定义条件。</p>
 </div>
 </div>
 <div class="section" id="implicit-waits">
-<h3>Implicit Waits<a class="headerlink" href="#implicit-waits" title="Permalink to this headline">¶</a></h3>
-<p>An implicit wait is to tell WebDriver to poll the DOM for a certain amount of time when trying to find an element or elements if they are not immediately available.
-The default setting is 0. Once set, the implicit wait is set for the life of the WebDriver object instance.</p>
+<h3>隐式等待<a class="headerlink" href="#implicit-waits" title="Permalink to this headline">¶</a></h3>
+<p>隐式等待使得WebDriver在查找一个Element或者Element数组时，每隔一段特定的时间就会轮询一次DOM，如果Element或数组没有马上被发现的话。默认设置是0。一旦设置，这个隐式等待会在WebDriver对象实例的整个生命周期起作用。</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">WebDriver</span> <span class="n">driver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxDriver</span><span class="o">();</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">manage</span><span class="o">().</span><span class="na">timeouts</span><span class="o">().</span><span class="na">implicitlyWait</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">);</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"http://somedomain/url_that_delays_loading"</span><span class="o">);</span>
@@ -282,16 +274,12 @@ The default setting is 0. Once set, the implicit wait is set for the life of the
 </div>
 </div>
 <div class="section" id="advanceduserinteractions">
-<h2>AdvancedUserInteractions<a class="headerlink" href="#advanceduserinteractions" title="Permalink to this headline">¶</a></h2>
-<p>The Actions class(es) allow you to build a Chain of Actions and perform them.
-There are too many possible combinations to count. Below are a few of the common
-interactions that you may want to use. For a full list of actions please refer to
-the API docs <a class="reference external" href="http://selenium.googlecode.com/git/docs/api/java/index.html?org/openqa/selenium/interactions/Actions.html">Java</a>
+<h2>高级用户交互<a class="headerlink" href="#advanceduserinteractions" title="Permalink to this headline">¶</a></h2>
+<p>Actions类允许你创建一个Actions链然后执行它们。有数不清的可能组合。以下是一些您可能用到的常见交互。完整的Action列表，请参看API文档<a class="reference external" href="http://selenium.googlecode.com/git/docs/api/java/index.html?org/openqa/selenium/interactions/Actions.html">Java</a>
 <a class="reference external" href="http://selenium.googlecode.com/git/docs/api/dotnet/html/AllMembers_T_OpenQA_Selenium_Interactions_Actions.htm">C#</a>
 <a class="reference external" href="http://selenium.googlecode.com/git/docs/api/rb/Selenium/WebDriver/ActionBuilder.html">Ruby</a>
 <a class="reference external" href="http://selenium.googlecode.com/git/docs/api/py/webdriver/selenium.webdriver.common.action_chains.html">Python</a></p>
-<p>The Advanced User Interactions require native events to be enabled. Here’s a table
-of the current support Matrix for native events:</p>
+<p>高级用户交互要求启用native events。下表是当前native events的支持矩阵：</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="19%">
@@ -411,22 +399,19 @@ of the current support Matrix for native events:</p>
 </table>
 </div>
 <div class="section" id="browser-startup-manipulation">
-<h2>Browser Startup Manipulation<a class="headerlink" href="#browser-startup-manipulation" title="Permalink to this headline">¶</a></h2>
+<h2>浏览器启动操作<a class="headerlink" href="#browser-startup-manipulation" title="Permalink to this headline">¶</a></h2>
 <p>Todo</p>
-<p>Topics to be included:</p>
+<p>主题包括：</p>
 <ul class="simple">
-<li>restoring cookies</li>
-<li>changing firefox profile</li>
-<li>running browsers with plugins</li>
+<li>恢复cookies</li>
+<li>更改firefox配置文件</li>
+<li>运行浏览器与插件running browsers with plugins</li>
 </ul>
 <div class="section" id="using-a-proxy">
-<h3>Using a Proxy<a class="headerlink" href="#using-a-proxy" title="Permalink to this headline">¶</a></h3>
+<h3>使用代理<a class="headerlink" href="#using-a-proxy" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="internet-explorer">
 <h4>Internet Explorer<a class="headerlink" href="#internet-explorer" title="Permalink to this headline">¶</a></h4>
-<p>The easiest and recommended way is to manually set the proxy on the machine that will be running the test.
-If that is not possible or you want your test to run with a different configuration or proxy,
-then you can use the following technique that uses a Capababilities object. This temporarily changes the system’s
-proxy settings and changes them back to the original state when done.</p>
+<p>最简单也是推荐的方法，是在运行测试的机器上手动设置代理。如果做不到或者你想让你的测试运行在不同的配置或代理中，那么你需要运用接下来这种使用Capabilities对象的技术了。它会暂时改变系统的代理设置，并在测试结束后再改回原来的设置。</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">String</span> <span class="n">PROXY</span> <span class="o">=</span> <span class="s">"localhost:8080"</span><span class="o">;</span>
 
 <span class="n">org</span><span class="o">.</span><span class="na">openqa</span><span class="o">.</span><span class="na">selenium</span><span class="o">.</span><span class="na">Proxy</span> <span class="n">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">openqa</span><span class="o">.</span><span class="na">selenium</span><span class="o">.</span><span class="na">Proxy</span><span class="o">();</span>
@@ -479,16 +464,11 @@ proxy settings and changes them back to the original state when done.</p>
 </div>
 <div class="section" id="chrome">
 <h4>Chrome<a class="headerlink" href="#chrome" title="Permalink to this headline">¶</a></h4>
-<p>Is basically the same as internet explorer. It uses the same configuration on the machine as IE does (on windows).
-On Mac it uses the System Preference -&gt; Network settings. On Linux it uses (on Ubuntu) System &gt; Preferences &gt;
-Network Proxy Preferences (Alternatively in “/etc/environment” set http_proxy).
-As of this writing it is unknown how to set the proxy programmatically.</p>
+<p>基本上与IE相同。在Windows上，它与IE使用同样的配置。在Mac上，使用System Preference->Network settings。在Linux（Ubuntu）上则使用System>Preferences>Network Proxy Preferences（或者在“/tec/environment”设置http_proxy）。在撰写本文时未知如何以编程方式设置代理。</p>
 </div>
 <div class="section" id="firefox">
 <h4>Firefox<a class="headerlink" href="#firefox" title="Permalink to this headline">¶</a></h4>
-<p>Firefox maintains it’s proxy configuration in a profile. You can preset the
-proxy in a profile and use that Firefox Profile or you can set it on profile
-that is created on the fly as is shown in the following example.</p>
+<p>Firefox在一个profile中维护着一个proxy配置。你可以在一个profile中预先设置一个proxy，然后使用这个profile。或者你也在动态创建的profile里设置代理，例如：</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">String</span> <span class="n">PROXY</span> <span class="o">=</span> <span class="s">"localhost:8080"</span><span class="o">;</span>
 
 <span class="n">org</span><span class="o">.</span><span class="na">openqa</span><span class="o">.</span><span class="na">selenium</span><span class="o">.</span><span class="na">Proxy</span> <span class="n">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="n">org</span><span class="o">.</span><span class="na">openqa</span><span class="o">.</span><span class="na">selenium</span><span class="o">.</span><span class="na">Proxy</span><span class="o">();</span>
@@ -549,5 +529,5 @@ that is created on the fly as is shown in the following example.</p>
 <p>Todo</p>
 </div>
 <div class="section" id="parallelizing-your-test-runs">
-<h2>Parallelizing Your Test Runs<a class="headerlink" href="#parallelizing-your-test-runs" title="Permalink to this headline">¶</a></h2>
+<h2>并行化执行测试<a class="headerlink" href="#parallelizing-your-test-runs" title="Permalink to this headline">¶</a></h2>
 <p>Todo</p>
