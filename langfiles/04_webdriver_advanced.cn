@@ -152,9 +152,9 @@
 </div>
 </div>
 <div class="section" id="remotewebdriver">
-<h2>RemoteWebDriver<a class="headerlink" href="#remotewebdriver" title="Permalink to this headline">¶</a></h2>
+<h2>远程WebDriver<a class="headerlink" href="#remotewebdriver" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="taking-a-screenshot">
-<h3>Taking a Screenshot<a class="headerlink" href="#taking-a-screenshot" title="Permalink to this headline">¶</a></h3>
+<h3>截屏<a class="headerlink" href="#taking-a-screenshot" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-java"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
 
@@ -241,7 +241,7 @@
 </div>
 </div>
 <div class="section" id="using-a-firefoxprofile">
-<h3>Using a FirefoxProfile<a class="headerlink" href="#using-a-firefoxprofile" title="Permalink to this headline">¶</a></h3>
+<h3>使用Firefox配置<a class="headerlink" href="#using-a-firefoxprofile" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">FirefoxProfile</span> <span class="n">fp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxProfile</span><span class="o">();</span>
 <span class="c1">// set something on the profile...</span>
 <span class="n">DesiredCapabilities</span> <span class="n">dc</span> <span class="o">=</span> <span class="n">DesiredCapabilities</span><span class="o">.</span><span class="na">firefox</span><span class="o">();</span>
@@ -257,7 +257,7 @@
 </div>
 </div>
 <div class="section" id="using-chromeoptions">
-<h3>Using ChromeOptions<a class="headerlink" href="#using-chromeoptions" title="Permalink to this headline">¶</a></h3>
+<h3>使用Chrome选项<a class="headerlink" href="#using-chromeoptions" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">ChromeOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ChromeOptions</span><span class="o">();</span>
 <span class="c1">// set some options</span>
 <span class="n">DesiredCapabilities</span> <span class="n">dc</span> <span class="o">=</span> <span class="n">DesiredCapabilities</span><span class="o">.</span><span class="na">chrome</span><span class="o">();</span>
@@ -405,7 +405,7 @@
 <ul class="simple">
 <li>恢复cookies</li>
 <li>更改firefox配置文件</li>
-<li>运行浏览器与插件running browsers with plugins</li>
+<li>running browsers with plugins</li>
 </ul>
 <div class="section" id="using-a-proxy">
 <h3>使用代理<a class="headerlink" href="#using-a-proxy" title="Permalink to this headline">¶</a></h3>
