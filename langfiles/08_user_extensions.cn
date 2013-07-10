@@ -15,48 +15,37 @@
 
 #:side
 :list
-<li><a class="reference internal" href="#">User-Extensions</a><ul class="treeview">
-<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#">用户扩展</a><ul class="treeview">
+<li><a class="reference internal" href="#introduction">引言</a></li>
 <li><a class="reference internal" href="#actions">Actions</a></li>
 <li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#accessors-assertions">Accessors/Assertions</a><ul class="treeview" style="display: none;">
-<li class="last"><a class="reference internal" href="#prototype-generates-additional-commands">Prototype generates additional commands</a></li>
+<li class="last"><a class="reference internal" href="#prototype-generates-additional-commands">原型生成的附加命令</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#locator-strategies">Locator Strategies</a></li>
-<li><a class="reference internal" href="#using-user-extensions-with-selenium-ide">Using User-Extensions With Selenium-IDE</a></li>
-<li class="expandable lastExpandable"><div class="hitarea expandable-hitarea lastExpandable-hitarea"></div><a class="reference internal" href="#using-user-extensions-with-selenium-rc">Using User-Extensions With Selenium RC</a><ul class="treeview" style="display: none;">
-<li class="last"><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#using-user-extensions-with-selenium-ide">在Selenium-IDE中使用用户扩展</a></li>
+<li class="expandable lastExpandable"><div class="hitarea expandable-hitarea lastExpandable-hitarea"></div><a class="reference internal" href="#using-user-extensions-with-selenium-rc">在Selenium RC中使用用户扩展</a><ul class="treeview" style="display: none;">
+<li class="last"><a class="reference internal" href="#example">示例</a></li>
 
 #:body
 :body
 <h1>User-Extensions<a class="headerlink" href="#user-extensions" title="Permalink to this headline">¶</a></h1>
-<p><em>NOTE:  This section is close to completion, but it has not been reviewed and
-edited.</em></p>
+<p><em>注释：本节接近完成，但还没有被审核和编辑</em></p>
 <div class="section" id="introduction">
 <span id="chapter08-reference"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>Extending Selenium by adding your own actions, assertions and locator-strategies
-can be quite simple. Add JavaScript methods to the Selenium object prototype and
-the PageBot object prototype. On startup, Selenium will automatically look through
-methods on these prototypes, using name patterns to recognize which ones are actions,
-assertions and locators. The following examples give an indication of how Selenium
-can be extended with JavaScript.</p>
+<p>通过增加自定义的actions，assertions和定位器策略（locator-strategies），可以很简单的扩展Selenium。增加Javascript方法到Selenium对象原型和PageBot对象原型。在启动时，Selenium会自动查找在这些原型中的方法，使用名称模式来识别哪些是action，哪些是assertions和locators。下面的示例反应了如何用Javascript扩展Selenium。</p>
 </div>
 <div class="section" id="actions">
 <h2>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h2>
-<p>All methods on the Selenium prototype beginning with “do” are added as actions.
-For each action foo there is also an action fooAndWait registered. An action
-method can take up to two parameters, which will be passed the second and
-third column values in the test.
-Example: Add a “typeRepeated” action to Selenium, which types the text twice
-into a text box.</p>
+<p>在Selenium原型中，以“do”开始的所有方法被添加做action。对每个action foo，会自动注册一个action fooAndWait 。每个action最多可带有两个参数，在测试中被传递做第二和第三列值。例如：增加一个“typeRepeated” action到Selenium，它向一个文本框键入两次文本。</p>
 <div class="highlight-javascript" style="display: none;"><div class="highlight"><pre><span class="nx">Selenium</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">doTypeRepeated</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">locator</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// All locator-strategies are automatically handled by "findElement"</span>
+    <span class="c1">// 所有的定位器策略由"findElement"自动处理</span>
     <span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="p">().</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">locator</span><span class="p">);</span>
 
-    <span class="c1">// Create the text to type</span>
+    <span class="c1">// 创建要键入的文本</span>
     <span class="kd">var</span> <span class="nx">valueToType</span> <span class="o">=</span> <span class="nx">text</span> <span class="o">+</span> <span class="nx">text</span><span class="p">;</span>
 
-    <span class="c1">// Replace the element text with the new text</span>
+    <span class="c1">// 用新文本替代Element文本</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="p">().</span><span class="nx">replaceText</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">valueToType</span><span class="p">);</span>
 <span class="p">};</span>
 </pre></div>
@@ -64,65 +53,45 @@ into a text box.</p>
 </div>
 <div class="section" id="accessors-assertions">
 <h2>Accessors/Assertions<a class="headerlink" href="#accessors-assertions" title="Permalink to this headline">¶</a></h2>
-<p>All <em>get</em>Foo and <em>is</em>Foo methods on the Selenium prototype are added as accessors
-(storeFoo). For each accessor there is an assertFoo, verifyFoo and waitForFoo
-registered. An assert method can take up to 2 parameters, which will be
-passed the second and third column values in the test. You can also define
-your own assertions literally as simple “assert” methods, which will also
-auto-generate “verify” and “waitFor” commands.
-Example: Add a valueRepeated assertion, that makes sure that the element
-value consists of the supplied text repeated. The 2 commands that would be
-available in tests would be assertValueRepeated and verifyValueRepeated.</p>
+<p>在Selenium原型中，所有的<em>get</em>Foo和<em>is</em>Foo方法都是作为accessors方法（storeFoo）被添加的。每一个accessor都会有一个assertFoo，verifyFoo 和waitForFoo被注册。一个assert方法最多能有两个参数，在测试中被传递做第二和第三列值。你也可以自定义字面的assertion，作为简单的“assert”方法，这也会自动生成 “verify” 和“waitFor” 命令。例如：增加一个valueRepeated assertion，用来确保元素只是由提供的文本经重复组成。在测试中，2个可用的命令是assertValueRepeated 和 verifyValueRepeated。</p>
 <div class="highlight-javascript" style="display: none;"><div class="highlight"><pre><span class="nx">Selenium</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">assertValueRepeated</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">locator</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// All locator-strategies are automatically handled by "findElement"</span>
+    <span class="c1">// 所有的定位器策略由"findElement"自动处理</span>
     <span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">page</span><span class="p">().</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">locator</span><span class="p">);</span>
 
-    <span class="c1">// Create the text to verify</span>
+    <span class="c1">// 创建要验证的文本</span>
     <span class="kd">var</span> <span class="nx">expectedValue</span> <span class="o">=</span> <span class="nx">text</span> <span class="o">+</span> <span class="nx">text</span><span class="p">;</span>
 
-    <span class="c1">// Get the actual element value</span>
+    <span class="c1">// 得到实际的Element值</span>
     <span class="kd">var</span> <span class="nx">actualValue</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
 
-    <span class="c1">// Make sure the actual value matches the expected</span>
+    <span class="c1">// 确保实际Element值与预期相符</span>
     <span class="nx">Assert</span><span class="p">.</span><span class="nx">matches</span><span class="p">(</span><span class="nx">expectedValue</span><span class="p">,</span> <span class="nx">actualValue</span><span class="p">);</span>
 <span class="p">};</span>
 </pre></div>
 </div>
 <div class="section" id="prototype-generates-additional-commands">
-<h3>Prototype generates additional commands<a class="headerlink" href="#prototype-generates-additional-commands" title="Permalink to this headline">¶</a></h3>
-<p>All <em>get</em>Foo and <em>is</em>Foo methods on the Selenium prototype automatically result
-in the availability of storeFoo, assertFoo, assertNotFoo, verifyFoo,
-verifyNotFoo, waitForFoo, and waitForNotFoo commands.
-Example, if you add a <tt class="docutils literal"><span class="pre">getTextLength()</span></tt> method, the following commands will
-automatically be available: <tt class="docutils literal"><span class="pre">storeTextLength</span></tt>, <tt class="docutils literal"><span class="pre">assertTextLength</span></tt>,
-<tt class="docutils literal"><span class="pre">assertNotTextLength</span></tt>, <tt class="docutils literal"><span class="pre">verifyTextLength</span></tt>, <tt class="docutils literal"><span class="pre">verifyNotTextLength</span></tt>,
-<tt class="docutils literal"><span class="pre">waitForTextLength</span></tt>, and <tt class="docutils literal"><span class="pre">waitForNotTextLength</span></tt> commands.</p>
+<h3>原型生成的附加命令<a class="headerlink" href="#prototype-generates-additional-commands" title="Permalink to this headline">¶</a></h3>
+<p>Selenium原型中所有的<em>get</em>Foo和<em>is</em>方法会自动地导致storeFoo， assertFoo，assertNotFoo，verifyFoo，verifyNotFoo，waitForFoo和waitForNotFoo命令可用。例如，如果你增加一个<tt class="docutils literal"><span class="pre">getTextLength()</span></tt>方法，下面的命令将自动可用：<tt class="docutils literal"><span class="pre">storeTextLength</span></tt>，<tt class="docutils literal"><span class="pre">assertTextLength</span></tt>，
+<tt class="docutils literal"><span class="pre">assertNotTextLength</span></tt>，<tt class="docutils literal"><span class="pre">verifyTextLength</span></tt>，<tt class="docutils literal"><span class="pre">verifyNotTextLength</span></tt>，
+<tt class="docutils literal"><span class="pre">waitForTextLength</span></tt>，和<tt class="docutils literal"><span class="pre">waitForNotTextLength</span></tt>命令。</p>
 <div class="highlight-javascript" style="display: none;"><div class="highlight"><pre><span class="nx">Selenium</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getTextLength</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">locator</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">getText</span><span class="p">(</span><span class="nx">locator</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
 <span class="p">};</span>
 </pre></div>
 </div>
-<p>Also note that the <tt class="docutils literal"><span class="pre">assertValueRepeated</span></tt> method described above could have
-been implemented using <tt class="docutils literal"><span class="pre">isValueRepeated</span></tt>, with the added benefit of also
-automatically getting assertNotValueRepeated, storeValueRepeated,
-waitForValueRepeated and waitForNotValueRepeated.</p>
+<p>同样要注意上面描述的<tt class="docutils literal"><span class="pre">assertValueRepeated</span></tt>方法也可以实现为<tt class="docutils literal"><span class="pre">isValueRepeated</span></tt>，额外的好处是，同样可以自动得到assertNotValueRepeated，storeValueRepeated，waitForValueRepeated 和waitForNotValueRepeated。</p>
 </div>
 </div>
 <div class="section" id="locator-strategies">
 <h2>Locator Strategies<a class="headerlink" href="#locator-strategies" title="Permalink to this headline">¶</a></h2>
-<p>All locateElementByFoo methods on the PageBot prototype are added as
-locator-strategies. A locator strategy takes 2 parameters, the first being the
-locator string (minus the prefix), and the second being the document in which
-to search.
-Example: Add a “valuerepeated=” locator, that finds the first element a value
-attribute equal to the the supplied value repeated.</p>
-<div class="highlight-javascript" style="display: none;"><div class="highlight"><pre><span class="c1">// The "inDocument" is a the document you are searching.</span>
+<p>PageBot原型的所有locateElementByFoo方法被作为定位器策略添加。一个定位器策略（locator strategy）带有2个参数，第一个是locator串（减去前缀），第二个是待搜索的文档。例如：增加一个“valuerepeated=”定位器，查找第一个满足value属性值等于提供值的重复的element。</p>
+<div class="highlight-javascript" style="display: none;"><div class="highlight"><pre><span class="c1">// "inDocument"是你正在搜索的那个文档。</span>
 <span class="nx">PageBot</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">locateElementByValueRepeated</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">inDocument</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// Create the text to search for</span>
+    <span class="c1">// 创建要搜索的文本</span>
     <span class="kd">var</span> <span class="nx">expectedValue</span> <span class="o">=</span> <span class="nx">text</span> <span class="o">+</span> <span class="nx">text</span><span class="p">;</span>
 
-    <span class="c1">// Loop through all elements, looking for ones that have</span>
-    <span class="c1">// a value === our expected value</span>
+    <span class="c1">// 遍历所有Elements，查找那些满足</span>
+    <span class="c1">// value === 我们的预期值 的Element</span>
     <span class="kd">var</span> <span class="nx">allElements</span> <span class="o">=</span> <span class="nx">inDocument</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"*"</span><span class="p">);</span>
     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">allElements</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">testElement</span> <span class="o">=</span> <span class="nx">allElements</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
@@ -136,74 +105,51 @@ attribute equal to the the supplied value repeated.</p>
 </div>
 </div>
 <div class="section" id="using-user-extensions-with-selenium-ide">
-<h2>Using User-Extensions With Selenium-IDE<a class="headerlink" href="#using-user-extensions-with-selenium-ide" title="Permalink to this headline">¶</a></h2>
-<p>User-extensions are very easy to use with the selenium IDE.</p>
+<h2>在Selenium IDE中使用用户扩展<a class="headerlink" href="#using-user-extensions-with-selenium-ide" title="Permalink to this headline">¶</a></h2>
+<p>在Selenium IDE中使用用户扩展非常容易。</p>
 <ol class="arabic simple">
-<li>Create your user extension and save it as user-extensions.js. While this
-name isn’t technically necessary, it’s good practice to keep things
-consistent.</li>
-<li>Open Firefox and open Selenium-IDE.</li>
-<li>Click on Tools, Options</li>
-<li>In Selenium Core Extensions click on Browse and find the user-extensions.
-js file. Click on OK.</li>
-<li>Your user-extension will not yet be loaded, you must close and restart
-Selenium-IDE.</li>
-<li>In your empty test, create a new command, your user-extension should now
-be an options in the Commands dropdown.</li>
+<li>创建你的用户扩展，并保存为user-extensions.js。尽管这个名称在技术上不是必须的，然而保持一致性是一个良好的实践。</li>
+<li>打开Firefox，然后打开Selenium IDE。</li>
+<li>依次点击Tools，Options</li>
+<li>在Selenium核心扩展（Selenium Core Extensions）中点击浏览（Browse），并查找user-extensions. js文件，然后点击OK。</li>
+<li>你的用户扩展还没有被加载，你必须关闭和重新启动Selenium IDE</li>
+<li>在你的空白测试中，创建一个新命令，你的用户扩展现在应该是命令下拉列表中的一个选项了</li>
 </ol>
 </div>
 <div class="section" id="using-user-extensions-with-selenium-rc">
-<h2>Using User-Extensions With Selenium RC<a class="headerlink" href="#using-user-extensions-with-selenium-rc" title="Permalink to this headline">¶</a></h2>
-<p>If you Google “Selenium RC user-extension” ten times you will find ten
-different approaches to using this feature. Below, is the official Selenium
-suggested approach.</p>
+<h2>在Selenium RC中使用用户扩展<a class="headerlink" href="#using-user-extensions-with-selenium-rc" title="Permalink to this headline">¶</a></h2>
+<p>如果你Google“Selenium RC user-extension”十次，你会找到十个不同的使用这个特征的方法，下面是Selenium官方建议的方法</p>
 <div class="section" id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<h3>示例<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p><strong>C#</strong></p>
 <ol class="arabic simple">
-<li>Place your user extension in the same directory as your Selenium Server.</li>
-<li>If you are using client code generated by the Selenium-IDE you will need
-to make a couple of small edits. First, you will need to create an
-<tt class="docutils literal"><span class="pre">HttpCommandProcessor</span></tt> object with class scope (outside the SetupTest
-method, just below  <tt class="docutils literal"><span class="pre">private</span> <span class="pre">StringBuilder</span> <span class="pre">verificationErrors;</span></tt>)</li>
+<li>把你的用户扩展放在与Selenium服务器相同的目录下。</li>
+<li>如果你正在使用由Selenium IDE生成的客户端代码，你需要做出几个小的修改。首先，你会需要在类的作用域创建一个<tt class="docutils literal"><span class="pre">HttpCommandProcessor</span></tt>对象（在SetupTest方法的外面，就在<tt class="docutils literal"><span class="pre">private</span> <span class="pre">StringBuilder</span> <span class="pre">verificationErrors;</span></tt>下面）</li>
 </ol>
 <div class="highlight-c#"><div class="highlight"><pre><span class="n">HttpCommandProcessor</span> <span class="n">proc</span><span class="p">;</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Next, instantiate that <tt class="docutils literal"><span class="pre">HttpCommandProcessor</span></tt> object as you would the <tt class="docutils literal"><span class="pre">DefaultSelenium</span></tt> object. This can be done in the test setup.</li>
+<li>接着，实例化<tt class="docutils literal"><span class="pre">HttpCommandProcessor</span></tt>对象，这可以在建立测试的过程中实现。</li>
 </ol>
 <div class="highlight-c#"><div class="highlight"><pre><span class="n">proc</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpCommandProcessor</span><span class="p">(</span><span class="s">"localhost"</span><span class="p">,</span> <span class="m">4444</span><span class="p">,</span> <span class="s">"*iexplore"</span><span class="p">,</span> <span class="s">"http://google.ca/"</span><span class="p">);</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li>Instantiate the DefaultSelenium object using the <tt class="docutils literal"><span class="pre">HttpCommandProcessor</span></tt> object you created.</li>
+<li>使用你创建的<tt class="docutils literal"><span class="pre">HttpCommandProcessor</span></tt>对象实例化DefaultSelenium对象。</li>
 </ol>
 <div class="highlight-c#"><div class="highlight"><pre><span class="n">selenium</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DefaultSelenium</span><span class="p">(</span><span class="n">proc</span><span class="p">);</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li>Within your test code, execute your user-extension by calling it with the
-<tt class="docutils literal"><span class="pre">DoCommand()</span></tt> method of <tt class="docutils literal"><span class="pre">HttpCommandProcessor</span></tt>. This method takes two
-arguments: a string to identify the user-extension method you want to use
-and string array to pass arguments. Notice that the first letter of your
-function is lower case, regardless of the capitalization in your
-user-extension. Selenium automatically does this to keep common JavaScript
-naming conventions. Because JavaScript is case sensitive, your test will
-fail if you begin this command with a capital. inputParams is the array of
-arguments you want to pass to the JavaScript user-extension. In this case
-there is only one string in the array because there is only one parameter
-for our user extension, but a longer array will map each index to the
-corresponding user-extension parameter. Remember that user extensions
-designed for Selenium-IDE will only take two arguments.</li>
+<li>在你的测试代码中，调用<tt class="docutils literal"><span class="pre">HttpCommandProcessor</span></tt>的<tt class="docutils literal"><span class="pre">DoCommand()</span></tt>方法 ，执行你的用户扩展。这个方法带有两个参数：一个字符串标识你想要使用的用户扩展方法，一个字符串数组用以传递参数。注意你的函数的第一个字母是小写字母，而不用管在你的用户扩展中的大小写。Selenium自动如此处理以保证常见的Javascript命名惯例。因为Javascript是大小写敏感的，如果你的命令以大写字母开头，你的测试将失败。inputParams是你希望传递给Javascript用户扩展的参数数组。在上述情况中，数组只有一个字符串，因为我们的扩展只有一个参数，而更长的数组会将每个索引映射到相应的user-extension参数。牢记为Selenium IDE设计的用户扩展只能带有两个参数。</li>
 </ol>
 <div class="highlight-c#"><div class="highlight"><pre><span class="kt">string</span><span class="p">[]</span> <span class="n">inputParams</span> <span class="p">=</span> <span class="p">{</span><span class="s">"Hello World"</span><span class="p">};</span>
 <span class="n">proc</span><span class="p">.</span><span class="n">DoCommand</span><span class="p">(</span><span class="s">"alertWrapper"</span><span class="p">,</span> <span class="n">inputParams</span><span class="p">);</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
-<li>Start the test server using the <tt class="docutils literal"><span class="pre">-userExtensions</span></tt> argument and pass in
-your <tt class="docutils literal"><span class="pre">user-extensions.js</span></tt> file.</li>
+<li>使用<tt class="docutils literal"><span class="pre">-userExtensions</span></tt>参数并传递你的<tt class="docutils literal"><span class="pre">user-extensions.js</span></tt>文件启动测试服务器。</li>
 </ol>
 <div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server.jar -userExtensions user-extensions.js
 </pre></div>
