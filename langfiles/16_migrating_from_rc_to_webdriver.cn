@@ -79,37 +79,44 @@ Selenium模拟虽好，但并不完美, 所以当有一些小的瑕疵是完全�
 </pre></div>
 </div>
 <p>这个允许你继续正常的传递Selenium实例, 并且在需要的时候解封装WebDriver。</p>
-<p>At some point, you’re codebase will mostly be using the newer APIs. At this point, you can flip the relationship, using WebDriver throughout and instantiating a Selenium instance on demand:</p>
+<p>在某些时候，你的代码库将主要使用新API。此时您可以翻转关系，
+在必要的时候始终使用webdriver实例化Selenium:</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">Selenium</span> <span class="n">selenium</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WebDriverBackedSelenium</span><span class="o">(</span><span class="n">driver</span><span class="o">,</span> <span class="n">baseUrl</span><span class="o">);</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="common-problems">
-<h2>Common Problems<a class="headerlink" href="#common-problems" title="Permalink to this headline">¶</a></h2>
-<p>Fortunately, you’re not the first person to go through this migration, so here are some common problems that others have seen, and how to solve them.</p>
+<h2>常见问题<a class="headerlink" href="#common-problems" title="Permalink to this headline">¶</a></h2>
+<p>可幸的是, 你不是第一个想到要迁移的人，所以这里有一些其他人在迁移时发现的问题及解决方法。</p>
 <div class="section" id="clicking-and-typing-is-more-complete">
-<h3>Clicking and Typing is More Complete<a class="headerlink" href="#clicking-and-typing-is-more-complete" title="Permalink to this headline">¶</a></h3>
-<p>A common pattern in a Selenium RC test is to see something like:</p>
+<h3>Clicking and Typing更完善<a class="headerlink" href="#clicking-and-typing-is-more-complete" title="Permalink to this headline">¶</a></h3>
+<p>在Selenium RC中一个常见的模式应该像这样:</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">selenium</span><span class="o">.</span><span class="na">type</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"exciting tex"</span><span class="o">);</span>
 <span class="n">selenium</span><span class="o">.</span><span class="na">keyDown</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"t"</span><span class="o">);</span>
 <span class="n">selenium</span><span class="o">.</span><span class="na">keyPress</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"t"</span><span class="o">);</span>
 <span class="n">selenium</span><span class="o">.</span><span class="na">keyUp</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"t"</span><span class="o">);</span>
 </pre></div>
 </div>
-<p>This relies on the fact that “type” simply replaces the content of the identified element without also firing all the events that would normally be fired if a user interacts with the page. The final direct invocations of “key*” cause the JS handlers to fire as expected.</p>
-<p>When using the WebDriverBackedSelenium, the result of filling in the form field would be “exciting texttt”: not what you’d expect! The reason for this is that WebDriver more accurately emulates user behavior, and so will have been firing events all along.</p>
-<p>This same fact may sometimes cause a page load to fire earlier than it would do in a Selenium 1 test. You can tell that this has happened if a “StaleElementException” is thrown by WebDriver.</p>
+<p>这依赖于一个事实，即 “type”仅仅简单的替换了识别元素的内容，而没有触发用户正常使用页面时应该触发的所有事件。
+最后直接调用 “key*”触发JS处理来达到预期触发效果。</p>
+<p>当使用 WebDriverBackedSelenium时，在form字段里填写内容后的结果是这样 “exciting texttt”: 而这不是你所期望的! 
+这样做的原因是，webdriver会更精确地模拟用户的行为，因此将始终触发事件。</p>
+<p>同样的情况，在Selenium 1的测试中有时可能会导致页面加载的触发早于它实际要做的。
+如果WebDriver抛出“StaleElementException”异常，你就可以告诉大家发生了什么情况。</p>
 </div>
 <div class="section" id="waitforpagetoload-returns-too-soon">
-<h3>WaitForPageToLoad Returns Too Soon<a class="headerlink" href="#waitforpagetoload-returns-too-soon" title="Permalink to this headline">¶</a></h3>
-<p>Discovering when a page load is complete is a tricky business. Do we mean “when the load event fires”, “when all AJAX requests are complete”, “when there’s no network traffic”, “when document.readyState has changed” or something else entirely?</p>
-<p>WebDriver attempts to simulate the original Selenium behavior, but this doesn’t always work perfectly for various reasons. The most common reason is that it’s hard to tell the difference between a page load not having started yet, and a page load having completed between method calls. This sometimes means that control is returned to your test before the page has finished (or even started!) loading.</p>
-<p>The solution to this is to wait on something specific. Commonly, this might be for the element you want to interact with next, or for some Javascript variable to be set to a specific value. An example would be:</p>
+<h3>WaitForPageToLoad返回更快<a class="headerlink" href="#waitforpagetoload-returns-too-soon" title="Permalink to this headline">¶</a></h3>
+<p>我们发现当页面加载完成后是一个棘手的事情。我们的意思是“当load事件触发时”, “当所有的AJAX请求完成时”, “当没有网络流量时”, 
+“当document.readyState改变时”或者别的什么东西?</p>
+<p>WebDriver尝试去模仿原生的Selenium行为，但是由于某些原因 并不总是工作的很完美。
+ 大多数的原因是它很难识别一个页面还没开始加载和通过方法间的调用已经加载完成之间的不同。
+ 这就意味着在页面完成 (或未开始!)加载之前，控制已经返回到你的测试中。</p>
+<p>解决办法是 等待一个特定的东西。 通常，这个可能是你下一步将要进行操作的元素， 或者某些Javascript变了被设置成了特定的值。 看看样例:</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">Wait</span><span class="o">&lt;</span><span class="n">WebDriver</span><span class="o">&gt;</span> <span class="n">wait</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WebDriverWait</span><span class="o">(</span><span class="n">driver</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
 <span class="n">WebElement</span> <span class="n">element</span><span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="na">until</span><span class="o">(</span><span class="n">visibilityOfElementLocated</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"some_id"</span><span class="o">)));</span>
 </pre></div>
 </div>
-<p>Where “visibilityOfElementLocated” is implemented as:</p>
+<p>“visibilityOfElementLocated”的实现如下:</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="n">ExpectedCondition</span><span class="o">&lt;</span><span class="n">WebElement</span><span class="o">&gt;</span> <span class="nf">visibilityOfElementLocated</span><span class="o">(</span><span class="kd">final</span> <span class="n">By</span> <span class="n">locator</span><span class="o">)</span> <span class="o">{</span>
   <span class="k">return</span> <span class="k">new</span> <span class="n">ExpectedCondition</span><span class="o">&lt;</span><span class="n">WebElement</span><span class="o">&gt;()</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="n">WebElement</span> <span class="nf">apply</span><span class="o">(</span><span class="n">WebDriver</span> <span class="n">driver</span><span class="o">)</span> <span class="o">{</span>
@@ -123,41 +130,46 @@ Selenium模拟虽好，但并不完美, 所以当有一些小的瑕疵是完全�
 <span class="o">}</span>
 </pre></div>
 </div>
-<p>This may look complex, but it’s almost all boiler-plate code. The only interesting bit is that the “ExpectedCondition” will be evaluated repeatedly until the “apply” method returns something that is neither “null” nor Boolean.FALSE.</p>
-<p>Of course, adding all these “wait” calls may clutter up your code. If that’s the case, and your needs are simple, consider using the implicit waits:</p>
+<p>这个看起来可能比较复杂，但几乎是所有的代码。 唯一有趣的一点是“ExpectedCondition”会反复评估 直到“apply”方法返回一些 “null”或布尔值FALSE。</p>
+<p>当然, 添加所有这些“wait”调用 可能会弄乱你的代码。 如果真是这样而你又希望代码简单，那么可以考虑使用隐式等待:</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">driver</span><span class="o">.</span><span class="na">manage</span><span class="o">().</span><span class="na">timeouts</span><span class="o">().</span><span class="na">implicitlyWait</span><span class="o">(</span><span class="mi">30</span><span class="o">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">);</span>
 </pre></div>
 </div>
-<p>By doing this, every time an element is located, if the element is not present, the location is retried until either it is present, or until 30 seconds have passed.</p>
+<p>这样做每次定位元素时，如果元素没有出现， 定位将一直尝试直到它出现或者30秒超时。 </p>
 </div>
 <div class="section" id="finding-by-xpath-or-css-selectors-doesn-t-always-work-but-it-does-in-selenium-1">
-<h3>Finding By XPath or CSS Selectors Doesn’t Always Work, But It Does In Selenium 1<a class="headerlink" href="#finding-by-xpath-or-css-selectors-doesn-t-always-work-but-it-does-in-selenium-1" title="Permalink to this headline">¶</a></h3>
-<p>In Selenium 1, it was common for xpath to use a bundled library rather than the capabilities of the browser itself. WebDriver will always use the native browser methods unless there’s no alternative. That means that complex xpath expressions may break on some browsers.</p>
-<p>CSS Selectors in Selenium 1 were implemented using the Sizzle library. This implements a superset of the CSS Selector spec, and it’s not always clear where you’ve crossed the line. If you’re using the WebDriverBackedSelenium and use a Sizzle locator instead of a CSS Selector for finding elements, a warning will be logged to the console. It’s worth taking the time to look for these, particularly if tests are failing because of not being able to find elements.</p>
+<h3>通过XPath或CSS选择器查找并不总是工作, 但是在Selenium 1正常<a class="headerlink" href="#finding-by-xpath-or-css-selectors-doesn-t-always-work-but-it-does-in-selenium-1" title="Permalink to this headline">¶</a></h3>
+<p>在Selenium 1, 对于xpath通常使用绑定的库 而不是浏览器本身的功能。 WebDriver将总是使用浏览器原生的方法除非没有替代。
+这意味着复杂的xpath表达式在某些浏览器中可能会失败。</p>
+<p>CSS选择器在Selenium 1是使用Sizzle库实现的。这个实现是CSS选择器规范的超集, 而且它并不总是很清楚你在哪跨行了。
+如果你使用WebDriverBackedSelenium并且使用Sizzle定位器替代CSS选择器查找元素，一个警告将被打印在命令行。
+这是值得花些时间看的，特别是如果因为不能够找到元素而导致测试失败时。</p>
 </div>
 <div class="section" id="there-is-no-browserbot">
-<h3>There is No Browserbot<a class="headerlink" href="#there-is-no-browserbot" title="Permalink to this headline">¶</a></h3>
-<p>Selenium RC was based on Selenium Core, and therefore when you executed Javascript, you could access bits of Selenium Core to make things easier. As WebDriver is not based on Selenium Core, this is no longer possible. How can you tell if you’re using Selenium Core? Simple! Just look to see if your “getEval” or similar calls are using “selenium” or “browserbot” in the evaluated Javascript.</p>
-<p>You might be using the browserbot to obtain a handle to the current window or document of the test. Fortunately, WebDriver always evaluates JS in the context of the current window, so you can use “window” or “document” directly.</p>
-<p>Alternatively, you might be using the browserbot to locate elements. In WebDriver, the idiom for doing this is to first locate the element, and then pass that as an argument to the Javascript. Thus:</p>
+<h3>没有Browserbot<a class="headerlink" href="#there-is-no-browserbot" title="Permalink to this headline">¶</a></h3>
+<p>Selenium RC是基于Selenium Core，因此当你执行Javascript时， 你可以访问Selenium Core的内容来让事情变得更容易。
+因为WebDriver并不基于Selenium Core，并且不再可能。如果你使用Selenium Core怎么告诉它? 简单的! 
+只要看看在Javascript中你的“getEval”或类似的调用是否使用了 “selenium” 或 “browserbot”。</p>
+<p>你可能会使用browserbot取获取当前测试窗口或doc的句柄。 幸运的是，WebDriver总是在当前的窗口上下文环境中执行 JS，所以你可以直接使用“window” 或 “document”。</p>
+<p>或者，您可能会使用browserbot定位元素。在WebDriver中，要这样做首先是定位元素，然后把元素作为参数传递为Javascript。 因此:</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">selenium</span><span class="o">.</span><span class="na">getEval</span><span class="o">(</span>
     <span class="s">"selenium.browserbot.findElement('id=foo', browserbot.getCurrentWindow()).tagName"</span><span class="o">);</span>
 </pre></div>
 </div>
-<p>becomes:</p>
+<p>就变成:</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">WebElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"foo"</span><span class="o">));</span>
 <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span> <span class="o">((</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">).</span><span class="na">executeScript</span><span class="o">(</span>
     <span class="s">"return arguments[0].tagName"</span><span class="o">,</span> <span class="n">element</span><span class="o">);</span>
 </pre></div>
 </div>
-<p>Notice how the passed in “element” variable appears as the first item in the JS standard “arguments” array.</p>
+<p>注意如何传递“element”变量作为JS标准“arguments”数组的第一个选项。</p>
 </div>
 <div class="section" id="executing-javascript-doesn-t-return-anything">
-<h3>Executing Javascript Doesn’t Return Anything<a class="headerlink" href="#executing-javascript-doesn-t-return-anything" title="Permalink to this headline">¶</a></h3>
-<p>WebDriver’s JavascriptExecutor will wrap all JS and evaluate it as an anonymous expression. This means that you need to use the “return” keyword:</p>
+<h3>执行Javascript没有任何返回值<a class="headerlink" href="#executing-javascript-doesn-t-return-anything" title="Permalink to this headline">¶</a></h3>
+<p>WebDriver的Javascript执行器 会包装所有的JS并且以匿名表达执行。这意味着你需要使用“return”关键字:</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">String</span> <span class="n">title</span> <span class="o">=</span> <span class="n">selenium</span><span class="o">.</span><span class="na">getEval</span><span class="o">(</span><span class="s">"browserbot.getCurrentWindow().document.title"</span><span class="o">);</span>
 </pre></div>
 </div>
-<p>becomes:</p>
+<p>就变成:</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="o">((</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">).</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"return document.title;"</span><span class="o">);</span>
 </pre></div>
