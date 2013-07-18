@@ -1,5 +1,5 @@
 ﻿如何在github上参与项目：
-http://www.360doc.com/content/13/0410/18/2569758_277424931.shtml
+http://blog.csdn.net/five3/article/details/9307041
 
 翻译操作步骤：
 1、github上clone本项目
