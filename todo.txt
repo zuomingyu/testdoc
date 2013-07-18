@@ -1,0 +1,53 @@
+/selenium.*  selenium分支
+/selenium/productdoc	selenium产品文档
+/selenium/cookbook		selenium问答文档
+/selenium/tutorials		基础教程
+/selenium/api.*			API文档
+/selenium/api/java		java api文档
+/selenium/api/python	python api文档
+
+
+相关网站：
+seleniumhq.org
+http://selenium-grid.seleniumhq.org/
+http://www.yoyobrain.com/cardboxes/1534  selenium-grid
+openqa.org
+seleniumcn.cn
+http://bbs.51testing.com/forum-228-1.html
+
+
+基础教程：
+selenium webdriver
+selenium Remote Control
+selenium-grid
+
+
+问答文档：
+解决Firefox不可调用错误？
+Q1、org.openqa.selenium.WebDriverException: Cannot find firefox binary in PATH. Make sure firefox is installed.
+A1：
+解决方法有：
+1、添加火狐的安装路径到PATH环境变量
+2、webdriver中指定FF的路径
+System.setProperty("webdriver.firefox.bin","D:/Program Files/Mozilla Firefox/firefox.exe");
+WebDriver driver = new FirefoxDriver();
+3、RC中指定FF路径
+Selenium selenium = new DefaultSelenium("localhost", 4444, "*firefox3 D:/Program Files/Mozilla Firefox/firefox.exe", "http://www.dangdang.com");
+
+Q2、org.openqa.selenium.UnsupportedCommandException: Bad request
+A2：
+把类似
+127.0.0.1 domain1 domain2 domain3 localhost
+改成
+127.0.0.1 localhost domain1 domain2 domain3
+即127.0.0.1 localhost必须是所有本地指向的第一个
+
+Q3、为何htmlunitdriver会报各种异常？
+A3：
+htmlunit经常会报unsupportException，那是因为htmlunit不必其它driver，它是单独使用java实现的模拟器，不显示浏览器仅在内存中运行，
+由于是独立开发的所以还有很多的功能和selenium命令没有实现，故此很多在其它driver上可以跑的脚本使用htmlunit时就可能会抛异常。
+
+
+如何搭建selenium + testNG + maven + eclipse
+hudson ant maven 
+
