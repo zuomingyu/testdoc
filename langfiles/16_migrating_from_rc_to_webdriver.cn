@@ -89,7 +89,7 @@ Selenium模拟虽好，但并不完美, 所以当有一些小的瑕疵是完全�
 <h2>常见问题<a class="headerlink" href="#common-problems" title="Permalink to this headline">¶</a></h2>
 <p>可幸的是, 你不是第一个想到要迁移的人，所以这里有一些其他人在迁移时发现的问题及解决方法。</p>
 <div class="section" id="clicking-and-typing-is-more-complete">
-<h3>Clicking and Typing更完善<a class="headerlink" href="#clicking-and-typing-is-more-complete" title="Permalink to this headline">¶</a></h3>
+<h3>Clicking和Typing更完善<a class="headerlink" href="#clicking-and-typing-is-more-complete" title="Permalink to this headline">¶</a></h3>
 <p>在Selenium RC中一个常见的模式应该像这样:</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">selenium</span><span class="o">.</span><span class="na">type</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"exciting tex"</span><span class="o">);</span>
 <span class="n">selenium</span><span class="o">.</span><span class="na">keyDown</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="s">"t"</span><span class="o">);</span>
