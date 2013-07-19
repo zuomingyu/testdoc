@@ -10,16 +10,26 @@
 相关网站：
 seleniumhq.org
 http://selenium-grid.seleniumhq.org/
-http://www.yoyobrain.com/cardboxes/1534  selenium-grid
-openqa.org
-seleniumcn.cn
+
+51testing.com
 http://bbs.51testing.com/forum-228-1.html
+
+www.pushtotest.com
+http://www.pushtotest.com/selenium-tutorial-for-beginners-toc
+http://www.pushtotest.com/selenium-quick-reference
+
+www.qaautomation.net
+http://www.qaautomation.net/?p=373  
+
+stackoverflow.com
 
 
 基础教程：
 selenium webdriver
 selenium Remote Control
 selenium-grid
+selenium-reference
+environment-set
 
 
 问答文档：
@@ -47,6 +57,34 @@ A3：
 htmlunit经常会报unsupportException，那是因为htmlunit不必其它driver，它是单独使用java实现的模拟器，不显示浏览器仅在内存中运行，
 由于是独立开发的所以还有很多的功能和selenium命令没有实现，故此很多在其它driver上可以跑的脚本使用htmlunit时就可能会抛异常。
 
+Q4、org.openqa.selenium.WebDriverException: Unexpected error launching Internet Explorer. Protected Mode must be set to the same value (enabled or disabled) for all zones
+A4:
+两个解决方法：
+1、在您的Internet Explorer浏览器中设置所有区域（Internet，本地Intranet，受信任的站点，受限制的站点）的保护模式都为启用或禁用。
+当然前提是你有权限进行相关安全设置的操作
+2、设置INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS选项，代码片段如下：
+DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
+ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+return new InternetExplorerDriver(ieCapabilities);
+这种方法有时候可能不稳定。
+
+Q5、如何设置chromedriver.exe的路径
+java.lang.IllegalStateException: The path to the chromedriver executable must be set by the webdriver.chrome.driver system property; for more information, see http://code.google.com/p/selenium/wiki/ChromeDriver. The latest version can be downloaded from http://code.google.com/p/chromium/downloads/list
+A5：
+一种方法是把下载的chromedriver放到系统的环境变量中；另一种是在代码调用前指定chromedriver的路径，代码片段如下：
+DesiredCapabilities chromeCapabilities = DesiredCapabilities.chrome();
+String chromeBinary = System.getProperty(" ");
+if (chromeBinary == null || chromeBinary.equals("")) {
+    String os = System.getProperty("os.name").toLowerCase().substring(0, 3);
+    chromeBinary = "lib/chromedriver-" + os + (os.equals("win") ? ".exe" : "");
+    System.setProperty("webdriver.chrome.driver", chromeBinary);
+}
+return new ChromeDriver(chromeCapabilities);
+
+Q6、如何指定chrome浏览器安装路径
+A6：
+一种方法是安装路径在系统变量环境中；另一种是在启动前指定安装路径，代码片段如下：
+chromeCapabilities.setCapability("chrome.binary", "/path/to/where/chrome/is/installed/chrome.exe");
 
 如何搭建selenium + testNG + maven + eclipse
 hudson ant maven 

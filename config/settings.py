@@ -2,7 +2,7 @@
 # coding: utf-8
 import web
 
-#db = web.database(dbn='mysql', db='apiow', user='root', pw='password', charset='utf8', host="10.255.253.243")
+#db = web.database(dbn='mysql', db='apiow', user='root', pw='password', charset='utf8', host="localhost")
 selenium_render = web.template.render('templates/', cache=False)
 python_render = web.template.render('templates/', cache=False, base='python_base')
 

@@ -1,0 +1,180 @@
+前面说到了selenium server的前2种启动方式，现在再看看剩下的2种启动方式：
+
+启动hub
+==
+java -jar selenium-server-standalone.jar -role hub
+%%
+参数说明：
+**
+-role：hub
+启动一个hub服务，等待webdriver客户端进行注册和请求。默认启动端口是4444；
+默认接收注册的地址为：http://localhost:4444/grid/register
+
+-hubConfig：[filename]
+一个符合selenium grid2规则的json格式的hub配置文件，样例
+{
+  "host": null,
+  "port": 4444,
+  "newSessionWaitTimeout": -1,
+  "servlets" : [],
+  "prioritizer": null,
+  "capabilityMatcher": "org.openqa.grid.internal.utils.DefaultCapabilityMatcher",
+  "throwOnCapabilityNotPresent": true,
+  "nodePolling": 5000,
+
+  "cleanUpCycle": 5000,
+  "timeout": 300000,
+  "browserTimeout": 0,
+  "maxSession": 5
+}
+
+-throwOnCapabilityNotPresent: [true|false]
+默认为true，如果为true则hub只有在当前有测试代理注册的情况下才会接受测试请求；
+如果为false则如果当前没有代理注册也会接受请求保存到队列直到有代理注册为止。
+
+-capabilityMatcher:xxx
+一个实现了CapabilityMatcher接口的类，默认指向org.openqa.grid.internal.utils.DefaultCapabilityMatcher
+该类用于实现grid在分布测试任务到指定代理时所使用的匹配规则，如果想要更精确的测试分配规则需求，
+那么就注册一个自己定义的匹配类。
+
+-prioritizer:XXXclass
+一个实现了Prioritizer接口的类。设置grid执行test任务的优先逻辑；默认为null，先来先执行。
+
+-port：xxx
+指定hub监听的端口
+
+-host：ip_or_host
+指定hub机的ip或者host值
+
+-newSessionWaitTimeout:XXX
+默认-1，即没有超时；指定一个新的测试session等待执行的间隔时间。即一个代理节点上前后2个测试中间的延时时间，单位为毫秒。
+
+-servlets: XXXserlet
+在hub上注册一个新的serlet，访问地址为/grid/admin/XXXserlet
+
+-browserTimeout:
+浏览器无响应的超时时间
+
+-grid1Yml:
+一个符合grid1规则的yml文件，仅适用于grid1
+
+
+注册远程webdriver或者node成员
+==
+java -jar selenium-server-standalone.jar -role wd -hub http://localhost:4444/grid/register
+java -jar selenium-server-standalone.jar -role rc -hub http://localhost:4444/grid/register
+java -jar selenium-server-standalone.jar -role node -hub http://localhost:4444/grid/register
+%%
+参数说明：
+**
+-role: [node|wd|rc]
+为node值时表示注册的RC可以支持selenium1、selenium2两种方式的测试请求，推荐
+为wd值时表示注册的RC仅支持selenium2的webdriver方式的测试请求，遗留
+为rc值时表示注册的RC仅支持selenium1方式的测试请求，遗留
+
+-hub：url_to_hub
+url_to_hub值为hub启动的注册地址，默认为ttp://ip_for_hub:4444/grid/register；具体的根据你启动hub时的参数所对应。
+该选项包含了-hubHost和-hubPort两个选项
+
+-hubHost：ip_or_host
+指定hub机的ip或者host值
+
+-host：ip_or_host
+同-hubHost选项
+
+-hubPort：xxx
+指定hub机的监听端口
+
+-port：XXX
+同-hubPort选项
+
+-registerCycle：xxx
+代理节点自动重新注册的周期，单位毫秒；适应于重启了hub时不需要重启所有的代理节点。
+
+-nodePolling:XXX
+hub检查代理节点的周期
+
+-unregisterIfStillDownAfter:XXX
+单位毫秒，设定代理节点在无响应多长时间后hub才会注销代理节点注册信息；默认1分钟
+
+-nodeTimeout：xxx
+客户端的无心跳超时时间
+
+-maxSession：xx
+一个代理节点可以同时启动的浏览器最大数量，即session数量
+
+-cleanupCycle:XXX
+代理节点检查超时的周期
+
+-nodeConfig: json_file
+一个符合selenium grid2规则的json格式的node配置文件，样例
+{
+  "capabilities":
+      [
+        {
+          "browserName": "*firefox",
+          "maxInstances": 5,
+          "seleniumProtocol": "Selenium"
+        },
+        {
+          "browserName": "*googlechrome",
+          "maxInstances": 5,
+          "seleniumProtocol": "Selenium"
+        },
+        {
+          "browserName": "*iexplore",
+          "maxInstances": 1,
+          "seleniumProtocol": "Selenium"
+        },
+        {
+          "browserName": "firefox",
+          "maxInstances": 5,
+          "seleniumProtocol": "WebDriver"
+        },
+        {
+          "browserName": "chrome",
+          "maxInstances": 5,
+          "seleniumProtocol": "WebDriver"
+        },
+        {
+          "browserName": "internet explorer",
+          "maxInstances": 1,
+          "seleniumProtocol": "WebDriver"
+        }
+      ],
+  "configuration":
+  {
+    "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+    "maxSession": 5,
+    "port": 5555,
+    "host": ip,
+    "register": true,
+    "registerCycle": 5000,
+    "hubPort": 4444,
+    "hubHost": ip
+  }
+}
+
+-servlets: XXXserlet
+在node上注册一个新的serlet，访问地址为/grid/admin/XXXserlet
+
+-proxy: 代理类
+默认指向org.openqa.grid.selenium.proxy.DefaultRemoteProxy；用于代表节点的代理
+
+-browserTimeout:
+浏览器无响应的超时时间
+
+-browser:browserName=firefox,version=3.6,platform=LINUX
+设置代理节点的注册信息，这些信息同样可以在配置文件里设置;该参数可以使用多次用以同时注册多个浏览器信息。
+可以设置的信息有：
+browserName=firefox
+version=3.6
+platform=LINUX
+maxInstances=5
+firefox_binary=/home/myhomedir/firefox36/firefox
+chrome_binary="C:\program file\chrome\chrome.exe"
+
+
+在node方式启动的命令中，除了上面列出的选项外，还可以附加独立RC方式启动时所支持的选项；
+因为以node方式启动时，除了可以和hub通信外，还包含了独立RC服务器的所有功能。
+
