@@ -13,3 +13,4 @@ web.config['work_dir'] = os.getcwd()
 
 if __name__ == "__main__":
     app.run()
+

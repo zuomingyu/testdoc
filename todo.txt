@@ -1,11 +1,12 @@
-﻿/selenium.*  selenium分支
+﻿科技网站
+
+/selenium.*  selenium分支
 /selenium/productdoc	selenium产品文档
 /selenium/cookbook		selenium问答文档
 /selenium/tutorials		基础教程
 /selenium/api.*			API文档
 /selenium/api/java		java api文档
 /selenium/api/python	python api文档
-
 
 相关网站：
 seleniumhq.org

@@ -19,6 +19,7 @@ render = settings.selenium_render
 #                
 #                'content' : '<h3>文本内容占位符</h3>',                        
 #                }
+
 class doc:
     def GET(self, page_name):
         content_dict = analysis_module_file(page_name)
