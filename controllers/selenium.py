@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-#import web
+import web
 from config import settings
 from tools.lang import analysis_module_file
 
@@ -19,12 +19,22 @@ render = settings.selenium_render
 #                
 #                'content' : '<h3>文本内容占位符</h3>',                        
 #                }
-class index:
+class doc:
     def GET(self, page_name):
         content_dict = analysis_module_file(page_name)
         if content_dict:
-            return render.selenium_base(content_dict)
+            return render.selenium_doc(content_dict)
         else:
-            return '404 Not Found IT!'  ##redirect to 404 Page
+            return web.seeother("/404page")  ##redirect to 404 Page
 
-                          
+class index:
+    def GET(self, arg):
+        if arg in ['cookbook', 'cookbook/']:
+            return render.selenium_book({'page_title':"Cookbook For Selenium"})                        
+        elif arg in ['tutorials', 'tutorials/']:
+            return render.selenium_book({'page_title':"Tutorials For Selenium"})
+        elif arg in ['404', '404/']:
+            return render.selenium_book({'page_title':"404 Page Not Found!"})        
+        else:
+            web.seeother("/404page")
+            
