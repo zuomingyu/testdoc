@@ -2,7 +2,7 @@
 # coding: utf-8
 import web
 
-#db = web.database(dbn='mysql', db='apiow', user='root', pw='password', charset='utf8', host="localhost")
+db = web.database(dbn='mysql', db='testdoc', user='root', pw='password', charset='utf8', host="localhost")
 selenium_render = web.template.render('templates/', cache=False)
 python_render = web.template.render('templates/', cache=False, base='python_base')
 
@@ -21,6 +21,6 @@ config = web.storage(
 web.template.Template.globals['config'] = config
 web.template.Template.globals['sele_render'] = selenium_render
 web.template.Template.globals['py_render'] = python_render
-#web.template.Template.globals['db'] = db
+web.template.Template.globals['db'] = db
 #web.template.Template.globals['session'] = web.config._session
 

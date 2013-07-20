@@ -1,7 +1,44 @@
 $def with (content_dict)
 $:sele_render.selenium_header(content_dict['page_title'])
 
-<h1 align='center'>$:content_dict['page_title']</h1>
+$if content_dict['page_body']:
+	$:content_dict['page_body']
+$else:
+	<div id="side" class="left">
+	    <div class="related">
+	      <h3>导航</h3>
+	      <ul>
+	        <li><a href="/seleniumdoc/">Selenium Cookbook主页</a> »</li>
+	        <li class="right" style="margin-right: 10px">        	
+	        	<a href="$$:content_dict['previous_link']" title="$$:content_dict['previous_title']" accesskey="P">向前</a> |         	
+	        	<a href="$$:content_dict['next_link']" title="$$:content_dict['next_title']" accesskey="N">向后</a>
+	        </li>
+	      </ul>
+	    </div> 
+	    
+		<div class="sphinxsidebar">
+			<div class="sphinxsidebarwrapper">
+				<h3>内容索引</h3>
+				文章内容较长时提供页面内链接
+		  		<h4>上一个主题</h4>
+		     	<p class="topless">
+		     		<a href="$$:content_dict['previous_link']" title="next chapter">$$:content_dict['previous_title']</a>
+		     	</p>
+		      	<h4>下一个主题</h4>
+		      	<p class="topless">
+		      		<a href="$$:content_dict['next_link']" title="next chapter">$$:content_dict['next_title']</a>
+		      	</p>
+		  	</div>
+		</div> 
+	</div>
 
+	<div id="mainContent"> 		
+		$$:content_dict['body']
+	  
+		<div style>				     	
+			<a href="$$:content_dict['previous_link']" title="$$:content_dict['previous_title']" accesskey="P">前一个主题</a>        	
+		    <a style="float:right;" href="$$:content_dict['next_link']" title="$$:content_dict['next_title']" accesskey="N">下一个主题</a>
+		</div>   
+	</div>
 
 $:sele_render.selenium_footer()
