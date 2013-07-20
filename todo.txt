@@ -1,13 +1,13 @@
-/selenium.*  selenium·ÖÖ§
-/selenium/productdoc	selenium²úÆ·ÎÄµµ
-/selenium/cookbook		seleniumÎÊ´ğÎÄµµ
-/selenium/tutorials		»ù´¡½Ì³Ì
-/selenium/api.*			APIÎÄµµ
-/selenium/api/java		java apiÎÄµµ
-/selenium/api/python	python apiÎÄµµ
+ï»¿/selenium.*  seleniumåˆ†æ”¯
+/selenium/productdoc	seleniumäº§å“æ–‡æ¡£
+/selenium/cookbook		seleniumé—®ç­”æ–‡æ¡£
+/selenium/tutorials		åŸºç¡€æ•™ç¨‹
+/selenium/api.*			APIæ–‡æ¡£
+/selenium/api/java		java apiæ–‡æ¡£
+/selenium/api/python	python apiæ–‡æ¡£
 
 
-Ïà¹ØÍøÕ¾£º
+ç›¸å…³ç½‘ç«™ï¼š
 seleniumhq.org
 http://selenium-grid.seleniumhq.org/
 
@@ -24,7 +24,7 @@ http://www.qaautomation.net/?p=373
 stackoverflow.com
 
 
-»ù´¡½Ì³Ì£º
+åŸºç¡€æ•™ç¨‹ï¼š
 selenium webdriver
 selenium Remote Control
 selenium-grid
@@ -32,46 +32,46 @@ selenium-reference
 environment-set
 
 
-ÎÊ´ğÎÄµµ£º
-½â¾öFirefox²»¿Éµ÷ÓÃ´íÎó£¿
-Q1¡¢org.openqa.selenium.WebDriverException: Cannot find firefox binary in PATH. Make sure firefox is installed.
-A1£º
-½â¾ö·½·¨ÓĞ£º
-1¡¢Ìí¼Ó»ğºüµÄ°²×°Â·¾¶µ½PATH»·¾³±äÁ¿
-2¡¢webdriverÖĞÖ¸¶¨FFµÄÂ·¾¶
+é—®ç­”æ–‡æ¡£ï¼š
+è§£å†³Firefoxä¸å¯è°ƒç”¨é”™è¯¯ï¼Ÿ
+Q1ã€org.openqa.selenium.WebDriverException: Cannot find firefox binary in PATH. Make sure firefox is installed.
+A1ï¼š
+è§£å†³æ–¹æ³•æœ‰ï¼š
+1ã€æ·»åŠ ç«ç‹çš„å®‰è£…è·¯å¾„åˆ°PATHç¯å¢ƒå˜é‡
+2ã€webdriverä¸­æŒ‡å®šFFçš„è·¯å¾„
 System.setProperty("webdriver.firefox.bin","D:/Program Files/Mozilla Firefox/firefox.exe");
 WebDriver driver = new FirefoxDriver();
-3¡¢RCÖĞÖ¸¶¨FFÂ·¾¶
+3ã€RCä¸­æŒ‡å®šFFè·¯å¾„
 Selenium selenium = new DefaultSelenium("localhost", 4444, "*firefox3 D:/Program Files/Mozilla Firefox/firefox.exe", "http://www.dangdang.com");
 
-Q2¡¢org.openqa.selenium.UnsupportedCommandException: Bad request
-A2£º
-°ÑÀàËÆ
+Q2ã€org.openqa.selenium.UnsupportedCommandException: Bad request
+A2ï¼š
+æŠŠç±»ä¼¼
 127.0.0.1 domain1 domain2 domain3 localhost
-¸Ä³É
+æ”¹æˆ
 127.0.0.1 localhost domain1 domain2 domain3
-¼´127.0.0.1 localhost±ØĞëÊÇËùÓĞ±¾µØÖ¸ÏòµÄµÚÒ»¸ö
+å³127.0.0.1 localhostå¿…é¡»æ˜¯æ‰€æœ‰æœ¬åœ°æŒ‡å‘çš„ç¬¬ä¸€ä¸ª
 
-Q3¡¢ÎªºÎhtmlunitdriver»á±¨¸÷ÖÖÒì³££¿
-A3£º
-htmlunit¾­³£»á±¨unsupportException£¬ÄÇÊÇÒòÎªhtmlunit²»±ØÆäËüdriver£¬ËüÊÇµ¥¶ÀÊ¹ÓÃjavaÊµÏÖµÄÄ£ÄâÆ÷£¬²»ÏÔÊ¾ä¯ÀÀÆ÷½öÔÚÄÚ´æÖĞÔËĞĞ£¬
-ÓÉÓÚÊÇ¶ÀÁ¢¿ª·¢µÄËùÒÔ»¹ÓĞºÜ¶àµÄ¹¦ÄÜºÍseleniumÃüÁîÃ»ÓĞÊµÏÖ£¬¹Ê´ËºÜ¶àÔÚÆäËüdriverÉÏ¿ÉÒÔÅÜµÄ½Å±¾Ê¹ÓÃhtmlunitÊ±¾Í¿ÉÄÜ»áÅ×Òì³£¡£
+Q3ã€ä¸ºä½•htmlunitdriverä¼šæŠ¥å„ç§å¼‚å¸¸ï¼Ÿ
+A3ï¼š
+htmlunitç»å¸¸ä¼šæŠ¥unsupportExceptionï¼Œé‚£æ˜¯å› ä¸ºhtmlunitä¸å¿…å…¶å®ƒdriverï¼Œå®ƒæ˜¯å•ç‹¬ä½¿ç”¨javaå®ç°çš„æ¨¡æ‹Ÿå™¨ï¼Œä¸æ˜¾ç¤ºæµè§ˆå™¨ä»…åœ¨å†…å­˜ä¸­è¿è¡Œï¼Œ
+ç”±äºæ˜¯ç‹¬ç«‹å¼€å‘çš„æ‰€ä»¥è¿˜æœ‰å¾ˆå¤šçš„åŠŸèƒ½å’Œseleniumå‘½ä»¤æ²¡æœ‰å®ç°ï¼Œæ•…æ­¤å¾ˆå¤šåœ¨å…¶å®ƒdriverä¸Šå¯ä»¥è·‘çš„è„šæœ¬ä½¿ç”¨htmlunitæ—¶å°±å¯èƒ½ä¼šæŠ›å¼‚å¸¸ã€‚
 
-Q4¡¢org.openqa.selenium.WebDriverException: Unexpected error launching Internet Explorer. Protected Mode must be set to the same value (enabled or disabled) for all zones
+Q4ã€org.openqa.selenium.WebDriverException: Unexpected error launching Internet Explorer. Protected Mode must be set to the same value (enabled or disabled) for all zones
 A4:
-Á½¸ö½â¾ö·½·¨£º
-1¡¢ÔÚÄúµÄInternet Explorerä¯ÀÀÆ÷ÖĞÉèÖÃËùÓĞÇøÓò£¨Internet£¬±¾µØIntranet£¬ÊÜĞÅÈÎµÄÕ¾µã£¬ÊÜÏŞÖÆµÄÕ¾µã£©µÄ±£»¤Ä£Ê½¶¼ÎªÆôÓÃ»ò½ûÓÃ¡£
-µ±È»Ç°ÌáÊÇÄãÓĞÈ¨ÏŞ½øĞĞÏà¹Ø°²È«ÉèÖÃµÄ²Ù×÷
-2¡¢ÉèÖÃINTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINSÑ¡Ïî£¬´úÂëÆ¬¶ÎÈçÏÂ£º
+ä¸¤ä¸ªè§£å†³æ–¹æ³•ï¼š
+1ã€åœ¨æ‚¨çš„Internet Exploreræµè§ˆå™¨ä¸­è®¾ç½®æ‰€æœ‰åŒºåŸŸï¼ˆInternetï¼Œæœ¬åœ°Intranetï¼Œå—ä¿¡ä»»çš„ç«™ç‚¹ï¼Œå—é™åˆ¶çš„ç«™ç‚¹ï¼‰çš„ä¿æŠ¤æ¨¡å¼éƒ½ä¸ºå¯ç”¨æˆ–ç¦ç”¨ã€‚
+å½“ç„¶å‰ææ˜¯ä½ æœ‰æƒé™è¿›è¡Œç›¸å…³å®‰å…¨è®¾ç½®çš„æ“ä½œ
+2ã€è®¾ç½®INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINSé€‰é¡¹ï¼Œä»£ç ç‰‡æ®µå¦‚ä¸‹ï¼š
 DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
 ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
 return new InternetExplorerDriver(ieCapabilities);
-ÕâÖÖ·½·¨ÓĞÊ±ºò¿ÉÄÜ²»ÎÈ¶¨¡£
+è¿™ç§æ–¹æ³•æœ‰æ—¶å€™å¯èƒ½ä¸ç¨³å®šã€‚
 
-Q5¡¢ÈçºÎÉèÖÃchromedriver.exeµÄÂ·¾¶
+Q5ã€å¦‚ä½•è®¾ç½®chromedriver.exeçš„è·¯å¾„
 java.lang.IllegalStateException: The path to the chromedriver executable must be set by the webdriver.chrome.driver system property; for more information, see http://code.google.com/p/selenium/wiki/ChromeDriver. The latest version can be downloaded from http://code.google.com/p/chromium/downloads/list
-A5£º
-Ò»ÖÖ·½·¨ÊÇ°ÑÏÂÔØµÄchromedriver·Åµ½ÏµÍ³µÄ»·¾³±äÁ¿ÖĞ£»ÁíÒ»ÖÖÊÇÔÚ´úÂëµ÷ÓÃÇ°Ö¸¶¨chromedriverµÄÂ·¾¶£¬´úÂëÆ¬¶ÎÈçÏÂ£º
+A5ï¼š
+ä¸€ç§æ–¹æ³•æ˜¯æŠŠä¸‹è½½çš„chromedriveræ”¾åˆ°ç³»ç»Ÿçš„ç¯å¢ƒå˜é‡ä¸­ï¼›å¦ä¸€ç§æ˜¯åœ¨ä»£ç è°ƒç”¨å‰æŒ‡å®šchromedriverçš„è·¯å¾„ï¼Œä»£ç ç‰‡æ®µå¦‚ä¸‹ï¼š
 DesiredCapabilities chromeCapabilities = DesiredCapabilities.chrome();
 String chromeBinary = System.getProperty(" ");
 if (chromeBinary == null || chromeBinary.equals("")) {
@@ -81,11 +81,11 @@ if (chromeBinary == null || chromeBinary.equals("")) {
 }
 return new ChromeDriver(chromeCapabilities);
 
-Q6¡¢ÈçºÎÖ¸¶¨chromeä¯ÀÀÆ÷°²×°Â·¾¶
-A6£º
-Ò»ÖÖ·½·¨ÊÇ°²×°Â·¾¶ÔÚÏµÍ³±äÁ¿»·¾³ÖĞ£»ÁíÒ»ÖÖÊÇÔÚÆô¶¯Ç°Ö¸¶¨°²×°Â·¾¶£¬´úÂëÆ¬¶ÎÈçÏÂ£º
+Q6ã€å¦‚ä½•æŒ‡å®šchromeæµè§ˆå™¨å®‰è£…è·¯å¾„
+A6ï¼š
+ä¸€ç§æ–¹æ³•æ˜¯å®‰è£…è·¯å¾„åœ¨ç³»ç»Ÿå˜é‡ç¯å¢ƒä¸­ï¼›å¦ä¸€ç§æ˜¯åœ¨å¯åŠ¨å‰æŒ‡å®šå®‰è£…è·¯å¾„ï¼Œä»£ç ç‰‡æ®µå¦‚ä¸‹ï¼š
 chromeCapabilities.setCapability("chrome.binary", "/path/to/where/chrome/is/installed/chrome.exe");
 
-ÈçºÎ´î½¨selenium + testNG + maven + eclipse
+å¦‚ä½•æ­å»ºselenium + testNG + maven + eclipse
 hudson ant maven 
 

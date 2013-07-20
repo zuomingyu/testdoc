@@ -1,4 +1,4 @@
-WebDriver driver;
+﻿WebDriver driver;
 Wait wait;
 
 public void instantiateBrowser(BrowserType browserType, String url) {

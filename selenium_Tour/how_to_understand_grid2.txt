@@ -1,37 +1,37 @@
-selenium-grid������ʽ
+﻿selenium-grid工作方式
 ==
-selenium-grid��Ϊ�汾1�Ͱ汾2����ʵ����2���汾�����Ǻ�selenium�İ汾1��2���Ӧ�����ģ���selenium-grid2�ķ�����seleniumҪ��һ�㡣
-�������˵������ڵ�selenium-grid2������֧��selenium2�����й����ˡ�
+selenium-grid分为版本1和版本2，其实它的2个版本并不是和selenium的版本1和2相对应发布的；即selenium-grid2的发布比selenium要晚一点。
+不过幸运的是现在的selenium-grid2基本能支持selenium2的所有功能了。
 
-selenium��Ȼ��1��2������ʵԭ���ͻ���������ʽ����һ���ģ�ֻ�ǰ汾2ͬʱ֧��selenium1��selenium2����Э�飬������һЩС�Ĺ��ܺ��������Ͻ������Ż���
-���磺ָ������ƽ̨�ķ�ʽ������δ������˵����selenium-grid��Ϊͨ�á�
+selenium虽然分1和2，但其实原理和基本工作方式都是一样的；只是版本2同时支持selenium1和selenium2两种协议，并且在一些小的功能和易用性上进行了优化。
+比如：指定测试平台的方式。以下未作特殊说明的selenium-grid均为通用。
 
-selenium1�г���ʹ��selenium-core���⣬�����Զ�������ʱ����Ҫʹ��selenium-RC����Ϊ������Ŀ����Ϊ�˽��ͬԴ���⣻�����ͬԴ�����ԭ�����
-��Ϊselenium1����ʹ��Javascript����������ִ�еġ�����Ϊ��������ڰ�ȫ���ⲻ������ͬ��֮���JS���ã�����ͬԴ���ɵ��á���selenium1�е�
-������ʽ����������ҳ��ע��JS����ͨ������JS��ִ�в��Բ����ġ�������Ϊ�˴��Ŀ�ģ�������������2�֣�
-1��ʹ��selenium-core��
-selenium-core��һ��js�⣬����������������������п��ļ������������selenium1������Ϊ��������������selenium-core��
-��ʹ��selenium-core�ķ�ʽ�����ڱ�����վ������Դ�����selenium-core�е�����js��ֱ�����ӵ�ҳ�������ҳ���������ص�ͬʱ
-Ҳ���selenium-core����������������������ͬԴ�ġ�
-2��ʹ��selenium-RC��
-RC��һ��http������������ע�뵽������ͱ���web����֮�䣬������������е�����ͽ��յ����ݶ���ͨ��RC��RC���������������͸�
-��ʵ��web���򣬶��ڽ��յ�web�������Ӧ����ʱ����û�а�����ԭԭ�����ķ��ظ�������ͻ��ˣ����ǰѰ���selenium-core������ע�뵽
-��Ӧ������ȥ��Ȼ��ŷ�����Ӧ���ݸ��������������ͨ����ƭ�ķ�ʽ���������Ϊselenium1���������ͬ����ͬԴ�ġ�
+selenium1中除了使用selenium-core以外，进行自动化测试时都需要使用selenium-RC来作为代理，目的是为了解决同源问题；而造成同源问题的原因就是
+因为selenium1中是使用Javascript来驱动测试执行的。【因为浏览器由于安全问题不允许不同域之间的JS调用，即非同源不可调用。而selenium1中的
+工作方式就是在宿主页面注入JS并且通过调用JS来执行测试操作的。】所以为了达成目的，其解决方案就有2种：
+1、使用selenium-core：
+selenium-core是一组js库，用来驱动浏览器操作的所有库文件都在这里，整个selenium1可以认为核心组件就是这个selenium-core；
+而使用selenium-core的方式就是在被测试站点程序的源码里把selenium-core中的所有js库直接添加到页面里，这样页面正常加载的同时
+也会把selenium-core加载下来，并且天生就是同源的。
+2、使用selenium-RC：
+RC是一个http代理程序，用来注入到浏览器和被测web程序之间，这样浏览器所有的请求和接收的内容都会通过RC；RC会把浏览器的请求发送给
+真实的web程序，而在接收到web程序的响应内容时，并没有把内容原原本本的返回给浏览器客户端，而是把包含selenium-core的内容注入到
+响应内容中去，然后才发送响应内容给浏览器，这样就通过欺骗的方式让浏览器认为selenium1的驱动类库同样是同源的。
 
-selenium2����Ϊʹ�õ�webdriver������������ǿ�js�����ģ�����ֱ�ӵ����������ԭ��̬�ӿ������ģ����Ծ�û��ͬԴ���⡣��˾Ͳ���Ҫ
-ʹ��RC��ִ�б��ؽű��ˡ�����Ȼȱ����ǲ��������е�����������ṩ�ܺõ�����֧�֣���JSȴ�������������ͨ�õġ�����selenium2��ִ��
-���ؽű��ķ�ʽ�ǣ�ͨ������webdriver����ֱ�ӵ��ñ���������ӿڣ������ˡ�
-�ڱ��ص��ñ��صĴ����������ģ�
+selenium2中因为使用的webdriver，这个技术不是靠js驱动的，而是直接调用浏览器的原生态接口驱动的，所以就没有同源问题。因此就不需要
+使用RC来执行本地脚本了。【当然缺点就是并不是所有的浏览器都有提供很好的驱动支持，但JS却是所有浏览器都通用的】所以selenium2中执行
+本地脚本的方式是：通过本地webdriver驱动直接调用本地浏览器接口，完事了。
+在本地调用本地的代码是这样的：
 
 
-����ʱ������ִֻ�б��ز��ԵĽű�����ʱ�������Ҫ�ڱ��ص���Զ�̵Ļ�����ִ�в��ԣ������磺��Ϊ���Ի�������ԭ�򡿴�ʱ����Ҫһ������selenium1
-�е�RC���е��������Ҳ����selenium2�е�selenium-server��selenium-server֧�ֽ���Զ�̽ű��ĵ������Ȼ��������������ϵ������������Զ��ִ��
-���Ե����񡣵�Ȼselenium-serverΪ�˼���selenium1�Ľű�����ͬ��Ҳ֧��selniumRC��֧�ֵĹ��ܡ������ܽ���selenium1�ĵ������
-�ڱ��ص���Զ�̻���ִ�в��ԵĴ����������ģ�
+但有时候并总是只执行本地测试的脚本，有时候可能需要在本地调用远程的环境来执行测试，【比如：因为测试环境覆盖原因】此时就需要一个类似selenium1
+中的RC来承担这个任务，也就是selenium2中的selenium-server。selenium-server支持接收远程脚本的调用命令，然后操作其宿主机上的浏览器来到大远程执行
+测试的任务。当然selenium-server为了兼容selenium1的脚本，它同样也支持selniumRC所支持的功能。【即能接收selenium1的调用命令】
+在本地调用远程机器执行测试的代码是这样的：
 
-selenium-server���ýṹͼ��
+selenium-server调用结构图：
 
-����Ϊֹ����ʵ��û��
+到此为止，其实还没有
 
 
 

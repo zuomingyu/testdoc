@@ -1,17 +1,17 @@
-Ç°ÃæËµµ½ÁËselenium serverµÄÇ°2ÖÖÆô¶¯·½Ê½£¬ÏÖÔÚÔÙ¿´¿´Ê£ÏÂµÄ2ÖÖÆô¶¯·½Ê½£º
+ï»¿å‰é¢è¯´åˆ°äº†selenium serverçš„å‰2ç§å¯åŠ¨æ–¹å¼ï¼Œç°åœ¨å†çœ‹çœ‹å‰©ä¸‹çš„2ç§å¯åŠ¨æ–¹å¼ï¼š
 
-Æô¶¯hub
+å¯åŠ¨hub
 ==
 java -jar selenium-server-standalone.jar -role hub
 %%
-²ÎÊıËµÃ÷£º
+å‚æ•°è¯´æ˜ï¼š
 **
--role£ºhub
-Æô¶¯Ò»¸öhub·şÎñ£¬µÈ´ıwebdriver¿Í»§¶Ë½øĞĞ×¢²áºÍÇëÇó¡£Ä¬ÈÏÆô¶¯¶Ë¿ÚÊÇ4444£»
-Ä¬ÈÏ½ÓÊÕ×¢²áµÄµØÖ·Îª£ºhttp://localhost:4444/grid/register
+-roleï¼šhub
+å¯åŠ¨ä¸€ä¸ªhubæœåŠ¡ï¼Œç­‰å¾…webdriverå®¢æˆ·ç«¯è¿›è¡Œæ³¨å†Œå’Œè¯·æ±‚ã€‚é»˜è®¤å¯åŠ¨ç«¯å£æ˜¯4444ï¼›
+é»˜è®¤æ¥æ”¶æ³¨å†Œçš„åœ°å€ä¸ºï¼šhttp://localhost:4444/grid/register
 
--hubConfig£º[filename]
-Ò»¸ö·ûºÏselenium grid2¹æÔòµÄjson¸ñÊ½µÄhubÅäÖÃÎÄ¼ş£¬ÑùÀı
+-hubConfigï¼š[filename]
+ä¸€ä¸ªç¬¦åˆselenium grid2è§„åˆ™çš„jsonæ ¼å¼çš„hubé…ç½®æ–‡ä»¶ï¼Œæ ·ä¾‹
 {
   "host": null,
   "port": 4444,
@@ -29,85 +29,85 @@ java -jar selenium-server-standalone.jar -role hub
 }
 
 -throwOnCapabilityNotPresent: [true|false]
-Ä¬ÈÏÎªtrue£¬Èç¹ûÎªtrueÔòhubÖ»ÓĞÔÚµ±Ç°ÓĞ²âÊÔ´úÀí×¢²áµÄÇé¿öÏÂ²Å»á½ÓÊÜ²âÊÔÇëÇó£»
-Èç¹ûÎªfalseÔòÈç¹ûµ±Ç°Ã»ÓĞ´úÀí×¢²áÒ²»á½ÓÊÜÇëÇó±£´æµ½¶ÓÁĞÖ±µ½ÓĞ´úÀí×¢²áÎªÖ¹¡£
+é»˜è®¤ä¸ºtrueï¼Œå¦‚æœä¸ºtrueåˆ™hubåªæœ‰åœ¨å½“å‰æœ‰æµ‹è¯•ä»£ç†æ³¨å†Œçš„æƒ…å†µä¸‹æ‰ä¼šæ¥å—æµ‹è¯•è¯·æ±‚ï¼›
+å¦‚æœä¸ºfalseåˆ™å¦‚æœå½“å‰æ²¡æœ‰ä»£ç†æ³¨å†Œä¹Ÿä¼šæ¥å—è¯·æ±‚ä¿å­˜åˆ°é˜Ÿåˆ—ç›´åˆ°æœ‰ä»£ç†æ³¨å†Œä¸ºæ­¢ã€‚
 
 -capabilityMatcher:xxx
-Ò»¸öÊµÏÖÁËCapabilityMatcher½Ó¿ÚµÄÀà£¬Ä¬ÈÏÖ¸Ïòorg.openqa.grid.internal.utils.DefaultCapabilityMatcher
-¸ÃÀàÓÃÓÚÊµÏÖgridÔÚ·Ö²¼²âÊÔÈÎÎñµ½Ö¸¶¨´úÀíÊ±ËùÊ¹ÓÃµÄÆ¥Åä¹æÔò£¬Èç¹ûÏëÒª¸ü¾«È·µÄ²âÊÔ·ÖÅä¹æÔòĞèÇó£¬
-ÄÇÃ´¾Í×¢²áÒ»¸ö×Ô¼º¶¨ÒåµÄÆ¥ÅäÀà¡£
+ä¸€ä¸ªå®ç°äº†CapabilityMatcheræ¥å£çš„ç±»ï¼Œé»˜è®¤æŒ‡å‘org.openqa.grid.internal.utils.DefaultCapabilityMatcher
+è¯¥ç±»ç”¨äºå®ç°gridåœ¨åˆ†å¸ƒæµ‹è¯•ä»»åŠ¡åˆ°æŒ‡å®šä»£ç†æ—¶æ‰€ä½¿ç”¨çš„åŒ¹é…è§„åˆ™ï¼Œå¦‚æœæƒ³è¦æ›´ç²¾ç¡®çš„æµ‹è¯•åˆ†é…è§„åˆ™éœ€æ±‚ï¼Œ
+é‚£ä¹ˆå°±æ³¨å†Œä¸€ä¸ªè‡ªå·±å®šä¹‰çš„åŒ¹é…ç±»ã€‚
 
 -prioritizer:XXXclass
-Ò»¸öÊµÏÖÁËPrioritizer½Ó¿ÚµÄÀà¡£ÉèÖÃgridÖ´ĞĞtestÈÎÎñµÄÓÅÏÈÂß¼­£»Ä¬ÈÏÎªnull£¬ÏÈÀ´ÏÈÖ´ĞĞ¡£
+ä¸€ä¸ªå®ç°äº†Prioritizeræ¥å£çš„ç±»ã€‚è®¾ç½®gridæ‰§è¡Œtestä»»åŠ¡çš„ä¼˜å…ˆé€»è¾‘ï¼›é»˜è®¤ä¸ºnullï¼Œå…ˆæ¥å…ˆæ‰§è¡Œã€‚
 
--port£ºxxx
-Ö¸¶¨hub¼àÌıµÄ¶Ë¿Ú
+-portï¼šxxx
+æŒ‡å®šhubç›‘å¬çš„ç«¯å£
 
--host£ºip_or_host
-Ö¸¶¨hub»úµÄip»òÕßhostÖµ
+-hostï¼šip_or_host
+æŒ‡å®šhubæœºçš„ipæˆ–è€…hostå€¼
 
 -newSessionWaitTimeout:XXX
-Ä¬ÈÏ-1£¬¼´Ã»ÓĞ³¬Ê±£»Ö¸¶¨Ò»¸öĞÂµÄ²âÊÔsessionµÈ´ıÖ´ĞĞµÄ¼ä¸ôÊ±¼ä¡£¼´Ò»¸ö´úÀí½ÚµãÉÏÇ°ºó2¸ö²âÊÔÖĞ¼äµÄÑÓÊ±Ê±¼ä£¬µ¥Î»ÎªºÁÃë¡£
+é»˜è®¤-1ï¼Œå³æ²¡æœ‰è¶…æ—¶ï¼›æŒ‡å®šä¸€ä¸ªæ–°çš„æµ‹è¯•sessionç­‰å¾…æ‰§è¡Œçš„é—´éš”æ—¶é—´ã€‚å³ä¸€ä¸ªä»£ç†èŠ‚ç‚¹ä¸Šå‰å2ä¸ªæµ‹è¯•ä¸­é—´çš„å»¶æ—¶æ—¶é—´ï¼Œå•ä½ä¸ºæ¯«ç§’ã€‚
 
 -servlets: XXXserlet
-ÔÚhubÉÏ×¢²áÒ»¸öĞÂµÄserlet£¬·ÃÎÊµØÖ·Îª/grid/admin/XXXserlet
+åœ¨hubä¸Šæ³¨å†Œä¸€ä¸ªæ–°çš„serletï¼Œè®¿é—®åœ°å€ä¸º/grid/admin/XXXserlet
 
 -browserTimeout:
-ä¯ÀÀÆ÷ÎŞÏìÓ¦µÄ³¬Ê±Ê±¼ä
+æµè§ˆå™¨æ— å“åº”çš„è¶…æ—¶æ—¶é—´
 
 -grid1Yml:
-Ò»¸ö·ûºÏgrid1¹æÔòµÄymlÎÄ¼ş£¬½öÊÊÓÃÓÚgrid1
+ä¸€ä¸ªç¬¦åˆgrid1è§„åˆ™çš„ymlæ–‡ä»¶ï¼Œä»…é€‚ç”¨äºgrid1
 
 
-×¢²áÔ¶³Ìwebdriver»òÕßnode³ÉÔ±
+æ³¨å†Œè¿œç¨‹webdriveræˆ–è€…nodeæˆå‘˜
 ==
 java -jar selenium-server-standalone.jar -role wd -hub http://localhost:4444/grid/register
 java -jar selenium-server-standalone.jar -role rc -hub http://localhost:4444/grid/register
 java -jar selenium-server-standalone.jar -role node -hub http://localhost:4444/grid/register
 %%
-²ÎÊıËµÃ÷£º
+å‚æ•°è¯´æ˜ï¼š
 **
 -role: [node|wd|rc]
-ÎªnodeÖµÊ±±íÊ¾×¢²áµÄRC¿ÉÒÔÖ§³Öselenium1¡¢selenium2Á½ÖÖ·½Ê½µÄ²âÊÔÇëÇó£¬ÍÆ¼ö
-ÎªwdÖµÊ±±íÊ¾×¢²áµÄRC½öÖ§³Öselenium2µÄwebdriver·½Ê½µÄ²âÊÔÇëÇó£¬ÒÅÁô
-ÎªrcÖµÊ±±íÊ¾×¢²áµÄRC½öÖ§³Öselenium1·½Ê½µÄ²âÊÔÇëÇó£¬ÒÅÁô
+ä¸ºnodeå€¼æ—¶è¡¨ç¤ºæ³¨å†Œçš„RCå¯ä»¥æ”¯æŒselenium1ã€selenium2ä¸¤ç§æ–¹å¼çš„æµ‹è¯•è¯·æ±‚ï¼Œæ¨è
+ä¸ºwdå€¼æ—¶è¡¨ç¤ºæ³¨å†Œçš„RCä»…æ”¯æŒselenium2çš„webdriveræ–¹å¼çš„æµ‹è¯•è¯·æ±‚ï¼Œé—ç•™
+ä¸ºrcå€¼æ—¶è¡¨ç¤ºæ³¨å†Œçš„RCä»…æ”¯æŒselenium1æ–¹å¼çš„æµ‹è¯•è¯·æ±‚ï¼Œé—ç•™
 
--hub£ºurl_to_hub
-url_to_hubÖµÎªhubÆô¶¯µÄ×¢²áµØÖ·£¬Ä¬ÈÏÎªttp://ip_for_hub:4444/grid/register£»¾ßÌåµÄ¸ù¾İÄãÆô¶¯hubÊ±µÄ²ÎÊıËù¶ÔÓ¦¡£
-¸ÃÑ¡Ïî°üº¬ÁË-hubHostºÍ-hubPortÁ½¸öÑ¡Ïî
+-hubï¼šurl_to_hub
+url_to_hubå€¼ä¸ºhubå¯åŠ¨çš„æ³¨å†Œåœ°å€ï¼Œé»˜è®¤ä¸ºttp://ip_for_hub:4444/grid/registerï¼›å…·ä½“çš„æ ¹æ®ä½ å¯åŠ¨hubæ—¶çš„å‚æ•°æ‰€å¯¹åº”ã€‚
+è¯¥é€‰é¡¹åŒ…å«äº†-hubHostå’Œ-hubPortä¸¤ä¸ªé€‰é¡¹
 
--hubHost£ºip_or_host
-Ö¸¶¨hub»úµÄip»òÕßhostÖµ
+-hubHostï¼šip_or_host
+æŒ‡å®šhubæœºçš„ipæˆ–è€…hostå€¼
 
--host£ºip_or_host
-Í¬-hubHostÑ¡Ïî
+-hostï¼šip_or_host
+åŒ-hubHosté€‰é¡¹
 
--hubPort£ºxxx
-Ö¸¶¨hub»úµÄ¼àÌı¶Ë¿Ú
+-hubPortï¼šxxx
+æŒ‡å®šhubæœºçš„ç›‘å¬ç«¯å£
 
--port£ºXXX
-Í¬-hubPortÑ¡Ïî
+-portï¼šXXX
+åŒ-hubPorté€‰é¡¹
 
--registerCycle£ºxxx
-´úÀí½Úµã×Ô¶¯ÖØĞÂ×¢²áµÄÖÜÆÚ£¬µ¥Î»ºÁÃë£»ÊÊÓ¦ÓÚÖØÆôÁËhubÊ±²»ĞèÒªÖØÆôËùÓĞµÄ´úÀí½Úµã¡£
+-registerCycleï¼šxxx
+ä»£ç†èŠ‚ç‚¹è‡ªåŠ¨é‡æ–°æ³¨å†Œçš„å‘¨æœŸï¼Œå•ä½æ¯«ç§’ï¼›é€‚åº”äºé‡å¯äº†hubæ—¶ä¸éœ€è¦é‡å¯æ‰€æœ‰çš„ä»£ç†èŠ‚ç‚¹ã€‚
 
 -nodePolling:XXX
-hub¼ì²é´úÀí½ÚµãµÄÖÜÆÚ
+hubæ£€æŸ¥ä»£ç†èŠ‚ç‚¹çš„å‘¨æœŸ
 
 -unregisterIfStillDownAfter:XXX
-µ¥Î»ºÁÃë£¬Éè¶¨´úÀí½ÚµãÔÚÎŞÏìÓ¦¶à³¤Ê±¼äºóhub²Å»á×¢Ïú´úÀí½Úµã×¢²áĞÅÏ¢£»Ä¬ÈÏ1·ÖÖÓ
+å•ä½æ¯«ç§’ï¼Œè®¾å®šä»£ç†èŠ‚ç‚¹åœ¨æ— å“åº”å¤šé•¿æ—¶é—´åhubæ‰ä¼šæ³¨é”€ä»£ç†èŠ‚ç‚¹æ³¨å†Œä¿¡æ¯ï¼›é»˜è®¤1åˆ†é’Ÿ
 
--nodeTimeout£ºxxx
-¿Í»§¶ËµÄÎŞĞÄÌø³¬Ê±Ê±¼ä
+-nodeTimeoutï¼šxxx
+å®¢æˆ·ç«¯çš„æ— å¿ƒè·³è¶…æ—¶æ—¶é—´
 
--maxSession£ºxx
-Ò»¸ö´úÀí½Úµã¿ÉÒÔÍ¬Ê±Æô¶¯µÄä¯ÀÀÆ÷×î´óÊıÁ¿£¬¼´sessionÊıÁ¿
+-maxSessionï¼šxx
+ä¸€ä¸ªä»£ç†èŠ‚ç‚¹å¯ä»¥åŒæ—¶å¯åŠ¨çš„æµè§ˆå™¨æœ€å¤§æ•°é‡ï¼Œå³sessionæ•°é‡
 
 -cleanupCycle:XXX
-´úÀí½Úµã¼ì²é³¬Ê±µÄÖÜÆÚ
+ä»£ç†èŠ‚ç‚¹æ£€æŸ¥è¶…æ—¶çš„å‘¨æœŸ
 
 -nodeConfig: json_file
-Ò»¸ö·ûºÏselenium grid2¹æÔòµÄjson¸ñÊ½µÄnodeÅäÖÃÎÄ¼ş£¬ÑùÀı
+ä¸€ä¸ªç¬¦åˆselenium grid2è§„åˆ™çš„jsonæ ¼å¼çš„nodeé…ç½®æ–‡ä»¶ï¼Œæ ·ä¾‹
 {
   "capabilities":
       [
@@ -156,17 +156,17 @@ hub¼ì²é´úÀí½ÚµãµÄÖÜÆÚ
 }
 
 -servlets: XXXserlet
-ÔÚnodeÉÏ×¢²áÒ»¸öĞÂµÄserlet£¬·ÃÎÊµØÖ·Îª/grid/admin/XXXserlet
+åœ¨nodeä¸Šæ³¨å†Œä¸€ä¸ªæ–°çš„serletï¼Œè®¿é—®åœ°å€ä¸º/grid/admin/XXXserlet
 
--proxy: ´úÀíÀà
-Ä¬ÈÏÖ¸Ïòorg.openqa.grid.selenium.proxy.DefaultRemoteProxy£»ÓÃÓÚ´ú±í½ÚµãµÄ´úÀí
+-proxy: ä»£ç†ç±»
+é»˜è®¤æŒ‡å‘org.openqa.grid.selenium.proxy.DefaultRemoteProxyï¼›ç”¨äºä»£è¡¨èŠ‚ç‚¹çš„ä»£ç†
 
 -browserTimeout:
-ä¯ÀÀÆ÷ÎŞÏìÓ¦µÄ³¬Ê±Ê±¼ä
+æµè§ˆå™¨æ— å“åº”çš„è¶…æ—¶æ—¶é—´
 
 -browser:browserName=firefox,version=3.6,platform=LINUX
-ÉèÖÃ´úÀí½ÚµãµÄ×¢²áĞÅÏ¢£¬ÕâĞ©ĞÅÏ¢Í¬Ñù¿ÉÒÔÔÚÅäÖÃÎÄ¼şÀïÉèÖÃ;¸Ã²ÎÊı¿ÉÒÔÊ¹ÓÃ¶à´ÎÓÃÒÔÍ¬Ê±×¢²á¶à¸öä¯ÀÀÆ÷ĞÅÏ¢¡£
-¿ÉÒÔÉèÖÃµÄĞÅÏ¢ÓĞ£º
+è®¾ç½®ä»£ç†èŠ‚ç‚¹çš„æ³¨å†Œä¿¡æ¯ï¼Œè¿™äº›ä¿¡æ¯åŒæ ·å¯ä»¥åœ¨é…ç½®æ–‡ä»¶é‡Œè®¾ç½®;è¯¥å‚æ•°å¯ä»¥ä½¿ç”¨å¤šæ¬¡ç”¨ä»¥åŒæ—¶æ³¨å†Œå¤šä¸ªæµè§ˆå™¨ä¿¡æ¯ã€‚
+å¯ä»¥è®¾ç½®çš„ä¿¡æ¯æœ‰ï¼š
 browserName=firefox
 version=3.6
 platform=LINUX
@@ -175,6 +175,6 @@ firefox_binary=/home/myhomedir/firefox36/firefox
 chrome_binary="C:\program file\chrome\chrome.exe"
 
 
-ÔÚnode·½Ê½Æô¶¯µÄÃüÁîÖĞ£¬³ıÁËÉÏÃæÁĞ³öµÄÑ¡ÏîÍâ£¬»¹¿ÉÒÔ¸½¼Ó¶ÀÁ¢RC·½Ê½Æô¶¯Ê±ËùÖ§³ÖµÄÑ¡Ïî£»
-ÒòÎªÒÔnode·½Ê½Æô¶¯Ê±£¬³ıÁË¿ÉÒÔºÍhubÍ¨ĞÅÍâ£¬»¹°üº¬ÁË¶ÀÁ¢RC·şÎñÆ÷µÄËùÓĞ¹¦ÄÜ¡£
+åœ¨nodeæ–¹å¼å¯åŠ¨çš„å‘½ä»¤ä¸­ï¼Œé™¤äº†ä¸Šé¢åˆ—å‡ºçš„é€‰é¡¹å¤–ï¼Œè¿˜å¯ä»¥é™„åŠ ç‹¬ç«‹RCæ–¹å¼å¯åŠ¨æ—¶æ‰€æ”¯æŒçš„é€‰é¡¹ï¼›
+å› ä¸ºä»¥nodeæ–¹å¼å¯åŠ¨æ—¶ï¼Œé™¤äº†å¯ä»¥å’Œhubé€šä¿¡å¤–ï¼Œè¿˜åŒ…å«äº†ç‹¬ç«‹RCæœåŠ¡å™¨çš„æ‰€æœ‰åŠŸèƒ½ã€‚
 

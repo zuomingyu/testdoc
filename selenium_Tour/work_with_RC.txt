@@ -1,20 +1,20 @@
-selenium-serverÔÚselenium1ÖÐÖ»ÊÇÒ»¸öµ¥¶ÀµÄ·þÎñÆ÷£¬¶øÔÚselenium2ÖÐselenium-serverµÄ¶ÀÁ¢°üÖÐ°üº¬ÁËËùÒÔ²âÊÔËù±ØÐëµÄ³ÌÐò¡£
-Õâ¸ö°üµÄÃû×Ö½Ð×ö¡°selenium-server-standalone-X.XX.XXX.jar¡±£¬ÒÔÏÂÊÇ¸Ã°üµÄÊ¹ÓÃËµÃ÷¡£
+ï»¿selenium-serveråœ¨selenium1ä¸­åªæ˜¯ä¸€ä¸ªå•ç‹¬çš„æœåŠ¡å™¨ï¼Œè€Œåœ¨selenium2ä¸­selenium-serverçš„ç‹¬ç«‹åŒ…ä¸­åŒ…å«äº†æ‰€ä»¥æµ‹è¯•æ‰€å¿…é¡»çš„ç¨‹åºã€‚
+è¿™ä¸ªåŒ…çš„åå­—å«åšâ€œselenium-server-standalone-X.XX.XXX.jarâ€ï¼Œä»¥ä¸‹æ˜¯è¯¥åŒ…çš„ä½¿ç”¨è¯´æ˜Žã€‚
 
-selenium-serverµÄÆô¶¯·½Ê½£º
+selenium-serverçš„å¯åŠ¨æ–¹å¼ï¼š
 ==
-¶ÀÁ¢Æô¶¯¡¾½»»¥¡¢·Ç½»»¥¡¿¡¢×÷ÎªhubÆô¶¯¡¢×÷ÎªnodeÆô¶¯¡¾Õë¶ÔÓÚhub¡¿
+ç‹¬ç«‹å¯åŠ¨ã€äº¤äº’ã€éžäº¤äº’ã€‘ã€ä½œä¸ºhubå¯åŠ¨ã€ä½œä¸ºnodeå¯åŠ¨ã€é’ˆå¯¹äºŽhubã€‘
 
-Æô¶¯¶ÀÁ¢RC·þÎñÆ÷
+å¯åŠ¨ç‹¬ç«‹RCæœåŠ¡å™¨
 ==
 java -jar selenium-server-standalone.jar
-²ÎÊýËµÃ÷£º
-ÎÞ£º
-²»´ø²ÎÊýÊ±»áÊ¹ÓÃÄ¬ÈÏ²ÎÊýºÍ¶Ë¿Ú£¬Ä¬ÈÏ½ÓÊÕÇëÇóºÍµ÷ÓÃµÄµØÖ·Îª£ºhttp://localhost:4444/wd/hub£»
-´ËÊ±×÷Îª¶ÀÁ¢µÄÔ¶³ÌRC½ÓÊÕ·¢ËÍ¹ýÀ´µÄÃüÁî£¨¼´seleneseÐ­Òé£¬»ùÓÚhttpµÄÒ»ÖÖÐ­Òé£©²¢ÔÚ±¾µØÖ´ÐÐ¡£µ±È»·¢ËÍÃüÁîµÄ½Å±¾¿ÉÒÔÊÇ±¾»úÒ²¿ÉÒÔÊÇÆäËû»úÆ÷¡£
-Í¬Ñù´ËÊ±¿ÉÒÔÍ¨¹ýä¯ÀÀÆ÷·ÃÎÊhttp://localhost:4444/wd/hub£¬¿ÉÒÔ¿´µ½ÊµÊ±µÄ¿Í»§¶Ë×¢²áÐÅÏ¢¡£
+å‚æ•°è¯´æ˜Žï¼š
+æ— ï¼š
+ä¸å¸¦å‚æ•°æ—¶ä¼šä½¿ç”¨é»˜è®¤å‚æ•°å’Œç«¯å£ï¼Œé»˜è®¤æŽ¥æ”¶è¯·æ±‚å’Œè°ƒç”¨çš„åœ°å€ä¸ºï¼šhttp://localhost:4444/wd/hubï¼›
+æ­¤æ—¶ä½œä¸ºç‹¬ç«‹çš„è¿œç¨‹RCæŽ¥æ”¶å‘é€è¿‡æ¥çš„å‘½ä»¤ï¼ˆå³seleneseåè®®ï¼ŒåŸºäºŽhttpçš„ä¸€ç§åè®®ï¼‰å¹¶åœ¨æœ¬åœ°æ‰§è¡Œã€‚å½“ç„¶å‘é€å‘½ä»¤çš„è„šæœ¬å¯ä»¥æ˜¯æœ¬æœºä¹Ÿå¯ä»¥æ˜¯å…¶ä»–æœºå™¨ã€‚
+åŒæ ·æ­¤æ—¶å¯ä»¥é€šè¿‡æµè§ˆå™¨è®¿é—®http://localhost:4444/wd/hubï¼Œå¯ä»¥çœ‹åˆ°å®žæ—¶çš„å®¢æˆ·ç«¯æ³¨å†Œä¿¡æ¯ã€‚
 
-ÎÒÃÇÍ¨¹ýÈçÏÂ´úÂëÀ´ÓëRCÍ¨ÐÅ
+æˆ‘ä»¬é€šè¿‡å¦‚ä¸‹ä»£ç æ¥ä¸ŽRCé€šä¿¡
 	DesiredCapabilities ieDesiredcap = DesiredCapabilities.internetExplorer();
 	wd=new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), ieDesiredcap);
 	wd.get("http://www.google.com");
@@ -22,25 +22,25 @@ java -jar selenium-server-standalone.jar
 	System.out.println(">>>>>>>>" + wd.getCurrentUrl());
 	wd.quit();
 
-Æô¶¯¶ÀÁ¢½»»¥Ê½RC·þÎñÆ÷
+å¯åŠ¨ç‹¬ç«‹äº¤äº’å¼RCæœåŠ¡å™¨
 ==
 java -jar selenium-server-standalone.jar -interactive
-²ÎÊýËµÃ÷£º
--interactive£º
-Ö¸¶¨Æô¶¯µÄ·½Ê½Îª½»»¥Ê½£¬¼´¿ÉÒÔÔÚÃüÁîÐÐÖ±½ÓÊäÈëseleneseÃüÁîÀ´¿ØÖÆÔÚRCÉÏ×¢²áµÄä¯ÀÀÆ÷£»
-¶øµÚÒ»ÖÖ·Ç½»»¥µÄÇé¿öÏÂ£¬Ö»ÄÜÍ¨¹ý±à³ÌÀ´ÓëRC½øÐÐÍ¨ÐÅºÍ·¢ËÍÃüÁîÀ´Íê³É²âÊÔ£¬ËùÒÔ´ËÄ£Ê½¸üÏñµ÷ÊÔÄ£Ê½¡£
+å‚æ•°è¯´æ˜Žï¼š
+-interactiveï¼š
+æŒ‡å®šå¯åŠ¨çš„æ–¹å¼ä¸ºäº¤äº’å¼ï¼Œå³å¯ä»¥åœ¨å‘½ä»¤è¡Œç›´æŽ¥è¾“å…¥seleneseå‘½ä»¤æ¥æŽ§åˆ¶åœ¨RCä¸Šæ³¨å†Œçš„æµè§ˆå™¨ï¼›
+è€Œç¬¬ä¸€ç§éžäº¤äº’çš„æƒ…å†µä¸‹ï¼Œåªèƒ½é€šè¿‡ç¼–ç¨‹æ¥ä¸ŽRCè¿›è¡Œé€šä¿¡å’Œå‘é€å‘½ä»¤æ¥å®Œæˆæµ‹è¯•ï¼Œæ‰€ä»¥æ­¤æ¨¡å¼æ›´åƒè°ƒè¯•æ¨¡å¼ã€‚
 
-³ýÁËÉÏÃæ2ÖÖÆô¶¯·½Ê½À´£¬selenium»¹Ìá¹©ÁËÆäËüµÄ¿ÉÑ¡²ÎÊýÀ´Ö¸¶¨¶ÀÁ¢Æô¶¯Ê±µÄÅäÖÃÐÅÏ¢£»±ÈÈç
+é™¤äº†ä¸Šé¢2ç§å¯åŠ¨æ–¹å¼æ¥ï¼Œseleniumè¿˜æä¾›äº†å…¶å®ƒçš„å¯é€‰å‚æ•°æ¥æŒ‡å®šç‹¬ç«‹å¯åŠ¨æ—¶çš„é…ç½®ä¿¡æ¯ï¼›æ¯”å¦‚
 -port xxxx
-ÉèÖÃRCÆô¶¯Ê±¼àÌýµÄ¶Ë¿Ú
+è®¾ç½®RCå¯åŠ¨æ—¶ç›‘å¬çš„ç«¯å£
 
 -timeout xxxx
-ÉèÖÃRCÆô¶¯ºó±£³Ö¿Í»§¶ËÁ¬½ÓµÄ³¬Ê±Ê±¼ä£¬µ¥Î»Ãë
+è®¾ç½®RCå¯åŠ¨åŽä¿æŒå®¢æˆ·ç«¯è¿žæŽ¥çš„è¶…æ—¶æ—¶é—´ï¼Œå•ä½ç§’
 
 -browserTimeout xxxx
-ÉèÖÃRCÆô¶¯ºóä¯ÀÀÎÞÏìÓ¦µÄ³¬Ê±Ê±¼ä£¬µ¥Î»Ãë
+è®¾ç½®RCå¯åŠ¨åŽæµè§ˆæ— å“åº”çš„è¶…æ—¶æ—¶é—´ï¼Œå•ä½ç§’
 
-´ËÍâ»¹ÓÐÐí¶àÆäËüµÄ¿ÉÑ¡²ÎÊý¿ÉÒÔÖ¸¶¨£¬¾ßÌå¿ÉÒÔ²Î¼ûÃüÁîÐÐ°ïÖú£»
+æ­¤å¤–è¿˜æœ‰è®¸å¤šå…¶å®ƒçš„å¯é€‰å‚æ•°å¯ä»¥æŒ‡å®šï¼Œå…·ä½“å¯ä»¥å‚è§å‘½ä»¤è¡Œå¸®åŠ©ï¼›
 java -jar selenium-server.jar -h
 
 
