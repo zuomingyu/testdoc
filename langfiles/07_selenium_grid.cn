@@ -16,36 +16,36 @@
 #:side
 :list
 <li><a class="reference internal" href="#">Selenium-Grid</a><ul class="treeview">
-<li><a class="reference internal" href="#quick-start">Quick Start</a></li>
-<li><a class="reference internal" href="#what-is-selenium-grid">What is Selenium-Grid?</a></li>
-<li><a class="reference internal" href="#when-to-use-it">When to Use It</a></li>
+<li><a class="reference internal" href="#quick-start">快速入门</a></li>
+<li><a class="reference internal" href="#what-is-selenium-grid">什么是Selenium-Grid?</a></li>
+<li><a class="reference internal" href="#when-to-use-it">何时应用</a></li>
 <li><a class="reference internal" href="#selenium-grid-2-0">Selenium-Grid 2.0</a></li>
 <li><a class="reference internal" href="#selenium-grid-1-0">Selenium-Grid 1.0</a></li>
-<li><a class="reference internal" href="#how-selenium-grid-works-with-a-hub-and-nodes">How Selenium-Grid Works–With a Hub and Nodes</a></li>
-<li><a class="reference internal" href="#installation">Installation</a></li>
-<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#starting-selenium-grid">Starting Selenium-Grid</a><ul class="treeview" style="display: none;">
-<li><a class="reference internal" href="#starting-a-hub">Starting a Hub</a></li>
-<li class="last"><a class="reference internal" href="#starting-a-node">Starting a Node</a></li>
+<li><a class="reference internal" href="#how-selenium-grid-works-with-a-hub-and-nodes">Selenium-Grid如何与Hub和Nodes工作的</a></li>
+<li><a class="reference internal" href="#installation">安装</a></li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#starting-selenium-grid">启动Selenium-Grid</a><ul class="treeview" style="display: none;">
+<li><a class="reference internal" href="#starting-a-hub">启动Hub</a></li>
+<li class="last"><a class="reference internal" href="#starting-a-node">启动Node</a></li>
 </ul>
 </li>
-<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#configuring-selenium-grid">Configuring Selenium-Grid</a><ul class="treeview" style="display: none;">
-<li><a class="reference internal" href="#default-configuration">Default Configuration</a></li>
-<li><a class="reference internal" href="#json-configuration-file">JSON Configuration File</a></li>
-<li class="last"><a class="reference internal" href="#configuring-via-the-command-line-options">Configuring Via the Command-Line Options</a></li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#configuring-selenium-grid">配置Selenium-Grid</a><ul class="treeview" style="display: none;">
+<li><a class="reference internal" href="#default-configuration">默认配置</a></li>
+<li><a class="reference internal" href="#json-configuration-file">JSON配置文件</a></li>
+<li class="last"><a class="reference internal" href="#configuring-via-the-command-line-options">通过命令行选项配置</a></li>
 </ul>
 </li>
-<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#hub-configuration">Hub Configuration</a><ul class="treeview" style="display: none;">
-<li class="last"><a class="reference internal" href="#specifying-the-port">Specifying the Port</a></li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#hub-configuration">Hub配置</a><ul class="treeview" style="display: none;">
+<li class="last"><a class="reference internal" href="#specifying-the-port">指定hub端口</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#node-configuration">Node Configuration</a></li>
-<li><a class="reference internal" href="#timing-parameters">Timing Parameters</a></li>
-<li><a class="reference internal" href="#getting-command-line-help">Getting Command-Line Help</a></li>
-<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#common-errors">Common Errors</a><ul class="treeview" style="display: none;">
-<li class="last"><a class="reference internal" href="#unable-to-acess-the-jarfile">Unable to acess the jarfile</a></li>
+<li><a class="reference internal" href="#node-configuration">Node配置</a></li>
+<li><a class="reference internal" href="#timing-parameters">时序参数</a></li>
+<li><a class="reference internal" href="#getting-command-line-help">获取命令行帮助</a></li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#common-errors">常见错误</a><ul class="treeview" style="display: none;">
+<li class="last"><a class="reference internal" href="#unable-to-acess-the-jarfile">无法访问jar文件</a></li>
 </ul>
 </li>
-<li class="last"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="last"><a class="reference internal" href="#troubleshooting">故障排除</a></li>
 
 #:body
 :body
@@ -115,53 +115,111 @@ download page</a>下载 Selenium-Server jar文件。你可以在“Selenium-Serv
 </div>
 <div class="section" id="starting-selenium-grid">
 <h2>启动Selenium-Grid<a class="headerlink" href="#starting-selenium-grid" title="Permalink to this headline">¶</a></h2>
-<p>Generally you would start a hub first since nodes depend on a hub.  This is not abolutely necessary
-however, since nodes can recognize when a hub has been started and vice-versa.  For learning
-purposes though, it would easier to start the hub first, otherwise you’ll see error
-messages that may not want to start off with your first time using Selenium-Grid.</p>
+<p>通常你应该先启动一个hub，因为node都基于它。然而这不是绝对必须的，因为node也会自动识别hub的启动，反之亦然。出于教学目的，
+ 先启动一个hub将会更易理解，否则第一次使用Selenium-Grid就出现错误信息可能是你不想遇到的。</p>
 <div class="section" id="starting-a-hub">
-<h3>Starting a Hub<a class="headerlink" href="#starting-a-hub" title="Permalink to this headline">¶</a></h3>
-<p>To start a hub with default parameters, run the following command from a command-line shell.  This
-will work on all the supported platforms, Windows Linux, or MacOs.</p>
-<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-2.21.0.jar -role hub
+<h3>启动一个Hub<a class="headerlink" href="#starting-a-hub" title="Permalink to this headline">¶</a></h3>
+<p>使用默认参数启动hub，在命令行执行下面的命令。此命令可以在所有支持平台上执行 ，包括Windows、Linux或MacOs。</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-x.xx.x.jar -role hub
 </pre></div>
 </div>
-<p>This starts a hub using default parameter values.  We’ll explain these parameters in folowing
-subsections.  Note that you will likely have to change the version number in the jar filename
-depending on which version of the selenium-server you’re using.</p>
+<p>这个命令将以默认参数启动一个hub，在下面的子章节里我们将解释这些参数。注意在使用时替换掉其中的版本号部分为你下载到本地的jar文件的实际版本号。</p>
 </div>
 <div class="section" id="starting-a-node">
-<h3>Starting a Node<a class="headerlink" href="#starting-a-node" title="Permalink to this headline">¶</a></h3>
-<p>To start a node using default parameters, run the following command from a command-line.</p>
-<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-2.21.0.jar -role node  -hub http://localhost:4444/grid/register
+<h3>启动一个Node<a class="headerlink" href="#starting-a-node" title="Permalink to this headline">¶</a></h3>
+<p>使用默认参数启动node，在命令行执行下面命令。</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-X.XX.X.jar -role node  -hub http://localhost:4444/grid/register
 </pre></div>
 </div>
-<p>This assumes the hub has been started above using default parameters.  The default port the hub
-uses to listen for new requests is port 4444.  This is why port 4444 was used in the URL for
-locating the hub.  Also the use of ‘localhost’ assumes your node is running on the same machine
-as your hub.  For getting started this is probably easiest.  If running the hub and node on
-separate machines, simply replace ‘localhost’ with the hostname of the remote machine running the
-hub.</p>
-<p>WARNING:  Be sure to turn off the firewalls on the machine running your hub and nodes.  Otherwise
-you may get connection errors.</p>
+<p>这里假设上面启动的hub使用了默认参数，即 hub默认的监听端口是4444，这就是为什么在定位hub的url中使用4444端口。
+ 此外，这里假设是在同一台机器上启动的node，所以使用‘localhost’，对于入门学习这样会更容易上手。
+而如果hub和node分别在不同的机器上启动，只要把‘localhost’替换成运行了hub机器的host或IP即可。</p>
+<p>警告:  要确认已经关闭了hub和node机器上防火墙程序，否则你可能会得到连接错误信息。</p>
 </div>
 </div>
 <div class="section" id="configuring-selenium-grid">
-<h2>Configuring Selenium-Grid<a class="headerlink" href="#configuring-selenium-grid" title="Permalink to this headline">¶</a></h2>
+<h2>配置Selenium-Grid<a class="headerlink" href="#configuring-selenium-grid" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="default-configuration">
-<h3>Default Configuration<a class="headerlink" href="#default-configuration" title="Permalink to this headline">¶</a></h3>
+<h3>默认配置<a class="headerlink" href="#default-configuration" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="json-configuration-file">
-<h3>JSON Configuration File<a class="headerlink" href="#json-configuration-file" title="Permalink to this headline">¶</a></h3>
+<h3>JSON配置文件<a class="headerlink" href="#json-configuration-file" title="Permalink to this headline">¶</a></h3>
+hub配置：
+<pre>
+{<br/>
+  "host": null,<br/>
+  "port": 4444,<br/>
+  "newSessionWaitTimeout": -1,<br/>
+  "servlets" : [],<br/>
+  "prioritizer": null,<br/>
+  "capabilityMatcher": "org.openqa.grid.internal.utils.DefaultCapabilityMatcher",<br/>
+  "throwOnCapabilityNotPresent": true,<br/>
+  "nodePolling": 5000,<br/>
+<br/>
+  "cleanUpCycle": 5000,<br/>
+  "timeout": 300000,<br/>
+  "browserTimeout": 0,<br/>
+  "maxSession": 5<br/>
+}<br/>
+</pre>
+node配置：
+<pre>
+{<br/>
+  "capabilities":<br/>
+      [<br/>
+        {<br/>
+          "browserName": "*firefox",<br/>
+          "maxInstances": 5,<br/>
+          "seleniumProtocol": "Selenium"<br/>
+        },<br/>
+        {<br/>
+          "browserName": "*googlechrome",<br/>
+          "maxInstances": 5,<br/>
+          "seleniumProtocol": "Selenium"<br/>
+        },<br/>
+        {<br/>
+          "browserName": "*iexplore",<br/>
+          "maxInstances": 1,<br/>
+          "seleniumProtocol": "Selenium"<br/>
+        },<br/>
+        {<br/>
+          "browserName": "firefox",<br/>
+          "maxInstances": 5,<br/>
+          "seleniumProtocol": "WebDriver"<br/>
+        },<br/>
+        {<br/>
+          "browserName": "chrome",<br/>
+          "maxInstances": 5,<br/>
+          "seleniumProtocol": "WebDriver"<br/>
+        },<br/>
+        {<br/>
+          "browserName": "internet explorer",<br/>
+          "maxInstances": 1,<br/>
+          "seleniumProtocol": "WebDriver"<br/>
+        }<br/>
+      ],<br/>
+  "configuration":<br/>
+  {<br/>
+    "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",<br/>
+    "maxSession": 5,<br/>
+    "port": 5555,<br/>
+    "host": ip,<br/>
+    "register": true,<br/>
+    "registerCycle": 5000,<br/>
+    "hubPort": 4444,<br/>
+    "hubHost": ip<br/>
+  }<br/>
+}<br/>
+</pre>
 </div>
 <div class="section" id="configuring-via-the-command-line-options">
-<h3>Configuring Via the Command-Line Options<a class="headerlink" href="#configuring-via-the-command-line-options" title="Permalink to this headline">¶</a></h3>
+<h3>通过命令行选项配置参数<a class="headerlink" href="#configuring-via-the-command-line-options" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 <div class="section" id="hub-configuration">
-<h2>Hub Configuration<a class="headerlink" href="#hub-configuration" title="Permalink to this headline">¶</a></h2>
-<p>To run the hub using the default options simply specify -role hub to the Selenim-Server</p>
-<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-2.21.0.jar -hub
+<h2>Hub配置<a class="headerlink" href="#hub-configuration" title="Permalink to this headline">¶</a></h2>
+<p>使用简单-role hub参数启动hub服务器</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-x.xx.x.jar -hub
 </pre></div>
 </div>
 <p>你将看到以下的日志输出。</p>
@@ -174,67 +232,59 @@ INFO: Launching a selenium grid server<br/>
 </pre></div>
 </div>
 <div class="section" id="specifying-the-port">
-<h3>Specifying the Port<a class="headerlink" href="#specifying-the-port" title="Permalink to this headline">¶</a></h3>
-<p>The default port used by the hub is 4444.  The port being referred to hear, is the TCP/IP port used when the
-‘client’, that is, the automated tests connect to the Selenium-Grid hub.  If another application
-on your computer is already using this port, or if, you already have a Selenium-Server started,
-you’ll see the following message in the log output.</p>
+<h3>指定监听端口<a class="headerlink" href="#specifying-the-port" title="Permalink to this headline">¶</a></h3>
+<p>hub使用的默认监听端口是4444。这个是TCP/IP监听端口，用于‘客户端’也就是测试程序在Selenium-Grid中连接hub。
+如果你机器上的其它程序已经使用了该端口，或者如果你已经在默认设置下启动了一个Selenium-Server，
+你将会看到下面的日志输出。</p>
 <div class="highlight-bash"><div class="highlight"><pre>10:56:35.490 WARN - Failed to start: SocketListener0@0.0.0.0:4444<br/>
 Exception in thread <span class="s2">"main"</span> java.net.BindException: Selenium is already running on port 4444. Or some other service is.
 </pre></div>
 </div>
-<p>If this occurs you can either shutdown the other process that is using port 4444, or you can
-tell Selenium-Grid to use a different port for its hub.  Use the -port option for changing the
-port used by the hub.</p>
-<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-2.21.0.jar -role hub -port 4441
+<p>如果是这样，你可以关闭那个使用了4444端口的程序，或者指定Selenium-Grid的hub使用一个不同的端口。
+使用-port选项可以设定hub启动时监听的端口。</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-x.xx.x.jar -role hub -port 4441
 </pre></div>
 </div>
-<p>This will work even if another hub is already running on the same machine, that is, as long as
-they’re both not using port 4441.</p>
-<p>You may, however, want to see what process is using port 4444 so you can allow the hub to use the
-default.  To see the ports used by all running programs on your machine use the command.</p>
+<p>即使本机上已经启动了另一个hub，这个命令也可以生效，只要它们不是都用4441端口。</p>
+<p>或许你可能想知道哪些程序使用了4444端口，因为你想让hub在默认配置下启动。
+查看本机所有程序使用的端口情况，可以使用下面的命令：</p>
 <div class="highlight-bash"><div class="highlight"><pre>netstat -a
 </pre></div>
 </div>
-<p>This should work on all supported systems, Unix/Linux, MacOs, and Windows although additional options
-beyond -a may be required.  Basically you need to display the process ID along with the port.  In
-Unix you may ‘grep’ the output (use a pipe) from the port number to only display those records
-you’re concerned with.</p>
+<p>这个命令在所有系统上都可用， Unix/Linux， MacOs，尽管Windows可能需要添加额外的 -a参数。
+你可能只想得到进程ID和端口号，在Unix下你可以使用‘grep’(使用管道)来过滤出想查找的内容。。</p>
 </div>
 </div>
 <div class="section" id="node-configuration">
-<h2>Node Configuration<a class="headerlink" href="#node-configuration" title="Permalink to this headline">¶</a></h2>
+<h2>Node配置<a class="headerlink" href="#node-configuration" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="timing-parameters">
-<h2>Timing Parameters<a class="headerlink" href="#timing-parameters" title="Permalink to this headline">¶</a></h2>
+<h2>时序参数<a class="headerlink" href="#timing-parameters" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="getting-command-line-help">
-<h2>Getting Command-Line Help<a class="headerlink" href="#getting-command-line-help" title="Permalink to this headline">¶</a></h2>
-<p>The Selenium-Server provides listings of available options with a brief description of each.
-Currently (summer 2012), the command-line help has some oddities, but it can be helpful if you know
-where to look and how to interpret the information.</p>
-<p>The Selenium-Server provides two distinct functions, that of the Selenium-RC server
-and that of Selenium-Grid.  These were likely written by different Selenium teams, and therefore
-the command-line help for each function has ended up in two different places.  And, for the
-new user, it may not be apparent at first which of these two you are viewing.</p>
-<p>If you simply pass a -h option as you might first assume, you get the Selenium-RC Server options
-but not those for Selenium-Grid.</p>
+<h2>获取命令行帮助<a class="headerlink" href="#getting-command-line-help" title="Permalink to this headline">¶</a></h2>
+<p>Selenium-Server提供了其支持的选项及使用说明的列表。这将有助于你如何去查找并理解这些支持的选项。</p>
+<p>Selenium-Server提供了2个独立的功能，那就是Selenium-RC服务器和Selenium-Grid。
+这些功能可能由不同Selenium团队开发的，因此每个功能的命令行帮助是在不同地方结束。 对于新用户， 对于新用户，当你第一次在查看这2个功能时可能并不明显。
+</p>
+<p>
+如果你只是传递-h参数给程序，那么你得到的选项只是Selenium-RC服务器的，而不包括Selenium-Grid的选项。
+</p>
 <div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-2.21.0.jar -h
 </pre></div>
 </div>
-<p>This would give you Selenium-RC’s server options.  If you want the command-line help for
-Selenium-Grid, you first use the -hub or -node options to tell Selenium-Server you’re intereted
-in Selenium-Grid, and then follow with a -h.</p>
-<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-2.21.0.jar -role node -h
+<p>这个将显示Selenium-RC服务器的选项。如果你想获取Selenium-Grid的命令行帮助，
+那么你首先要加上 -hub 或 -node 选项来告诉Selenium-Server你想要获取Selenium-Grid信息然后在附加-h选项。
+[在最新版的selenium-server中默认就会同时显示2个功能的全部帮助]</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-X.XX.X.jar -role node -h
 </pre></div>
 </div>
-<p>Or, for that matter, just pass a garbage argument to the -role node as follows.</p>
-<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-2.21.0.jar -role node xx
+<p>或者像下面这样，在-role node选项的情况下再传递一个无效的参数。</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar selenium-server-standalone-X.XX.X.jar -role node xx
 </pre></div>
 </div>
-<p>You will first see “INFO...” and an “ERROR” but below that you’ll get the command-line options for
-Selenium-Grid.  We won’t list the whole output here since it’s rather long, but the first few
-lines look like this.</p>
+<p>首先你会看到“INFO...” 和 “ERROR”，而在其下就是有关Selenium-Grid的各个选项。
+我们在这没有列出所有的选项， 是因为太长了；但是前面的若干行信息应该像这样：</p>
 <div class="highlight-bash"><pre>Jul 19, 2012 10:10:39 AM org.openqa.grid.selenium.GridLauncher main<br/>
 INFO: Launching a selenium grid node<br/>
 org.openqa.grid.common.exception.GridConfigurationException: You need to specify a hub to register to using -hubHost X -hubPort 5555. The specified config was -hubHost null -hubPort 4444<br/>
@@ -254,17 +304,15 @@ Usage :<br/>
 </div>
 </div>
 <div class="section" id="common-errors">
-<h2>Common Errors<a class="headerlink" href="#common-errors" title="Permalink to this headline">¶</a></h2>
+<h2>常见错误<a class="headerlink" href="#common-errors" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="unable-to-acess-the-jarfile">
-<h3>Unable to acess the jarfile<a class="headerlink" href="#unable-to-acess-the-jarfile" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre>Unable to access jarfile selenium-server-standalone-2.21.0.jar
+<h3>无法访问jar文件<a class="headerlink" href="#unable-to-acess-the-jarfile" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre>Unable to access jarfile selenium-server-standalone-X.XX.X.jar
 </pre></div>
 </div>
-<p>This error can occur when starting up either a hub or node.
-This means Java cannot find the selenium-server jar file.  Either run the command from the
-directory where the selenium-server-XXXX.jar file is stored, or specify an explicit path to
-the jar.</p>
+<p>这个错误在启动hub 或 node时都可能发生。
+意思是Java不能找到selenium-server的jar文件，或者在命令行中进入到selenium-server-XXXX.jar文件所在的目录，或者指定一个到jar文件的明确路径。</p>
 </div>
 </div>
 <div class="section" id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<h2>故障排除<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
