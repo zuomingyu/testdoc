@@ -1,6 +1,6 @@
-DesiredCapabilities±£´æµÄĞÅÏ¢×Ö¶Î
+ï»¿DesiredCapabilitiesä¿å­˜çš„ä¿¡æ¯å­—æ®µ
 ==
-selenium2ÖĞDesiredCapabilitiesÊµÀı¿ÉÒÔÉèÖÃµÄÑ¡Ïî£¬ÆäÖĞplatform¡¢browserName¡¢versionÓÃÀ´Æ¥Åää¯ÀÀÆ÷²âÊÔÀàĞÍµÄ¡£
+selenium2ä¸­DesiredCapabilitieså®ä¾‹å¯ä»¥è®¾ç½®çš„é€‰é¡¹ï¼Œå…¶ä¸­platformã€browserNameã€versionç”¨æ¥åŒ¹é…æµè§ˆå™¨æµ‹è¯•ç±»å‹çš„ã€‚
 {
   "platform": "XP",
   "chrome.chromedriverVersion": "26.0.1383.0",
