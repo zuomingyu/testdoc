@@ -42,7 +42,9 @@ public FirefoxDriver initFirefox(String profileDirectory){
 	File profileDirectory = new File(profileDirectory);
 	FirefoxProfile profile = new FirefoxProfile(profileDirectory);
 	return new FirefoxDriver(profile);
-}
+	WebDriver wd = new RemoteDriver("http://localhost:4444/wd/hub", cap);
+	wd.doSomething()
+;}
 
 public enum BrowserType {
     FIREFOX, IE, CHROME, SAFRI, ANDROID, OPEAR, HTMLUNIT
