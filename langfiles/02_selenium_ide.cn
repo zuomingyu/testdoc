@@ -132,13 +132,15 @@
 <h1>Selenium-IDE<a class="headerlink" href="#selenium-ide" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <span id="chapter02-reference"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>Selenium-IDE(集成开发环境)是用来开发Selenium测试用例的工具。它是易于使用的Firefox插件，基本上也是开发测试用例的最有效方法。通过Selinum-IDE的上下文菜单，用户可以首先从浏览器的当前页面选择一个UI element，然后从Selenium命令列表中选择一个命令，该命令的预定义参数由所选择的UI element的context决定。使用Selinum-IDE的右键菜单既节省了时间，也不失为学习Selenium脚本语法的一个好方法</p>
+<p>Selenium-IDE(集成开发环境)是用来开发Selenium测试用例的工具。它是易于使用的Firefox插件，基本上也是开发测试用例的最有效方法。
+通过Selinum-IDE的上下文菜单，用户可以首先从浏览器的当前页面选择一个UI元素，然后从Selenium命令列表中选择一个命令，该命令的预定义参数由所选择的UI元素的context决定。
+使用Selinum-IDE的右键菜单既节省了时间，也不失为学习Selenium脚本语法的一个好方法</p>
 <p>本章将介绍Selenium IDE以及如何有效的使用它。</p>
 </div>
 <div class="section" id="installing-the-ide">
 <h2>Installing the IDE<a class="headerlink" href="#installing-the-ide" title="Permalink to this headline">¶</a></h2>
 <p>打开Firefox，首先从SeleniumHQ的<a class="reference external" href="http://seleniumhq.org/download/">下载地址</a>下载IDE</p>
-<p>Firefox不会自动安装来自不熟悉位置的插件，因此用户需要手动点击"Allow"来继续安装，如下图所示</p>
+<p>Firefox不会自动安装来自未知来源的插件，因此用户需要手动点击"Allow"来继续安装，如下图所示</p>
 <img alt="/static/chapt3_img01_IDE_Installation.png" class="align-center" src="/static/chapt3_img01_IDE_Installation.png">
 <p>从Firefox下载时，会弹出一个下面这样的窗口。</p>
 <img alt="/static/chapt3_img02_IDE_Installation.png" class="align-center" src="/static/chapt3_img02_IDE_Installation.png">
@@ -231,7 +233,7 @@
 </ul>
 </div>
 <div class="section" id="adding-verifications-and-asserts-with-the-context-menu">
-<h3>Adding Verifications and Asserts With the Context Menu<a class="headerlink" href="#adding-verifications-and-asserts-with-the-context-menu" title="Permalink to this headline">¶</a></h3>
+<h3>根据上下文添加验证和断言<a class="headerlink" href="#adding-verifications-and-asserts-with-the-context-menu" title="Permalink to this headline">¶</a></h3>
 <p>测试用例可能会需要check网页的属性。这时就需要<em>assert</em>和 <em>verify</em>命令。这些命令的规约将在后续章节<a class="reference internal" href="#selenium-commands-selenese">Selenium Commands – “Selenese”</a>介绍，此处将不做展开，只是简单介绍如何将它们添加到测试用例中去。</p>
 <p>在使用Selenium-IDE录制时，在打开了待测应用的浏览器页面任意一处右键鼠标。会弹出一个带有<em>verify</em>
 和/或<em>assert</em>命令的右键菜单.</p>
@@ -239,37 +241,22 @@
 <p>让我们看看这是如何做到的。选择一个网页打开，然后选中一段文本。文本或者标题都可以。现在，右键选中的文本。右键菜单应该列出<em>verifyTextPresent</em>
 命令，而推荐参数应该是文本本身。</p>
 <p>此外，注意Show All Available Commands菜单项。这里为测试当前选中的UI elements列出了许多许多的命令，且同样带有推荐参数。</p>
-<p>再多试一些UI elements。尝试右键图片或者用户控件，例如按钮或者checkbox。可能会需要使用Show All Available Commands菜单项来查看<em>verifyTextPresent</em>之外的命令。Once you select these other
-options, the more commonly used ones will show up on the primary context menu.
-For example, selecting <em>verifyElementPresent</em> for an image should later cause
-that command to be available on the primary context menu the next time you
-select an image and right-click.</p>
-<p>Again, these commands will be explained in detail in the chapter on Selenium
-commands.  For now though, feel free to use the IDE to record and select
-commands into a test case and then run it.  You can learn a lot about
-the Selenium commands simply by experimenting with the IDE.</p>
+<p>再多试一些UI elements。尝试右键图片或者用户控件，例如按钮或者checkbox。
+你可以利用Show All Available Commands来查看<em>verifyTextPresent</em>之外的命令，一旦你选择了其他选项，
+更多被经常使用的命令会显示在主要的上下文菜单当中。例如，你为一个图片选择了<em>verifyElementPresent</em>命令，那么你下次选择图片的时候，会在主要的上下文菜单中直接看到这个命令。</p>
+<p>此外, 这些命令会在Selenium Commands章节中详细介绍，现在你只需要使用IDE来录制，为你的测试用例选择合适的命令，然后运行你的测试用例，经常使用IDE，你会很容易的学会大量的Selenium命令。</p>
 </div>
 <div class="section" id="editing">
-<h3>Editing<a class="headerlink" href="#editing" title="Permalink to this headline">¶</a></h3>
+<h3>编辑<a class="headerlink" href="#editing" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="insert-command">
-<h4>Insert Command<a class="headerlink" href="#insert-command" title="Permalink to this headline">¶</a></h4>
+<h4>插入命令<a class="headerlink" href="#insert-command" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="table-view">
-<h5>Table View<a class="headerlink" href="#table-view" title="Permalink to this headline">¶</a></h5>
-<p>Select the point in your test case where you want to insert the command.
-To do this, in the Test Case Pane, left-click on the line where you want
-to insert a new command.  Right-click and select Insert Command; the IDE
-will add a blank line just ahead of the line you selected. Now use the
-command editing text fields to enter your new command and its parameters.</p>
+<h5>表格视图<a class="headerlink" href="#table-view" title="Permalink to this headline">¶</a></h5>
+<p>将光标放在你要插入命令的位置，右键点击并选择插入命令，IDE会在你选择的行前加入一个空行，然后你就可以在命令编辑区域编辑你的命令和参数。</p>
 </div>
 <div class="section" id="source-view">
-<h5>Source View<a class="headerlink" href="#source-view" title="Permalink to this headline">¶</a></h5>
-<p>Select the point in your test case where you want to insert the command.
-To do this, in the Test Case Pane, left-click between the commands
-where you want to insert a new command, and enter the HTML tags needed
-to create a 3-column row containing the Command, first parameter
-(if one is required by the Command), and second parameter (again,
-if one is required to locate an element) and third parameter(again, if one is required to have a value).
-Example:</p>
+<h5>源码视图<a class="headerlink" href="#source-view" title="Permalink to this headline">¶</a></h5>
+<p>在Test Case面板上，将光标放到你要插入命令的位置，输入一个一行三列的HTML标签，包含Command, 根据命令的需要还有第一个参数、第二个参数，甚至第三个参数，示例如下：</p>
 <div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;tr&gt;</span>
     <span class="nt">&lt;td&gt;</span>Command<span class="nt">&lt;/td&gt;</span>
     <span class="nt">&lt;td&gt;</span>target (locator)<span class="nt">&lt;/td&gt;</span>
@@ -280,154 +267,96 @@ Example:</p>
 </div>
 </div>
 <div class="section" id="insert-comment">
-<h4>Insert Comment<a class="headerlink" href="#insert-comment" title="Permalink to this headline">¶</a></h4>
-<p>Comments may be added to make your test case more readable.  These comments are
-ignored when the test case is run.</p>
-<p>Comments may also be used to add vertical white space (one or more blank lines)
-in your tests; just create empty comments.  An empty command will cause an error
-during execution; an empty comment won’t.</p>
+<h4>插入注释<a class="headerlink" href="#insert-comment" title="Permalink to this headline">¶</a></h4>
+<p>为了让你的测试用例更具有可读性，我们可以添加一些用例注释，这些注释在测试用例运行时会被忽略。
+</p>
+<p>你也可以创建一些空行注释，空行注释不会引发执行时异常，但空命令会导致你的测试用例出错。</p>
 <div class="section" id="id2">
-<h5>Table View<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h5>
-<p>Select the line in your test case where you
-want to insert the comment.  Right-click and select Insert Comment.  Now use
-the Command field to enter the comment.  Your comment will appear in purple
-text.</p>
+<h5>表格视图<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h5>
+<p>光标放在你要插入注释所在行，右键点击并选择Insert Comment，在弹出的Command field中输入注释，完成后你的注释会出现的对应的位置，并以紫色字体显示。</p>
 </div>
 <div class="section" id="id3">
-<h5>Source View<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h5>
-<p>Select the point in your test case where you want to insert the comment.  Add
-an HTML-style comment, i.e., <tt class="docutils literal"><span class="pre">&lt;!--</span> <span class="pre">your</span> <span class="pre">comment</span> <span class="pre">here</span> <span class="pre">--&gt;</span></tt>.</p>
+<h5>源码视图<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h5>
+<p>光标放在你要插入注释的位置，输入HTML风格的注释，示例 <tt class="docutils literal"><span class="pre">&lt;!--</span> <span class="pre">your</span> <span class="pre">comment</span> <span class="pre">here</span> <span class="pre">--&gt;</span></tt>.</p>
 </div>
 </div>
 <div class="section" id="edit-a-command-or-comment">
-<h4>Edit a Command or Comment<a class="headerlink" href="#edit-a-command-or-comment" title="Permalink to this headline">¶</a></h4>
+<h4>编辑一个命令或注释<a class="headerlink" href="#edit-a-command-or-comment" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="id4">
-<h5>Table View<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h5>
-<p>Simply select the line to be changed and edit it using the Command, Target,
-and Value fields.</p>
+<h5>表格视图<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h5>
+<p>选择要修改的命令所在行，在Command、Target和Value中填写新的内容。</p>
 </div>
 <div class="section" id="id5">
-<h5>Source View<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h5>
-<p>Since Source view provides the equivalent of a WYSIWYG (What You See is What You Get) editor, simply modify
-which line you wish–command, parameter, or comment.</p>
+<h5>源码视图<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h5>
+<p>Source View提供的是所见即所得（What You See is What You Get）的编辑模式，直接在对应行修改相应内容即可。</p>
 </div>
 </div>
 </div>
 <div class="section" id="opening-and-saving-a-test-case">
-<h3>Opening and Saving a Test Case<a class="headerlink" href="#opening-and-saving-a-test-case" title="Permalink to this headline">¶</a></h3>
-<p>Like most programs, there are Save and Open commands under the File menu.
-However, Selenium distinguishes between test cases and test suites.
-To save your Selenium-IDE tests for later use you can either save the
-individual test cases, or save the test suite. If the test cases of your
-test suite have not been saved, you’ll be prompted to save them before
-saving the test suite.</p>
-<p>When you open an existing test case or suite, Selenium-IDE
-displays its Selenium commands in the Test Case Pane.</p>
+<h3>打开和保存一个测试用例<a class="headerlink" href="#opening-and-saving-a-test-case" title="Permalink to this headline">¶</a></h3>
+<p>在File目录下有打开和保存命令的菜单，Selenium把测试用例和测试套件分开了，你可以分开保存所有的测试用例，或者将所有测试用例保存为一个测试套件，
+如果测试套件中的某写测试用例没有保存，那么Selenium在保存测试套件之前会提示你先保存这些测试用例。</p>
+<p>如果你打开一个已存在的测试用例或测试套件，Selenium-IDE会在测试用例面板中显示用例的Selenium命令。</p>
 </div>
 </div>
 <div class="section" id="running-test-cases">
-<h2>Running Test Cases<a class="headerlink" href="#running-test-cases" title="Permalink to this headline">¶</a></h2>
-<p>The IDE allows many options for running your test case. You can run a test case
-all at once, stop and start it, run it one line at a time, run a single command
-you are currently developing, and you can do a batch run of an entire test suite.
-Execution of test cases is very flexible in the IDE.</p>
+<h2>运行测试用例<a class="headerlink" href="#running-test-cases" title="Permalink to this headline">¶</a></h2>
+<p>IDE提供了很多方式来运行你的测试用例，你可以运行、暂时、开始一个测试用例中所有命令，可以逐个命令运行，
+也可以只运行你当前正在开发的一个命令，你也可以成批运行测试套件中的所有测试用例。因此在IDE中运行测试用例是非常灵活的。</p>
 <dl class="docutils">
-<dt>Run a Test Case</dt>
-<dd>Click the Run button to run the currently displayed test case.</dd>
-<dt>Run a Test Suite</dt>
-<dd>Click the Run All button to run all the test cases in the currently loaded
-test suite.</dd>
-<dt>Stop and Start</dt>
-<dd>The Pause button can be used to stop the test case while it is running.  The
-icon of this button then changes to indicate the Resume button.  To continue
-click Resume.</dd>
-<dt>Stop in the Middle</dt>
-<dd>You can set a breakpoint in the test case to cause it to stop on a
-particular command.  This is useful for debugging your test case. To set a
-breakpoint, select a command, right-click, and from the context menu
-select Toggle Breakpoint.</dd>
-<dt>Start from the Middle</dt>
-<dd>You can tell the IDE to begin running from a specific command in the
-middle of the test case.  This also is used for debugging.  To set a
-startpoint, select a command, right-click, and from the context menu
-select Set/Clear Start Point.</dd>
-<dt>Run Any Single Command</dt>
-<dd>Double-click any single command to run it by itself.  This is useful when
-writing a single command.  It lets you immediately test a command you are
-constructing, when you are not sure if it is correct.  You can double-click it to
-see if it runs correctly.  This is also available from the context menu.</dd>
+<dt>运行一个Test Case</dt>
+<dd>点击运行按钮运行当前显示的测试用例。</dd>
+<dt>运行一个Test Suite</dt>
+<dd>点击Run All按钮来运行当前测试套件中的所有测试用例。</dd>
+<dt>停止和开始</dt>
+<dd>Pause按钮可以停止正在运行的测试用例，这个按钮的图标会变为Resume 按钮，再次点击可以继续用例的执行。</dd>
+<dt>在测试过程中停止</dt>
+<dd>你可以在某个命令上设置断点，测试用例运行到该断点会暂停运行，这对于调试你的测试用例非常有用。
+要想设置断点，你只需要在要设置断点的地方点击右键，在弹出的上下文菜单中选择Toggle Breakpoint。</dd>
+<dt>从测试停止处开始</dt>
+<dd>你可以让IDE从测试用例中间的某个命令开始运行。这对调试也很有用，做法是，在一个命令上点击右键，从弹出的上下文菜单中选择Set/Clear Start Point。</dd>
+<dt>运行任意的单个命令</dt>
+<dd>双击任何单个命令，即可运行该命令，这在写单个命令时非常有用，它可以立即测试你编写的命令是否正确。在右键的上下文菜单中，你同样可以找到相应的操作。</dd>
 </dl>
 </div>
 <div class="section" id="using-base-url-to-run-test-cases-in-different-domains">
-<h2>Using Base URL to Run Test Cases in Different Domains<a class="headerlink" href="#using-base-url-to-run-test-cases-in-different-domains" title="Permalink to this headline">¶</a></h2>
-<p>The <em>Base URL</em> field at the top of the Selenium-IDE window is very useful
-for allowing test cases to be run across different domains.
-Suppose that a site named http://news.portal.com had an in-house beta site named
-http://beta.news.portal.com.  Any test cases for these sites that begin with
-an <em>open</em>
-statement should specify a <em>relative URL</em> as the argument to <em>open</em>
-rather than an <em>absolute URL</em> (one
-starting with a protocol such as http: or https:).  Selenium-IDE will
-then create an absolute URL by appending the <em>open</em> command’s
-argument onto the end of the value of Base URL.  For example, the
-test case below would be run against http://news.portal.com/about.html:</p>
+<h2>用Base URL在不同域名下运行测试用例<a class="headerlink" href="#using-base-url-to-run-test-cases-in-different-domains" title="Permalink to this headline">¶</a></h2>
+<p>
+在Selenium-IDE窗体顶部的<em>Base URL</em>可以用来切换不同的URL。假定有一个网站http://news.portal.com,内部有一个beta版本，
+地址为http://beta.news.portal.com.这些站点的任何测试用例都应当有一个<em>相对URL</em>作为参数，而不应当是一个绝对URL（以http:或https:协议开头的地址）。
+Selenium-IDE会将参数附加到Base URL后面，形成绝对地址，下图的测试用例将会在http://news.portal.com/about.html下面执行。
+</p>
 <img alt="/static/chapt3_img21_BaseURL_prod.png" class="align-center" src="/static/chapt3_img21_BaseURL_prod.png">
-<p>This same test case with a modified Base URL setting would be run against
-http://beta.news.portal.com/about.html:</p>
+<p>修改一下Base URL，如下图，则同样的测试用例又可以在http://beta.news.portal.com/about.html地址下运行。</p>
 <img alt="/static/chapt3_img22_BaseURL_beta.png" class="align-center" src="/static/chapt3_img22_BaseURL_beta.png">
 </div>
 <div class="section" id="selenium-commands-selenese">
-<span id="selenese"></span><h2>Selenium Commands – “Selenese”<a class="headerlink" href="#selenium-commands-selenese" title="Permalink to this headline">¶</a></h2>
-<p>Selenium commands, often called <em>selenese</em>, are the set of commands that run
-your tests.  A sequence of these commands is a <em>test script</em>.  Here we explain
-those commands in detail, and we present the many choices you have in testing
-your web application when using Selenium.</p>
-<p>Selenium provides a rich set of commands for fully testing your web-app
-in virtually any way you can imagine. The command set is often called
-<em>selenese</em>. These commands essentially create a testing language.</p>
-<p>In selenese, one can test the existence of UI elements based
-on their HTML tags, test for specific content, test for broken links,
-input fields, selection list options, submitting forms, and table data among
-other things. In addition Selenium commands support testing of window size,
-mouse position, alerts, Ajax functionality, pop up windows, event handling,
-and many other web-application features. The <a class="reference external" href="http://release.seleniumhq.org/selenium-core/1.0.1/reference.html">Command Reference</a> lists all
-the available commands.</p>
-<p>A <em>command</em> tells Selenium what to do. Selenium commands come in
-three “flavors”: <strong>Actions</strong>, <strong>Accessors</strong>, and <strong>Assertions</strong>.</p>
+<span id="selenese"></span><h2>Selenium命令 – “Selenese”<a class="headerlink" href="#selenium-commands-selenese" title="Permalink to this headline">¶</a></h2>
+<p>Selenium命令经常被称为<em>Selenese</em>，是一系列用于执行你的用例的命令。这一系列的命令组成测试脚本，这里我们对这些脚本进行详细说明，为你使用Selenium进行测试展示多种选择。</p>
+<p>Selenium提供了丰富的命令，几乎涵盖了你能想象到的任何方式。命令集通常被称为<em>Selenese</em>，本质上说，这些命令已经形成了一种测试语言。</p>
+<p>在Selenese中，用户可以测试界面元素的存在性，测试特定的内容，测试无效链接、输入框、下拉框、提交Form表单，表格数据。同时Selenium还可以测试window大小，鼠标位置，提示框，Ajax功能，弹出框，事件处理和其他web程序的特征。
+<a class="reference external" href="http://release.seleniumhq.org/selenium-core/1.0.1/reference.html">Command Reference</a>中列出了所有可用的命令。
+</p>
+<p>命令是告诉Selenium要做什么，Selenium命令有三种类型，<strong>Actions</strong>, <strong>Accessors</strong>, and <strong>Assertions</strong>。
+</p>
 <ul>
-<li><p class="first"><strong>Actions</strong> are commands that generally manipulate the state of the
-application. They do things like “click this link” and “select that option”.
-If an Action fails, or has an error, the execution of the current test is
-stopped.</p>
-<p>Many Actions can be called with the “AndWait” suffix, e.g. “clickAndWait”.
-This suffix tells Selenium that the action will cause the browser to make a
-call to the server, and that Selenium should wait for a new page to load.</p>
+<li><p class="first"><strong>Actions</strong>命令通常用来控制程序的状态。例如“点击一个链接”和“选择一个选项”。如果一个Action失败或发生错误，当前测试会被终止。</p>
+<p>大部分命令都有“AndWait”后缀，例如”ClickAndWait”，这个后缀告诉Selenium这个命令会导致浏览器向服务器发送请求，Selenium应当等待一个新的页面加载。</p>
 </li>
-<li><p class="first"><strong>Accessors</strong> examine the state of the application and store the results in
-variables, e.g. “storeTitle”. They are also used to automatically generate
-Assertions.</p>
+<li><p class="first"><strong>Accessors</strong>用于检查程序的状态，并将其保存到变量当中，例如“storeTitle”，也可以用于自动生成断言（Assertions）</p>
 </li>
-<li><p class="first"><strong>Assertions</strong> are like Accessors, but they verify that the state of the
-application conforms to what is expected. Examples include “make sure the
-page title is X” and “verify that this checkbox is checked”.</p>
-<p>All Selenium Assertions can be used in 3 modes: “assert”, “verify”, and ”
-waitFor”. For example, you can “assertText”, “verifyText” and “waitForText”.
-When an “assert” fails, the test is aborted. When a “verify” fails, the test
-will continue execution, logging the failure. This allows a single “assert”
-to ensure that the application is on the correct page, followed by a bunch of
-“verify” assertions to test form field values, labels, etc.</p>
-<p>“waitFor” commands wait for some condition to become true (which can be
-useful for testing Ajax applications). They will succeed immediately if the
-condition is already true. However, they will fail and halt the test if the
-condition does not become true within the current timeout setting (see the
-setTimeout action below).</p>
+<li><p class="first"><strong>Assertions</strong>和Assessors很像，不过他们会核对程序的当前状态和预期值是否吻合，
+例如：“make sure the page title is X”和“verify that this checkbox is checked”。</p>
+<p>可以有三种方式使用Selenium Assertions，“Assert”，“Verify”和“waitFor”，例如，你可以“assetText”，“verifyText”和“waitForText”。
+当一个“assert”失败，测试会失败。当一个“verify”失败，测试会记录日志，但继续执行。你可以用一个“Assert”确保页面正确，再用一组“verify”来测试表单的值。</p>
+<p>“waitFor”命令用于等待某些条件成立（测试Ajax时会用到）。条件一成立，命令就执行成功，如果在限定的时间内条件一直不成立，该命令就执行失败，整个测试终止。
+（关于限定过期时间请参考下面的setTimeout操作）</p>
 </li>
 </ul>
 </div>
 <div class="section" id="script-syntax">
-<h2>Script Syntax<a class="headerlink" href="#script-syntax" title="Permalink to this headline">¶</a></h2>
-<p>Selenium commands are simple, they consist of the command and two parameters.
-For example:</p>
+<h2>脚本语法<a class="headerlink" href="#script-syntax" title="Permalink to this headline">¶</a></h2>
+<p>Selenium命令由一个命令和两个参数构成，举例如下：</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="38%">
@@ -441,10 +370,7 @@ For example:</p>
 </tr>
 </tbody>
 </table>
-<p>The parameters are not always required; it depends on the command. In some
-cases both are required, in others one parameter is required, and in still
-others the command may take no parameters at all. Here are a couple more
-examples:</p>
+<p>参数并不总是必须的，它和命令有关，某些命令需要两个参数，某些只需要一个参数，还有一些命令并不需要参数，分别举例如下：</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%">
@@ -470,17 +396,14 @@ examples:</p>
 </tr>
 </tbody>
 </table>
-<p>The command reference describes the parameter requirements for each command.</p>
-<p>Parameters vary, however they are typically:</p>
+<p>Command Reference里面描述了每个命令的参数。</p>
+<p>参数各种各样，下面几个是比较经典的：</p>
 <ul class="simple">
-<li>a <em>locator</em> for identifying a UI element within a page.</li>
-<li>a <em>text pattern</em> for verifying or asserting expected page content</li>
-<li>a <em>text pattern</em> or a selenium variable for entering text in an input field
-or for selecting an option from an option list.</li>
+<li>用于识别页面元素的定位器。</li>
+<li>核实或断言页面期望内容的文本模式。</li>
+<li>输入文本或选择列表选项的文本模式或变量。</li>
 </ul>
-<p>Locators, text patterns,
-selenium variables, and the commands themselves are described in considerable
-detail in the section on Selenium Commands.</p>
+<p>在Selenium Commands这一章节里，对定位器，文本模式，Selenium变量和命令本身会有相当详细的介绍。</p>
 <p>Selenium scripts that will be run from Selenium-IDE will be be stored in an HTML
 text file format. This consists of an HTML table with three columns. The first
 column identifies the Selenium command, the second is a target, and the

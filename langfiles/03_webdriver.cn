@@ -11,15 +11,15 @@
 "04_webdriver_advanced"
 
 #:next_title
-"WebDriver: Advanced Usage"
+"WebDriver: 高级使用"
 
 #:side
 :list
 <li><a class="reference internal" href="#">Selenium WebDriver</a><ul class="treeview">
-<li><a class="reference internal" href="#introducing-webdriver">Introducing WebDriver</a></li>
-<li><a class="reference internal" href="#how-does-webdriver-drive-the-browser-compared-to-selenium-rc">How Does WebDriver ‘Drive’ the Browser Compared to Selenium-RC?</a></li>
-<li><a class="reference internal" href="#webdriver-and-the-selenium-server">WebDriver and the Selenium-Server</a></li>
-<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#setting-up-a-selenium-webdriver-project">Setting Up a Selenium-WebDriver Project</a><ul class="treeview" style="display: none;">
+<li><a class="reference internal" href="#introducing-webdriver">WebDriver介绍</a></li>
+<li><a class="reference internal" href="#how-does-webdriver-drive-the-browser-compared-to-selenium-rc">WebDriver和Selenium-RC‘驱动’浏览器有何不同之处?</a></li>
+<li><a class="reference internal" href="#webdriver-and-the-selenium-server">WebDriver和Selenium-Server</a></li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#setting-up-a-selenium-webdriver-project">搭建Selenium-WebDriver项目</a><ul class="treeview" style="display: none;">
 <li><a class="reference internal" href="#java">Java</a></li>
 <li><a class="reference internal" href="#c">C#</a></li>
 <li><a class="reference internal" href="#python">Python</a></li>
@@ -28,81 +28,81 @@
 <li class="last"><a class="reference internal" href="#php">PHP</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#migrating-from-selenium-1-0">Migrating from Selenium 1.0</a></li>
-<li><a class="reference internal" href="#introducing-the-selenium-webdriver-api-by-example">Introducing the Selenium-WebDriver API by Example</a></li>
-<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#selenium-webdriver-api-commands-and-operations">Selenium-WebDriver API Commands and Operations</a><ul class="treeview" style="display: none;">
-<li><a class="reference internal" href="#fetching-a-page">Fetching a Page</a></li>
-<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#locating-ui-elements-webelements">Locating UI Elements (WebElements)</a><ul class="treeview" style="display: none;">
-<li><a class="reference internal" href="#by-id">By ID</a></li>
-<li><a class="reference internal" href="#by-class-name">By Class Name</a></li>
-<li><a class="reference internal" href="#by-tag-name">By Tag Name</a></li>
-<li><a class="reference internal" href="#by-name">By Name</a></li>
-<li><a class="reference internal" href="#by-link-text">By Link Text</a></li>
-<li><a class="reference internal" href="#by-partial-link-text">By Partial Link Text</a></li>
-<li><a class="reference internal" href="#by-css">By CSS</a></li>
-<li><a class="reference internal" href="#by-xpath">By XPATH</a></li>
-<li class="last"><a class="reference internal" href="#using-javascript">Using JavaScript</a></li>
+<li><a class="reference internal" href="#migrating-from-selenium-1-0">从Selenium 1.0迁移</a></li>
+<li><a class="reference internal" href="#introducing-the-selenium-webdriver-api-by-example">通过样例介绍Selenium-WebDriver API</a></li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#selenium-webdriver-api-commands-and-operations">Selenium-WebDriver API的命令和操作</a><ul class="treeview" style="display: none;">
+<li><a class="reference internal" href="#fetching-a-page">获取一个页面</a></li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#locating-ui-elements-webelements">定位UI元素(WebElements)</a><ul class="treeview" style="display: none;">
+<li><a class="reference internal" href="#by-id">通过ID</a></li>
+<li><a class="reference internal" href="#by-class-name">通过Class名称</a></li>
+<li><a class="reference internal" href="#by-tag-name">通过Tag名称</a></li>
+<li><a class="reference internal" href="#by-name">通过Name</a></li>
+<li><a class="reference internal" href="#by-link-text">通过Link文本</a></li>
+<li><a class="reference internal" href="#by-partial-link-text">通过部分Link文本</a></li>
+<li><a class="reference internal" href="#by-css">通过CSS</a></li>
+<li><a class="reference internal" href="#by-xpath">通过XPATH</a></li>
+<li class="last"><a class="reference internal" href="#using-javascript">通过JavaScript</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#user-input-filling-in-forms">User Input - Filling In Forms</a></li>
-<li><a class="reference internal" href="#moving-between-windows-and-frames">Moving Between Windows and Frames</a></li>
-<li><a class="reference internal" href="#popup-dialogs">Popup Dialogs</a></li>
-<li><a class="reference internal" href="#navigation-history-and-location">Navigation: History and Location</a></li>
+<li><a class="reference internal" href="#user-input-filling-in-forms">用户输入- 填充Forms</a></li>
+<li><a class="reference internal" href="#moving-between-windows-and-frames">切换Windows和Frames</a></li>
+<li><a class="reference internal" href="#popup-dialogs">弹框提示</a></li>
+<li><a class="reference internal" href="#navigation-history-and-location">导航: 历史和位置</a></li>
 <li><a class="reference internal" href="#cookies">Cookies</a></li>
-<li><a class="reference internal" href="#changing-the-user-agent">Changing the User Agent</a></li>
-<li class="last"><a class="reference internal" href="#drag-and-drop">Drag And Drop</a></li>
+<li><a class="reference internal" href="#changing-the-user-agent">改变用户代理</a></li>
+<li class="last"><a class="reference internal" href="#drag-and-drop">拖放</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#driver-specifics-and-tradeoffs">Driver Specifics and Tradeoffs</a></li>
-<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#selenium-webdriver-s-drivers">Selenium-WebDriver’s Drivers</a><ul class="treeview" style="display: none;">
-<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#htmlunit-driver">HtmlUnit Driver</a><ul class="treeview" style="display: none;">
-<li><a class="reference internal" href="#usage">Usage</a></li>
-<li><a class="reference internal" href="#pros">Pros</a></li>
-<li><a class="reference internal" href="#cons">Cons</a></li>
-<li><a class="reference internal" href="#javascript-in-the-htmlunit-driver">JavaScript in the HtmlUnit Driver</a></li>
-<li class="last"><a class="reference internal" href="#enabling-javascript">Enabling JavaScript</a></li>
+<li><a class="reference internal" href="#driver-specifics-and-tradeoffs">驱动的细节和权衡</a></li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#selenium-webdriver-s-drivers">Selenium-WebDriver的驱动</a><ul class="treeview" style="display: none;">
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#htmlunit-driver">HtmlUnit驱动</a><ul class="treeview" style="display: none;">
+<li><a class="reference internal" href="#usage">使用</a></li>
+<li><a class="reference internal" href="#pros">优点</a></li>
+<li><a class="reference internal" href="#cons">缺点</a></li>
+<li><a class="reference internal" href="#javascript-in-the-htmlunit-driver">HtmlUnit驱动中的JavaScript</a></li>
+<li class="last"><a class="reference internal" href="#enabling-javascript">允许JavaScript</a></li>
 </ul>
 </li>
-<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#firefox-driver">Firefox Driver</a><ul class="treeview" style="display: none;">
-<li><a class="reference internal" href="#id1">Usage</a></li>
-<li><a class="reference internal" href="#id2">Pros</a></li>
-<li><a class="reference internal" href="#id3">Cons</a></li>
-<li><a class="reference internal" href="#modifying-the-firefox-profile">Modifying the Firefox Profile</a></li>
-<li class="last"><a class="reference internal" href="#info">Info</a></li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#firefox-driver">Firefox驱动</a><ul class="treeview" style="display: none;">
+<li><a class="reference internal" href="#id1">使用</a></li>
+<li><a class="reference internal" href="#id2">优点</a></li>
+<li><a class="reference internal" href="#id3">缺点</a></li>
+<li><a class="reference internal" href="#modifying-the-firefox-profile">修改Firefox配置选项</a></li>
+<li class="last"><a class="reference internal" href="#info">信息</a></li>
 </ul>
 </li>
-<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#internet-explorer-driver">Internet Explorer Driver</a><ul class="treeview" style="display: none;">
-<li><a class="reference internal" href="#id4">Usage</a></li>
-<li><a class="reference internal" href="#id5">Pros</a></li>
-<li><a class="reference internal" href="#id6">Cons</a></li>
-<li class="last"><a class="reference internal" href="#id7">Info</a></li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#internet-explorer-driver">Internet Explorer驱动</a><ul class="treeview" style="display: none;">
+<li><a class="reference internal" href="#id4">使用</a></li>
+<li><a class="reference internal" href="#id5">优点</a></li>
+<li><a class="reference internal" href="#id6">缺点</a></li>
+<li class="last"><a class="reference internal" href="#id7">信息</a></li>
 </ul>
 </li>
-<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#chrome-driver">Chrome Driver</a><ul class="treeview" style="display: none;">
-<li><a class="reference internal" href="#id8">Usage</a></li>
-<li><a class="reference internal" href="#id9">Pros</a></li>
-<li><a class="reference internal" href="#id10">Cons</a></li>
-<li><a class="reference internal" href="#id11">Info</a></li>
-<li class="last"><a class="reference internal" href="#getting-running-with-chrome-driver">Getting running with Chrome Driver</a></li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#chrome-driver">Chrome驱动</a><ul class="treeview" style="display: none;">
+<li><a class="reference internal" href="#id8">使用</a></li>
+<li><a class="reference internal" href="#id9">优点</a></li>
+<li><a class="reference internal" href="#id10">缺点</a></li>
+<li><a class="reference internal" href="#id11">信息</a></li>
+<li class="last"><a class="reference internal" href="#getting-running-with-chrome-driver">Chrome驱动获取运行</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#opera-driver">Opera Driver</a></li>
-<li><a class="reference internal" href="#iphone-driver">iPhone Driver</a></li>
-<li class="last"><a class="reference internal" href="#android-driver">Android Driver</a></li>
+<li><a class="reference internal" href="#opera-driver">Opera驱动</a></li>
+<li><a class="reference internal" href="#iphone-driver">iPhone驱动</a></li>
+<li class="last"><a class="reference internal" href="#android-driver">Android驱动</a></li>
 </ul>
 </li>
-<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#alternative-back-ends-mixing-webdriver-and-rc-technologies">Alternative Back-Ends: Mixing WebDriver and RC Technologies</a><ul class="treeview" style="display: none;">
-<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#webdriver-backed-selenium-rc">WebDriver-Backed Selenium-RC</a><ul class="treeview" style="display: none;">
-<li><a class="reference internal" href="#id12">Pros</a></li>
-<li class="last"><a class="reference internal" href="#id13">Cons</a></li>
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#alternative-back-ends-mixing-webdriver-and-rc-technologies">替代后端: 混合WebDriver和RC技术</a><ul class="treeview" style="display: none;">
+<li class="expandable"><div class="hitarea expandable-hitarea"></div><a class="reference internal" href="#webdriver-backed-selenium-rc">WebDriver兼容Selenium-RC</a><ul class="treeview" style="display: none;">
+<li><a class="reference internal" href="#id12">优点</a></li>
+<li class="last"><a class="reference internal" href="#id13">缺点</a></li>
 </ul>
 </li>
 <li class="last"><a class="reference internal" href="#backing-webdriver-with-selenium">Backing WebDriver with Selenium</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#running-standalone-selenium-server-for-use-with-remotedrivers">Running Standalone Selenium Server for use with RemoteDrivers</a></li>
-<li><a class="reference internal" href="#additional-resources">Additional Resources</a></li>
-<li class="last"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+<li><a class="reference internal" href="#running-standalone-selenium-server-for-use-with-remotedrivers">为RemoteDrivers运行Selenium-Server</a></li>
+<li><a class="reference internal" href="#additional-resources">附加资源 </a></li>
+<li class="last"><a class="reference internal" href="#next-steps">下一步</a></li>
 
 #:body
 :body
@@ -137,15 +137,10 @@ javascript方法“注入”到浏览器中，并使用javascript来驱动浏览
 <p>为了安装Selenium，在开发时就需要搭建一个项目，在该项目中使用Selenium来编写程序。如何使用编程语言和开发环境来安装Selenium。</p>
 <div class="section" id="java">
 <h3>Java<a class="headerlink" href="#java" title="Permalink to this headline">¶</a></h3>
-<p>The easiest way to set up a Selenium 2.0 Java project is to use Maven.  Maven will download the
-java bindings (the Selenium 2.0 java client library) and all its dependencies, and will create the
-project for you, using a maven pom.xml (project configuration) file.  Once you’ve done this, you
-can import the maven project into your preferred IDE, IntelliJ IDEA or Eclipse.</p>
-<p>First, create a folder to contain your Selenium project files.  Then, to use Maven, you need a
-pom.xml file.  This can be created with a text editor.  We won’t teach the
-details of pom.xml files or for using Maven since there are already excellent references on this.
-Your pom.xml file will look something like this.  Create this file in the folder you created for
-your project.</p>
+<p>建立一个Selenium 2.0 Java项目最简单的方法是使用Maven。Maven会把java bindings(Selenium 2.0 java客户库)和所有依赖项下载下来,然后Maven会按照pom.xml文件(项目配置)来给你建立项目。 
+项目建立好之后, 你可以把maven项目导入到你喜欢的IDE中, 如：IntelliJ IDEA或者Eclipse。</p>
+<p>首先,创建一个文件夹来放你的Selenium项目文件。然后，用Maven来创建一个pom.xml文件，你可以用文件编辑器来创建该配置文件。在此，我们就不介绍pom.xml文件的详细内容了，
+也不介绍如何使用Maven了，因为市面上已经有很不错的参考文档了。你的pom.xml文件看起来是这个样子的。在你创建的项目文件夹中创建这个文件。</p>
 <div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span>
                  <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
@@ -183,31 +178,23 @@ your project.</p>
 <span class="nt">&lt;/project&gt;</span>
 </pre></div>
 </div>
-<p>Be sure you specify the most current version.  At the time of writing, the version listed above was
-the most current, however there were frequent releases immediately after the release of Selenium 2.0.
-Check the <a class="reference external" href="http://seleniumhq.org/download/maven.html">Maven download page</a> for the current release and edit the above dependency accordingly.</p>
-<p>Now, from a command-line, CD into the project directory and run maven as follows.</p>
+<p>请确定你使用的是最新的版本号。在写这篇文章的时候，上面列出来的版本号都是最新的，但是在Selenium 2.0发布后，马上会频繁的发布新的版本。
+请去<a class="reference external" href="http://seleniumhq.org/download/maven.html">Maven下载页面</a>检查最新的版本号，并修改上面相应的依赖项。</p>
+<p>在命令行里输入: CD 项目目录 run maven</p>
 <div class="highlight-bash"><div class="highlight"><pre>mvn clean install
 </pre></div>
 </div>
-<p>This will download Selenium and all its dependencies and will add them to the project.</p>
-<p>Finally, import the project into your preferred development environment.  For those not familiar
-with this, we’ve provided an appendix which shows this.</p>
-<p><a class="reference internal" href="appendix_installing_java_driver_Sel20_via_maven.jsp#importing-maven-into-intellij-reference"><em>Importing a maven project into IntelliJ IDEA</em></a>.
-<a class="reference internal" href="appendix_installing_java_driver_Sel20_via_maven.jsp#importing-maven-into-eclipse-reference"><em>Importing a maven project into Eclipse</em></a>.</p>
+<p>这条命令会把Selenium及其所有的依赖项下载下来，并添加到项目中。</p>
+<p>最后，把项目导入到你熟悉的开发环境。对开发环境不熟悉的人，我们在附录中提供了开发环境的信息。</p>
+<p><a class="reference internal" href="appendix_installing_java_driver_Sel20_via_maven.jsp#importing-maven-into-intellij-reference"><em>在IntelliJ IDEA导入maven项目</em></a>.
+<a class="reference internal" href="appendix_installing_java_driver_Sel20_via_maven.jsp#importing-maven-into-eclipse-reference"><em>在Eclipse里导入maven项目</em></a>.</p>
 </div>
 <div class="section" id="c">
 <h3>C#<a class="headerlink" href="#c" title="Permalink to this headline">¶</a></h3>
-<p>As of Selenium 2.2.0, the C# bindings are distributed as a set of signed dlls along with other
-dependency dlls. Prior to 2.2.0, all Selenium dll’s were unsigned.
-To include Selenium in your project, simply download the latest
-selenium-dotnet zip file from <a class="reference external" href="https://code.google.com/p/selenium/downloads/list">https://code.google.com/p/selenium/downloads/list</a>.
-If you are using Windows Vista or above, you should unblock the zip file before
-unzipping it: Right click on the zip file, click “Properties”, click “Unblock”
-and click “OK”.</p>
-<p>Unzip the contents of the zip file, and add a reference to each of the unzipped
-dlls to your project in Visual Studio (or your IDE of choice).</p>
-<p>Official NuGet Packages:
+<p>对于Selenium 2.2.0, C#绑定被分为一套有符号的dlls和其他依赖的dlls。早在Selenium 2.2.0之前, 所以Selenium的dll都是无符号的。为了在项目里添加Selenium,你只需要在这儿<a class="reference external" href="https://code.google.com/p/selenium/downloads/list">https://code.google.com/p/selenium/downloads/list</a>下载最新的
+selenium-dotnet zip压缩文件。如果你使用的是Windows Vista或者更新的版本, 在解压前，你需要给zip文件解除锁定: 右击zip文件，点击“属性”，点击“解除锁定”，然后点击“OK"。</p>
+<p>将zip文件的内容进行解压, 在Visual Studio (或者IDE)的项目里，给每个解压的dll添加一个附注。.</p>
+<p>官方的NuGet包:
 <a class="reference external" href="http://www.nuget.org/List/Packages/Selenium.RC">RC</a>
 <a class="reference external" href="http://www.nuget.org/List/Packages/Selenium.WebDriver">WebDriver</a>
 <a class="reference external" href="http://www.nuget.org/List/Packages/Selenium.WebDriverBackedSelenium">WebDriverBackedSelenium</a>
@@ -215,42 +202,33 @@ dlls to your project in Visual Studio (or your IDE of choice).</p>
 </div>
 <div class="section" id="python">
 <h3>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
-<p>If you are using Python for test automation then you probably are already familiar with developing
-in Python.  To add Selenium to your Python environment run the following command from
-a command-line.</p>
+<p>如果你使用Python来进行自动化测试，那么你可能已经对Python开发很熟悉了。使用下面的命令语句在Python环境中添加Selenium.</p>
 <div class="highlight-bash"><div class="highlight"><pre>pip install selenium
 </pre></div>
 </div>
-<p>Pip requires <a class="reference external" href="http://pypi.python.org/pypi/pip">pip</a> to be installed, pip also has a dependency
-on <a class="reference external" href="http://pypi.python.org/pypi/setuptools">setuptools</a>.</p>
-<p>Teaching Python development itself is beyond the scope of this document, however there are many
-resources on Python and likely developers in your organization can help you get up to speed.</p>
+<p>Pip命令需要事先安装<a class="reference external" href="http://pypi.python.org/pypi/pip">pip</a>, 在<a class="reference external" href="http://pypi.python.org/pypi/setuptools">setuptools</a>页面，可以找到pip的依赖项。</p>
+<p>教授Python编程已经超出了本章的教学范畴, Python编程在网上有很多的教学资源，你公司的同事也可能教你快速学会Python。</p>
 </div>
 <div class="section" id="ruby">
 <h3>Ruby<a class="headerlink" href="#ruby" title="Permalink to this headline">¶</a></h3>
-<p>If you are using Ruby for test automation then you probably are already familiar with developing
-in Ruby.  To add Selenium to your Ruby environment run the following command from
-a command-line.</p>
+<p>>如果你使用Ruby来进行自动化测试，那么你可能已经对Ruby开发很熟悉了。使用下面的命令语句在Ruby环境中添加Selenium。</p>
 <div class="highlight-bash"><div class="highlight"><pre>gem install selenium-webdriver
 </pre></div>
 </div>
-<p>Teaching Ruby development itself is beyond the scope of this document, however there are many
-resources on Ruby and likely developers in your organization can help you get up to speed.</p>
+<p>教授Ruby编程已经超出了本章的教学范畴, Ruby编程在网上有很多的教学资源，你公司的同事也可能教你快速学会Ruby。</p>
 </div>
 <div class="section" id="perl">
 <h3>Perl<a class="headerlink" href="#perl" title="Permalink to this headline">¶</a></h3>
-<p>Perl bindings are provided by a third party, please refer to any of their documentation on how to
-install / get started. There is one known <a class="reference external" href="https://metacpan.org/module/Selenium::Remote::Driver">Perl binding</a> as of this writing.</p>
+<p>Perl绑定是由第三方提供的,请参考他们的资料来安装启动selenium。在这儿，可以找到关于<a class="reference external" href="https://metacpan.org/module/Selenium::Remote::Driver">Perl 绑定</a>的文章。</p>
 </div>
 <div class="section" id="php">
 <h3>PHP<a class="headerlink" href="#php" title="Permalink to this headline">¶</a></h3>
-<p>PHP bindings are provided by a third party, please refer to any of their documentation on how to
-install / get started. There are three known bindings at this time: <a class="reference external" href="https://github.com/chibimagic/WebDriver-PHP/">By Chibimagic</a>
+<p>PHP绑定是由第三方提供的,请参考他们的资料来安装启动selenium。目前，有3个比较常用的绑定，它们是: <a class="reference external" href="https://github.com/chibimagic/WebDriver-PHP/">By Chibimagic</a>
 <a class="reference external" href="http://code.google.com/p/php-webdriver-bindings/">By Lukasz Kolczynski</a> and <a class="reference external" href="https://github.com/facebook/php-webdriver">By the Facebook</a></p>
 </div>
 </div>
 <div class="section" id="migrating-from-selenium-1-0">
-<h2>Migrating from Selenium 1.0<a class="headerlink" href="#migrating-from-selenium-1-0" title="Permalink to this headline">¶</a></h2>
+<h2>从Selenium 1.0迁移<a class="headerlink" href="#migrating-from-selenium-1-0" title="Permalink to this headline">¶</a></h2>
 <p>For those who already have test suites written using Selenium 1.0, we have provided tips on how to
 migrate your existing code to Selenium 2.0.  Simon Stewart, the lead developer for Selenium 2.0,
 has written an article on migrating from Selenium 1.0.  We’ve included this as an appendix.</p>
