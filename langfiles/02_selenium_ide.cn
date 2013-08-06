@@ -404,14 +404,9 @@ Selenium-IDE会将参数附加到Base URL后面，形成绝对地址，下图的
 <li>输入文本或选择列表选项的文本模式或变量。</li>
 </ul>
 <p>在Selenium Commands这一章节里，对定位器，文本模式，Selenium变量和命令本身会有相当详细的介绍。</p>
-<p>Selenium scripts that will be run from Selenium-IDE will be be stored in an HTML
-text file format. This consists of an HTML table with three columns. The first
-column identifies the Selenium command, the second is a target, and the
-final column contains a value. The second and third columns may not require
-values depending on the chosen Selenium command, but they should be present.
-Each table row represents a new Selenium command. Here is an example of a test
-that opens a page, asserts the page title and then verifies some content on the
-page:</p>
+<p>Selenium-IDE运行的Selenium脚本被保存为HTML格式，它包含一个三列的table，第一列为Selenium命令，
+第二列是Target，最后一列包含一个value，第二和第三列是否有值取决于第一列的Selenium命令，但列必须存在。
+表的每一行代表一个命令，下面的示例命令包含一个打开页面、断言标题和核实页面的部分内容。</p>
 <div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;table&gt;</span>
     <span class="nt">&lt;tr&gt;&lt;td&gt;</span>open<span class="nt">&lt;/td&gt;&lt;td&gt;</span>/download/<span class="nt">&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;</span>
     <span class="nt">&lt;tr&gt;&lt;td&gt;</span>assertTitle<span class="nt">&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;</span>Downloads<span class="nt">&lt;/td&gt;&lt;/tr&gt;</span>
@@ -419,7 +414,7 @@ page:</p>
 <span class="nt">&lt;/table&gt;</span>
 </pre></div>
 </div>
-<p>Rendered as a table in a browser this would look like the following:</p>
+<p>浏览器中显示效果如下：</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="37%">
@@ -441,17 +436,14 @@ page:</p>
 </tr>
 </tbody>
 </table>
-<p>The Selenese HTML syntax can be used to write and run tests without requiring
-knowledge of a programming language.  With a basic knowledge of selenese and
-Selenium-IDE you can quickly produce and run testcases.</p>
+<p>Selenium HTML语法可以被用于编写和运行测试，而不需要其他的语言知识，
+	具备基本的Selenium和Selenium-IDE的知识，你就可以迅速的编写和运行测试用例。</p>
 </div>
 <div class="section" id="test-suites">
-<h2>Test Suites<a class="headerlink" href="#test-suites" title="Permalink to this headline">¶</a></h2>
-<p>A test suite is a collection of tests.  Often one will run all the tests in a
-test suite as one continuous batch-job.</p>
-<p>When using Selenium-IDE, test suites also can be defined using a simple HTML
-file.  The syntax again is simple.  An HTML table defines a list of tests where
-each row defines the filesystem path to each test.  An example tells it all.</p>
+<h2>测试套件<a class="headerlink" href="#test-suites" title="Permalink to this headline">¶</a></h2>
+<p>测试套件由一组测试用例组成，通常会一次运行测试套件里面所有的用例，形成批处理。</p>
+<p>Selenium-IDE里面，测试套件也是被定义成一个简单的HTML文件，语法也很简单，一个HTML表格定义了一组测试用例，
+	每个测试用例都有一个文件系统的目录，下面的例子说明一切。</p>
 <div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;</span>
 <span class="nt">&lt;title&gt;</span>Test Suite Function Tests - Priority 1<span class="nt">&lt;/title&gt;</span>
@@ -467,80 +459,51 @@ each row defines the filesystem path to each test.  An example tells it all.</p>
 <span class="nt">&lt;/html&gt;</span>
 </pre></div>
 </div>
-<p>A file similar to this would allow running the tests all at once, one after
-another, from the Selenium-IDE.</p>
-<p>Test suites can also be maintained when using Selenium-RC.  This is done via
-programming and can be done a number of ways.  Commonly Junit is used to
-maintain a test suite if one is using Selenium-RC with Java.  Additionally, if
-C# is the chosen language, Nunit could be employed.  If using an interpreted
-language like Python with Selenium-RC then some simple programming would be
-involved in setting up a test suite.  Since the whole reason for using Selenium-RC
-is to make use of programming logic for your testing this usually isn’t a
-problem.</p>
+<p>类似的文件允许在Selenium-IDE下运行所有的测试用例，一个接一个的运行。</p>
+<p>测试套件也可以用Selenium-RC来管理。这通过编程的方式，有几种做法，如果你用Java一般会选择Junit来维护一个测试套件，相对应的，C#可能会选择Nunit。还有一些解释语言，
+	比如Python，你可能要写一些简单的程序来构建和维护一个测试套件，利用Selenium-RC的目的是在你的测试用例中构建相关的程序逻辑，通常不是什么问题。</p>
 </div>
 <div class="section" id="commonly-used-selenium-commands">
-<h2>Commonly Used Selenium Commands<a class="headerlink" href="#commonly-used-selenium-commands" title="Permalink to this headline">¶</a></h2>
-<p>To conclude our introduction of Selenium, we’ll show you a few typical Selenium
-commands.  These are probably the most commonly used commands for building tests.</p>
+<h2>常用的Selenium命令<a class="headerlink" href="#commonly-used-selenium-commands" title="Permalink to this headline">¶</a></h2>
+<p>在结束Selenium介绍之前，我们来介绍一些经典的Selenium命令，这些命令是构建测试用例时最常用的命令。</p>
 <dl class="docutils">
 <dt>open</dt>
-<dd>opens a page using a URL.</dd>
+<dd>根据URL打开一个页面。</dd>
 <dt>click/clickAndWait</dt>
-<dd>performs a click operation, and optionally waits for a new page to load.</dd>
+<dd>执行一个点击操作，可选择是否等待新的页面被加载。</dd>
 <dt>verifyTitle/assertTitle</dt>
-<dd>verifies an expected page title.</dd>
+<dd>验证页面标题是否为预期值。</dd>
 <dt>verifyTextPresent</dt>
-<dd>verifies expected text is somewhere on the page.</dd>
+<dd>验证页面某地方的文本。</dd>
 <dt>verifyElementPresent</dt>
-<dd>verifies an expected UI element, as defined by its HTML tag, is present on
-the page.</dd>
+<dd>验证页面元素，页面存在某个确定的HTML标签。</dd>
 <dt>verifyText</dt>
-<dd>verifies expected text and its corresponding HTML tag are present on the page.</dd>
+<dd>验证页面中的文本和它对应的HTML标签。</dd>
 <dt>verifyTable</dt>
-<dd>verifies a table’s expected contents.</dd>
+<dd>验证一个表格的内容。</dd>
 <dt>waitForPageToLoad</dt>
-<dd>pauses execution until an expected new page loads.  Called automatically when
-clickAndWait is used.</dd>
+<dd>暂停执行，直到一个新的页面被加载。在执行clickAndWait的时候，这个命令会被自动调用。</dd>
 <dt>waitForElementPresent</dt>
-<dd>pauses execution until an expected UI element, as defined by its HTML tag,
-is present on the page.</dd>
+<dd>暂停执行直到某预期的页面元素（HTML标签）在页面上呈现。</dd>
 </dl>
 </div>
 <div class="section" id="verifying-page-elements">
-<h2>Verifying Page Elements<a class="headerlink" href="#verifying-page-elements" title="Permalink to this headline">¶</a></h2>
-<p>Verifying UI elements on a web page is probably the most common feature of
-your automated tests.  Selenese allows multiple ways of checking for UI
-elements.  It is important that you understand these different methods because
-these methods define what you are actually testing.</p>
-<p>For example, will you test that...</p>
+<h2>验证页面元素<a class="headerlink" href="#verifying-page-elements" title="Permalink to this headline">¶</a></h2>
+<p>在自动化测试中，验证页面中的元素起着至关重要的作用，Selenese有多种方式帮你实现检查页面元素，尽可能的理解并掌握这些方法，这也是你在实际测试中经常用到方法。</p>
 <ol class="loweralpha simple">
-<li>an element is present somewhere on the page?</li>
-<li>specific text is somewhere on the page?</li>
-<li>specific text is at a specific location on the page?</li>
+<li>页面存在的元素？</li>
+<li>页面存在的文本信息？</li>
+<li>页面的某个位置存在某个文本信息？</li>
 </ol>
-<p>For example, if you are testing a text heading, the text and its position
-at the top of the page are probably relevant for your test.  If, however, you
-are testing for the existence of an image on the home page, and the
-web designers frequently change the specific image file along with its position
-on the page, then you only want to test that <em>an image</em> (as opposed to the
-specific image file) exists <em>somewhere on the page</em>.</p>
+<p>例如，如果你要测试一个标题的文本，这个文本和它所在页头的位置是与你测试有关的，又或者，你要测试home页面中是否存在一个图片，
+Web设计者通常会改变图片文件或它的位置。你只需要测试图片是否存在于页面的某个位置。</p>
 </div>
 <div class="section" id="assertion-or-verification">
-<h2>Assertion or Verification?<a class="headerlink" href="#assertion-or-verification" title="Permalink to this headline">¶</a></h2>
-<p>Choosing between “assert” and “verify” comes down to convenience and
-management of failures. There’s very little point checking that the first
-paragraph on the page is the correct one if your test has already failed when
-checking that the browser is displaying the expected page. If you’re not on
-the correct page, you’ll probably want to abort your test case so that you can
-investigate the cause and fix the issue(s) promptly. On the other hand, you
-may want to check many attributes of a page without aborting the test case on
-the first failure as this will allow you to review all failures on the page
-and take the appropriate action. Effectively an “assert” will fail the test
-and abort the current test case, whereas a “verify” will fail the test and
-continue to run the test case.</p>
-<p>The best use of this feature is to logically group your test commands, and
-start each group with an “assert” followed by one or more “verify” test
-commands. An example follows:</p>
+<h2>Assertion还是Verification?<a class="headerlink" href="#assertion-or-verification" title="Permalink to this headline">¶</a></h2>
+<p>选择asset或verify主要考虑便利性和对错误的管理，在遇到页面加载错误时，你希望终止运行其他测试用例，因为后续的测试会变得没有意义，但在遇到大量验证页面属性时，
+	你可能希望其中一个出现错误而不会影响其他用例的运行，这样你可以一次性解决所有可能的错误。使用asset可以让你在遇到测试失败时终止用例的运行，
+	而verify会在验证失败后继续运行后面的测试用例。</p>
+<p>验证两者区别最好的办法是，写若干组测试命令，每组以一个asset命令开始，后面跟随若干个verify命令。如下所示：</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="35%">
@@ -580,17 +543,11 @@ commands. An example follows:</p>
 </tr>
 </tbody>
 </table>
-<p>The above example first opens a page and then “asserts” that the correct page
-is loaded by comparing the title with the expected value. Only if this passes
-will the following command run and “verify” that the text is present in the
-expected location. The test case then “asserts” the first column in the second
-row of the first table contains the expected value, and only if this passed will
-the remaining cells in that row be “verified”.</p>
+<p>上面这个例子，先打开一个页面，然后利用assert验证页面标题来确认页面被加载完成，只有这个命令通过了，后面的命令才会继续运行，
+	接着verify 一段文本在预期的位置，然后利用asset第一个表格的第二行第一列的内容是预期值，只有asset验证通过了，后续的其他内容才会继续验证。</p>
 <div class="section" id="verifytextpresent">
 <h3>verifyTextPresent<a class="headerlink" href="#verifytextpresent" title="Permalink to this headline">¶</a></h3>
-<p>The command <tt class="docutils literal"><span class="pre">verifyTextPresent</span></tt> is used to verify <em>specific text exists
-somewhere on the page</em>.  It takes a single argument–the text pattern to be
-verified.  For example:</p>
+<p>verifyTextPresent命令用来判断页面中存在的特定文本，它只有一个参数，就是要判断的文本内容。示例如下：</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="36%">
@@ -610,17 +567,11 @@ verified.  For example:</p>
 </tr>
 </tbody>
 </table>
-<p>This would cause Selenium to search for, and verify, that the text string
-“Marketing Analysis” appears somewhere on the page currently being tested. Use
-<tt class="docutils literal"><span class="pre">verifyTextPresent</span></tt> when you are interested in only the text
-itself being present on the page.  Do not use this when you also need to test
-where the text occurs on the page.</p>
+<p>上面这个示例作用是，验证当前被测试的页面中是否存在“Marketing Analysis”，这个命令只能测试文本是否存在，但不能确定文本所在的位置。</p>
 </div>
 <div class="section" id="verifyelementpresent">
 <h3>verifyElementPresent<a class="headerlink" href="#verifyelementpresent" title="Permalink to this headline">¶</a></h3>
-<p>Use this command when you must test for the presence of a specific UI
-element, rather than its content.  This verification does not check the text,
-only the HTML tag.  One common use is to check for the presence of an image.</p>
+<p>这个命令用于测试页面的元素，而不是内容，它只测试HTML标签。下面这个命令用来测试页面的某个image。</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="40%">
@@ -640,13 +591,10 @@ only the HTML tag.  One common use is to check for the presence of an image.</p>
 </tr>
 </tbody>
 </table>
-<p>This command verifies that an image, specified by the existence of an &lt;img&gt;
-HTML tag, is present on the page, and that it follows a &lt;div&gt; tag and a &lt;p&gt; tag.
-The first (and only) parameter is a <em>locator</em> for telling the Selenese command how to
-find the element.  Locators are explained in the next section.</p>
-<p><tt class="docutils literal"><span class="pre">verifyElementPresent</span></tt> can be used to check the existence of any HTML tag
-within the page. You can check the existence of links, paragraphs, divisions
-&lt;div&gt;, etc.  Here are a few more examples.</p>
+<p>上面的示例用来验证页面中是否存在&lt;img&gt;这样的HTML标签，这个标签是跟在&lt;div&gt;和&lt;p&gt;标签后面的，
+	它只有一个参数，这个参数是一个定位器，告诉Selenese命令怎么去找到这个元素，定位器会在在下一章节介绍。</p>
+<p><tt class="docutils literal"><span class="pre">verifyElementPresent</span></tt> 
+	命令可以用来验证页面中任何的HTML标签是否存在，例如Links、paragraphs、divisions&lt;div&gt;等等，下面再给出一些示例。</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="32%">
@@ -686,15 +634,12 @@ within the page. You can check the existence of links, paragraphs, divisions
 </tr>
 </tbody>
 </table>
-<p>These examples illustrate the variety of ways a UI element may be tested.
-Again, locators are explained in the next section.</p>
+<p>这里示例展示了各种验证页面元素是否存在的方法。Locators将在下一章节介绍。</p>
 </div>
 <div class="section" id="verifytext">
 <h3>verifyText<a class="headerlink" href="#verifytext" title="Permalink to this headline">¶</a></h3>
-<p>Use <tt class="docutils literal"><span class="pre">verifyText</span></tt> when both the text and its UI element must be tested.
-<tt class="docutils literal"><span class="pre">verifyText</span></tt> must use a locator.  If you choose an <em>XPath</em> or <em>DOM</em>
-locator, you can verify that specific text appears at a specific location on the
-page relative to other UI components on the page.</p>
+<p>如果你既想要验证页面元素，同时希望验证元素里面的内容，就可以用verifyText命令，这个命令必须要有一个定位器，
+	如果你用XPath或DOM定位器，你可以验证相对其他元素的特定元素及其中的特定内容是否正确。</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="11%">
@@ -717,7 +662,7 @@ page relative to other UI components on the page.</p>
 </div>
 </div>
 <div class="section" id="locating-elements">
-<span id="locators-section"></span><h2>Locating Elements<a class="headerlink" href="#locating-elements" title="Permalink to this headline">¶</a></h2>
+<span id="locators-section"></span><h2>定位元素<a class="headerlink" href="#locating-elements" title="Permalink to this headline">¶</a></h2>
 <p>For many Selenium commands, a target is required. This target identifies an
 element in the content of the web application, and consists of the location
 strategy followed by the location in the format <tt class="docutils literal"><span class="pre">locatorType=location</span></tt>. The
