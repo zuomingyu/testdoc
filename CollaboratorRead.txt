@@ -1,0 +1,31 @@
+﻿如何在github上参与项目：
+http://blog.csdn.net/five3/article/details/9307041
+
+翻译操作步骤：
+1、github上clone本项目
+2、同步文件到本地库[下载一个github for windows客户端，登录后选择项目同步到本地]
+3、在/langfiles目录下找到你想要进行内容翻译的中文语言文件.如：07_selenium_grid.cn
+4、修改其中的 #:side、#:body下方未翻译的部分
+5、保存修改并同步到github
+6、请求一个pull操作
+
+语言文件格式说明：
+#:side
+：key1
+value content
+:key2
+value content
+value content
+....
+
+其中：keyX用于程序进行内容关联的，保持不变。仅其下的value中的内容需要翻译。
+注意只翻译value中的需要翻译的英文部分，其中的html格式、参数等都保持不变。如：
+待翻译内容包含这样的字符串时
+<li class="last"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+我们只要翻译除html内容之外的纯文字部分即可,这里只有
+Troubleshooting
+
+更多建议、意见、交流：
+five3@163.com
+
+
