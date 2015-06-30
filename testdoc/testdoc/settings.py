@@ -36,6 +36,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'userauth',
+    'groups',
+    'myprofile',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -83,8 +86,13 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, STATIC_URL.strip("/"))
+STATICFILES_DIRS = (
+    STATIC_ROOT,
+)
 
-TEMPLATE_DIRS = (os.path.join(BASE_DIR, "templates"),)
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, "templates"),
+)
 
 try:
     from local_settings import *
