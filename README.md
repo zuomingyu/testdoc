@@ -1,7 +1,11 @@
 testdoc
 =======
 
-collect and publish document of software testing! such as test tool doc, test api doc etc.
-
-View site: http://five3.github.io/testdoc/
+1. 测试问答社区 
+1. 测试文章发布 
+1. 测试面试问答 
+1. 测试职位发布 
+1. 测试活动举办 
+1. 测试培训教育 
+1. 测试外包承接
 
