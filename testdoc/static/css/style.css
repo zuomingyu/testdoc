@@ -1,5 +1,5 @@
 body {
-  padding-top: 70px;
+  padding-top: 0px;
   padding-bottom: 30px;
 }
 
@@ -32,3 +32,26 @@ body {
 .margin-15 {
     margin: 0 15px;
 }
+
+.marketing {
+    text-align: center;
+}
+
+.marketing .gitem {
+  width: 48%;
+  float: left;
+  margin-top: 5px;
+}
+
+.marketing .desc {
+  height: 60px;
+  text-align: left;
+  background-color: #EEF1F0;
+  margin: 2px;
+}
+.marketing h4 {margin-top: 10px; font-weight: bold;}
+.toparea { background-color: #EEF1F0; margin-top: 20px; text-align: center;}
+
+.footer {margin-top: 40px; }
+
+.item_title { background-image: -webkit-linear-gradient(top,#008B57 0,#008B57 100%); }
