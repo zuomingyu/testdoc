@@ -5,6 +5,9 @@ from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from testdoc import fun
+settings = {'title' : 'testdoc'}
 
 def home(req):
-    return render_to_response('base.html', locals(), context_instance = RequestContext(req))
+    setting = settings
+    groups_active = 'active'
+    return render_to_response('groups/index.html', locals(), context_instance = RequestContext(req))

@@ -7,4 +7,4 @@ from django.contrib.auth.decorators import login_required
 from testdoc import fun
 
 def home(req):
-    return render_to_response('base.html', locals(), context_instance = RequestContext(req))
+    return render_to_response('myprofile/index.html', locals(), context_instance = RequestContext(req))

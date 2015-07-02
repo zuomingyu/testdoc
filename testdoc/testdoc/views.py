@@ -10,8 +10,11 @@ settings = {'title' : 'testdoc'}
 
 def home(req):
     setting = settings
+    home_active = 'active'
+    is_home = True
     return render_to_response('index.html', locals(), context_instance = RequestContext(req))
 
-def blog(req):
+def about(req):
     setting = settings
-    return render_to_response('blog.html', locals(), context_instance = RequestContext(req))
+    about_active = 'active'
+    return render_to_response('about.html', locals(), context_instance = RequestContext(req))

@@ -25,33 +25,40 @@
     {% block js %}{% endblock %}
 </head>
 <body role="document">
+{% block nav %}
     <div class="blog-masthead">
-      <div class="container">
+      <div class="container global-nav">
         <nav class="blog-nav">
-          <a class="blog-nav-item active" href="/">首页</a>
-          <a class="blog-nav-item" href="/groups">小组</a>
-          <a class="blog-nav-item" href="/ask">问答</a>
-          <a class="blog-nav-item" href="/article">文章</a>
-          <a class="blog-nav-item" href="/about">关于</a>
+          <h1 class="logo"><a class="sf" href="/">SegmentFault</a></h1>
+          <a class="blog-nav-item {{home_active}}" href="/">首页</a>
+          <a class="blog-nav-item {{groups_active}}" href="/groups">小组</a>
+          <a class="blog-nav-item {{ask_active}}" href="/ask">问答</a>
+          <a class="blog-nav-item {{article_active}}" href="/article">文章</a>
+          <a class="blog-nav-item {{about_active}}" href="/about">关于</a>
+          <ul class="nav navbar-nav navbar-right" id="nav-right">
+            <li><a href="#" style="color:#fff;">登录</a></li>
+          </ul>
+          {% if not is_home %}
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="关键字...">
+          </form>
+          {% endif %}
         </nav>
       </div>
     </div>
-
+{% endblock %}
 <div class="container">
-{% block header %}
-
-{% endblock %}
-{% block main %}
-
-{% endblock %}
+{% block header %}{% endblock %}
+{% block main %}{% endblock %}
+{% block footer %}
     <!-- Site footer -->
     <footer class="footer">
     <hr>
-    <p>© testdoc 2015</p>
+    <p>five3@163.com © testdoc 2015</p>
     </footer>
 </div> <!-- /container -->
-
-{% block footer %}
+{% endblock %}
+{% block bottom %}
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/js/ie-emulation-modes-warning.js"></script>
@@ -61,6 +68,6 @@
       <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 {% endblock %}
-{% block bottom %}{% endblock %}
+{% block bottom_ext %}{% endblock %}
 </body>
 </html>
