@@ -12,3 +12,9 @@ def home(req):
     setting = settings
     article_active = 'active'
     return render_to_response('article/index.html', locals(), context_instance = RequestContext(req))
+
+def article(req):
+    setting = settings
+    article_active = 'active'
+    return render_to_response('article/article.html', locals(), context_instance = RequestContext(req))
+
