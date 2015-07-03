@@ -5,4 +5,5 @@ from django.conf.urls import patterns, url
 
 urlpatterns = patterns('groups.views',
     url(r'^$', 'home'),
+    url(r'^group$', 'group'),
 )

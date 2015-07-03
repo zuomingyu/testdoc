@@ -11,3 +11,9 @@ def home(req):
     setting = settings
     groups_active = 'active'
     return render_to_response('groups/index.html', locals(), context_instance = RequestContext(req))
+
+def group(req):
+    setting = settings
+    groups_active = 'active'
+    return render_to_response('groups/group.html', locals(), context_instance = RequestContext(req))
+

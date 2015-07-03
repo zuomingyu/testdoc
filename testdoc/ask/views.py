@@ -12,3 +12,8 @@ def home(req):
     setting = settings
     ask_active = 'active'
     return render_to_response('ask/index.html', locals(), context_instance = RequestContext(req))
+
+def ask(req):
+    setting = settings
+    ask_active = 'active'
+    return render_to_response('ask/ask.html', locals(), context_instance = RequestContext(req))
